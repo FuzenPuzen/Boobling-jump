@@ -1,7 +1,10 @@
+using Assets.Scripts.PlayerService;
+using UnityEngine;
 using Zenject;
 
 public class GameInstaller : MonoInstaller
-{  
+{
+    
     public override void InstallBindings()
     {
         Container.Bind<StateMachine>().AsSingle();
@@ -9,14 +12,11 @@ public class GameInstaller : MonoInstaller
 
         //Container.Bind<PlayerController>().AsSingle();
         Container.Bind<PrefabsStorageService>().AsSingle();
-        Container.Bind<PlayerFabric>().AsSingle();
 
+        Container.Bind<PlayerKitService>().AsSingle();
         Container.Bind<SectionsService>().AsSingle();
         Container.Bind<SectionFabric>().AsSingle();
     }
 
-    private void SpawnPlayer()
-    {
-        
-    }
+
 }

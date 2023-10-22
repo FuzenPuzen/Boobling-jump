@@ -5,18 +5,18 @@ using Zenject;
 public class SectionFabric
 {
     private PrefabsStorageService _prefabsStorageService;
-    private List<GameObject> _sectionsPb = new();
+    private List<SectionView> _sectionsPb = new();
 
     [Inject]
     public SectionFabric(PrefabsStorageService prefabsStorageService)
     {
         _prefabsStorageService = prefabsStorageService;
-        _sectionsPb = _prefabsStorageService.GetSectionsPb();
+        _sectionsPb.AddRange(_prefabsStorageService.GetPrefabsByType<SectionView>());
     }
 
     public GameObject GetSpawnedSection()
     {
         int randId = Random.Range(0, _sectionsPb.Count);
-        return MonoBehaviour.Instantiate(_sectionsPb[randId]);
+        return MonoBehaviour.Instantiate(_sectionsPb[randId].gameObject);
     }
 }

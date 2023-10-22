@@ -18,7 +18,6 @@ public class PlayerFabric
     //Спавним сет(игрок+камера+синемашин), ищем в дочерних компонент PlayerController и его билдим в контейнер
     public PlayerController SpawnPlayer()
     {
-        _playerSetPb = _prefabsStorageService.GetPlayerPb();
         _playerSetObj = MonoBehaviour.Instantiate(_playerSetPb, Vector3.zero, Quaternion.identity, null);
         //Возможно переделать        
         return GetPlayerController(_playerSetObj);

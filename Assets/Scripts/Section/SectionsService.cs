@@ -1,3 +1,5 @@
+using Assets.Scripts.PlayerService;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -6,22 +8,18 @@ using Zenject;
 public class SectionsService
 {
     private SectionFabric _sectionFabric;
-    private Vector3 _firstPosition = new(22,0,0);
+    private Vector3 _firstPosition = new Vector3(22,0,0);
     private int sectionCounter = 1;
     private GameObject _currentSection;
-    [InjectOptional] private PlayerController _playerController;
+    
+    private PlayerKitService _playerKitService;
 
     [Inject]
-    public SectionsService(SectionFabric sectionFabric)
+    public SectionsService(SectionFabric sectionFabric, PlayerKitService playerKitService)
     {
         _sectionFabric = sectionFabric;
+        _playerKitService = playerKitService;
         SpawnSection();
-    }
-
-    public void SetPlayer(PlayerController playerController)
-    {
-        _playerController = playerController;
-        _playerController.ReachPlatform += SpawnSection;
     }
 
     public Vector3 GetNewSectionPosition()
