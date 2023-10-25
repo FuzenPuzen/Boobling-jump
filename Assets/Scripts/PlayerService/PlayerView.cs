@@ -16,7 +16,7 @@ public class PlayerView : MonoBehaviour
         new(0, 0, 360),
         new(360, 360, 0),
         new(360, 0, 90),
-        new(90, 60, 90),
+        new(360, 60, 90),
 
     };
 
@@ -59,6 +59,7 @@ public class PlayerView : MonoBehaviour
     {
         _isFall = false;
         transform.DOPunchScale(new Vector3(1.25f, 1.5f, 1.25f), period / 2f);
+        //transform.DOShakeScale(period / 2f, new Vector3(0.25f, 0.5f, 0.25f));
         Jump();
     }
 
@@ -70,7 +71,7 @@ public class PlayerView : MonoBehaviour
         _jumpSequence.Join(transform.DOLocalRotate(GetRandomJumpVector(), period * 3, RotateMode.LocalAxisAdd).SetEase(Ease.Linear));
 
         _jumpSequence.Insert(period * 2,transform.DOMoveY(_startPos.y, period * 2.5f).SetEase(Ease.InSine));
-        _jumpSequence.Insert(period * 4,transform.DORotate(new Vector3(0, 0, 0), period));
+        _jumpSequence.Insert(period * 3,transform.DORotate(new Vector3(0, 0, 0), period));
         _jumpSequence.OnComplete(Jump);
     }
 

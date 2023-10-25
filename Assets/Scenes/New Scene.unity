@@ -671,7 +671,7 @@ MonoBehaviour:
   player: {fileID: 1811000432162450348}
   minSize: 0.1
   maxSize: 1
-  maxDistance: 4
+  maxDistance: 10
   firstrigger: {fileID: 7044618167062304497}
   secondtrigger: {fileID: 5220327561611908365}
 --- !u!23 &2811919910672390188

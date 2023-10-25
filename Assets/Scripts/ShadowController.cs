@@ -6,7 +6,7 @@ public class ShadowController : MonoBehaviour
 
     public float minSize = 0.05f; // Минимальный размер объекта
     public float maxSize = 1.0f; // Максимальный размер объекта
-    public float maxDistance = 4.0f;
+    public float maxDistance = 10.0f;
 
     public GameObject firstrigger;
     public GameObject secondtrigger;
