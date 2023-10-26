@@ -3,12 +3,11 @@ using Zenject;
 
 public class StartState : IBaseState
 {
-    private SectionsService _sectionsService;
 
     [Inject]
-    public StartState(SectionsService sectionsService)
+    public StartState(StoolsService stoolsService, TimerService timerService)
     {
-        _sectionsService = sectionsService;
+        
     }
 
     public void Enter()

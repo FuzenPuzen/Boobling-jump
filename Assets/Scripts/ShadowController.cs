@@ -8,8 +8,6 @@ public class ShadowController : MonoBehaviour
     public float maxSize = 1.0f; // Максимальный размер объекта
     public float maxDistance = 10.0f;
 
-    public GameObject firstrigger;
-    public GameObject secondtrigger;
 
     void Update()
     {
@@ -23,17 +21,6 @@ public class ShadowController : MonoBehaviour
 
         // Применяем новый размер к объекту
         transform.localScale = new Vector3(newSize, 0.1f, newSize);
-
-        bool first = firstrigger.activeSelf;
-        bool second = secondtrigger.activeSelf;
-        if (first && second)
-        {
-            gameObject.SetActive(true);
-        }
-        else
-        {
-            gameObject.SetActive(false);
-        }
     }
 
 }

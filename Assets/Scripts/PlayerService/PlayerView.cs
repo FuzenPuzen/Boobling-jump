@@ -9,7 +9,6 @@ public class PlayerView : MonoBehaviour
 
     private Vector3 _startPos;
     private bool _isFall;
-    private Transform _transformChild;
 
     private List<Vector3> JumpVectors = new()
     {
@@ -17,7 +16,6 @@ public class PlayerView : MonoBehaviour
         new(360, 360, 0),
         new(360, 0, 90),
         new(360, 60, 90),
-
     };
 
     private DG.Tweening.Sequence _jumpSequence;
@@ -25,7 +23,6 @@ public class PlayerView : MonoBehaviour
 
     public void Start()
     {
-        _transformChild = transform.GetChild(0);
         _isFall = false;
         _startPos = transform.localPosition;
         Jump();

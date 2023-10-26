@@ -10,12 +10,13 @@ public class GameInstaller : MonoInstaller
         Container.Bind<StateMachine>().AsSingle();
         Container.Bind<StartState>().AsSingle();
 
-        //Container.Bind<PlayerController>().AsSingle();
         Container.Bind<PrefabsStorageService>().AsSingle();
+        Container.Bind<TimerService>().AsSingle();
 
         Container.Bind<PlayerKitService>().AsSingle();
-        Container.Bind<SectionsService>().AsSingle();
-        Container.Bind<SectionFabric>().AsSingle();
+
+        Container.Bind<IStoolFabric>().To<StoolFabric>().AsSingle();
+        Container.Bind<StoolsService>().AsSingle();
     }
 
 

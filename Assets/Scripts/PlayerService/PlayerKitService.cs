@@ -8,7 +8,6 @@ namespace Assets.Scripts.PlayerService
     public class PlayerKitService
     {
         private PlayerKitView _playerKitView;
-        private PlayerView _playerView;
 
         public Action ReachPlatform;
 
@@ -17,14 +16,6 @@ namespace Assets.Scripts.PlayerService
         {
             PlayerKitView playerKitViewPb = prefabsStorageService.GetPrefabByType<PlayerKitView>();
             _playerKitView = MonoBehaviour.Instantiate(playerKitViewPb);
-            _playerView = _playerKitView.GetPlayerView();
         }
-
-        private void ReachPlatfrom()
-        {
-            ReachPlatform?.Invoke();
-        }
-
-
     }
 }
