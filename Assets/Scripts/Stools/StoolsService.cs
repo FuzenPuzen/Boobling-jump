@@ -20,7 +20,6 @@ public class StoolsService
 
     public void SpawnStool()
     {
-        Debug.Log("SpawnStool");
         int i = Random.Range(0, 2);
         _stoolServices.Add(_stoolFabric.SpawnStool(i));      
     }

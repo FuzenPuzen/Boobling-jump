@@ -9,7 +9,8 @@ public class StoolService : IStoolService
     public StoolService(IStoolView stoolView)
     {
         _stoolView = stoolView;
-        _stoolView.DestroyStool();
+        _stoolView.ActivateView();
     }
+
 
 }

@@ -1,11 +1,12 @@
 using Zenject;
 using UnityEngine;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 
 public class StoolFabric: IStoolFabric
 {
     private PrefabsStorageService _prefabsStorageService;
-    private List<StoolView> _stoolsPb = new();
+    private List<BasicStoolView> _stoolsPb = new();
 
     [Inject]
     public StoolFabric(PrefabsStorageService prefabsStorageService)
@@ -16,13 +17,13 @@ public class StoolFabric: IStoolFabric
 
     private void GetStoolPrefab()
     {
-        _stoolsPb = _prefabsStorageService.GetPrefabsByType<StoolView>();
+        _stoolsPb = _prefabsStorageService.GetPrefabsByType<BasicStoolView>();
     }
 
 
     public StoolService SpawnStool(int i)
     {
-        StoolView stoolView = MonoBehaviour.Instantiate(_stoolsPb[i], new(30, 1.5f, 0), Quaternion.identity);
+        var stoolView = MonoBehaviour.Instantiate(_stoolsPb[i], new(-10, 1.1f, 0), Quaternion.identity) as IStoolView;
         StoolService stoolService = new(stoolView);
         return stoolService;
     }

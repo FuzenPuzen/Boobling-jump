@@ -5,7 +5,7 @@ public class StartState : IBaseState
 {
 
     [Inject]
-    public StartState(StoolsService stoolsService, TimerService timerService)
+    public StartState(StoolsService stoolsService, TimerService timerService, PlayerKitService playerKitService)
     {
         
     }

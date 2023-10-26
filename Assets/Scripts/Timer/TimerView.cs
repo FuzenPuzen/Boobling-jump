@@ -16,7 +16,7 @@ public class TimerView : MonoBehaviour
 
     private IEnumerator SecondTimer()
     {
-        yield return new WaitForSeconds(1);
+        yield return new WaitForSeconds(1.5f);
         secondTimer?.Invoke();
         StartCoroutine(SecondTimer());
     }

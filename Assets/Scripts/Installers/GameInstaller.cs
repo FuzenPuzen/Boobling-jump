@@ -1,10 +1,7 @@
-using Assets.Scripts.PlayerService;
-using UnityEngine;
 using Zenject;
 
 public class GameInstaller : MonoInstaller
-{
-    
+{   
     public override void InstallBindings()
     {
         Container.Bind<StateMachine>().AsSingle();
@@ -18,6 +15,4 @@ public class GameInstaller : MonoInstaller
         Container.Bind<IStoolFabric>().To<StoolFabric>().AsSingle();
         Container.Bind<StoolsService>().AsSingle();
     }
-
-
 }

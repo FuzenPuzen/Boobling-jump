@@ -1,6 +1,7 @@
 using UnityEngine;
 using DG.Tweening;
 using System.Collections.Generic;
+using UnityEngine.SceneManagement;
 
 public class PlayerView : MonoBehaviour
 {
@@ -70,6 +71,14 @@ public class PlayerView : MonoBehaviour
         _jumpSequence.Insert(period * 2,transform.DOMoveY(_startPos.y, period * 2.5f).SetEase(Ease.InSine));
         _jumpSequence.Insert(period * 3,transform.DORotate(new Vector3(0, 0, 0), period));
         _jumpSequence.OnComplete(Jump);
+    }
+
+    private void OnCollisionEnter(Collision other)
+    {
+        if (other.gameObject.CompareTag("Enemy"))
+        {
+            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        }
     }
 
 }

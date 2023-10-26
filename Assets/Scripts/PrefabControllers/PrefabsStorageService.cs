@@ -16,17 +16,6 @@ public class PrefabsStorageService
         // Загружаем все объекты (префабы) в указанной директории
         GameObject[] objects = Resources.LoadAll<GameObject>(path);
         prefabs.AddRange(objects);
-
-        // Перебираем все подпапки в текущей директории
-        string[] subDirectories = System.IO.Directory.GetDirectories("Assets/Resources/" + path);
-        foreach (string subDir in subDirectories)
-        {
-            // Получаем имя подпапки
-            string folderName = System.IO.Path.GetFileName(subDir);
-
-            // Рекурсивно вызываем эту функцию для каждой подпапки
-            LoadPrefabsFromPath(path + folderName + "/");
-        }
     }
 
     public T GetPrefabByType<T>()
