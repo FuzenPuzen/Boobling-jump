@@ -36,8 +36,8 @@ public class PlayerView : MonoBehaviour
 
     private void Update()
     {
-        if (!_isFall)
-            if (Input.GetMouseButtonDown(0))
+        if (Input.GetMouseButtonDown(0))
+            if (!_isFall)
             {
                 Fall();
             }
@@ -77,7 +77,7 @@ public class PlayerView : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Enemy"))
         {
-            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+            //SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         }
     }
 

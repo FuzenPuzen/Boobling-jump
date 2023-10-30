@@ -15,8 +15,9 @@ public class BasicStoolView : MonoBehaviour, IStoolView
 
     private IEnumerator DestroyView()
     {
-        yield return new WaitForSeconds(5);
+        yield return new WaitForSeconds(10);
         Destroy(gameObject);
+
     }
 
     public virtual void ActivateView()
@@ -29,4 +30,5 @@ public class BasicStoolView : MonoBehaviour, IStoolView
     {
         transform.DOMoveX(_moveTarget, _movingTime);
     }
+
 }

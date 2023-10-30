@@ -23,7 +23,7 @@ public class StoolFabric: IStoolFabric
 
     public StoolService SpawnStool(int i)
     {
-        var stoolView = MonoBehaviour.Instantiate(_stoolsPb[i], new(-10, 1.1f, 0), Quaternion.identity) as IStoolView;
+        var stoolView = MonoBehaviour.Instantiate(_stoolsPb[i], new(-10, 1.6f, 0), Quaternion.identity) as IStoolView;
         StoolService stoolService = new(stoolView);
         return stoolService;
     }
