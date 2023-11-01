@@ -6,7 +6,6 @@ using DG.Tweening;
 public class CactusStoolView : BasicStoolView
 {
 
-    private List<Transform> _pieces = new();
     private float _growInterval = 1f;
 
     public override void ActivateView()
@@ -17,17 +16,26 @@ public class CactusStoolView : BasicStoolView
 
     public void GrowPiece(Transform piece)
     {
-        piece.DOScale(1f, 0.5f).SetEase(Ease.OutBack);
+        piece.DOScale(-0.5f, 0.5f).SetEase(Ease.OutBack);
     }
 
     private IEnumerator GrowCD()
     {
         foreach (Transform piece in transform)
         {
-            _pieces.Add(piece);
             GrowPiece(piece);
             yield return new WaitForSeconds(_growInterval);
         }
     }
+
+    public override void DeActivateView()
+    {
+        foreach (Transform piece in transform)
+        {
+            piece.localScale = Vector3.zero;
+        }
+        base.DeActivateView();
+    }
+
 
 }

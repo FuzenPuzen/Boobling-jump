@@ -1,5 +1,11 @@
+using System;
+
 public interface IStoolView
 {
-    void DestroyStool();
     void ActivateView();
+    void DeActivateView();
+
+    void OnComplete();
+
+    public event Action CompleteMoveEvent;
 }

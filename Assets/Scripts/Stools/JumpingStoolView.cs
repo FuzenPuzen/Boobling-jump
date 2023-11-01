@@ -6,11 +6,23 @@ using DG.Tweening;
 public class JumpingStoolView : BasicStoolView
 {
     [SerializeField] private Transform _child;
+    DG.Tweening.Sequence _jumpSequence;
+    private bool _canJump;
 
     public override void ActivateView()
     {
+        _canJump = true;
         StartCoroutine(JumpCD());
         base.StartMove();
+    }
+
+    public override void DeActivateView()
+    {
+        _canJump = false;
+        _jumpSequence.Kill();
+        transform.localPosition = Vector3.zero;
+        _child.transform.localPosition = Vector3.zero;
+
     }
 
     public void Update()
@@ -21,18 +33,21 @@ public class JumpingStoolView : BasicStoolView
 
     public void Jump()
     {
-        DG.Tweening.Sequence _jumpSequence = DOTween.Sequence();
-        _jumpSequence.Append(_child.DOMoveY(8, 1).SetEase(Ease.OutCirc));
-        _jumpSequence.Append(_child.DOMoveY(1.1f, 0.5f).SetEase(Ease.InCirc));
-        //_child.DOJump(jumpPos, 6, 1, 1);
+        _jumpSequence.Kill();
+        _jumpSequence = DOTween.Sequence();
+        _jumpSequence.Append(_child.DOLocalMoveY(9, 1).SetEase(Ease.OutCirc));
+        _jumpSequence.Append(_child.DOLocalMoveY(0, 0.5f).SetEase(Ease.InCirc));
     }
 
 
     private IEnumerator JumpCD()
     {
-        Jump();
-        yield return new WaitForSeconds(2f);
-        StartCoroutine(JumpCD());
+        if (_canJump)
+        {
+            Jump();
+            yield return new WaitForSeconds(2f);
+            StartCoroutine(JumpCD());
+        }
     }
 
 }

@@ -12,7 +12,7 @@ public class GameInstaller : MonoInstaller
 
         Container.Bind<PlayerKitService>().AsSingle();
 
-        Container.Bind<IStoolFabric>().To<StoolFabric>().AsSingle();
-        Container.Bind<StoolsService>().AsSingle();
+        Container.Bind<IFabric>().To<Fabric>().AsSingle();
+        Container.Bind<SectionsService>().AsSingle();
     }
 }

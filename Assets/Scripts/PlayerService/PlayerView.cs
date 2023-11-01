@@ -7,6 +7,7 @@ public class PlayerView : MonoBehaviour
 {
     [SerializeField] private float period;
     [SerializeField] private Vector3 _targetPos;
+    [SerializeField] private Transform _playerModel;
 
     private Vector3 _startPos;
     private bool _isFall;
@@ -27,6 +28,7 @@ public class PlayerView : MonoBehaviour
         _isFall = false;
         _startPos = transform.localPosition;
         Jump();
+        
     }
 
     private Vector3 GetRandomJumpVector()
@@ -56,7 +58,7 @@ public class PlayerView : MonoBehaviour
     private void FallCallback()
     {
         _isFall = false;
-        transform.DOPunchScale(new Vector3(1.25f, 1.5f, 1.25f), period / 2f);
+        _playerModel.DOPunchScale(new Vector3(1.25f, 1.25f, 1.25f), period / 3f);
         //transform.DOShakeScale(period / 2f, new Vector3(0.25f, 0.5f, 0.25f));
         Jump();
     }
@@ -77,7 +79,7 @@ public class PlayerView : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Enemy"))
         {
-            //SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         }
     }
 

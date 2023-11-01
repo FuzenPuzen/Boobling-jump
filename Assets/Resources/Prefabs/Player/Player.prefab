@@ -133,7 +133,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   period: 0.5
-  _targetPos: {x: 0, y: 10, z: 0}
+  _targetPos: {x: 0, y: 7, z: 0}
+  _playerModel: {fileID: 5886738388747262453}
 --- !u!65 &4450952379331980232
 BoxCollider:
   m_ObjectHideFlags: 0
