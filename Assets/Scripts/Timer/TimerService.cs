@@ -4,11 +4,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using Zenject;
 
-public class TimerService
+public class TimerService : ITimerService
 {
     private TimerView _timerView;
-
-    public event Action secondAction;
 
     private PrefabsStorageService _prefabsStorageService;
 
@@ -17,17 +15,15 @@ public class TimerService
     {
         _prefabsStorageService = prefabsStorageService;
         _timerView = MonoBehaviour.Instantiate(_prefabsStorageService.GetPrefabByType<TimerView>());
-        SetActionOnView();
     }
 
-    private void SetActionOnView()
+    public void SetActionOnView(float delay, Action action)
     {
-        _timerView.SetSecondAction(SecondTimerEvent);
+        _timerView.SetAction(delay, action);
     }
 
-    public void SecondTimerEvent()
+    public void SetRepeatActionOnView(float delay, Action action)
     {
-        secondAction?.Invoke();
+        _timerView.SetRepeatAction(delay, action);
     }
-
 }

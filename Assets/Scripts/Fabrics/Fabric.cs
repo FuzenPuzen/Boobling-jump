@@ -13,16 +13,6 @@ public class Fabric : IFabric
         _prefabsStorageService = prefabsStorageService;
     }
 
-    public T SpawnObjectAndGetType<T>(Vector3? position = null)
-    {
-        if (position == null)
-            position = Vector3.zero;
-        var obj = MonoBehaviour.Instantiate(_prefabsStorageService.GetObjectByType<T>(),
-                                    position.Value,
-                                    Quaternion.identity);
-        return obj.GetComponent<T>();
-    }
-
     public T SpawnObjectAndGetType<T>()
     {
         var obj = MonoBehaviour.Instantiate(_prefabsStorageService.GetObjectByType<T>(),
@@ -30,4 +20,14 @@ public class Fabric : IFabric
                                     Quaternion.identity);
         return obj.GetComponent<T>();
     }
+
+    public T SpawnObjectAndGetType<T>(Vector3 position)
+    {
+        var obj = MonoBehaviour.Instantiate(_prefabsStorageService.GetObjectByType<T>(),
+                                    position,
+                                    Quaternion.identity);
+        return obj.GetComponent<T>();
+    }
+
+   
 }

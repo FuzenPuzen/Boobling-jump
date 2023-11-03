@@ -8,7 +8,9 @@ public class GameInstaller : MonoInstaller
         Container.Bind<StartState>().AsSingle();
 
         Container.Bind<PrefabsStorageService>().AsSingle();
-        Container.Bind<TimerService>().AsSingle();
+        Container.Bind<RecordSLData>().AsSingle();
+        Container.Bind<ITimerService>().To<TimerService>().AsSingle();
+        Container.Bind<ScoreService>().AsSingle();
 
         Container.Bind<PlayerKitService>().AsSingle();
 

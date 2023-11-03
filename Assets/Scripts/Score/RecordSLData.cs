@@ -1,12 +1,12 @@
 using Newtonsoft.Json;
 using UnityEngine;
 
-public class RecordSLService
+public class RecordSLData
 {
     const string RecordKey = "RecordKey";
 
     [SerializeField] private int _recordScore;
-    public RecordSLService()
+    public RecordSLData()
     {
         if (!PlayerPrefs.HasKey(RecordKey))
         {

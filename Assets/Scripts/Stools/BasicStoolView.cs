@@ -5,9 +5,9 @@ using System;
 
 public class BasicStoolView : MonoBehaviour, IStoolView
 {
-    private float _moveTarget = 18;
-    private float _movingTime = 6f;
-    private DG.Tweening.Sequence _moveSequence;
+    protected float _moveTarget = 18;
+    protected float _movingTime = 6f;
+    protected DG.Tweening.Sequence _moveSequence;
     public event Action CompleteMoveEvent;
 
 

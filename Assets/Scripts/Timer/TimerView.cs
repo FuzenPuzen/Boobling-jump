@@ -5,20 +5,29 @@ using UnityEngine;
 
 public class TimerView : MonoBehaviour
 {
-    
     public Action secondTimer;
 
-    public void SetSecondAction(Action SecondAction)
+    internal void SetAction(float delay, Action action)
     {
-        secondTimer = SecondAction;
-        StartCoroutine(SecondTimer());
+        StartCoroutine(Timer(delay,action));
     }
 
-    private IEnumerator SecondTimer()
+    internal void SetRepeatAction(float delay, Action action)
     {
-        yield return new WaitForSeconds(1.5f);
-        secondTimer?.Invoke();
-        StartCoroutine(SecondTimer());
+        StartCoroutine(RepeatTimer(delay, action));
+    }
+
+    private IEnumerator Timer(float delay, Action action)
+    {
+        yield return new WaitForSecondsRealtime(delay);
+        action?.Invoke();
+    }
+
+    private IEnumerator RepeatTimer(float delay, Action action)
+    {
+        yield return new WaitForSecondsRealtime(delay);
+        action?.Invoke();
+        SetRepeatAction(delay, action);
     }
 
 }
