@@ -8,6 +8,7 @@ public class StartState : IBaseState
     private PlayerKitService _playerKitService;
     private Iservice _sectionsService;
     private ITimerService _timerService;
+    private Iservice _tutorialService;
 
     [Inject]
     public StartState(
@@ -15,9 +16,11 @@ public class StartState : IBaseState
                         ITimerService timerService,
                         PlayerKitService playerKitService,
                         StateMachine statemachine,
-                        EndGameState endGameState
+                        EndGameState endGameState,
+                        TutorialService tutorialService
                      )
     {
+        _tutorialService = tutorialService;
         _timerService = timerService;
         _sectionsService = sectionsService;
         _playerKitService = playerKitService;
@@ -27,6 +30,7 @@ public class StartState : IBaseState
 
     public void Enter()
     {
+        _tutorialService.ActivateService();
         _timerService.ActivateService();
         _playerKitService.ActivateService();
         _sectionsService.ActivateService();

@@ -81,7 +81,7 @@ public class PlayerView : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Enemy"))
         {
-            playerDieAction.Invoke();
+            //playerDieAction.Invoke();
         }
     }
 

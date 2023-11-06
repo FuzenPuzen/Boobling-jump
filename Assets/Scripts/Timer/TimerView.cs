@@ -19,13 +19,13 @@ public class TimerView : MonoBehaviour
 
     private IEnumerator Timer(float delay, Action action)
     {
-        yield return new WaitForSecondsRealtime(delay);
+        yield return new WaitForSeconds(delay);
         action?.Invoke();
     }
 
     private IEnumerator RepeatTimer(float delay, Action action)
     {
-        yield return new WaitForSecondsRealtime(delay);
+        yield return new WaitForSeconds(delay);
         action?.Invoke();
         SetRepeatAction(delay, action);
     }

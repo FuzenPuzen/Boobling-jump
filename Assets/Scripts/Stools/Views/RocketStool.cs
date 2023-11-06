@@ -5,9 +5,19 @@ using UnityEngine;
 
 public class RocketStool : BasicStoolView
 {
+    private float _defaultMovingTime;
     public override void StartMove()
     {
-        _moveSequence = DOTween.Sequence();
-        _moveSequence.Append(transform.DOMoveX(_moveTarget, _movingTime / 2)).SetEase(Ease.InQuart).OnComplete(OnComplete);
+        _defaultMovingTime = _movingTime;
+        _movingTime /= 2;
+        base.StartMove();
     }
+
+
+    public override void DeActivateView()
+    {
+        _movingTime = _defaultMovingTime;
+        base.DeActivateView();
+    }
+
 }

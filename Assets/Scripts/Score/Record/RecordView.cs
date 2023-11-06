@@ -13,7 +13,7 @@ public class RecordView : MonoBehaviour
     public void SetRecordData(RecordSLData recordSLData)
     {
         _recordSLData = recordSLData;
-        _recordText.text ="/" + _recordSLData.GetRecord().ToString();
+        _recordText.text = "Рекорд\n" + _recordSLData.GetRecord().ToString();
     }
 
 

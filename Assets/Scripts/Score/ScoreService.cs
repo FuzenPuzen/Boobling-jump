@@ -32,6 +32,7 @@ public class ScoreService
     {
         _ChangeTierAction = action;
         _difficultyLevels = difficultyLevels;
+        _currentlevel = difficultyLevels[0];
     }
 
     private void ScoreChanged()

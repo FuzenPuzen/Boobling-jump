@@ -13,7 +13,7 @@ public class ScoreView : MonoBehaviour
     {
         _scoreData.Score++;
         _scoreChangedAction?.Invoke();
-        _scoreText.text = _scoreData.Score.ToString();
+        _scoreText.text = "Ñ÷¸ò\n" + _scoreData.Score.ToString();
     }
 
     public void SetScoreChangedAction(Action action)

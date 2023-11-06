@@ -12,7 +12,7 @@ public class SectionsService : Iservice
     private ScoreService _scoreService;
     private GameObject section;
     private int stoolId = 0;
-    private int[] _difficultyLevels = {500,700,1000,1300};
+    private int[] _difficultyLevels = {3000,6000,9000,12000,15000,18000,21000};
     private int _tierId = 0;
    
     public void ActivateService()
@@ -38,9 +38,7 @@ public class SectionsService : Iservice
 
     public void SetNewSection()
     {
-        //section = _tiersService.GetSectionFromTier(_tierId);
-        section = _tiersService.GetSectionFromTier(4);
-        
+        section = _tiersService.GetSectionFromTier(_tierId);        
     }
 
     public void TakeStool()
@@ -56,7 +54,9 @@ public class SectionsService : Iservice
         stool.transform.position = new(-10, 1.6f, 0);
         if (stool.GetComponent<IStoolView>() != null)
         {
+            
             StoolService stoolService = new StoolService(stool.GetComponent<IStoolView>());
+            stoolService.ActivateService();
             _stoolServices.Add(stoolService);
             stoolService.SetViewCompleteInstruction(RemoveStoolFromList);
         }

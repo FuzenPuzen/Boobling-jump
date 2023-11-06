@@ -7,5 +7,6 @@ public interface IStoolView
 
     void OnComplete();
 
+
     public event Action CompleteMoveEvent;
 }
