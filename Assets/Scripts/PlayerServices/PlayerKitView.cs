@@ -11,4 +11,10 @@ public class PlayerKitView : MonoBehaviour
     {
         return _playerView;
     }
+
+    public void SetplayerDieAction(Action action)
+    {
+        _playerView.SetplayerDieAction(action);
+    }
+
 }

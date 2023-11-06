@@ -8,13 +8,17 @@ public class TimerService : ITimerService
 {
     private TimerView _timerView;
 
-    private PrefabsStorageService _prefabsStorageService;
+    private IFabric _fabric;
+
+    public void ActivateService()
+    {
+        _timerView = _fabric.SpawnObjectAndGetType<TimerView>();
+    }
 
     [Inject]
-    public TimerService(PrefabsStorageService prefabsStorageService)
+    public void Constructor(IFabric fabric)
     {
-        _prefabsStorageService = prefabsStorageService;
-        _timerView = MonoBehaviour.Instantiate(_prefabsStorageService.GetPrefabByType<TimerView>());
+        _fabric = fabric;
     }
 
     public void SetActionOnView(float delay, Action action)

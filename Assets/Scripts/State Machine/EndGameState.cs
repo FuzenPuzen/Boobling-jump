@@ -1,18 +1,23 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using Zenject;
 
 public class EndGameState : IBaseState
 {
+    private ScoreService _scoreService;
+    private RecordService _recordService;
 
     [Inject]
-    public EndGameState()
+    public EndGameState(ScoreService scoreService, RecordService recordService)
     {
-        
+        _recordService = recordService;
+        _scoreService = scoreService;
     }
 
     public void Enter()
     {
-        throw new System.NotImplementedException();
+        _recordService.SetRecord(_scoreService.GetScore());
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 
     public void Exit()

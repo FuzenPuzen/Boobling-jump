@@ -1,38 +1,29 @@
 using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.Linq;
 using TMPro;
 using UnityEngine;
-using UnityEngine.UI;
-using Zenject;
 
 public class ScoreView : MonoBehaviour
 {
-    private int _score;
     [SerializeField] private TextMeshProUGUI _scoreText;
 
     private Action _scoreChangedAction;
-
-
-    void Start()
-    {
-        _score = 0;
-    }
-
+    private ScoreData _scoreData;
 
     void Update()
-    {        
-        _score++;    
+    {
+        _scoreData.Score++;
         _scoreChangedAction?.Invoke();
-        _scoreText.text = _score.ToString();
+        _scoreText.text = _scoreData.Score.ToString();
     }
-
-    public int GetScore() => _score;
 
     public void SetScoreChangedAction(Action action)
     {
         _scoreChangedAction = action;
+    }
+
+    public void SetScoreData(ScoreData scoreData)
+    {
+        _scoreData = scoreData;
     }
 
 }

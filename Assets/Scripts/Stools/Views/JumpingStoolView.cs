@@ -37,8 +37,10 @@ public class JumpingStoolView : BasicStoolView
         _jumpSequence = DOTween.Sequence();
         _jumpSequence.Append(_child.DOLocalMoveY(6.5f, 1).SetEase(Ease.OutCirc));
         _jumpSequence.Join(_child.DOLocalRotate(new(0, 0, -180), 1f, RotateMode.LocalAxisAdd).SetEase(Ease.Linear));       
+        _jumpSequence.Join(_child.DOScale(new Vector3(1, 2f, 1), 1f).SetEase(Ease.Linear));       
         _jumpSequence.Append(_child.DOLocalMoveY(0, 0.5f).SetEase(Ease.InCirc));
         _jumpSequence.Join(_child.DOLocalRotate(new(0, 0, -180), 0.5f, RotateMode.LocalAxisAdd).SetEase(Ease.Linear));
+        _jumpSequence.Join(_child.DOScale(new Vector3(1, 1, 1), 1f).SetEase(Ease.Linear));
     }
 
 

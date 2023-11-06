@@ -1,18 +1,6 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-
-public class ScoreData : MonoBehaviour
+public class ScoreData 
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    private int _score = 0;
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    public int Score { get => _score; set => _score = value; }
 }

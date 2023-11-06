@@ -15,6 +15,7 @@ public class StoolService : IStoolService
         _stoolView.CompleteMoveEvent += ViewCompleteMove;
     }
 
+
     public void SetViewCompleteInstruction(Action<StoolService> action)
     {
         ViewCompleteMoveAction = action;

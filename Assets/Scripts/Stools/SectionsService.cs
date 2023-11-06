@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Zenject;
 
-public class SectionsService
+public class SectionsService : Iservice
 {
     private List<IStoolService> _stoolServices = new();
     private IFabric _fabric;
@@ -14,18 +14,21 @@ public class SectionsService
     private int stoolId = 0;
     private int[] _difficultyLevels = {500,700,1000,1300};
     private int _tierId = 0;
-
+   
+    public void ActivateService()
+    {
+        _scoreService.SetScoreCallback(AddTier, _difficultyLevels);
+        _timerService.SetRepeatActionOnView(1.5f, TakeStool);
+        _tiersService = new(_fabric.SpawnObjectAndGetType<TiersView>(new Vector3(0, 0, 30)));
+        SetNewSection();
+    }
 
     [Inject]
-    public SectionsService(IFabric fabric, ITimerService timerService, ScoreService scoreService)
+    public void Constructor(IFabric fabric, ITimerService timerService, ScoreService scoreService)
     {
         _scoreService = scoreService;
-        _scoreService.SetScoreCallback(AddTier, _difficultyLevels);
         _fabric = fabric;
         _timerService = timerService;
-        _timerService.SetRepeatActionOnView(1.5f, TakeStool);
-        _tiersService = new(_fabric.SpawnObjectAndGetType<TiersView>(new Vector3(0,0,30)));
-        SetNewSection();
     }
 
     public void AddTier()
@@ -36,7 +39,7 @@ public class SectionsService
     public void SetNewSection()
     {
         //section = _tiersService.GetSectionFromTier(_tierId);
-        section = _tiersService.GetSectionFromTier(3);
+        section = _tiersService.GetSectionFromTier(4);
         
     }
 

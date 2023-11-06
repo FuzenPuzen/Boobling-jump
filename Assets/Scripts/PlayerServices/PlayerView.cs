@@ -2,6 +2,7 @@ using UnityEngine;
 using DG.Tweening;
 using System.Collections.Generic;
 using UnityEngine.SceneManagement;
+using System;
 
 public class PlayerView : MonoBehaviour
 {
@@ -11,6 +12,7 @@ public class PlayerView : MonoBehaviour
 
     private Vector3 _startPos;
     private bool _isFall;
+    private Action playerDieAction;
 
     private List<Vector3> JumpVectors = new()
     {
@@ -33,7 +35,7 @@ public class PlayerView : MonoBehaviour
 
     private Vector3 GetRandomJumpVector()
     {
-        return JumpVectors[Random.Range(0, JumpVectors.Count)];
+        return JumpVectors[UnityEngine.Random.Range(0, JumpVectors.Count)];
     }
 
     private void Update()
@@ -79,8 +81,13 @@ public class PlayerView : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Enemy"))
         {
-            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+            playerDieAction.Invoke();
         }
+    }
+
+    public void SetplayerDieAction(Action action)
+    {
+        playerDieAction = action;
     }
 
 }
