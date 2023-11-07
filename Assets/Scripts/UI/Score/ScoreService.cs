@@ -53,4 +53,9 @@ public class ScoreService
         }
     }
 
+    public void HideView()
+    {
+        _scoreView.HideView();
+    }
+
 }

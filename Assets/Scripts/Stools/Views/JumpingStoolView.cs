@@ -22,6 +22,8 @@ public class JumpingStoolView : BasicStoolView
         _jumpSequence.Kill();
         transform.localPosition = Vector3.zero;
         _child.transform.localPosition = Vector3.zero;
+        _child.transform.localRotation = Quaternion.Euler(Vector3.zero);
+        transform.localRotation = Quaternion.Euler(Vector3.zero);
 
     }
 

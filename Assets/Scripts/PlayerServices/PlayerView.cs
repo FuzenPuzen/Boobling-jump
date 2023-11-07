@@ -3,6 +3,7 @@ using DG.Tweening;
 using System.Collections.Generic;
 using UnityEngine.SceneManagement;
 using System;
+using System.Collections;
 
 public class PlayerView : MonoBehaviour
 {
@@ -11,7 +12,9 @@ public class PlayerView : MonoBehaviour
     [SerializeField] private Transform _playerModel;
 
     private Vector3 _startPos;
+    private Color _startColor;
     private bool _isFall;
+    private bool _canJump;
     private Action playerDieAction;
 
     private List<Vector3> JumpVectors = new()
@@ -24,10 +27,14 @@ public class PlayerView : MonoBehaviour
 
     private DG.Tweening.Sequence _jumpSequence;
     private DG.Tweening.Sequence _fallSequence;
+    private DG.Tweening.Sequence _looseSequence;
 
     public void Start()
     {
+        Time.timeScale = 1f;
+        _startColor = _playerModel.GetComponent<MeshRenderer>().materials[0].color;
         _isFall = false;
+        _canJump = true;
         _startPos = transform.localPosition;
         Jump();
         
@@ -41,7 +48,7 @@ public class PlayerView : MonoBehaviour
     private void Update()
     {
         if (Input.GetMouseButtonDown(0))
-            if (!_isFall)
+            if (_canJump && !_isFall)
             {
                 Fall();
             }
@@ -67,22 +74,49 @@ public class PlayerView : MonoBehaviour
 
     public void Jump()
     {
-        _jumpSequence = DOTween.Sequence();
-        _jumpSequence.Append(transform.DOMoveY(_targetPos.y, period).SetEase(Ease.OutCirc));
+        if (_canJump)
+        {
+            _jumpSequence = DOTween.Sequence();
+            _jumpSequence.Append(transform.DOMoveY(_targetPos.y, period).SetEase(Ease.OutCirc));
 
-        _jumpSequence.Join(transform.DOLocalRotate(GetRandomJumpVector(), period * 3, RotateMode.LocalAxisAdd).SetEase(Ease.Linear));
+            _jumpSequence.Join(transform.DOLocalRotate(GetRandomJumpVector(), period * 3, RotateMode.LocalAxisAdd).SetEase(Ease.Linear));
 
-        _jumpSequence.Insert(period * 2,transform.DOMoveY(_startPos.y, period * 2.5f).SetEase(Ease.InSine));
-        _jumpSequence.Insert(period * 3,transform.DORotate(new Vector3(0, 0, 0), period));
-        _jumpSequence.OnComplete(Jump);
+            _jumpSequence.Insert(period * 2, transform.DOMoveY(_startPos.y, period * 2.5f).SetEase(Ease.InSine));
+            _jumpSequence.Insert(period * 3, transform.DORotate(new Vector3(0, 0, 0), period));
+            _jumpSequence.OnComplete(Jump);
+        }
     }
 
     private void OnCollisionEnter(Collision other)
     {
         if (other.gameObject.CompareTag("Enemy"))
         {
-            //playerDieAction.Invoke();
+            StartCoroutine(DieCoroutine());
+            Time.timeScale = 0.01f;
+            _jumpSequence.Kill();
+            _fallSequence.Kill();
+            _playerModel.GetComponent<MeshRenderer>().materials[0].color = Color.red;           
+            _canJump = false;
         }
+    }
+
+    private IEnumerator DieCoroutine()
+    {
+        yield return new WaitForSecondsRealtime(2f);
+        Time.timeScale = 1f;
+        _looseSequence = DOTween.Sequence();
+        transform.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeRotation;
+        _looseSequence.Append(transform.DOMove(new(6.3f, 9.95f, 10.5f),0.2f).SetEase(Ease.Linear));
+        _looseSequence.Join(transform.DOLocalRotate(Vector3.zero,0.2f).SetEase(Ease.Linear));
+        _looseSequence.Join(_playerModel.DOLocalRotate(new(80.24f, 2.87f, -85.43f), 0.2f).SetEase(Ease.Linear));
+        _looseSequence.OnComplete(DieAction);
+    }
+
+
+    private void DieAction()
+    {
+        transform.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeAll;
+        playerDieAction.Invoke();
     }
 
     public void SetplayerDieAction(Action action)

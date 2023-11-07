@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
@@ -16,5 +17,8 @@ public class RecordView : MonoBehaviour
         _recordText.text = "Рекорд\n" + _recordSLData.GetRecord().ToString();
     }
 
-
+    internal void HideView()
+    {
+        gameObject.SetActive(false);
+    }
 }

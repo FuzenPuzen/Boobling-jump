@@ -11,6 +11,7 @@ public class GameInstaller : MonoInstaller
         Container.Bind<RecordService>().AsSingle();
         Container.Bind<ScoreService>().AsSingle();
         Container.Bind<TutorialService>().AsSingle();
+        Container.Bind<EndPanelService>().AsSingle();
 
         Container.Bind<PlayerKitService>().AsSingle();
     

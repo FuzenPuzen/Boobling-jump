@@ -9,7 +9,7 @@ public class ScoreView : MonoBehaviour
     private Action _scoreChangedAction;
     private ScoreData _scoreData;
 
-    void Update()
+    void FixedUpdate()
     {
         _scoreData.Score++;
         _scoreChangedAction?.Invoke();
@@ -24,6 +24,11 @@ public class ScoreView : MonoBehaviour
     public void SetScoreData(ScoreData scoreData)
     {
         _scoreData = scoreData;
+    }
+
+    public void HideView()
+    {
+        gameObject.SetActive(false);
     }
 
 }

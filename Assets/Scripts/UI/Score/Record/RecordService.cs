@@ -26,4 +26,9 @@ public class RecordService
         }
     }
 
+    public void HideView()
+    {
+        _recordView.HideView();
+    }
+
 }
