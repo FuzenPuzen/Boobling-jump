@@ -89,7 +89,7 @@ public class PlayerView : MonoBehaviour
 
     private void OnCollisionEnter(Collision other)
     {
-        if (other.gameObject.CompareTag("Enemy"))
+        /*if (other.gameObject.CompareTag("Enemy"))
         {
             StartCoroutine(DieCoroutine());
             Time.timeScale = 0.01f;
@@ -97,7 +97,7 @@ public class PlayerView : MonoBehaviour
             _fallSequence.Kill();
             _playerModel.GetComponent<MeshRenderer>().materials[0].color = Color.red;           
             _canJump = false;
-        }
+        }*/
     }
 
     private IEnumerator DieCoroutine()

@@ -11,6 +11,7 @@ public class ScoreService
     private int[] _difficultyLevels;
     private int _difficultyLevel;
     private int _currentlevel;
+    private int _scoreIncreaseStep;
 
     private Action _ChangeTierAction;
     private ScoreData _scoreData = new();
@@ -28,8 +29,9 @@ public class ScoreService
         return _scoreData.Score;
     }
 
-    public void SetScoreCallback(Action action, int[] difficultyLevels)
+    public void SetScoreCallback(Action action, int[] difficultyLevels, int scoreIncreaseStep)
     {
+        _scoreIncreaseStep = scoreIncreaseStep;
         _ChangeTierAction = action;
         _difficultyLevels = difficultyLevels;
         _currentlevel = difficultyLevels[0];
@@ -48,7 +50,7 @@ public class ScoreService
             else
             {
                 _ChangeTierAction.Invoke();
-                _currentlevel = int.MaxValue;
+                _currentlevel += _scoreIncreaseStep;
             }
         }
     }

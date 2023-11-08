@@ -27,12 +27,6 @@ public class JumpingStoolView : BasicStoolView
 
     }
 
-    public void Update()
-    {
-        //if(_canMove)
-    }
-
-
     public void Jump()
     {
         _jumpSequence.Kill();

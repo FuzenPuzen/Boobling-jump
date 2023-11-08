@@ -26,8 +26,13 @@ public class TimerService : ITimerService
         _timerView.SetAction(delay, action);
     }
 
-    public void SetRepeatActionOnView(float delay, Action action)
+    public void SetRepeatActionOnView(float delay, Action action, ref Coroutine coroutine)
     {
-        _timerView.SetRepeatAction(delay, action);
+        _timerView.SetRepeatAction(delay, action, ref coroutine);
+    }
+
+    public void StopRepeatActionOnView(Coroutine coroutine)
+    {
+        _timerView.StopRepeatAction(coroutine);
     }
 }
