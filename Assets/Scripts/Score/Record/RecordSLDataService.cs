@@ -1,12 +1,15 @@
 using Newtonsoft.Json;
 using UnityEngine;
+using Zenject;
 
-public class RecordSLData
+public class RecordSLDataService
 {
     const string RecordKey = "RecordKey";
+    private Loader _loader;
 
-    [SerializeField] private int _recordScore;
-    public RecordSLData()
+    private int _recordScore;
+
+    public RecordSLDataService()
     {
         if (!PlayerPrefs.HasKey(RecordKey))
         {
@@ -18,6 +21,12 @@ public class RecordSLData
         }
     }
 
+    [Inject]
+    public void Constructor(Loader SLDataService)
+    {
+        _loader = SLDataService;
+    }
+
     private int CreateRecord()
     {
         return _recordScore = 0;
@@ -25,15 +34,13 @@ public class RecordSLData
 
     private void LoadRecord()
     {
-        string json = PlayerPrefs.GetString(RecordKey, "");
-        _recordScore = JsonConvert.DeserializeObject<int>(json);
+        _recordScore = _loader.LoadItem<int>(RecordKey);
     }
 
     private void SaveRecord(int score)
     {
-        string json = JsonConvert.SerializeObject(score);
-        PlayerPrefs.SetString(RecordKey, json);
-        PlayerPrefs.Save();
+        _recordScore = score;
+        _loader.SaveItem<int>(score, RecordKey);
     }
 
     public int GetRecord() { return _recordScore; }

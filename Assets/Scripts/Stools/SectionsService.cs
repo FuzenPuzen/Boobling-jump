@@ -53,13 +53,11 @@ public class SectionsService : Iservice
         if (_tierId < _difficultyLevels.Count())
         {
             _tierId++;
-            Debug.Log(_tierId);
             return;
         }
         if (_stoolSpawnTime > _minStoolSpawnTime)
         {
             _stoolSpawnTime -= 0.1f;
-            Debug.Log(_stoolSpawnTime);
         }
 
     }

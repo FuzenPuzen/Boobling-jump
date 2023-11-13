@@ -9,9 +9,9 @@ public class RecordView : MonoBehaviour
 
     [SerializeField] private TextMeshProUGUI _recordText;
 
-    private RecordSLData _recordSLData;
+    private RecordSLDataService _recordSLData;
 
-    public void SetRecordData(RecordSLData recordSLData)
+    public void SetRecordData(RecordSLDataService recordSLData)
     {
         _recordSLData = recordSLData;
         _recordText.text = "Рекорд\n" + _recordSLData.GetRecord().ToString();

@@ -3,7 +3,7 @@ using Zenject;
 
 public class RecordService
 {
-    private RecordSLData _recordSLData = new();
+    private RecordSLDataService _recordSLData = new();
     private RecordView _recordView;
 
     [Inject]

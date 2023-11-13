@@ -6,6 +6,7 @@ public class GameInstaller : MonoInstaller
     {
         Container.Bind<PrefabsStorageService>().AsSingle();
         Container.Bind<IFabric>().To<Fabric>().AsSingle();
+        Container.Bind<Loader>().AsSingle();
 
         Container.Bind<ITimerService>().To<TimerService>().AsSingle();
         Container.Bind<RecordService>().AsSingle();

@@ -18,38 +18,6 @@ public class PrefabsStorageService
         prefabs.AddRange(objects);
     }
 
-    public T GetPrefabByType<T>()
-    {
-        GameObject obj = null;
-
-        foreach (GameObject item in prefabs)
-        {
-            // Проверить, есть ли у игрового объекта компонент с заданным именем
-            Component targetComponent = item.GetComponent(typeof(T).Name);
-
-            if (targetComponent != null) obj = item;
-        }
-
-        if (obj == null) Debug.LogError($"Not found Prefabs with type {typeof(T).Name} in {_assetPath}");
-        return obj.GetComponent<T>();
-    }
-
-    public List<T> GetPrefabsByType<T>()
-    {
-        List<T> objs =  new List<T>();
-
-        foreach (GameObject item in prefabs)
-        {
-            // Проверить, есть ли у игрового объекта компонент с заданным именем
-            Component targetComponent = item.GetComponent(typeof(T).Name);
-
-            if (targetComponent != null) objs.Add(item.GetComponent<T>());
-        }
-
-        return objs;
-    }
-
-
     public GameObject GetObjectByType<T>()
     {
         GameObject obj = null;

@@ -28,6 +28,4 @@ public class Fabric : IFabric
                                     Quaternion.identity);
         return obj.GetComponent<T>();
     }
-
-   
 }
