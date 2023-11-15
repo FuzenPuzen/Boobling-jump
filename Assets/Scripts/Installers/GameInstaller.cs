@@ -4,6 +4,7 @@ public class GameInstaller : MonoInstaller
 {   
     public override void InstallBindings()
     {
+        Container.Bind<ConfigSO>().AsSingle().NonLazy();
         Container.Bind<PrefabsStorageService>().AsSingle();
         Container.Bind<IFabric>().To<Fabric>().AsSingle();
         Container.Bind<Loader>().AsSingle();

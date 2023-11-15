@@ -12,6 +12,8 @@ public class SectionsService : Iservice
     private ITimerService _timerService;
     private TiersService _tiersService;
     private ScoreService _scoreService;
+    private ConfigSO _configSO;
+
     private GameObject section;
     private int stoolId = 0;
     private int[] _difficultyLevels = 
@@ -80,7 +82,7 @@ public class SectionsService : Iservice
         stool.transform.position = new(-10, 1.6f, 0);
         if (stool.GetComponent<IStoolView>() != null)
         {           
-            StoolService stoolService = new StoolService(stool.GetComponent<IStoolView>());
+            StoolService stoolService = new(stool.GetComponent<IStoolView>());
             stoolService.ActivateService();
             _stoolServices.Add(stoolService);
             stoolService.SetViewCompleteInstruction(RemoveStoolFromList);
