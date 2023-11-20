@@ -20,7 +20,7 @@ public class ScoreService
     public void Constructor(IFabric fabric)
     {
         _scoreView = fabric.SpawnObjectAndGetType<ScoreView>();
-        _scoreView.SetScoreChangedAction(ScoreChanged);
+        _scoreView.SetActionOnScoreChange(OnScoreChange);
         _scoreView.SetScoreData(_scoreData);
     }
 
@@ -29,7 +29,7 @@ public class ScoreService
         return _scoreData.Score;
     }
 
-    public void SetScoreCallback(Action action, int[] difficultyLevels, int scoreIncreaseStep)
+    public void SetActionOnTierChange(Action action, int[] difficultyLevels, int scoreIncreaseStep)
     {
         _scoreIncreaseStep = scoreIncreaseStep;
         _ChangeTierAction = action;
@@ -37,7 +37,7 @@ public class ScoreService
         _currentlevel = difficultyLevels[0];
     }
 
-    private void ScoreChanged()
+    private void OnScoreChange()
     {
         if (_scoreData.Score >= _currentlevel)
         {

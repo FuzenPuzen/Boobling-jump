@@ -12,9 +12,9 @@ public class PlayerKitView : MonoBehaviour
         return _playerView;
     }
 
-    public void SetplayerDieAction(Action action)
+    public void SetActionOnPlayerDie(Action action)
     {
-        _playerView.SetplayerDieAction(action);
+        _playerView.SetActionOnPlayerDie(action);
     }
 
 }

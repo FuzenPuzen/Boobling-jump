@@ -1,9 +1,8 @@
-using System.Collections.Generic;
 using UnityEngine;
 
 public class ConfigSO : ScriptableObject
 {
-    [SerializeField] public int[] _difficultyLevels =
+    [SerializeField] public readonly int[] _difficultyLevels =
                      {
                         6,
                         14,
@@ -16,6 +15,6 @@ public class ConfigSO : ScriptableObject
                         78,
                         85,
                     };
-    [SerializeField] public int _changeSpeedScore = 200;
-    [SerializeField] private float _minStoolSpawnTime = 1f;
+    [SerializeField] public readonly int _changeSpeedScore = 200;
+    [SerializeField] public readonly float _minStoolSpawnTime = 1f;
 }

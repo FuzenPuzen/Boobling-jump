@@ -35,7 +35,7 @@ public class EndPanelView : MonoBehaviour
         _looseSequence.Append(_RecordFlush.DOScale(new Vector3(0.6f, 0.6f, 0.6f), 0.2f));
     }
 
-    public void SetRestartInstruction(Action action)
+    public void SetActionOnRestartButtonClick(Action action)
     {
         EventTrigger.Entry clickEntry = new();
         clickEntry.eventID = EventTriggerType.PointerClick;

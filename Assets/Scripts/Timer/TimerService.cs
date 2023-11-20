@@ -1,7 +1,4 @@
 using System;
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
 using Zenject;
 
 public class TimerService : ITimerService
@@ -21,18 +18,8 @@ public class TimerService : ITimerService
         _fabric = fabric;
     }
 
-    public void SetActionOnView(float delay, Action action)
+    public void SetActionOnTimerComplete(float delay, Action action)
     {
-        _timerView.SetAction(delay, action);
-    }
-
-    public void SetRepeatActionOnView(float delay, Action action, ref Coroutine coroutine)
-    {
-        _timerView.SetRepeatAction(delay, action, ref coroutine);
-    }
-
-    public void StopRepeatActionOnView(Coroutine coroutine)
-    {
-        _timerView.StopRepeatAction(coroutine);
+        _timerView.SetActionOnTimerComplete(delay, action);
     }
 }

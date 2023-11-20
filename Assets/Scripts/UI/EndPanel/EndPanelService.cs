@@ -24,9 +24,9 @@ public class EndPanelService : Iservice
         _endPanelview.StartAction();
     }
 
-    public void SetRestartInstruction(Action action)
+    public void SetActionOnRestartButtonClick(Action action)
     {
-        _endPanelview.SetRestartInstruction(action);
+        _endPanelview.SetActionOnRestartButtonClick(action);
     }
 
 }

@@ -116,10 +116,10 @@ public class PlayerView : MonoBehaviour
     private void DieAction()
     {
         transform.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeAll;
-        playerDieAction.Invoke();
+        playerDieAction?.Invoke();
     }
 
-    public void SetplayerDieAction(Action action)
+    public void SetActionOnPlayerDie(Action action)
     {
         playerDieAction = action;
     }

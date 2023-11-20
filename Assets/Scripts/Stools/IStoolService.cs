@@ -2,5 +2,5 @@ using System;
 
 public interface IStoolService
 {
-    public void SetViewCompleteInstruction(Action<StoolService> action);
+    public void SetActionOnMoveComplete(Action<StoolService> action);
 }

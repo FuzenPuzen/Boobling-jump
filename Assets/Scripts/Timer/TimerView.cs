@@ -7,7 +7,7 @@ public class TimerView : MonoBehaviour
 {
     
     
-    internal void SetAction(float delay, Action action)
+    internal void SetActionOnTimerComplete(float delay, Action action)
     {
         StartCoroutine(Timer(delay,action));
     }

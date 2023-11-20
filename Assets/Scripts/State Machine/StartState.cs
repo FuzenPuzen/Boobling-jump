@@ -34,7 +34,7 @@ public class StartState : IBaseState
         _timerService.ActivateService();
         _playerKitService.ActivateService();
         _sectionsService.ActivateService();
-        _playerKitService.SetplayerDieAction(OnPlayerDie);
+        _playerKitService.SetActionOnPlayerDie(OnPlayerDie);
     }
 
     public void Exit()

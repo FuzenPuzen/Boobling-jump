@@ -23,7 +23,7 @@ public class EndGameState : IBaseState
     public void Enter()
     {
         _endPanelService.ActivateService();
-        _endPanelService.SetRestartInstruction(RestartScene);
+        _endPanelService.SetActionOnRestartButtonClick(RestartScene);
         _recordService.SetRecord(_scoreService.GetScore());
         _scoreService.HideView();
         _recordService.HideView();       

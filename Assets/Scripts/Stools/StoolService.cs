@@ -6,7 +6,7 @@ using UnityEngine;
 public class StoolService : IStoolService, Iservice
 {
     private IStoolView _stoolView;
-    public Action<StoolService> ViewCompleteMoveAction;
+    public Action<StoolService> MoveCompleteAction;
 
     public StoolService(IStoolView stoolView)
     {
@@ -20,13 +20,13 @@ public class StoolService : IStoolService, Iservice
         _stoolView.ActivateView();
     }
 
-    public void SetViewCompleteInstruction(Action<StoolService> action)
+    public void SetActionOnMoveComplete(Action<StoolService> action)
     {
-        ViewCompleteMoveAction = action;
+        MoveCompleteAction = action;
     }
 
     public void ViewCompleteMove()
     {
-        ViewCompleteMoveAction?.Invoke(this);
+        MoveCompleteAction?.Invoke(this);
     }
 }

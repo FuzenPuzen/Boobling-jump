@@ -20,9 +20,9 @@ public class PlayerKitService :Iservice
     }
 
 
-    public void SetplayerDieAction(Action action)
+    public void SetActionOnPlayerDie(Action action)
     {
-        _playerKitView.SetplayerDieAction(action);
+        _playerKitView.SetActionOnPlayerDie(action);
     }
 
 }

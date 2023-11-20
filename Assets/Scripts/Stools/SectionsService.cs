@@ -1,8 +1,6 @@
-using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
-using UnityEngine.Networking;
 using Zenject;
 
 public class SectionsService : Iservice
@@ -16,19 +14,7 @@ public class SectionsService : Iservice
 
     private GameObject section;
     private int stoolId = 0;
-    private int[] _difficultyLevels = 
-    {
-        6,
-        14,
-        23,
-        30,
-        38,
-        46,
-        54,
-        62,
-        78,
-        85,
-    };
+    
     private int _tierId = 0;
     private int _changeSpeedScore = 200;
     private float _stoolSpawnTime = 1.5f;
@@ -36,23 +22,24 @@ public class SectionsService : Iservice
 
     public void ActivateService()
     {
-        _scoreService.SetScoreCallback(AddTier, _difficultyLevels, _changeSpeedScore);
-        _timerService.SetActionOnView(_stoolSpawnTime, TakeStool);
+        _scoreService.SetActionOnTierChange(AddTier, _configSO._difficultyLevels, _changeSpeedScore);
+        _timerService.SetActionOnTimerComplete(_stoolSpawnTime, TakeStool);
         _tiersService = new(_fabric.SpawnObjectAndGetType<TiersView>(new Vector3(0, 0, 30)));
         SetNewSection();
     }
 
     [Inject]
-    public void Constructor(IFabric fabric, ITimerService timerService, ScoreService scoreService)
+    public void Constructor(IFabric fabric, ITimerService timerService, ScoreService scoreService, ConfigSO configSO)
     {
         _scoreService = scoreService;
         _fabric = fabric;
         _timerService = timerService;
+        _configSO = configSO;
     }
 
-    public void AddTier()
+    private void AddTier()
     {
-        if (_tierId < _difficultyLevels.Count())
+        if (_tierId < _configSO._difficultyLevels.Count())
         {
             _tierId++;
             return;
@@ -64,12 +51,12 @@ public class SectionsService : Iservice
 
     }
 
-    public void SetNewSection()
+    private void SetNewSection()
     {
         section = _tiersService.GetSectionFromTier(_tierId);        
     }
 
-    public void TakeStool()
+    private void TakeStool()
     {
         if (stoolId >= section.transform.childCount)
         {
@@ -85,10 +72,10 @@ public class SectionsService : Iservice
             StoolService stoolService = new(stool.GetComponent<IStoolView>());
             stoolService.ActivateService();
             _stoolServices.Add(stoolService);
-            stoolService.SetViewCompleteInstruction(RemoveStoolFromList);
+            stoolService.SetActionOnMoveComplete(RemoveStoolFromList);
         }
         stoolId++;
-        _timerService.SetActionOnView(_stoolSpawnTime, TakeStool);
+        _timerService.SetActionOnTimerComplete(_stoolSpawnTime, TakeStool);
     }
 
     public void RemoveStoolFromList(StoolService stoolService)
