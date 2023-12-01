@@ -1,7 +1,6 @@
 using UnityEngine;
 using DG.Tweening;
 using System.Collections.Generic;
-using UnityEngine.SceneManagement;
 using System;
 using System.Collections;
 
@@ -32,12 +31,11 @@ public class PlayerView : MonoBehaviour
     public void Start()
     {
         Time.timeScale = 1f;
-        _startColor = _playerModel.GetComponent<MeshRenderer>().materials[0].color;
+        //_startColor = _playerModel.GetComponent<MeshRenderer>().materials[0].color;
         _isFall = false;
         _canJump = true;
         _startPos = transform.localPosition;
-        Jump();
-        
+        Jump();        
     }
 
     private Vector3 GetRandomJumpVector()
@@ -89,15 +87,15 @@ public class PlayerView : MonoBehaviour
 
     private void OnCollisionEnter(Collision other)
     {
-        /*if (other.gameObject.CompareTag("Enemy"))
+        if (other.gameObject.CompareTag("Enemy"))
         {
             StartCoroutine(DieCoroutine());
             Time.timeScale = 0.01f;
             _jumpSequence.Kill();
             _fallSequence.Kill();
-            _playerModel.GetComponent<MeshRenderer>().materials[0].color = Color.red;           
+            //_playerModel.GetComponent<MeshRenderer>().materials[0].color = Color.red;           
             _canJump = false;
-        }*/
+        }
     }
 
     private IEnumerator DieCoroutine()
