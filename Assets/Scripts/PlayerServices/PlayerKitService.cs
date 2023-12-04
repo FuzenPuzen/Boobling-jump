@@ -19,10 +19,14 @@ public class PlayerKitService :Iservice
         _playerKitView = _fabric.SpawnObjectAndGetType<PlayerKitView>();
     }
 
-
     public void SetActionOnPlayerDie(Action action)
     {
         _playerKitView.SetActionOnPlayerDie(action);
+    }
+
+    public PlayerView GetPlayerView()
+    {
+        return _playerKitView.GetPlayerView();
     }
 
 }

@@ -15,11 +15,14 @@ public class GameInstaller : MonoInstaller
         Container.Bind<EndPanelService>().AsSingle();
 
         Container.Bind<PlayerKitService>().AsSingle();
-    
+        Container.Bind<IPlayerBehaviorService>().To<PlayerBehaviorService>().AsSingle();
+
         Container.Bind<SectionsService>().AsSingle();
         
         Container.Bind<EndGameState>().AsSingle();
+        Container.Bind<BasicGameState>().AsSingle();
         Container.Bind<StartState>().AsSingle();
+        Container.Bind<SuperJumpState>().AsSingle();
         Container.Bind<StateMachine>().AsSingle();
     }
 }

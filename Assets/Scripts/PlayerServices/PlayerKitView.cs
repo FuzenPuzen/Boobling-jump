@@ -7,7 +7,7 @@ public class PlayerKitView : MonoBehaviour
 {
     [SerializeField] private PlayerView _playerView;
 
-    internal PlayerView GetPlayerView()
+    public PlayerView GetPlayerView()
     {
         return _playerView;
     }

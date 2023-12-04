@@ -1,14 +1,13 @@
-using UnityEngine;
 using Zenject;
 
 public class StartState : IBaseState
 {
     private StateMachine _statemachine;
-    private EndGameState _endGameState;
     private PlayerKitService _playerKitService;
     private Iservice _sectionsService;
     private ITimerService _timerService;
     private Iservice _tutorialService;
+    private BasicGameState _gameState;
 
     [Inject]
     public StartState(
@@ -17,15 +16,16 @@ public class StartState : IBaseState
                         PlayerKitService playerKitService,
                         StateMachine statemachine,
                         EndGameState endGameState,
-                        TutorialService tutorialService
+                        TutorialService tutorialService,
+                        BasicGameState gameState
                      )
     {
+        _gameState = gameState;
         _tutorialService = tutorialService;
         _timerService = timerService;
         _sectionsService = sectionsService;
         _playerKitService = playerKitService;
         _statemachine = statemachine;
-        _endGameState = endGameState;
     }
 
     public void Enter()
@@ -33,23 +33,18 @@ public class StartState : IBaseState
         _tutorialService.ActivateService();
         _timerService.ActivateService();
         _playerKitService.ActivateService();
-        _sectionsService.ActivateService();
-        _playerKitService.SetActionOnPlayerDie(OnPlayerDie);
+        _sectionsService.ActivateService();       
+        _statemachine.SetState(_gameState);
     }
 
     public void Exit()
     {
-        
+        //do nothing
     }
 
     public void Update()
     {
-        
+        //do nothing
     }
-
-    public void OnPlayerDie()
-    {
-        if (_endGameState != null)
-            _statemachine.SetState(_endGameState);
-    }
+  
 }
