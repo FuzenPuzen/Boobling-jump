@@ -1,6 +1,5 @@
 using UnityEngine;
 using DG.Tweening;
-using System.Collections.Generic;
 using System;
 using System.Collections;
 
@@ -25,6 +24,7 @@ public class PlayerView : MonoBehaviour
     {
         _currentBehavior = new PlayerJumpBehavior(this);
         _currentBehavior.StartBehavior();
+        StartCoroutine(TestTimer());
     }
 
     private void Update()
@@ -35,11 +35,11 @@ public class PlayerView : MonoBehaviour
 
     private void OnCollisionEnter(Collision other)
     {
-        if (other.gameObject.CompareTag("Enemy"))
+        /*if (other.gameObject.CompareTag("Enemy"))
         {
             StartCoroutine(DieCoroutine());
             Time.timeScale = 0.01f;         
-        }
+        }*/
     }
 
     internal Transform GetPlayerModel()
@@ -74,5 +74,14 @@ public class PlayerView : MonoBehaviour
     }
 
     #endregion
+
+    private IEnumerator TestTimer()
+    {
+        yield return new WaitForSecondsRealtime(5f);
+        Debug.Log("Timer end");
+        _currentBehavior.StopBehavior();
+        _currentBehavior = new PlayerSuperJumpBehavior(this);
+        _currentBehavior.StartBehavior();
+    }
 
 }

@@ -18,14 +18,14 @@ public class PlayerBehaviorService : IPlayerBehaviorService
     }
 
     [Inject]
-    public void Construct(PlayerKitService playerKitService)
+    public void Constructor(PlayerKitService playerKitService)
     {
-        _playerKitService = playerKitService;
-        _playerView = _playerKitService.GetPlayerView();
+        _playerKitService = playerKitService;       
     }
 
     public void ActivateService()
     {
+        _playerView = _playerKitService.GetPlayerView();
         _playerBehaviors.Add(new PlayerSuperJumpBehavior(_playerView));
         _playerBehaviors.Add(new PlayerJumpBehavior(_playerView));
     }

@@ -7,6 +7,7 @@ public class StartState : IBaseState
     private Iservice _sectionsService;
     private ITimerService _timerService;
     private Iservice _tutorialService;
+
     private BasicGameState _gameState;
 
     [Inject]
@@ -15,7 +16,6 @@ public class StartState : IBaseState
                         ITimerService timerService,
                         PlayerKitService playerKitService,
                         StateMachine statemachine,
-                        EndGameState endGameState,
                         TutorialService tutorialService,
                         BasicGameState gameState
                      )

@@ -23,8 +23,8 @@ public class PlayerJumpBehavior : IPlayerBehavior
         new(360, 60, 90),
     };
 
-    private DG.Tweening.Sequence _jumpSequence;
-    private DG.Tweening.Sequence _fallSequence;
+    private Sequence _jumpSequence;
+    private Sequence _fallSequence;
 
     public PlayerJumpBehavior(PlayerView playerView)
     {
@@ -34,7 +34,7 @@ public class PlayerJumpBehavior : IPlayerBehavior
 
     private Vector3 GetRandomJumpVector()
     {
-        return JumpVectors[UnityEngine.Random.Range(0, JumpVectors.Count)];
+        return JumpVectors[Random.Range(0, JumpVectors.Count)];
     }
 
     public virtual void Fall()
