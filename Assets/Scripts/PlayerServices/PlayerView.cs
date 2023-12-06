@@ -32,7 +32,6 @@ public class PlayerView : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        Debug.Log(other.gameObject.name);
         _currentBehavior.ColliderBehavior(other);
     }
 
@@ -54,7 +53,6 @@ public class PlayerView : MonoBehaviour
     private IEnumerator TestTimer()
     {
         yield return new WaitForSeconds(5f);
-        Debug.Log("Timer end");
         _currentBehavior.StopBehavior();
         SetNewBehavior(new PlayerRollBehavior(this, 10f));
         yield return new WaitForSeconds(30f);

@@ -106,9 +106,6 @@ public class PlayerJumpBehavior : IPlayerBehavior
     private void SeqTimer()
     {
         Debug.Log("SeqTimer");
-        _looseSequence = DOTween.Sequence();
-        _looseSequence.AppendInterval(0.2f);
-        _looseSequence.OnComplete(NormalizeTime);
 
     }
 
