@@ -16,7 +16,7 @@ public class PlayerKitService :Iservice
 
     public void ActivateService()
     {
-        _playerKitView = _fabric.SpawnObjectAndGetType<PlayerKitView>();
+        _playerKitView = _fabric.SpawnObjectAndGetType<PlayerKitView>(new(9.5f, 0, 0));
     }
 
     public void SetActionOnPlayerDie(Action action)

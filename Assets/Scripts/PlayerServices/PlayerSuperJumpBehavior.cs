@@ -1,10 +1,11 @@
 
 using System.Diagnostics;
+using UnityEditor.ShaderGraph.Internal;
 using UnityEngine;
 
 public class PlayerSuperJumpBehavior : PlayerJumpBehavior, IPlayerBehavior
 {
-    public PlayerSuperJumpBehavior(PlayerView playerView) : base(playerView)
+    public PlayerSuperJumpBehavior(PlayerView playerView, float behaviorTime) : base(playerView, behaviorTime)
     {
 
     }

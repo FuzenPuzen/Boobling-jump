@@ -15,6 +15,7 @@ public class PlayerBehaviorService : IPlayerBehaviorService
         if (_currentBehavior != null)
             _currentBehavior.StopBehavior();
         _currentBehavior = _playerBehaviors.OfType<T>().FirstOrDefault();
+        //_playerView.SetNewBehavior(_currentBehavior);
     }
 
     [Inject]
@@ -26,7 +27,7 @@ public class PlayerBehaviorService : IPlayerBehaviorService
     public void ActivateService()
     {
         _playerView = _playerKitService.GetPlayerView();
-        _playerBehaviors.Add(new PlayerSuperJumpBehavior(_playerView));
-        _playerBehaviors.Add(new PlayerJumpBehavior(_playerView));
+        _playerBehaviors.Add(new PlayerSuperJumpBehavior(_playerView,10f));
+        _playerBehaviors.Add(new PlayerJumpBehavior(_playerView,10f));
     }
 }

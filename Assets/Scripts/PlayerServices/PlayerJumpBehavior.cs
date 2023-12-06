@@ -26,7 +26,9 @@ public class PlayerJumpBehavior : IPlayerBehavior
     private Sequence _jumpSequence;
     private Sequence _fallSequence;
 
-    public PlayerJumpBehavior(PlayerView playerView)
+    private Sequence _looseSequence;
+
+    public PlayerJumpBehavior(PlayerView playerView, float behaviorTime)
     {
         transform = playerView.GetComponent<Transform>();
         _playerModel = playerView.GetPlayerModel();
@@ -59,9 +61,9 @@ public class PlayerJumpBehavior : IPlayerBehavior
         if (_canJump)
         {
             _jumpSequence = DOTween.Sequence();
-            _jumpSequence.Append(transform.DOMoveY(_targetPos.y, period).SetEase(Ease.OutCirc));
+            _jumpSequence.Append(transform.DOLocalMoveY(_targetPos.y, period).SetEase(Ease.OutCirc));
             _jumpSequence.Join(transform.DOLocalRotate(GetRandomJumpVector(), period * 3, RotateMode.LocalAxisAdd).SetEase(Ease.Linear));
-            _jumpSequence.Insert(period * 2, transform.DOMoveY(_startPos.y, period * 2.5f).SetEase(Ease.InSine));
+            _jumpSequence.Insert(period * 2, transform.DOLocalMoveY(_startPos.y, period * 2.5f).SetEase(Ease.InSine));
             _jumpSequence.Insert(period * 3, transform.DORotate(new Vector3(0, 0, 0), period));
             _jumpSequence.OnComplete(Jump);
         }
@@ -85,7 +87,51 @@ public class PlayerJumpBehavior : IPlayerBehavior
     public void StopBehavior()
     {
         _canJump = false;
+        _fallSequence.Complete();
         _fallSequence.Kill();
+        _jumpSequence.Complete();
         _jumpSequence.Kill();
+    }
+
+    public void ColliderBehavior(Collider other)
+    {
+        if (other.gameObject.CompareTag("Enemy"))
+        {
+            DieSequence();
+            Time.timeScale = 0.1f;
+            SeqTimer();
+        }
+    }
+
+    private void SeqTimer()
+    {
+        Debug.Log("SeqTimer");
+        _looseSequence = DOTween.Sequence();
+        _looseSequence.AppendInterval(0.2f);
+        _looseSequence.OnComplete(NormalizeTime);
+
+    }
+
+    private void NormalizeTime()
+    {
+        Debug.Log("NormalizeTime");
+        Time.timeScale = 1f;
+        DieSequence();
+    }
+
+    public void DieSequence()
+    {        
+        _looseSequence = DOTween.Sequence();
+        transform.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeRotation;
+        _looseSequence.Append(transform.DOMove(new(6.3f, 9.95f, 10.5f), 0.2f).SetEase(Ease.Linear));
+        _looseSequence.Join(transform.DOLocalRotate(Vector3.zero, 0.2f).SetEase(Ease.Linear));
+        _looseSequence.Join(_playerModel.DOLocalRotate(new(80.24f, 2.87f, -85.43f), 0.2f).SetEase(Ease.Linear));
+        _looseSequence.OnComplete(DieAction);
+    }
+
+    private void DieAction()
+    {
+        transform.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeAll;
+        //playerDieAction?.Invoke();
     }
 }

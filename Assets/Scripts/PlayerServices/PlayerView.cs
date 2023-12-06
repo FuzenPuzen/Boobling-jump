@@ -11,8 +11,6 @@ public class PlayerView : MonoBehaviour
 
     private Action playerDieAction;
 
-    private DG.Tweening.Sequence _looseSequence;
-
 
     public void SetNewBehavior(IPlayerBehavior playerBehavior)
     {
@@ -22,8 +20,7 @@ public class PlayerView : MonoBehaviour
 
     public void Start()
     {
-        _currentBehavior = new PlayerJumpBehavior(this);
-        _currentBehavior.StartBehavior();
+        SetNewBehavior(new PlayerJumpBehavior(this, 10f));
         StartCoroutine(TestTimer());
     }
 
@@ -33,13 +30,10 @@ public class PlayerView : MonoBehaviour
     }
 
 
-    private void OnCollisionEnter(Collision other)
+    private void OnTriggerEnter(Collider other)
     {
-        /*if (other.gameObject.CompareTag("Enemy"))
-        {
-            StartCoroutine(DieCoroutine());
-            Time.timeScale = 0.01f;         
-        }*/
+        Debug.Log(other.gameObject.name);
+        _currentBehavior.ColliderBehavior(other);
     }
 
     internal Transform GetPlayerModel()
@@ -48,25 +42,7 @@ public class PlayerView : MonoBehaviour
     }
 
     #region die actions
-
-    private IEnumerator DieCoroutine()
-    {
-        yield return new WaitForSecondsRealtime(2f);
-        Time.timeScale = 1f;
-        _looseSequence = DOTween.Sequence();
-        transform.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeRotation;
-        _looseSequence.Append(transform.DOMove(new(6.3f, 9.95f, 10.5f),0.2f).SetEase(Ease.Linear));
-        _looseSequence.Join(transform.DOLocalRotate(Vector3.zero,0.2f).SetEase(Ease.Linear));
-        _looseSequence.Join(_playerModel.DOLocalRotate(new(80.24f, 2.87f, -85.43f), 0.2f).SetEase(Ease.Linear));
-        _looseSequence.OnComplete(DieAction);
-    }
-
-
-    private void DieAction()
-    {
-        transform.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeAll;
-        playerDieAction?.Invoke();
-    }
+  
 
     public void SetActionOnPlayerDie(Action action)
     {
@@ -77,11 +53,13 @@ public class PlayerView : MonoBehaviour
 
     private IEnumerator TestTimer()
     {
-        yield return new WaitForSecondsRealtime(5f);
+        yield return new WaitForSeconds(5f);
         Debug.Log("Timer end");
         _currentBehavior.StopBehavior();
-        _currentBehavior = new PlayerSuperJumpBehavior(this);
-        _currentBehavior.StartBehavior();
+        SetNewBehavior(new PlayerRollBehavior(this, 10f));
+        yield return new WaitForSeconds(30f);
+        _currentBehavior.StopBehavior();
+        SetNewBehavior(new PlayerJumpBehavior(this, 10f));
     }
 
 }
