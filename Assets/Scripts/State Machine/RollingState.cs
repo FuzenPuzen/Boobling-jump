@@ -1,24 +1,22 @@
 using Zenject;
 
-public class BasicGameState : IBaseState
+public class RollingState : IBaseState
 {
     private StateMachine _statemachine;
-    private EndGameState _endGameState;
+    private BasicGameState _basicGameState;
     private IPlayerBehaviorService _playerBehaviorService;
 
     [Inject]
-    public void Constructor(StateMachine statemachine,
-                          EndGameState endGameState,
-                          IPlayerBehaviorService playerBehaviorService)
+    public void Constructor(StateMachine statemachine, BasicGameState basicGameState, IPlayerBehaviorService playerBehaviorService)
     {
+        _basicGameState = basicGameState;
         _statemachine = statemachine;
-        _endGameState = endGameState;
         _playerBehaviorService = playerBehaviorService;
     }
 
     public void Enter()
     {
-        _playerBehaviorService.SetBehavior<PlayerBasicJumpBehaviour>();
+        _playerBehaviorService.SetBehavior<PlayerRollBehavior>();
     }
 
     public void Exit()
@@ -30,5 +28,4 @@ public class BasicGameState : IBaseState
     {
         throw new System.NotImplementedException();
     }
-
 }

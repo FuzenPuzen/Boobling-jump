@@ -1,6 +1,5 @@
 using UnityEngine;
 using DG.Tweening;
-using UnityEngine.UIElements;
 
 public class PlayerRollBehavior : IPlayerBehavior
 {
@@ -8,7 +7,6 @@ public class PlayerRollBehavior : IPlayerBehavior
     private Transform _playerModel;
     private Sequence _rollSequence;
     private float _behaviorTime;
-    private float _circulationTime;
 
     public PlayerRollBehavior(PlayerView playerView, float behaviorTime)
     {
@@ -19,7 +17,6 @@ public class PlayerRollBehavior : IPlayerBehavior
 
     public void StartBehavior()
     {
-        _circulationTime = 0.5f;
         GoToLand();
     }
 

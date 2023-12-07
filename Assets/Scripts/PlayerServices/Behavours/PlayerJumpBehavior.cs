@@ -4,7 +4,6 @@ using System.Collections.Generic;
 
 public class PlayerJumpBehavior : IPlayerBehavior
 {
-
     private Transform transform;
     private Transform _playerModel;
 
@@ -27,8 +26,9 @@ public class PlayerJumpBehavior : IPlayerBehavior
     private Sequence _fallSequence;
 
     private Sequence _looseSequence;
+    private Sequence _timerSequence;
 
-    public PlayerJumpBehavior(PlayerView playerView, float behaviorTime)
+    public PlayerJumpBehavior(PlayerView playerView, float behaviorTime = 0)
     {
         transform = playerView.GetComponent<Transform>();
         _playerModel = playerView.GetPlayerModel();
@@ -78,7 +78,7 @@ public class PlayerJumpBehavior : IPlayerBehavior
             }
     }
 
-    public void StartBehavior()
+    public virtual void StartBehavior()
     {
         _canJump = true;
         Jump();
@@ -105,13 +105,13 @@ public class PlayerJumpBehavior : IPlayerBehavior
 
     private void SeqTimer()
     {
-        Debug.Log("SeqTimer");
-
+        _timerSequence = DOTween.Sequence();
+        _timerSequence.AppendInterval(0.2f);
+        _timerSequence.OnComplete(NormalizeTime);
     }
 
     private void NormalizeTime()
     {
-        Debug.Log("NormalizeTime");
         Time.timeScale = 1f;
         DieSequence();
     }

@@ -9,7 +9,7 @@ public class EndGameState : IBaseState
     private EndPanelService _endPanelService;
 
     [Inject]
-    public EndGameState(
+    public void Constructor(
         ScoreService scoreService,
         RecordService recordService,
         EndPanelService endPanelService

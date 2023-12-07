@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 5886738388747262453}
   - component: {fileID: 9069248089642248666}
   - component: {fileID: 8448844433596505171}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Player
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -97,7 +97,7 @@ GameObject:
   - component: {fileID: 6007858680244501129}
   - component: {fileID: 4450952379331980232}
   - component: {fileID: 6876936102244652243}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Player
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -114,7 +114,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 9.62, y: 0.58, z: 0}
-  m_LocalScale: {x: 0.6, y: 0.6, z: 0.6}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 5886738388747262453}
@@ -132,8 +132,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 85944f90fbb4f684c9a8390bda5ceeac, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  period: 0.5
-  _targetPos: {x: 0, y: 7, z: 0}
   _playerModel: {fileID: 5886738388747262453}
 --- !u!65 &4450952379331980232
 BoxCollider:
@@ -150,12 +148,12 @@ BoxCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1, y: 2.364853, z: 1}
-  m_Center: {x: 0, y: 1.2284727, z: 0}
+  m_Size: {x: 1, y: 1.2305034, z: 1}
+  m_Center: {x: 0, y: 0.6536158, z: 0}
 --- !u!54 &6876936102244652243
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -165,8 +163,8 @@ Rigidbody:
   m_GameObject: {fileID: 8500138798243067918}
   serializedVersion: 4
   m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 0.05
+  m_Drag: 100
+  m_AngularDrag: 100
   m_CenterOfMass: {x: 0, y: 0, z: 0}
   m_InertiaTensor: {x: 1, y: 1, z: 1}
   m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}

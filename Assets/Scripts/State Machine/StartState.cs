@@ -3,38 +3,38 @@ using Zenject;
 public class StartState : IBaseState
 {
     private StateMachine _statemachine;
-    private PlayerKitService _playerKitService;
     private Iservice _sectionsService;
     private ITimerService _timerService;
     private Iservice _tutorialService;
+    private IPlayerBehaviorService _playerBehaviorService;
 
-    private BasicGameState _gameState;
+    private BasicGameState _basicGameState;
 
     [Inject]
-    public StartState(
+    public void Constructor(
                         SectionsService sectionsService,
                         ITimerService timerService,
-                        PlayerKitService playerKitService,
                         StateMachine statemachine,
                         TutorialService tutorialService,
-                        BasicGameState gameState
+                        BasicGameState gameState,
+                        IPlayerBehaviorService playerBehaviorService
                      )
     {
-        _gameState = gameState;
+        _playerBehaviorService = playerBehaviorService;
+        _basicGameState = gameState;
         _tutorialService = tutorialService;
         _timerService = timerService;
         _sectionsService = sectionsService;
-        _playerKitService = playerKitService;
         _statemachine = statemachine;
     }
 
     public void Enter()
     {
+        _playerBehaviorService.ActivateService();
         _tutorialService.ActivateService();
         _timerService.ActivateService();
-        _playerKitService.ActivateService();
         _sectionsService.ActivateService();       
-        _statemachine.SetState(_gameState);
+        _statemachine.SetState(_basicGameState);
     }
 
     public void Exit()
