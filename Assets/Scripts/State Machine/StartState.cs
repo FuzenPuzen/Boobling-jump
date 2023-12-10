@@ -8,20 +8,16 @@ public class StartState : IBaseState
     private Iservice _tutorialService;
     private IPlayerBehaviorService _playerBehaviorService;
 
-    private BasicGameState _basicGameState;
-
     [Inject]
     public void Constructor(
                         SectionsService sectionsService,
                         ITimerService timerService,
                         StateMachine statemachine,
                         TutorialService tutorialService,
-                        BasicGameState gameState,
                         IPlayerBehaviorService playerBehaviorService
                      )
     {
         _playerBehaviorService = playerBehaviorService;
-        _basicGameState = gameState;
         _tutorialService = tutorialService;
         _timerService = timerService;
         _sectionsService = sectionsService;
@@ -34,7 +30,7 @@ public class StartState : IBaseState
         _tutorialService.ActivateService();
         _timerService.ActivateService();
         _sectionsService.ActivateService();       
-        _statemachine.SetState(_basicGameState);
+        _statemachine.SetState<BasicGameState>();
     }
 
     public void Exit()

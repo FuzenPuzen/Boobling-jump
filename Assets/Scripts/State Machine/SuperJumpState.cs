@@ -3,7 +3,6 @@ using Zenject;
 public class SuperJumpState : IBaseState
 {
     private StateMachine _statemachine;
-    private BasicGameState _basicGameState;
     private IPlayerBehaviorService _playerBehaviorService;
 
     [Inject]
@@ -11,7 +10,6 @@ public class SuperJumpState : IBaseState
     {
         _playerBehaviorService = playerBehaviorService;
         _statemachine = statemachine;
-        _basicGameState = basicGameState;
     }
 
     public void Enter()
@@ -32,6 +30,6 @@ public class SuperJumpState : IBaseState
 
     public void OnBehavourEndAction()
     {
-        _statemachine.SetState(_basicGameState);
+        _statemachine.SetState<BasicGameState>();
     }
 }

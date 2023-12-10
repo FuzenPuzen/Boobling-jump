@@ -1,17 +1,33 @@
-using Zenject.Asteroids;
+using System.Collections.Generic;
+using System.Linq;
+using UnityEngine;
+using Zenject;
 
 public class StateMachine 
 {
     private IBaseState _currentState;
 
-    public void SetState(IBaseState newState)
+    private List<IBaseState> _baseStates = new();
+
+    public void SetState<T>() where T : IBaseState
+    { 
+        _currentState?.Exit();
+        _currentState = _baseStates.OfType<T>().FirstOrDefault();
+        _currentState.Enter();
+    }
+
+    [Inject]
+    public void Constructor(StartState startState,
+                            BasicGameState basicGameState,
+                            SuperJumpState superJumpState,
+                            RollingState rollingState,
+                            EndGameState endGameState)
     {
-        if (newState != _currentState)
-        { 
-            _currentState?.Exit();
-            _currentState = newState;
-            _currentState.Enter();
-        }
+        _baseStates.Add(startState);
+        _baseStates.Add(basicGameState);
+        _baseStates.Add(superJumpState);
+        _baseStates.Add(rollingState);
+        _baseStates.Add(endGameState);
     }
 
     public void UpdateState()
