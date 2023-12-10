@@ -5,17 +5,17 @@ using Zenject;
 
 public class Fabric : IFabric
 {
-    private PrefabsStorageService _prefabsStorageService;
+    private IPrefabStorageService _prefabsStorageService;
 
     [Inject]
-    public Fabric(PrefabsStorageService prefabsStorageService)
+    public Fabric(IPrefabStorageService prefabsStorageService)
     {
         _prefabsStorageService = prefabsStorageService;
     }
 
     public T SpawnObjectAndGetType<T>()
     {
-        var obj = MonoBehaviour.Instantiate(_prefabsStorageService.GetObjectByType<T>(),
+        var obj = MonoBehaviour.Instantiate(_prefabsStorageService.GetPrefabByType<T>(),
                                     Vector3.zero,
                                     Quaternion.identity);
         return obj.GetComponent<T>();
@@ -23,7 +23,7 @@ public class Fabric : IFabric
 
     public T SpawnObjectAndGetType<T>(Vector3 position)
     {
-        var obj = MonoBehaviour.Instantiate(_prefabsStorageService.GetObjectByType<T>(),
+        var obj = MonoBehaviour.Instantiate(_prefabsStorageService.GetPrefabByType<T>(),
                                     position,
                                     Quaternion.identity);
         return obj.GetComponent<T>();

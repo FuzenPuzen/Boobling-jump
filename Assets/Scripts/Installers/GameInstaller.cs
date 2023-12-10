@@ -5,7 +5,7 @@ public class GameInstaller : MonoInstaller
     public override void InstallBindings()
     {
         Container.Bind<ConfigSO>().AsSingle().NonLazy();
-        Container.Bind<PrefabsStorageService>().AsSingle();
+        Container.Bind(typeof(IPrefabStorageService), typeof(ISOStorageService)).To(typeof(StorageService)).AsSingle();
         Container.Bind<IFabric>().To<Fabric>().AsSingle();
 
         Container.Bind<ITimerService>().To<TimerService>().AsSingle();
@@ -15,6 +15,7 @@ public class GameInstaller : MonoInstaller
         Container.Bind<EndPanelService>().AsSingle();
 
         Container.Bind(typeof(IPlayerBehaviorService), typeof(Iservice)).To(typeof(PlayerBehaviorService)).AsSingle();
+        
 
         Container.Bind<SectionsService>().AsSingle();
 

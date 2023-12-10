@@ -21,10 +21,8 @@ public class PlayerBehaviorService : IPlayerBehaviorService
     {
         if (_currentBehavior != null)
             _currentBehavior.StopBehavior();
-
         _currentBehavior = _playerBehaviors.OfType<T>().FirstOrDefault();
         _playerView.SetNewBehavior(_currentBehavior);
-
         MonoBehaviour.print(_currentBehavior);
     }
 

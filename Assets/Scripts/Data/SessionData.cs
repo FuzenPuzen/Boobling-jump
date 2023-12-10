@@ -1,5 +1,5 @@
 
-public class SsesionData 
+public class SessionData 
 {
    
 }
