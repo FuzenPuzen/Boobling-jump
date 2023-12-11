@@ -1,8 +1,9 @@
-using System.Collections.Generic;
 using UnityEngine;
+using AYellowpaper.SerializedCollections;
 
 [CreateAssetMenu(fileName = "PlayerSuperJumpBehaviourSODatas", menuName = "PlayerSuperJumpBehaviourSODatas")]
 public class PlayerSuperJumpBehaviourSODatas :ScriptableObject
 {
-    public List<PlayerSuperJumpBehaviourSOData> playerSuperJumpBehaviourSODatas;
+    [SerializedDictionary("Id", "SeperJumpLevel")]
+    public SerializedDictionary<int, PlayerSuperJumpBehaviourSOData> dictionary = new();
 }
