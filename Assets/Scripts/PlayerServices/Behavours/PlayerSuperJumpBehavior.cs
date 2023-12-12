@@ -1,11 +1,14 @@
 using UnityEngine;
+using Zenject;
 
 public class PlayerSuperJumpBehavior : PlayerJumpBehavior
 {
+
     public PlayerSuperJumpBehavior(PlayerView playerView, float behaviorTime) : base(playerView, behaviorTime)
     {
 
     }
+
 
     public override void Fall()
     {

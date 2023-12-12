@@ -15,7 +15,8 @@ public class BasicGameState : IBaseState
 
     public void Enter()
     {
-        _playerBehaviorService.SetBehavior<PlayerBasicJumpBehaviour>();
+        //_playerBehaviorService.SetBehavior<PlayerBasicJumpBehaviour>();
+        _statemachine.SetState<SuperJumpState>();
     }
 
     public void Exit()

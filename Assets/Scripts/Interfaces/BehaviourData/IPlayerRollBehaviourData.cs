@@ -1,5 +1,7 @@
 using System;
-public interface IPlayerRollBehaviourData 
+public interface IPlayerRollBehaviourData : IPlayerBehaviourData
 {
-    public event Action test; 
+    public event Action RollBehaviourDataChanged;
+    public void SetRollBehaviourDuration();
+    public float GetRollBehaviourDuration();
 }
