@@ -2,5 +2,5 @@ using UnityEngine;
 
 public class PlayerSuperJumpBehaviourSLData 
 {
-    public int level;
+    public int level = 0;
 }

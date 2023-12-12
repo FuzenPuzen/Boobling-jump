@@ -16,7 +16,7 @@ public class RollingState : IBaseState
 
     public void Enter()
     {
-        _playerBehaviorService.SetBehavior<PlayerRollBehavior>();
+        //_playerBehaviorService.SetBehavior<PlayerRollBehavior>();
     }
 
     public void Exit()

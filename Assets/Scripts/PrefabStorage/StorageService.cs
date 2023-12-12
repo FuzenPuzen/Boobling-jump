@@ -49,24 +49,24 @@ public class StorageService : IPrefabStorageService, ISOStorageService
     public ScriptableObject GetSOByType<T>()
     {
         ScriptableObject obj = null;
-        if (obj == null) Debug.LogError($"Not found ScriptableObjects with type {typeof(T).Name} in {_prefabPath}");
         foreach (ScriptableObject item in ScriptableObjects)
         {
             if (item.GetType() == typeof(T))
                 obj = item;
         }
+        if (obj == null) Debug.LogError($"Not found ScriptableObject with type {typeof(T).Name} in {_prefabPath}");
         return obj;
     }
 
     public List<ScriptableObject> GetSOsByType<T>()
     {
         List<ScriptableObject> objs = null;
-        if (objs == null) Debug.LogError($"Not found ScriptableObjects with type {typeof(T).Name} in {_prefabPath}");
         foreach (ScriptableObject item in ScriptableObjects)
         {
             if (item.GetType() == typeof(T))
                 objs.Add(item);
         }
+        if (objs == null) Debug.LogError($"Not found ScriptableObjects with type {typeof(T).Name} in {_prefabPath}");
         return objs;
     }
 
