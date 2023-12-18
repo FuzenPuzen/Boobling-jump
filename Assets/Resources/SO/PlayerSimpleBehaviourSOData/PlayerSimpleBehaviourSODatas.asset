@@ -9,7 +9,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3b7ace86e2e63274bba1711482001060, type: 3}
-  m_Name: Level 5
+  m_Script: {fileID: 11500000, guid: 25fcf722ed4ccdb4bbc089992e1fcbc9, type: 3}
+  m_Name: PlayerSimpleBehaviourSODatas
   m_EditorClassIdentifier: 
-  duration: 7
+  dictionary:
+    _serializedList:
+    - Key: 0
+      Value: {fileID: 11400000, guid: 9a10cdf4d4c2230468c6e6e64fb1b2ce, type: 2}

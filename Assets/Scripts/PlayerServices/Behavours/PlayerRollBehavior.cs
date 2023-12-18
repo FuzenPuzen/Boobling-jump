@@ -9,11 +9,12 @@ public class PlayerRollBehavior : IPlayerBehavior
     private Sequence _rollSequence;
     private float _behaviorTime;
 
-    public PlayerRollBehavior(PlayerView playerView, float behaviorTime)
+    private PlayerRollBehaviourSOData _playerRollBehaviourSOData;
+
+    public PlayerRollBehavior(PlayerView playerView)
     {
         _transform = playerView.GetComponent<Transform>();
         _playerModel = playerView.GetPlayerModel();
-        _behaviorTime = behaviorTime;
     }
 
     public void StartBehavior()
@@ -47,19 +48,15 @@ public class PlayerRollBehavior : IPlayerBehavior
     {
         if (other.gameObject.CompareTag("Enemy"))
         {
-            Debug.Log("rolling collide");
             //other.gameObject.GetComponent<IStoolService>().ViewCompleteMove(); //эмуляция
             MonoBehaviour.Destroy(other.gameObject);
         }
     }
 
-    public Type GetBehaviourDataType()
-    {
-        throw new NotImplementedException();
-    }
+    public Type GetBehaviourDataType() => typeof(PlayerRollBehaviourSOData);
 
     public void SetBehaviourData(IPlayerBehaviourData playerBehaviourData)
     {
-        throw new NotImplementedException();
+        _playerRollBehaviourSOData = (PlayerRollBehaviourSOData)playerBehaviourData;
     }
 }

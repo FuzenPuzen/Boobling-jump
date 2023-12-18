@@ -1,12 +1,11 @@
 using System;
 using UnityEngine;
-using Zenject;
 
-public class PlayerSuperJumpBehavior : PlayerJumpBehavior
+public class PlayerSuperJumpBehavior : PlayerMainJumpBehavior
 {
     private PlayerSuperJumpBehaviourSOData _PlayerBehaviorData;
 
-    public PlayerSuperJumpBehavior(PlayerView playerView, float behaviorTime) : base(playerView, behaviorTime)
+    public PlayerSuperJumpBehavior(PlayerView playerView) : base(playerView)
     {
 
     }
@@ -16,6 +15,7 @@ public class PlayerSuperJumpBehavior : PlayerJumpBehavior
     {
         base.Fall();
         //add force wave spawn
+        MonoBehaviour.print("Super Jump Spawn");
     }
 
     public override Type GetBehaviourDataType()

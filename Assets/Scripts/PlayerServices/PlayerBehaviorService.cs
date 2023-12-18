@@ -21,14 +21,17 @@ public class PlayerBehaviorService : IPlayerBehaviorService
     public void SetBehavior<T>() where T : IPlayerBehavior
     {
         if (_currentBehavior != null)
+        {
             _currentBehavior.StopBehavior();
+            MonoBehaviour.print("Stop Behaviour: " + _currentBehavior);
+        }
         _currentBehavior = _playerBehaviors.OfType<T>().FirstOrDefault();
-
         Type type = _currentBehavior.GetBehaviourDataType();
         _playerBehaviourData = _playerBehaviourStorageData.GetPlayerBehaviourData(type);
         _currentBehavior.SetBehaviourData(_playerBehaviourData);
-
+        MonoBehaviour.print("New Behaviour: " + _currentBehavior);
         _playerView.SetNewBehavior(_currentBehavior);
+        StartBehaviourTimer();
     }
 
     [Inject]
@@ -41,9 +44,9 @@ public class PlayerBehaviorService : IPlayerBehaviorService
     public void ActivateService()
     {
         SpawnPlayer();
-        _playerBehaviors.Add(new PlayerRollBehavior(_playerView, 10f));
-        _playerBehaviors.Add(new PlayerSuperJumpBehavior(_playerView, 10f));
-        _playerBehaviors.Add(new PlayerBasicJumpBehaviour(_playerView));
+        _playerBehaviors.Add(new PlayerRollBehavior(_playerView));
+        _playerBehaviors.Add(new PlayerSuperJumpBehavior(_playerView));
+        _playerBehaviors.Add(new PlayerSimpleJumpBehaviour(_playerView));
     }
 
     private void SpawnPlayer()
@@ -53,8 +56,9 @@ public class PlayerBehaviorService : IPlayerBehaviorService
 
     public void StartBehaviourTimer()
     {
+        MonoBehaviour.print("Behaviour duration: " + _playerBehaviourData.GetDuration());
         _timerSequence = DOTween.Sequence();
-        _timerSequence.AppendInterval(5);
+        _timerSequence.AppendInterval(_playerBehaviourData.GetDuration());
         _timerSequence.OnComplete(EndBehaviorTimer);
     }
 

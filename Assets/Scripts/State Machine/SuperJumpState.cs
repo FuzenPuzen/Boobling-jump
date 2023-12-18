@@ -6,7 +6,7 @@ public class SuperJumpState : IBaseState
     private IPlayerBehaviorService _playerBehaviorService;
 
     [Inject]
-    public void Constructor(IPlayerBehaviorService playerBehaviorService, StateMachine statemachine, BasicGameState basicGameState)
+    public void Constructor(IPlayerBehaviorService playerBehaviorService, StateMachine statemachine)
     {
         _playerBehaviorService = playerBehaviorService;
         _statemachine = statemachine;
@@ -30,6 +30,6 @@ public class SuperJumpState : IBaseState
 
     public void OnBehavourEndAction()
     {
-        _statemachine.SetState<BasicGameState>();
+        _statemachine.SetState<RollingState>();
     }
 }
