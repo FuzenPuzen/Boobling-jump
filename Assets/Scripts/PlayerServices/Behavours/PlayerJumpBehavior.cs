@@ -2,7 +2,7 @@ using UnityEngine;
 using DG.Tweening;
 using System.Collections.Generic;
 
-public class PlayerMainJumpBehavior : IPlayerBehavior
+public class PlayerJumpBehavior : IPlayerBehavior
 {
     private Transform transform;
     private Transform _playerModel;
@@ -28,7 +28,7 @@ public class PlayerMainJumpBehavior : IPlayerBehavior
     private Sequence _looseSequence;
     private Sequence _timerSequence;
 
-    public PlayerMainJumpBehavior(PlayerView playerView)
+    public PlayerJumpBehavior(PlayerView playerView)
     {
         transform = playerView.GetComponent<Transform>();
         _playerModel = playerView.GetPlayerModel();

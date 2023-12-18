@@ -30,7 +30,7 @@ public class StartState : IBaseState
         _tutorialService.ActivateService();
         _timerService.ActivateService();
         _sectionsService.ActivateService();       
-        _statemachine.SetState<BasicGameState>();
+        _statemachine.SetState<GameState>();
     }
 
     public void Exit()

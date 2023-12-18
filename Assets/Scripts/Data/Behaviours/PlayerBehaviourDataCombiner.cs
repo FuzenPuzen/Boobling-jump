@@ -45,7 +45,7 @@ public class PlayerBehaviourDataCombiner
     private void GetAndPullRollDataToStorage()
     {
         _playerRollBehaviourSLData = new();
-         _playerRollBehaviourSLData = SaveLoader.LoadData<PlayerRollBehaviourSLData>(_playerRollBehaviourSLData, rollBehaviourKey);
+        _playerRollBehaviourSLData = SaveLoader.LoadData<PlayerRollBehaviourSLData>(_playerRollBehaviourSLData, rollBehaviourKey);
         _playerRollBehaviourSODatas = GetConvertedSO<PlayerRollBehaviourSODatas>();        
         _playerRollBehaviourSOData = _playerRollBehaviourSODatas.dictionary[_playerRollBehaviourSLData.level];
         SetDataToStorage(_playerRollBehaviourSOData);
@@ -69,5 +69,6 @@ public class PlayerBehaviourDataCombiner
     {
         _playerBehaviourStorageData.SetPlayerBehaviour(playerBehaviourData);
     }
+
 
 }

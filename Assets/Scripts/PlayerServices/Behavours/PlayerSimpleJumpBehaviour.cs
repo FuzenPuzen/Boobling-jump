@@ -1,6 +1,6 @@
 using System;
 
-public class PlayerSimpleJumpBehaviour : PlayerMainJumpBehavior
+public class PlayerSimpleJumpBehaviour : PlayerJumpBehavior
 {
     private PlayerSimpleBehaviourSOData _PlayerBehaviorData;
     public PlayerSimpleJumpBehaviour(PlayerView playerView) : base(playerView)

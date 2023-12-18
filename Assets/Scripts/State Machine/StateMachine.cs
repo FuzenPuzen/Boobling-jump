@@ -18,7 +18,7 @@ public class StateMachine
 
     [Inject]
     public void Constructor(StartState startState,
-                            BasicGameState basicGameState,
+                            GameState basicGameState,
                             SuperJumpState superJumpState,
                             RollingState rollingState,
                             EndGameState endGameState)

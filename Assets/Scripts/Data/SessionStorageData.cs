@@ -16,5 +16,6 @@ public class SessionStorageData : IPlayerBehaviourStorageData
     public void SetPlayerBehaviour<T>(T playerBehaviour) where T : IPlayerBehaviourData
     {
         playerBehaviourDatas.Add(playerBehaviour);
+        PlayerBehaviourChanged?.Invoke(playerBehaviour);
     }
 }

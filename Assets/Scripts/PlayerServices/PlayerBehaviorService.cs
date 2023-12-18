@@ -26,8 +26,7 @@ public class PlayerBehaviorService : IPlayerBehaviorService
             MonoBehaviour.print("Stop Behaviour: " + _currentBehavior);
         }
         _currentBehavior = _playerBehaviors.OfType<T>().FirstOrDefault();
-        Type type = _currentBehavior.GetBehaviourDataType();
-        _playerBehaviourData = _playerBehaviourStorageData.GetPlayerBehaviourData(type);
+        _playerBehaviourData = _playerBehaviourStorageData.GetPlayerBehaviourData(_currentBehavior.GetBehaviourDataType());
         _currentBehavior.SetBehaviourData(_playerBehaviourData);
         MonoBehaviour.print("New Behaviour: " + _currentBehavior);
         _playerView.SetNewBehavior(_currentBehavior);
@@ -62,7 +61,7 @@ public class PlayerBehaviorService : IPlayerBehaviorService
         _timerSequence.OnComplete(EndBehaviorTimer);
     }
 
-    public void SetBehaviorEndAction(Action action)
+    public void SetActionEndBehavior(Action action)
     {
         _onEndAction = action;
     }

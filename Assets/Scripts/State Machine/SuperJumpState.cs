@@ -15,7 +15,7 @@ public class SuperJumpState : IBaseState
     public void Enter()
     {
         _playerBehaviorService.SetBehavior<PlayerSuperJumpBehavior>();
-        _playerBehaviorService.SetBehaviorEndAction(OnBehavourEndAction);
+        _playerBehaviorService.SetActionEndBehavior(OnBehavourEnd);
     }
 
     public void Exit()
@@ -28,7 +28,7 @@ public class SuperJumpState : IBaseState
         //do nothing
     }
 
-    public void OnBehavourEndAction()
+    public void OnBehavourEnd()
     {
         _statemachine.SetState<RollingState>();
     }

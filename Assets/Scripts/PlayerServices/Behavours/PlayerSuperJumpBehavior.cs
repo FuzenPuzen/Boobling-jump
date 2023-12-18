@@ -1,7 +1,7 @@
 using System;
 using UnityEngine;
 
-public class PlayerSuperJumpBehavior : PlayerMainJumpBehavior
+public class PlayerSuperJumpBehavior : PlayerJumpBehavior
 {
     private PlayerSuperJumpBehaviourSOData _PlayerBehaviorData;
 

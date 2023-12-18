@@ -24,7 +24,7 @@ public class GameInstaller : MonoInstaller
         Container.Bind<StateMachine>().AsSingle();
         Container.Bind<EndGameState>().AsSingle();        
         Container.Bind<SuperJumpState>().AsSingle();
-        Container.Bind<BasicGameState>().AsSingle();
+        Container.Bind<GameState>().AsSingle();
         Container.Bind<RollingState>().AsSingle();
         Container.Bind<StartState>().AsSingle();
     }

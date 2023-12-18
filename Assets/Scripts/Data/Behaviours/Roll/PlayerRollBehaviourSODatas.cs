@@ -6,4 +6,5 @@ public class PlayerRollBehaviourSODatas : ScriptableObject
 {
     [SerializedDictionary("Level", "RollLevel")]
     public SerializedDictionary<int, PlayerRollBehaviourSOData> dictionary;
+
 }

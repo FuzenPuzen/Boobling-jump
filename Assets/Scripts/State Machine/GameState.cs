@@ -1,12 +1,13 @@
 using Zenject;
 
-public class RollingState : IBaseState
+public class GameState : IBaseState
 {
     private StateMachine _statemachine;
     private IPlayerBehaviorService _playerBehaviorService;
 
     [Inject]
-    public void Constructor(StateMachine statemachine, IPlayerBehaviorService playerBehaviorService)
+    public void Constructor(StateMachine statemachine,
+                          IPlayerBehaviorService playerBehaviorService)
     {
         _statemachine = statemachine;
         _playerBehaviorService = playerBehaviorService;
@@ -14,7 +15,7 @@ public class RollingState : IBaseState
 
     public void Enter()
     {
-        _playerBehaviorService.SetBehavior<PlayerRollBehavior>();
+        _playerBehaviorService.SetBehavior<PlayerSimpleJumpBehaviour>();
         _playerBehaviorService.SetActionEndBehavior(OnBehavourEnd);
     }
 
@@ -30,6 +31,7 @@ public class RollingState : IBaseState
 
     public void OnBehavourEnd()
     {
-        _statemachine.SetState<GameState>();
+        _statemachine.SetState<SuperJumpState>();
     }
+
 }
