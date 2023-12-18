@@ -20,13 +20,13 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: v1m1
+  m_Name: v1m1 1
   m_Shader: {fileID: -6465566751694194690, guid: 2c3c6a46626419c4f8bbdeab2ec2afbd,
     type: 3}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
   m_ValidKeywords:
-  - _HAFTONESHAPES_STRIPE
+  - _HAFTONESHAPES_DOT
   m_InvalidKeywords:
   - _SPECULARHIGHTLIGHTS
   m_LightmapFlags: 2
@@ -83,15 +83,15 @@ Material:
     - _BumpScale: 1
     - _DitherTexelSize: 1
     - _DitherThreshold: 1
-    - _HAFTONESHAPES: 1
+    - _HAFTONESHAPES: 0
     - _HafltoneFadeDistance: 100
     - _HalfToneEnabled: 1
     - _HalfToneIncludeReceivedShadow: 0
     - _HalftoneDiffuseOffest: 1
     - _HalftoneFadeToColor: 0.445
-    - _HalftoneLightSizeFactor: 0.191
+    - _HalftoneLightSizeFactor: 0.133
     - _HalftoneScale: 27.5
-    - _HalftoneSize: 0.558
+    - _HalftoneSize: 0.55
     - _HalftoneUseScreenSpaceUV: 0
     - _HatchingDensity: 1
     - _HatchingDiffuseOffset: 0
@@ -117,7 +117,7 @@ Material:
     m_Colors:
     - _BaseColor: {r: 0.21960784, g: 0.69803923, b: 0.6392157, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
-    - _HalftoneColor: {r: 0.03956033, g: 0.066029936, b: 0.060513817, a: 0.194}
+    - _HalftoneColor: {r: 0.03956033, g: 0.06603118, b: 0.06051507, a: 0.305}
     - _HatchingColor: {r: 0, g: 0, b: 0, a: 1}
     - _HatchingScale: {r: 15, g: 1, b: 0, a: 0}
     - _RimColor: {r: 1, g: 1, b: 1, a: 0.739}

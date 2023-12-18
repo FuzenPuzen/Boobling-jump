@@ -47,5 +47,6 @@ Material:
     - _HalftoneSize: 0.431
     m_Colors:
     - _BaseColor: {r: 0.4, g: 0.85882354, b: 0.6509804, a: 1}
-    - _ShadowColor: {r: 0, g: 0, b: 0, a: 0.152}
+    - _HalftoneColor: {r: 0.03956033, g: 0.06603531, b: 0.06051919, a: 0.218}
+    - _ShadowColor: {r: 0, g: 0, b: 0, a: 0.384}
   m_BuildTextureStacks: []
