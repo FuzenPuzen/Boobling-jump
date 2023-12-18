@@ -5,9 +5,9 @@ public class GameInstaller : MonoInstaller
     public override void InstallBindings()
     {
         Container.Bind<ConfigSO>().AsSingle().NonLazy();
-        Container.Bind<SuperJumpBehaviourDataCombiner>().AsSingle().NonLazy();
+        Container.Bind<PlayerBehaviourDataCombiner>().AsSingle().NonLazy();
         Container.Bind(typeof(IPrefabStorageService), typeof(ISOStorageService)).To(typeof(StorageService)).AsSingle();
-        Container.Bind(typeof(IPlayerRollBehaviourData), typeof(IPlayerSuperJumpBehaviourData), typeof(IPlayerCurrentBehaviourData)).To(typeof(SessionData)).AsSingle();
+        Container.Bind(typeof(IPlayerBehaviourStorageData)).To(typeof(SessionStorageData)).AsSingle();
         Container.Bind<IFabric>().To<Fabric>().AsSingle();
 
         Container.Bind<ITimerService>().To<TimerService>().AsSingle();

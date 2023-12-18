@@ -12,14 +12,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0e27481a4615f50438d87320e7de40fa, type: 3}
   m_Name: RFO
   m_EditorClassIdentifier: 
-  m_Active: 1
+  m_Active: 0
   settings:
     outlineMaterial: {fileID: 2100000, guid: 5d5fcb9f6bbcc2141b2bacf0b3fe2cba, type: 2}
     targetLayerMask:
       serializedVersion: 2
       m_Bits: 64
     outlineColor: {r: 0.03773582, g: 0.03773582, b: 0.03773582, a: 1}
-    outlineWidth: 7.82
+    outlineWidth: 2.22
     useSeparableAxisMethod: 0
 --- !u!114 &-1878332245247344467
 MonoBehaviour:

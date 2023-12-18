@@ -2,8 +2,8 @@ using DG.Tweening;
 using System.Collections.Generic;
 using System;
 using System.Linq;
-using UnityEngine;
 using Zenject;
+using UnityEngine;
 
 public class PlayerBehaviorService : IPlayerBehaviorService
 {
@@ -11,28 +11,31 @@ public class PlayerBehaviorService : IPlayerBehaviorService
     private PlayerView _playerView;
     private IFabric _fabric;
 
-    private IPlayerCurrentBehaviourData _playerCurrentBehaviourData;
-    private List<IPlayerBehavior> _playerBehaviors = new();
     private IPlayerBehaviourData _playerBehaviourData;
+    private List<IPlayerBehavior> _playerBehaviors = new();
+    private IPlayerBehaviourStorageData _playerBehaviourStorageData;
 
     private Sequence _timerSequence;
     private Action _onEndAction;
 
-    public void SetBehavior<T1, T2>() where T1 : IPlayerBehavior where T2 : IPlayerBehaviourData 
+    public void SetBehavior<T>() where T : IPlayerBehavior
     {
         if (_currentBehavior != null)
             _currentBehavior.StopBehavior();
-        _currentBehavior = _playerBehaviors.OfType<T1>().FirstOrDefault();
+        _currentBehavior = _playerBehaviors.OfType<T>().FirstOrDefault();
+
+        Type type = _currentBehavior.GetBehaviourDataType();
+        _playerBehaviourData = _playerBehaviourStorageData.GetPlayerBehaviourData(type);
+        _currentBehavior.SetBehaviourData(_playerBehaviourData);
+
         _playerView.SetNewBehavior(_currentBehavior);
-        _playerBehaviourData = _playerCurrentBehaviourData.GetPlayerCurrentBehaviourData<T2>();
-        MonoBehaviour.print(_playerBehaviourData.GetDuration());
     }
 
     [Inject]
-    public void Constructor(IFabric fabric, IPlayerCurrentBehaviourData playerCurrentBehaviourData)
+    public void Constructor(IFabric fabric, IPlayerBehaviourStorageData playerBehaviourStorageData)
     {
+        _playerBehaviourStorageData = playerBehaviourStorageData;
         _fabric = fabric;
-        _playerCurrentBehaviourData = playerCurrentBehaviourData;
     }
 
     public void ActivateService()
@@ -51,7 +54,7 @@ public class PlayerBehaviorService : IPlayerBehaviorService
     public void StartBehaviourTimer()
     {
         _timerSequence = DOTween.Sequence();
-        _timerSequence.AppendInterval(_playerBehaviourData.GetDuration());
+        _timerSequence.AppendInterval(5);
         _timerSequence.OnComplete(EndBehaviorTimer);
     }
 

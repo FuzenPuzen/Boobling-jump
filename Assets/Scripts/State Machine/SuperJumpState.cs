@@ -14,7 +14,7 @@ public class SuperJumpState : IBaseState
 
     public void Enter()
     {
-        _playerBehaviorService.SetBehavior<PlayerSuperJumpBehavior, PlayerSuperJumpBehaviourSOData>();
+        _playerBehaviorService.SetBehavior<PlayerSuperJumpBehavior>();
         _playerBehaviorService.SetBehaviorEndAction(OnBehavourEndAction);
     }
 

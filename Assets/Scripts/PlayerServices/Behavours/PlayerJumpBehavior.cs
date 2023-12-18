@@ -131,4 +131,16 @@ public class PlayerJumpBehavior : IPlayerBehavior
         transform.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeAll;
         //playerDieAction?.Invoke();
     }
+
+    public virtual System.Type GetBehaviourDataType()
+    {
+        //Доделать
+        return typeof(int);
+    }
+
+
+    public virtual void SetBehaviourData(IPlayerBehaviourData playerBehaviourData)
+    {
+        
+    }
 }

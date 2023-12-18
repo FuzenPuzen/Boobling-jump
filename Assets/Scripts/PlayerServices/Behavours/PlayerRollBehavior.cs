@@ -1,5 +1,6 @@
 using UnityEngine;
 using DG.Tweening;
+using System;
 
 public class PlayerRollBehavior : IPlayerBehavior
 {
@@ -50,5 +51,15 @@ public class PlayerRollBehavior : IPlayerBehavior
             //other.gameObject.GetComponent<IStoolService>().ViewCompleteMove(); //эмуляция
             MonoBehaviour.Destroy(other.gameObject);
         }
+    }
+
+    public Type GetBehaviourDataType()
+    {
+        throw new NotImplementedException();
+    }
+
+    public void SetBehaviourData(IPlayerBehaviourData playerBehaviourData)
+    {
+        throw new NotImplementedException();
     }
 }
