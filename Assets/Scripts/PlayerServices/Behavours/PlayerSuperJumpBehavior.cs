@@ -4,7 +4,7 @@ using Zenject;
 
 public class PlayerSuperJumpBehavior : PlayerJumpBehavior
 {
-    private PlayerSuperJumpBehaviourSOData _PlayerBehaviorData = new();
+    private PlayerSuperJumpBehaviourSOData _PlayerBehaviorData;
 
     public PlayerSuperJumpBehavior(PlayerView playerView, float behaviorTime) : base(playerView, behaviorTime)
     {
@@ -20,7 +20,7 @@ public class PlayerSuperJumpBehavior : PlayerJumpBehavior
 
     public override Type GetBehaviourDataType()
     {
-        return _PlayerBehaviorData.GetType();
+        return typeof(PlayerSuperJumpBehaviourSOData);
     }
 
     public override void SetBehaviourData(IPlayerBehaviourData playerBehaviourData)
