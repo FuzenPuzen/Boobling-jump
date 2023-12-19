@@ -27,6 +27,7 @@ public class PlayerBehaviorService : IPlayerBehaviorService
         }
         _currentBehavior = _playerBehaviors.OfType<T>().FirstOrDefault();
         _playerBehaviourData = _playerBehaviourStorageData.GetPlayerBehaviourData(_currentBehavior.GetBehaviourDataType());
+        _playerBehaviourStorageData.SetPlayerBehaviour(_playerBehaviourData);
         _currentBehavior.SetBehaviourData(_playerBehaviourData);
         MonoBehaviour.print("New Behaviour: " + _currentBehavior);
         _playerView.SetNewBehavior(_currentBehavior);

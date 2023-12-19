@@ -3,9 +3,13 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
-public class SessionStorageData : IPlayerBehaviourStorageData
+public class SessionStorageData : IPlayerBehaviourStorageData, ICoinsStoradeData
 {
+    public ICoinData _coinsData;
+
     public event Action<IPlayerBehaviourData> PlayerBehaviourChanged;
+    public event Action<ICoinData> CoinDataChanged;
+
     private List<IPlayerBehaviourData> playerBehaviourDatas = new();
 
     public IPlayerBehaviourData GetPlayerBehaviourData(Type type)
@@ -17,5 +21,15 @@ public class SessionStorageData : IPlayerBehaviourStorageData
     {
         playerBehaviourDatas.Add(playerBehaviour);
         PlayerBehaviourChanged?.Invoke(playerBehaviour);
+    }
+
+    public void SetCoinsSLData(ICoinData coinsData)
+    {
+        _coinsData = coinsData;
+    }
+
+    public ICoinData GetCoinsSLData()
+    {
+        return _coinsData;
     }
 }

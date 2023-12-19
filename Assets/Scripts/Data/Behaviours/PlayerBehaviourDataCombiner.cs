@@ -1,6 +1,7 @@
 using Zenject;
 using MLALib;
 using Unity.VisualScripting;
+using UnityEngine;
 
 public class PlayerBehaviourDataCombiner
 {
@@ -27,6 +28,7 @@ public class PlayerBehaviourDataCombiner
     {
         _sOStorageService = sOStorageService;
         _playerBehaviourStorageData = playerBehaviourStorageData;
+        _playerBehaviourStorageData.PlayerBehaviourChanged += SaveData;
         GetAndPullSuperJumpDataToStorage();
         GetAndPullRollDataToStorage();
         GetAndPullSimpleDataToStorage();
@@ -58,6 +60,22 @@ public class PlayerBehaviourDataCombiner
         _playerSuperJumpBehaviourSODatas = GetConvertedSO<PlayerSuperJumpBehaviourSODatas>();
         _playerSuperJumpBehaviourSOData = _playerSuperJumpBehaviourSODatas.dictionary[_playerSuperJumpBehaviourSLData.level];
         SetDataToStorage(_playerSuperJumpBehaviourSOData);
+    }
+
+    public void SaveData(IPlayerBehaviourData playerBehaviourData)
+    {
+        switch (playerBehaviourData)
+        {
+            case PlayerSimpleBehaviourSOData :
+                SaveLoader.SaveItem(playerBehaviourData, simpleBehaviourKey);
+                break;
+            case PlayerRollBehaviourSOData:
+                SaveLoader.SaveItem(playerBehaviourData, rollBehaviourKey);
+                break;
+            case PlayerSuperJumpBehaviourSOData:
+                SaveLoader.SaveItem(playerBehaviourData, superJumpBehaviourKey);
+                break;
+        }
     }
 
     public T GetConvertedSO<T>()
