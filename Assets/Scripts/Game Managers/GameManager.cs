@@ -13,6 +13,6 @@ public class GameManager : MonoBehaviour
 
     public void Start()
     {
-        _stateMachine.SetState<StartState>();
+        _stateMachine.SetState<PreStartState>();
     }
 }

@@ -20,6 +20,11 @@ public class PlayerBehaviourDataCombiner
     private PlayerSimpleBehaviourSLData _playerSimpleBehaviourSLData;
     private const string simpleBehaviourKey = "simpleBehaviourKey";
 
+    private PlayerStartBehaviourSODatas _playerStartBehaviourSODatas;
+    private PlayerStartBehaviourSOData _playerStartBehaviourSOData;
+    private PlayerStartBehaviourSLData _playerStartBehaviourSLData;
+    private const string startBehaviourKey = "startBehaviourKey";
+
     ISOStorageService _sOStorageService;
     IPlayerBehaviourStorageData _playerBehaviourStorageData;
 
@@ -32,9 +37,19 @@ public class PlayerBehaviourDataCombiner
         GetAndPullSuperJumpDataToStorage();
         GetAndPullRollDataToStorage();
         GetAndPullSimpleDataToStorage();
+        GetAndPullStartDataToStorage();
     }
 
-    private void GetAndPullSimpleDataToStorage() 
+    private void GetAndPullStartDataToStorage() 
+    {
+        _playerStartBehaviourSLData = new();
+        _playerStartBehaviourSLData = SaveLoader.LoadData<PlayerStartBehaviourSLData>(_playerStartBehaviourSLData, startBehaviourKey);
+        _playerStartBehaviourSODatas = GetConvertedSO<PlayerStartBehaviourSODatas>();
+        _playerStartBehaviourSOData = _playerStartBehaviourSODatas.dictionary[_playerStartBehaviourSLData.level];
+        SetDataToStorage(_playerStartBehaviourSOData);
+    }
+
+    private void GetAndPullSimpleDataToStorage ()
     {
         _playerSimpleBehaviourSLData = new();
         _playerSimpleBehaviourSLData = SaveLoader.LoadData<PlayerSimpleBehaviourSLData>(_playerSimpleBehaviourSLData, simpleBehaviourKey);

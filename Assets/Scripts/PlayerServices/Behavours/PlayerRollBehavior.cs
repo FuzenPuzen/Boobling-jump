@@ -8,6 +8,7 @@ public class PlayerRollBehavior : IPlayerBehavior
     private Transform _playerModel;
     private Sequence _rollSequence;
     private float _behaviorTime;
+    private Vector3 _startPos;
 
     private PlayerRollBehaviourSOData _playerRollBehaviourSOData;
 
@@ -15,6 +16,7 @@ public class PlayerRollBehavior : IPlayerBehavior
     {
         _transform = playerView.GetComponent<Transform>();
         _playerModel = playerView.GetPlayerModel();
+        _startPos = new(9.5f, 0.6f, 0);
     }
 
     public void StartBehavior()
@@ -25,16 +27,14 @@ public class PlayerRollBehavior : IPlayerBehavior
     private void GoToLand()
     {
         _rollSequence = DOTween.Sequence();
-        _rollSequence.Append(_transform.DOLocalMove(new(0, 0.6f, 0.65f), 0.5f));
-        _rollSequence.Join(_transform.DOLocalRotate(new(-90, 0, 0), 0.5f));
+        _rollSequence.Append(_transform.DOMove(_startPos, 0.5f));
+        _rollSequence.Join(_transform.DORotate(new(-90, 0, 0), 0.5f));
     }
 
     public void StopBehavior()
     {
         _playerModel.transform.localRotation = new Quaternion(90, 0, 0, 0);
         _transform.localRotation = new Quaternion(0, 0, 0, 0);
-        _transform.localPosition = new(0, 0.6f, 0);
-        _rollSequence.Complete();
         _rollSequence.Kill();
     }
 

@@ -12,7 +12,7 @@ public class SessionStorageData : IPlayerBehaviourStorageData, ICoinsStoradeData
 
     private List<IPlayerBehaviourData> playerBehaviourDatas = new();
 
-    public IPlayerBehaviourData GetPlayerBehaviourData(Type type)
+    public IPlayerBehaviourData GetPlayerBehaviourData(Type type) 
     {
         return playerBehaviourDatas.Find(x => x.GetType() == type);
     }

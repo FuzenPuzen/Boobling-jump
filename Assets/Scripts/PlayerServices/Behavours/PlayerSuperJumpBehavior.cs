@@ -1,3 +1,4 @@
+using DG.Tweening;
 using System;
 using UnityEngine;
 
@@ -11,9 +12,9 @@ public class PlayerSuperJumpBehavior : PlayerJumpBehavior
     }
 
 
-    public override void Fall()
+    public override void Fall(TweenCallback tweenCallback)
     {
-        base.Fall();
+        base.Fall(FallCallback);
         //add force wave spawn
         MonoBehaviour.print("Super Jump Spawn");
     }

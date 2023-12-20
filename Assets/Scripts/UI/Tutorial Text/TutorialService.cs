@@ -15,7 +15,11 @@ public class TutorialService : Iservice
 
     public void ActivateService()
     {
-        _tutorialView.StartDestoroyTimer();
+        
+    }
 
+    public void DeActivateService()
+    {
+        MonoBehaviour.Destroy(_tutorialView.gameObject);
     }
 }

@@ -5,13 +5,14 @@ using System.Reflection;
 using UnityEngine;
 using Zenject;
 
-public class ScoreService 
+public class ScoreService : Iservice
 {
     private ScoreView _scoreView;
     private int[] _difficultyLevels;
     private int _difficultyLevel;
     private int _currentlevel;
     private int _scoreIncreaseStep;
+    private IFabric _fabric;
 
     private Action _ChangeTierAction;
     private ScoreData _scoreData = new();
@@ -19,7 +20,12 @@ public class ScoreService
     [Inject]
     public void Constructor(IFabric fabric)
     {
-        _scoreView = fabric.SpawnObjectAndGetType<ScoreView>();
+        _fabric = fabric;       
+    }
+
+    public void ActivateService()
+    {
+        _scoreView = _fabric.SpawnObjectAndGetType<ScoreView>();
         _scoreView.SetActionOnScoreChange(OnScoreChange);
         _scoreView.SetScoreData(_scoreData);
     }

@@ -21,8 +21,10 @@ public class StateMachine
                             GameState basicGameState,
                             SuperJumpState superJumpState,
                             RollingState rollingState,
-                            EndGameState endGameState)
+                            EndGameState endGameState,
+                            PreStartState preStartState)
     {
+        _baseStates.Add(preStartState);
         _baseStates.Add(startState);
         _baseStates.Add(basicGameState);
         _baseStates.Add(superJumpState);

@@ -4,6 +4,7 @@ using System;
 using System.Linq;
 using Zenject;
 using UnityEngine;
+using Unity.Properties;
 
 public class PlayerBehaviorService : IPlayerBehaviorService
 {
@@ -25,12 +26,19 @@ public class PlayerBehaviorService : IPlayerBehaviorService
             _currentBehavior.StopBehavior();
             MonoBehaviour.print("Stop Behaviour: " + _currentBehavior);
         }
+
         _currentBehavior = _playerBehaviors.OfType<T>().FirstOrDefault();
+        if (typeof(T) == typeof(PlayerStartBehaviour))
+        {
+            var temp = (PlayerStartBehaviour)_currentBehavior;
+            temp.SetStartAction(EndBehaviorTimer);
+        }
+
         _playerBehaviourData = _playerBehaviourStorageData.GetPlayerBehaviourData(_currentBehavior.GetBehaviourDataType());
-        _playerBehaviourStorageData.SetPlayerBehaviour(_playerBehaviourData);
         _currentBehavior.SetBehaviourData(_playerBehaviourData);
-        MonoBehaviour.print("New Behaviour: " + _currentBehavior);
+
         _playerView.SetNewBehavior(_currentBehavior);
+        MonoBehaviour.print("New Behaviour: " + _currentBehavior);
         StartBehaviourTimer();
     }
 
@@ -45,13 +53,14 @@ public class PlayerBehaviorService : IPlayerBehaviorService
     {
         SpawnPlayer();
         _playerBehaviors.Add(new PlayerRollBehavior(_playerView));
+        _playerBehaviors.Add(new PlayerStartBehaviour(_playerView));
         _playerBehaviors.Add(new PlayerSuperJumpBehavior(_playerView));
         _playerBehaviors.Add(new PlayerSimpleJumpBehaviour(_playerView));
     }
 
     private void SpawnPlayer()
     {
-        _playerView = _fabric.SpawnObjectAndGetType<PlayerView>(new(9.5f, 0, 0));
+        _playerView = _fabric.SpawnObjectAndGetType<PlayerView>(new(9.5f, 0.6f, 0));
     }
 
     public void StartBehaviourTimer()
