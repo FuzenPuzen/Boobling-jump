@@ -4,7 +4,6 @@ using System;
 using System.Linq;
 using Zenject;
 using UnityEngine;
-using Unity.Properties;
 
 public class PlayerBehaviorService : IPlayerBehaviorService
 {

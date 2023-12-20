@@ -2,25 +2,25 @@ using Zenject;
 
 public class CoinsService : Iservice
 {
-
     private CoinView _coinView;
-    private ICoinsStoradeData _coinsStoradeData;
+    private ICoinManager _coinManager;
 
     [Inject]
-    public void Constructor(IFabric fabric, ICoinsStoradeData coinsStoradeData)
+    public void Constructor(IFabric fabric, ICoinsStoradeData coinsStoradeData, ICoinManager coinManager)
     {
+        _coinManager = coinManager;
         _coinView = fabric.SpawnObjectAndGetType<CoinView>();
-        _coinsStoradeData = coinsStoradeData;
+        _coinManager.coinsChanged += UpdateView;
     }
 
     public void ActivateService()
     {
-        _coinView.SetCoinData(_coinsStoradeData.GetCoinsSLData());
+        UpdateView(_coinManager.GetCoins());
     }
 
-    private void UpdateView()
+    private void UpdateView(int coins)
     {
-        _coinView.UpdateView();
+        _coinView.UpdateView(coins);
     }
   
 }

@@ -26,6 +26,7 @@ public class SessionStorageData : IPlayerBehaviourStorageData, ICoinsStoradeData
     public void SetCoinsSLData(ICoinData coinsData)
     {
         _coinsData = coinsData;
+        CoinDataChanged?.Invoke(coinsData);
     }
 
     public ICoinData GetCoinsSLData()

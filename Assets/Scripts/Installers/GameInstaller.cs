@@ -8,7 +8,9 @@ public class GameInstaller : MonoInstaller
         Container.Bind<PlayerBehaviourDataCombiner>().AsSingle().NonLazy();
         Container.Bind(typeof(IPrefabStorageService), typeof(ISOStorageService)).To(typeof(StorageService)).AsSingle();
         Container.Bind(typeof(IPlayerBehaviourStorageData), typeof(ICoinsStoradeData)).To(typeof(SessionStorageData)).AsSingle();
+        Container.Bind<ICoinManager>().To<CoinDataManager>().AsSingle();
         Container.Bind<IFabric>().To<Fabric>().AsSingle();
+
 
         Container.Bind<ITimerService>().To<TimerService>().AsSingle();
         Container.Bind<RecordService>().AsSingle();
