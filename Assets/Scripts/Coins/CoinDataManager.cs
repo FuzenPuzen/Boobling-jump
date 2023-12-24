@@ -38,4 +38,10 @@ public class CoinDataManager : ICoinManager
         }
         return false;
     }
+
+    public void CollectCoins(int coins = 1)
+    {
+        _coinsSLData.coins += coins;
+        CoinsChanged();
+    }
 }

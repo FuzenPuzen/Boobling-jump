@@ -11,9 +11,11 @@ GameObject:
   - component: {fileID: 5886738388747262453}
   - component: {fileID: 9069248089642248666}
   - component: {fileID: 8448844433596505171}
-  m_Layer: 3
+  - component: {fileID: 1063166620163545665}
+  - component: {fileID: 9024079718295004040}
+  m_Layer: 7
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: Collector
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -85,6 +87,39 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &1063166620163545665
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 643159362298423726}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.025630983, y: 0.01737646, z: 0.03983152}
+  m_Center: {x: -0.0016523143, y: -0.00057050923, z: -0.01991576}
+--- !u!114 &9024079718295004040
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 643159362298423726}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 710db961306e9134da41f608ee95354b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &8500138798243067918
 GameObject:
   m_ObjectHideFlags: 0
@@ -99,7 +134,7 @@ GameObject:
   - component: {fileID: 6876936102244652243}
   m_Layer: 3
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -152,8 +187,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1, y: 1.2305034, z: 1}
-  m_Center: {x: 0, y: 0.6536158, z: 0}
+  m_Size: {x: 0.35091972, y: 1.2305034, z: 0.6425444}
+  m_Center: {x: -0.07568073, y: 0.6536158, z: -0.010034606}
 --- !u!54 &6876936102244652243
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -163,8 +198,8 @@ Rigidbody:
   m_GameObject: {fileID: 8500138798243067918}
   serializedVersion: 4
   m_Mass: 1
-  m_Drag: 100
-  m_AngularDrag: 100
+  m_Drag: 1
+  m_AngularDrag: 1
   m_CenterOfMass: {x: 0, y: 0, z: 0}
   m_InertiaTensor: {x: 1, y: 1, z: 1}
   m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}

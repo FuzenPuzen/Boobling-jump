@@ -5,6 +5,7 @@ public class PreStartState : IBaseState
     private StateMachine _statemachine;
     private ITimerService _timerService;
     private TutorialService _tutorialService;
+    private Iservice _coinsPanelService;
     private IPlayerBehaviorService _playerBehaviorService;
 
     [Inject]
@@ -12,9 +13,11 @@ public class PreStartState : IBaseState
                     ITimerService timerService,
                     StateMachine statemachine,
                     TutorialService tutorialService,
-                    IPlayerBehaviorService playerBehaviorService
+                    IPlayerBehaviorService playerBehaviorService,
+                    CoinsPanelService coinsPanelService
                  )
     {
+        _coinsPanelService = coinsPanelService;
         _playerBehaviorService = playerBehaviorService;
         _tutorialService = tutorialService;
         _timerService = timerService;
@@ -25,8 +28,10 @@ public class PreStartState : IBaseState
         _playerBehaviorService.ActivateService();
         _playerBehaviorService.SetBehavior<PlayerStartBehaviour>();
         _playerBehaviorService.SetActionEndBehavior(OnBehavourEnd);
+
         _tutorialService.ActivateService();
         _timerService.ActivateService();
+        _coinsPanelService.ActivateService();
     }
 
     public void Exit()

@@ -13,6 +13,7 @@ public class CoinDataCombiner
     {
         _coinsStoradeData = coinsStoradeData;
         _coinsStoradeData.CoinDataChanged += SaveCoinData;
+        GetAndPullSimpleDataToStorage();
     }
 
     private void GetAndPullSimpleDataToStorage()

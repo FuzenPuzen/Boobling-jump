@@ -5,12 +5,19 @@ public class GameInstaller : MonoInstaller
     public override void InstallBindings()
     {
         Container.Bind<ConfigSO>().AsSingle().NonLazy();
-        Container.Bind<PlayerBehaviourDataCombiner>().AsSingle().NonLazy();
         Container.Bind(typeof(IPrefabStorageService), typeof(ISOStorageService)).To(typeof(StorageService)).AsSingle();
-        Container.Bind(typeof(IPlayerBehaviourStorageData), typeof(ICoinsStoradeData)).To(typeof(SessionStorageData)).AsSingle();
-        Container.Bind<ICoinManager>().To<CoinDataManager>().AsSingle();
         Container.Bind<IFabric>().To<Fabric>().AsSingle();
 
+        Container.Bind(typeof(IPlayerBehaviourStorageData), typeof(ICoinsStoradeData)).To(typeof(SessionStorageData)).AsSingle();
+        Container.Bind<PlayerBehaviourDataCombiner>().AsSingle().NonLazy();        
+        Container.Bind<CoinDataCombiner>().AsSingle().NonLazy();        
+        
+
+        Container.Bind<ICoinManager>().To<CoinDataManager>().AsSingle();
+        Container.Bind<CoinsPoolService>().AsSingle();
+        Container.Bind<CoinsService>().AsSingle();
+        Container.Bind<CoinsPanelService>().AsSingle();
+        
 
         Container.Bind<ITimerService>().To<TimerService>().AsSingle();
         Container.Bind<RecordService>().AsSingle();

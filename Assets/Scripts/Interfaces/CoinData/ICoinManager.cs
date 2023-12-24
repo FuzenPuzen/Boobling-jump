@@ -7,4 +7,6 @@ public interface ICoinManager
     public bool SpendCoins(int coins);
     public void AddCoins(int coins);
 
+    public void CollectCoins(int coins = 1);
+
 }

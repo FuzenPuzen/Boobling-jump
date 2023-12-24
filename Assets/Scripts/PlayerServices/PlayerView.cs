@@ -1,4 +1,5 @@
 using UnityEngine;
+using Zenject;
 
 public class PlayerView : MonoBehaviour
 {
@@ -11,6 +12,7 @@ public class PlayerView : MonoBehaviour
         _currentBehavior = playerBehavior;
         _currentBehavior.StartBehavior();
     }
+
 
     private void Update()
     {
