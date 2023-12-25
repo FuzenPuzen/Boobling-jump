@@ -13,7 +13,7 @@ public class GameInstaller : MonoInstaller
         Container.Bind<CoinDataCombiner>().AsSingle().NonLazy();        
         
 
-        Container.Bind<ICoinManager>().To<CoinDataManager>().AsSingle();
+        Container.Bind<ICoinDataManager>().To<CoinDataManager>().AsSingle();
         Container.Bind<CoinsPoolService>().AsSingle();
         Container.Bind<CoinsService>().AsSingle();
         Container.Bind<CoinsPanelService>().AsSingle();
@@ -22,7 +22,7 @@ public class GameInstaller : MonoInstaller
         Container.Bind<ITimerService>().To<TimerService>().AsSingle();
         Container.Bind<RecordService>().AsSingle();
         Container.Bind<ScoreService>().AsSingle();
-        Container.Bind<TutorialService>().AsSingle();
+        Container.Bind<TutorialPanelService>().AsSingle();
         Container.Bind<EndPanelService>().AsSingle();
 
         Container.Bind(typeof(IPlayerBehaviorService), typeof(Iservice)).To(typeof(PlayerBehaviorService)).AsSingle();
