@@ -1,0 +1,1640 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!181963792 &2655988077585873504
+Preset:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Outlinable
+  m_TargetType:
+    m_NativeTypeID: 114
+    m_ManagedTypePPtr: {fileID: 11500000, guid: 3fe91dc294731a9428c0941ea7579110,
+      type: 3}
+    m_ManagedTypeFallback: 
+  m_Properties:
+  - target: {fileID: 0}
+    propertyPath: m_Enabled
+    value: 1
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: m_EditorHideFlags
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: m_EditorClassIdentifier
+    value: 
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: complexMaskingMode
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: drawingMode
+    value: 1
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: outlineLayer
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: outlineTargets.Array.size
+    value: 1
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: outlineTargets.Array.data[0].IsVisible
+    value: 1
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: outlineTargets.Array.data[0].CutoutMask
+    value: 8
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: outlineTargets.Array.data[0].edgeDilateAmount
+    value: 5
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: outlineTargets.Array.data[0].frontEdgeDilateAmount
+    value: 5
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: outlineTargets.Array.data[0].backEdgeDilateAmount
+    value: 5
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: outlineTargets.Array.data[0].renderer
+    value: 
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: outlineTargets.Array.data[0].SubmeshIndex
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: outlineTargets.Array.data[0].BoundsMode
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: outlineTargets.Array.data[0].Bounds.m_Center.x
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: outlineTargets.Array.data[0].Bounds.m_Center.y
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: outlineTargets.Array.data[0].Bounds.m_Center.z
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: outlineTargets.Array.data[0].Bounds.m_Extent.x
+    value: 0.5
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: outlineTargets.Array.data[0].Bounds.m_Extent.y
+    value: 0.5
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: outlineTargets.Array.data[0].Bounds.m_Extent.z
+    value: 0.5
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: outlineTargets.Array.data[0].CutoutThreshold
+    value: 0.5
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: outlineTargets.Array.data[0].CullMode
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: outlineTargets.Array.data[0].cutoutTextureName
+    value: 
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: outlineTargets.Array.data[0].DilateRenderingMode
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: outlineTargets.Array.data[0].cutoutTextureIndex
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: renderStyle
+    value: 2
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: outlineParameters.enabled
+    value: 1
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: outlineParameters.color.r
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: outlineParameters.color.g
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: outlineParameters.color.b
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: outlineParameters.color.a
+    value: 1
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: outlineParameters.dilateShift
+    value: 1
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: outlineParameters.blurShift
+    value: 0.496
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: outlineParameters.fillPass.shader
+    value: 
+    objectReference: {fileID: 4800000, guid: 13049d2b8cd384845b6b1414c9d17fc9, type: 3}
+  - target: {fileID: 0}
+    propertyPath: outlineParameters.fillPass.serializedProperties.Array.size
+    value: 11
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: outlineParameters.fillPass.serializedProperties.Array.data[0].PropertyName
+    value: _PublicColor
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: outlineParameters.fillPass.serializedProperties.Array.data[0].Property.ColorValue.r
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: outlineParameters.fillPass.serializedProperties.Array.data[0].Property.ColorValue.g
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: outlineParameters.fillPass.serializedProperties.Array.data[0].Property.ColorValue.b
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: outlineParameters.fillPass.serializedProperties.Array.data[0].Property.ColorValue.a
+    value: 0.29411766
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: outlineParameters.fillPass.serializedProperties.Array.data[0].Property.FloatValue
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: outlineParameters.fillPass.serializedProperties.Array.data[0].Property.VectorValue.x
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: outlineParameters.fillPass.serializedProperties.Array.data[0].Property.VectorValue.y
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: outlineParameters.fillPass.serializedProperties.Array.data[0].Property.VectorValue.z
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: outlineParameters.fillPass.serializedProperties.Array.data[0].Property.VectorValue.w
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: outlineParameters.fillPass.serializedProperties.Array.data[0].Property.PropertyType
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: outlineParameters.fillPass.serializedProperties.Array.data[1].PropertyName
+    value: _PublicHorizontalSize
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: outlineParameters.fillPass.serializedProperties.Array.data[1].Property.ColorValue.r
+    value: 1
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: outlineParameters.fillPass.serializedProperties.Array.data[1].Property.ColorValue.g
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: outlineParameters.fillPass.serializedProperties.Array.data[1].Property.ColorValue.b
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: outlineParameters.fillPass.serializedProperties.Array.data[1].Property.ColorValue.a
+    value: 0.2
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: outlineParameters.fillPass.serializedProperties.Array.data[1].Property.FloatValue
+    value: 5
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: outlineParameters.fillPass.serializedProperties.Array.data[1].Property.VectorValue.x
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: outlineParameters.fillPass.serializedProperties.Array.data[1].Property.VectorValue.y
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: outlineParameters.fillPass.serializedProperties.Array.data[1].Property.VectorValue.z
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: outlineParameters.fillPass.serializedProperties.Array.data[1].Property.VectorValue.w
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: outlineParameters.fillPass.serializedProperties.Array.data[1].Property.PropertyType
+    value: 2
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: outlineParameters.fillPass.serializedProperties.Array.data[2].PropertyName
+    value: _PublicVerticalSize
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: outlineParameters.fillPass.serializedProperties.Array.data[2].Property.ColorValue.r
+    value: 1
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: outlineParameters.fillPass.serializedProperties.Array.data[2].Property.ColorValue.g
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: outlineParameters.fillPass.serializedProperties.Array.data[2].Property.ColorValue.b
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: outlineParameters.fillPass.serializedProperties.Array.data[2].Property.ColorValue.a
+    value: 0.2
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: outlineParameters.fillPass.serializedProperties.Array.data[2].Property.FloatValue
+    value: 5
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: outlineParameters.fillPass.serializedProperties.Array.data[2].Property.VectorValue.x
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: outlineParameters.fillPass.serializedProperties.Array.data[2].Property.VectorValue.y
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: outlineParameters.fillPass.serializedProperties.Array.data[2].Property.VectorValue.z
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: outlineParameters.fillPass.serializedProperties.Array.data[2].Property.VectorValue.w
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: outlineParameters.fillPass.serializedProperties.Array.data[2].Property.PropertyType
+    value: 2
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: outlineParameters.fillPass.serializedProperties.Array.data[3].PropertyName
+    value: _PublicHorizontalGapSize
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: outlineParameters.fillPass.serializedProperties.Array.data[3].Property.ColorValue.r
+    value: 1
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: outlineParameters.fillPass.serializedProperties.Array.data[3].Property.ColorValue.g
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: outlineParameters.fillPass.serializedProperties.Array.data[3].Property.ColorValue.b
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: outlineParameters.fillPass.serializedProperties.Array.data[3].Property.ColorValue.a
+    value: 0.2
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: outlineParameters.fillPass.serializedProperties.Array.data[3].Property.FloatValue
+    value: 0.316
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: outlineParameters.fillPass.serializedProperties.Array.data[3].Property.VectorValue.x
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: outlineParameters.fillPass.serializedProperties.Array.data[3].Property.VectorValue.y
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: outlineParameters.fillPass.serializedProperties.Array.data[3].Property.VectorValue.z
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: outlineParameters.fillPass.serializedProperties.Array.data[3].Property.VectorValue.w
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: outlineParameters.fillPass.serializedProperties.Array.data[3].Property.PropertyType
+    value: 3
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: outlineParameters.fillPass.serializedProperties.Array.data[4].PropertyName
+    value: _PublicVerticalGapSize
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: outlineParameters.fillPass.serializedProperties.Array.data[4].Property.ColorValue.r
+    value: 1
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: outlineParameters.fillPass.serializedProperties.Array.data[4].Property.ColorValue.g
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: outlineParameters.fillPass.serializedProperties.Array.data[4].Property.ColorValue.b
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: outlineParameters.fillPass.serializedProperties.Array.data[4].Property.ColorValue.a
+    value: 0.2
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: outlineParameters.fillPass.serializedProperties.Array.data[4].Property.FloatValue
+    value: 0.5
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: outlineParameters.fillPass.serializedProperties.Array.data[4].Property.VectorValue.x
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: outlineParameters.fillPass.serializedProperties.Array.data[4].Property.VectorValue.y
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: outlineParameters.fillPass.serializedProperties.Array.data[4].Property.VectorValue.z
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: outlineParameters.fillPass.serializedProperties.Array.data[4].Property.VectorValue.w
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: outlineParameters.fillPass.serializedProperties.Array.data[4].Property.PropertyType
+    value: 3
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: outlineParameters.fillPass.serializedProperties.Array.data[5].PropertyName
+    value: _PublicHorizontalSoftness
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: outlineParameters.fillPass.serializedProperties.Array.data[5].Property.ColorValue.r
+    value: 1
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: outlineParameters.fillPass.serializedProperties.Array.data[5].Property.ColorValue.g
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: outlineParameters.fillPass.serializedProperties.Array.data[5].Property.ColorValue.b
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: outlineParameters.fillPass.serializedProperties.Array.data[5].Property.ColorValue.a
+    value: 0.2
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: outlineParameters.fillPass.serializedProperties.Array.data[5].Property.FloatValue
+    value: 0.2
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: outlineParameters.fillPass.serializedProperties.Array.data[5].Property.VectorValue.x
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: outlineParameters.fillPass.serializedProperties.Array.data[5].Property.VectorValue.y
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: outlineParameters.fillPass.serializedProperties.Array.data[5].Property.VectorValue.z
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: outlineParameters.fillPass.serializedProperties.Array.data[5].Property.VectorValue.w
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: outlineParameters.fillPass.serializedProperties.Array.data[5].Property.PropertyType
+    value: 3
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: outlineParameters.fillPass.serializedProperties.Array.data[6].PropertyName
+    value: _PublicVerticalSoftness
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: outlineParameters.fillPass.serializedProperties.Array.data[6].Property.ColorValue.r
+    value: 1
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: outlineParameters.fillPass.serializedProperties.Array.data[6].Property.ColorValue.g
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: outlineParameters.fillPass.serializedProperties.Array.data[6].Property.ColorValue.b
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: outlineParameters.fillPass.serializedProperties.Array.data[6].Property.ColorValue.a
+    value: 0.2
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: outlineParameters.fillPass.serializedProperties.Array.data[6].Property.FloatValue
+    value: 0.2
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: outlineParameters.fillPass.serializedProperties.Array.data[6].Property.VectorValue.x
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: outlineParameters.fillPass.serializedProperties.Array.data[6].Property.VectorValue.y
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: outlineParameters.fillPass.serializedProperties.Array.data[6].Property.VectorValue.z
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: outlineParameters.fillPass.serializedProperties.Array.data[6].Property.VectorValue.w
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: outlineParameters.fillPass.serializedProperties.Array.data[6].Property.PropertyType
+    value: 3
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: outlineParameters.fillPass.serializedProperties.Array.data[7].PropertyName
+    value: _PublicHorizontalSpeed
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: outlineParameters.fillPass.serializedProperties.Array.data[7].Property.ColorValue.r
+    value: 1
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: outlineParameters.fillPass.serializedProperties.Array.data[7].Property.ColorValue.g
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: outlineParameters.fillPass.serializedProperties.Array.data[7].Property.ColorValue.b
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: outlineParameters.fillPass.serializedProperties.Array.data[7].Property.ColorValue.a
+    value: 0.2
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: outlineParameters.fillPass.serializedProperties.Array.data[7].Property.FloatValue
+    value: 1
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: outlineParameters.fillPass.serializedProperties.Array.data[7].Property.VectorValue.x
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: outlineParameters.fillPass.serializedProperties.Array.data[7].Property.VectorValue.y
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: outlineParameters.fillPass.serializedProperties.Array.data[7].Property.VectorValue.z
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: outlineParameters.fillPass.serializedProperties.Array.data[7].Property.VectorValue.w
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: outlineParameters.fillPass.serializedProperties.Array.data[7].Property.PropertyType
+    value: 2
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: outlineParameters.fillPass.serializedProperties.Array.data[8].PropertyName
+    value: _PublicVerticalSpeed
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: outlineParameters.fillPass.serializedProperties.Array.data[8].Property.ColorValue.r
+    value: 1
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: outlineParameters.fillPass.serializedProperties.Array.data[8].Property.ColorValue.g
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: outlineParameters.fillPass.serializedProperties.Array.data[8].Property.ColorValue.b
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: outlineParameters.fillPass.serializedProperties.Array.data[8].Property.ColorValue.a
+    value: 0.2
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: outlineParameters.fillPass.serializedProperties.Array.data[8].Property.FloatValue
+    value: 1
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: outlineParameters.fillPass.serializedProperties.Array.data[8].Property.VectorValue.x
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: outlineParameters.fillPass.serializedProperties.Array.data[8].Property.VectorValue.y
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: outlineParameters.fillPass.serializedProperties.Array.data[8].Property.VectorValue.z
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: outlineParameters.fillPass.serializedProperties.Array.data[8].Property.VectorValue.w
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: outlineParameters.fillPass.serializedProperties.Array.data[8].Property.PropertyType
+    value: 2
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: outlineParameters.fillPass.serializedProperties.Array.data[9].PropertyName
+    value: _PublicAngle
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: outlineParameters.fillPass.serializedProperties.Array.data[9].Property.ColorValue.r
+    value: 1
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: outlineParameters.fillPass.serializedProperties.Array.data[9].Property.ColorValue.g
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: outlineParameters.fillPass.serializedProperties.Array.data[9].Property.ColorValue.b
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: outlineParameters.fillPass.serializedProperties.Array.data[9].Property.ColorValue.a
+    value: 0.2
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: outlineParameters.fillPass.serializedProperties.Array.data[9].Property.FloatValue
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: outlineParameters.fillPass.serializedProperties.Array.data[9].Property.VectorValue.x
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: outlineParameters.fillPass.serializedProperties.Array.data[9].Property.VectorValue.y
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: outlineParameters.fillPass.serializedProperties.Array.data[9].Property.VectorValue.z
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: outlineParameters.fillPass.serializedProperties.Array.data[9].Property.VectorValue.w
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: outlineParameters.fillPass.serializedProperties.Array.data[9].Property.PropertyType
+    value: 3
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: outlineParameters.fillPass.serializedProperties.Array.data[10].PropertyName
+    value: _PublicSecondaryAlpha
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: outlineParameters.fillPass.serializedProperties.Array.data[10].Property.ColorValue.r
+    value: 1
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: outlineParameters.fillPass.serializedProperties.Array.data[10].Property.ColorValue.g
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: outlineParameters.fillPass.serializedProperties.Array.data[10].Property.ColorValue.b
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: outlineParameters.fillPass.serializedProperties.Array.data[10].Property.ColorValue.a
+    value: 0.2
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: outlineParameters.fillPass.serializedProperties.Array.data[10].Property.FloatValue
+    value: 0.2
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: outlineParameters.fillPass.serializedProperties.Array.data[10].Property.VectorValue.x
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: outlineParameters.fillPass.serializedProperties.Array.data[10].Property.VectorValue.y
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: outlineParameters.fillPass.serializedProperties.Array.data[10].Property.VectorValue.z
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: outlineParameters.fillPass.serializedProperties.Array.data[10].Property.VectorValue.w
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: outlineParameters.fillPass.serializedProperties.Array.data[10].Property.PropertyType
+    value: 3
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: backParameters.enabled
+    value: 1
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: backParameters.color.r
+    value: 0.015686274
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: backParameters.color.g
+    value: 0.8484173
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: backParameters.color.b
+    value: 1
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: backParameters.color.a
+    value: 1
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: backParameters.dilateShift
+    value: 1
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: backParameters.blurShift
+    value: 1
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: backParameters.fillPass.shader
+    value: 
+    objectReference: {fileID: 4800000, guid: 4b218962224bcd449ba16572d6a50cee, type: 3}
+  - target: {fileID: 0}
+    propertyPath: backParameters.fillPass.serializedProperties.Array.size
+    value: 20
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: backParameters.fillPass.serializedProperties.Array.data[0].PropertyName
+    value: _PublicColor
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: backParameters.fillPass.serializedProperties.Array.data[0].Property.ColorValue.r
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: backParameters.fillPass.serializedProperties.Array.data[0].Property.ColorValue.g
+    value: 0.98956347
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: backParameters.fillPass.serializedProperties.Array.data[0].Property.ColorValue.b
+    value: 1
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: backParameters.fillPass.serializedProperties.Array.data[0].Property.ColorValue.a
+    value: 0.2
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: backParameters.fillPass.serializedProperties.Array.data[0].Property.FloatValue
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: backParameters.fillPass.serializedProperties.Array.data[0].Property.VectorValue.x
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: backParameters.fillPass.serializedProperties.Array.data[0].Property.VectorValue.y
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: backParameters.fillPass.serializedProperties.Array.data[0].Property.VectorValue.z
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: backParameters.fillPass.serializedProperties.Array.data[0].Property.VectorValue.w
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: backParameters.fillPass.serializedProperties.Array.data[0].Property.PropertyType
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: backParameters.fillPass.serializedProperties.Array.data[1].PropertyName
+    value: _PublicHorizontalSize
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: backParameters.fillPass.serializedProperties.Array.data[1].Property.ColorValue.r
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: backParameters.fillPass.serializedProperties.Array.data[1].Property.ColorValue.g
+    value: 0.8927181
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: backParameters.fillPass.serializedProperties.Array.data[1].Property.ColorValue.b
+    value: 1
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: backParameters.fillPass.serializedProperties.Array.data[1].Property.ColorValue.a
+    value: 0.2
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: backParameters.fillPass.serializedProperties.Array.data[1].Property.FloatValue
+    value: 3
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: backParameters.fillPass.serializedProperties.Array.data[1].Property.VectorValue.x
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: backParameters.fillPass.serializedProperties.Array.data[1].Property.VectorValue.y
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: backParameters.fillPass.serializedProperties.Array.data[1].Property.VectorValue.z
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: backParameters.fillPass.serializedProperties.Array.data[1].Property.VectorValue.w
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: backParameters.fillPass.serializedProperties.Array.data[1].Property.PropertyType
+    value: 2
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: backParameters.fillPass.serializedProperties.Array.data[2].PropertyName
+    value: _PublicVerticalSize
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: backParameters.fillPass.serializedProperties.Array.data[2].Property.ColorValue.r
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: backParameters.fillPass.serializedProperties.Array.data[2].Property.ColorValue.g
+    value: 0.8927181
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: backParameters.fillPass.serializedProperties.Array.data[2].Property.ColorValue.b
+    value: 1
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: backParameters.fillPass.serializedProperties.Array.data[2].Property.ColorValue.a
+    value: 0.2
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: backParameters.fillPass.serializedProperties.Array.data[2].Property.FloatValue
+    value: 3
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: backParameters.fillPass.serializedProperties.Array.data[2].Property.VectorValue.x
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: backParameters.fillPass.serializedProperties.Array.data[2].Property.VectorValue.y
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: backParameters.fillPass.serializedProperties.Array.data[2].Property.VectorValue.z
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: backParameters.fillPass.serializedProperties.Array.data[2].Property.VectorValue.w
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: backParameters.fillPass.serializedProperties.Array.data[2].Property.PropertyType
+    value: 2
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: backParameters.fillPass.serializedProperties.Array.data[3].PropertyName
+    value: _PublicHorizontalGapSize
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: backParameters.fillPass.serializedProperties.Array.data[3].Property.ColorValue.r
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: backParameters.fillPass.serializedProperties.Array.data[3].Property.ColorValue.g
+    value: 0.8927181
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: backParameters.fillPass.serializedProperties.Array.data[3].Property.ColorValue.b
+    value: 1
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: backParameters.fillPass.serializedProperties.Array.data[3].Property.ColorValue.a
+    value: 0.2
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: backParameters.fillPass.serializedProperties.Array.data[3].Property.FloatValue
+    value: 0.5
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: backParameters.fillPass.serializedProperties.Array.data[3].Property.VectorValue.x
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: backParameters.fillPass.serializedProperties.Array.data[3].Property.VectorValue.y
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: backParameters.fillPass.serializedProperties.Array.data[3].Property.VectorValue.z
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: backParameters.fillPass.serializedProperties.Array.data[3].Property.VectorValue.w
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: backParameters.fillPass.serializedProperties.Array.data[3].Property.PropertyType
+    value: 3
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: backParameters.fillPass.serializedProperties.Array.data[4].PropertyName
+    value: _PublicVerticalGapSize
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: backParameters.fillPass.serializedProperties.Array.data[4].Property.ColorValue.r
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: backParameters.fillPass.serializedProperties.Array.data[4].Property.ColorValue.g
+    value: 0.8927181
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: backParameters.fillPass.serializedProperties.Array.data[4].Property.ColorValue.b
+    value: 1
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: backParameters.fillPass.serializedProperties.Array.data[4].Property.ColorValue.a
+    value: 0.2
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: backParameters.fillPass.serializedProperties.Array.data[4].Property.FloatValue
+    value: 0.5
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: backParameters.fillPass.serializedProperties.Array.data[4].Property.VectorValue.x
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: backParameters.fillPass.serializedProperties.Array.data[4].Property.VectorValue.y
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: backParameters.fillPass.serializedProperties.Array.data[4].Property.VectorValue.z
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: backParameters.fillPass.serializedProperties.Array.data[4].Property.VectorValue.w
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: backParameters.fillPass.serializedProperties.Array.data[4].Property.PropertyType
+    value: 3
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: backParameters.fillPass.serializedProperties.Array.data[5].PropertyName
+    value: _PublicHorizontalSoftness
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: backParameters.fillPass.serializedProperties.Array.data[5].Property.ColorValue.r
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: backParameters.fillPass.serializedProperties.Array.data[5].Property.ColorValue.g
+    value: 0.8927181
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: backParameters.fillPass.serializedProperties.Array.data[5].Property.ColorValue.b
+    value: 1
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: backParameters.fillPass.serializedProperties.Array.data[5].Property.ColorValue.a
+    value: 0.2
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: backParameters.fillPass.serializedProperties.Array.data[5].Property.FloatValue
+    value: 0.2
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: backParameters.fillPass.serializedProperties.Array.data[5].Property.VectorValue.x
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: backParameters.fillPass.serializedProperties.Array.data[5].Property.VectorValue.y
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: backParameters.fillPass.serializedProperties.Array.data[5].Property.VectorValue.z
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: backParameters.fillPass.serializedProperties.Array.data[5].Property.VectorValue.w
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: backParameters.fillPass.serializedProperties.Array.data[5].Property.PropertyType
+    value: 3
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: backParameters.fillPass.serializedProperties.Array.data[6].PropertyName
+    value: _PublicVerticalSoftness
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: backParameters.fillPass.serializedProperties.Array.data[6].Property.ColorValue.r
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: backParameters.fillPass.serializedProperties.Array.data[6].Property.ColorValue.g
+    value: 0.8927181
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: backParameters.fillPass.serializedProperties.Array.data[6].Property.ColorValue.b
+    value: 1
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: backParameters.fillPass.serializedProperties.Array.data[6].Property.ColorValue.a
+    value: 0.2
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: backParameters.fillPass.serializedProperties.Array.data[6].Property.FloatValue
+    value: 0.2
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: backParameters.fillPass.serializedProperties.Array.data[6].Property.VectorValue.x
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: backParameters.fillPass.serializedProperties.Array.data[6].Property.VectorValue.y
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: backParameters.fillPass.serializedProperties.Array.data[6].Property.VectorValue.z
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: backParameters.fillPass.serializedProperties.Array.data[6].Property.VectorValue.w
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: backParameters.fillPass.serializedProperties.Array.data[6].Property.PropertyType
+    value: 3
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: backParameters.fillPass.serializedProperties.Array.data[7].PropertyName
+    value: _PublicHorizontalSpeed
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: backParameters.fillPass.serializedProperties.Array.data[7].Property.ColorValue.r
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: backParameters.fillPass.serializedProperties.Array.data[7].Property.ColorValue.g
+    value: 0.8927181
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: backParameters.fillPass.serializedProperties.Array.data[7].Property.ColorValue.b
+    value: 1
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: backParameters.fillPass.serializedProperties.Array.data[7].Property.ColorValue.a
+    value: 0.2
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: backParameters.fillPass.serializedProperties.Array.data[7].Property.FloatValue
+    value: 1
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: backParameters.fillPass.serializedProperties.Array.data[7].Property.VectorValue.x
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: backParameters.fillPass.serializedProperties.Array.data[7].Property.VectorValue.y
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: backParameters.fillPass.serializedProperties.Array.data[7].Property.VectorValue.z
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: backParameters.fillPass.serializedProperties.Array.data[7].Property.VectorValue.w
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: backParameters.fillPass.serializedProperties.Array.data[7].Property.PropertyType
+    value: 2
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: backParameters.fillPass.serializedProperties.Array.data[8].PropertyName
+    value: _PublicVerticalSpeed
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: backParameters.fillPass.serializedProperties.Array.data[8].Property.ColorValue.r
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: backParameters.fillPass.serializedProperties.Array.data[8].Property.ColorValue.g
+    value: 0.8927181
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: backParameters.fillPass.serializedProperties.Array.data[8].Property.ColorValue.b
+    value: 1
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: backParameters.fillPass.serializedProperties.Array.data[8].Property.ColorValue.a
+    value: 0.2
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: backParameters.fillPass.serializedProperties.Array.data[8].Property.FloatValue
+    value: 1
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: backParameters.fillPass.serializedProperties.Array.data[8].Property.VectorValue.x
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: backParameters.fillPass.serializedProperties.Array.data[8].Property.VectorValue.y
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: backParameters.fillPass.serializedProperties.Array.data[8].Property.VectorValue.z
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: backParameters.fillPass.serializedProperties.Array.data[8].Property.VectorValue.w
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: backParameters.fillPass.serializedProperties.Array.data[8].Property.PropertyType
+    value: 2
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: backParameters.fillPass.serializedProperties.Array.data[9].PropertyName
+    value: _PublicAngle
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: backParameters.fillPass.serializedProperties.Array.data[9].Property.ColorValue.r
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: backParameters.fillPass.serializedProperties.Array.data[9].Property.ColorValue.g
+    value: 0.8927181
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: backParameters.fillPass.serializedProperties.Array.data[9].Property.ColorValue.b
+    value: 1
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: backParameters.fillPass.serializedProperties.Array.data[9].Property.ColorValue.a
+    value: 0.2
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: backParameters.fillPass.serializedProperties.Array.data[9].Property.FloatValue
+    value: 104
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: backParameters.fillPass.serializedProperties.Array.data[9].Property.VectorValue.x
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: backParameters.fillPass.serializedProperties.Array.data[9].Property.VectorValue.y
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: backParameters.fillPass.serializedProperties.Array.data[9].Property.VectorValue.z
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: backParameters.fillPass.serializedProperties.Array.data[9].Property.VectorValue.w
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: backParameters.fillPass.serializedProperties.Array.data[9].Property.PropertyType
+    value: 3
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: backParameters.fillPass.serializedProperties.Array.data[10].PropertyName
+    value: _PublicSecondaryAlpha
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: backParameters.fillPass.serializedProperties.Array.data[10].Property.ColorValue.r
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: backParameters.fillPass.serializedProperties.Array.data[10].Property.ColorValue.g
+    value: 0.8927181
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: backParameters.fillPass.serializedProperties.Array.data[10].Property.ColorValue.b
+    value: 1
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: backParameters.fillPass.serializedProperties.Array.data[10].Property.ColorValue.a
+    value: 0.2
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: backParameters.fillPass.serializedProperties.Array.data[10].Property.FloatValue
+    value: 0.2
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: backParameters.fillPass.serializedProperties.Array.data[10].Property.VectorValue.x
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: backParameters.fillPass.serializedProperties.Array.data[10].Property.VectorValue.y
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: backParameters.fillPass.serializedProperties.Array.data[10].Property.VectorValue.z
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: backParameters.fillPass.serializedProperties.Array.data[10].Property.VectorValue.w
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: backParameters.fillPass.serializedProperties.Array.data[10].Property.PropertyType
+    value: 3
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: backParameters.fillPass.serializedProperties.Array.data[11].PropertyName
+    value: _PublicOuterColor
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: backParameters.fillPass.serializedProperties.Array.data[11].Property.ColorValue.r
+    value: 1
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: backParameters.fillPass.serializedProperties.Array.data[11].Property.ColorValue.g
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: backParameters.fillPass.serializedProperties.Array.data[11].Property.ColorValue.b
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: backParameters.fillPass.serializedProperties.Array.data[11].Property.ColorValue.a
+    value: 1
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: backParameters.fillPass.serializedProperties.Array.data[11].Property.FloatValue
+    value: 0.2
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: backParameters.fillPass.serializedProperties.Array.data[11].Property.VectorValue.x
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: backParameters.fillPass.serializedProperties.Array.data[11].Property.VectorValue.y
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: backParameters.fillPass.serializedProperties.Array.data[11].Property.VectorValue.z
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: backParameters.fillPass.serializedProperties.Array.data[11].Property.VectorValue.w
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: backParameters.fillPass.serializedProperties.Array.data[11].Property.PropertyType
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: backParameters.fillPass.serializedProperties.Array.data[12].PropertyName
+    value: _PublicInnerColor
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: backParameters.fillPass.serializedProperties.Array.data[12].Property.ColorValue.r
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: backParameters.fillPass.serializedProperties.Array.data[12].Property.ColorValue.g
+    value: 1
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: backParameters.fillPass.serializedProperties.Array.data[12].Property.ColorValue.b
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: backParameters.fillPass.serializedProperties.Array.data[12].Property.ColorValue.a
+    value: 1
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: backParameters.fillPass.serializedProperties.Array.data[12].Property.FloatValue
+    value: 0.2
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: backParameters.fillPass.serializedProperties.Array.data[12].Property.VectorValue.x
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: backParameters.fillPass.serializedProperties.Array.data[12].Property.VectorValue.y
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: backParameters.fillPass.serializedProperties.Array.data[12].Property.VectorValue.z
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: backParameters.fillPass.serializedProperties.Array.data[12].Property.VectorValue.w
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: backParameters.fillPass.serializedProperties.Array.data[12].Property.PropertyType
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: backParameters.fillPass.serializedProperties.Array.data[13].PropertyName
+    value: _PublicFresnelPower
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: backParameters.fillPass.serializedProperties.Array.data[13].Property.ColorValue.r
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: backParameters.fillPass.serializedProperties.Array.data[13].Property.ColorValue.g
+    value: 1
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: backParameters.fillPass.serializedProperties.Array.data[13].Property.ColorValue.b
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: backParameters.fillPass.serializedProperties.Array.data[13].Property.ColorValue.a
+    value: 1
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: backParameters.fillPass.serializedProperties.Array.data[13].Property.FloatValue
+    value: -0.14
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: backParameters.fillPass.serializedProperties.Array.data[13].Property.VectorValue.x
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: backParameters.fillPass.serializedProperties.Array.data[13].Property.VectorValue.y
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: backParameters.fillPass.serializedProperties.Array.data[13].Property.VectorValue.z
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: backParameters.fillPass.serializedProperties.Array.data[13].Property.VectorValue.w
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: backParameters.fillPass.serializedProperties.Array.data[13].Property.PropertyType
+    value: 2
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: backParameters.fillPass.serializedProperties.Array.data[14].PropertyName
+    value: _PublicFresnelMultiplier
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: backParameters.fillPass.serializedProperties.Array.data[14].Property.ColorValue.r
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: backParameters.fillPass.serializedProperties.Array.data[14].Property.ColorValue.g
+    value: 1
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: backParameters.fillPass.serializedProperties.Array.data[14].Property.ColorValue.b
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: backParameters.fillPass.serializedProperties.Array.data[14].Property.ColorValue.a
+    value: 1
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: backParameters.fillPass.serializedProperties.Array.data[14].Property.FloatValue
+    value: 1
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: backParameters.fillPass.serializedProperties.Array.data[14].Property.VectorValue.x
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: backParameters.fillPass.serializedProperties.Array.data[14].Property.VectorValue.y
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: backParameters.fillPass.serializedProperties.Array.data[14].Property.VectorValue.z
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: backParameters.fillPass.serializedProperties.Array.data[14].Property.VectorValue.w
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: backParameters.fillPass.serializedProperties.Array.data[14].Property.PropertyType
+    value: 2
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: backParameters.fillPass.serializedProperties.Array.data[15].PropertyName
+    value: _PublicGapColor
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: backParameters.fillPass.serializedProperties.Array.data[15].Property.ColorValue.r
+    value: 1
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: backParameters.fillPass.serializedProperties.Array.data[15].Property.ColorValue.g
+    value: 1
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: backParameters.fillPass.serializedProperties.Array.data[15].Property.ColorValue.b
+    value: 1
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: backParameters.fillPass.serializedProperties.Array.data[15].Property.ColorValue.a
+    value: 1
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: backParameters.fillPass.serializedProperties.Array.data[15].Property.FloatValue
+    value: 1
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: backParameters.fillPass.serializedProperties.Array.data[15].Property.VectorValue.x
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: backParameters.fillPass.serializedProperties.Array.data[15].Property.VectorValue.y
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: backParameters.fillPass.serializedProperties.Array.data[15].Property.VectorValue.z
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: backParameters.fillPass.serializedProperties.Array.data[15].Property.VectorValue.w
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: backParameters.fillPass.serializedProperties.Array.data[15].Property.PropertyType
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: backParameters.fillPass.serializedProperties.Array.data[16].PropertyName
+    value: _PublicSize
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: backParameters.fillPass.serializedProperties.Array.data[16].Property.ColorValue.r
+    value: 1
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: backParameters.fillPass.serializedProperties.Array.data[16].Property.ColorValue.g
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: backParameters.fillPass.serializedProperties.Array.data[16].Property.ColorValue.b
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: backParameters.fillPass.serializedProperties.Array.data[16].Property.ColorValue.a
+    value: 0.2
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: backParameters.fillPass.serializedProperties.Array.data[16].Property.FloatValue
+    value: 3.6
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: backParameters.fillPass.serializedProperties.Array.data[16].Property.VectorValue.x
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: backParameters.fillPass.serializedProperties.Array.data[16].Property.VectorValue.y
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: backParameters.fillPass.serializedProperties.Array.data[16].Property.VectorValue.z
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: backParameters.fillPass.serializedProperties.Array.data[16].Property.VectorValue.w
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: backParameters.fillPass.serializedProperties.Array.data[16].Property.PropertyType
+    value: 2
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: backParameters.fillPass.serializedProperties.Array.data[17].PropertyName
+    value: _PublicGapSize
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: backParameters.fillPass.serializedProperties.Array.data[17].Property.ColorValue.r
+    value: 1
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: backParameters.fillPass.serializedProperties.Array.data[17].Property.ColorValue.g
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: backParameters.fillPass.serializedProperties.Array.data[17].Property.ColorValue.b
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: backParameters.fillPass.serializedProperties.Array.data[17].Property.ColorValue.a
+    value: 0.2
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: backParameters.fillPass.serializedProperties.Array.data[17].Property.FloatValue
+    value: -0.152
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: backParameters.fillPass.serializedProperties.Array.data[17].Property.VectorValue.x
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: backParameters.fillPass.serializedProperties.Array.data[17].Property.VectorValue.y
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: backParameters.fillPass.serializedProperties.Array.data[17].Property.VectorValue.z
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: backParameters.fillPass.serializedProperties.Array.data[17].Property.VectorValue.w
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: backParameters.fillPass.serializedProperties.Array.data[17].Property.PropertyType
+    value: 3
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: backParameters.fillPass.serializedProperties.Array.data[18].PropertyName
+    value: _PublicSoftness
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: backParameters.fillPass.serializedProperties.Array.data[18].Property.ColorValue.r
+    value: 1
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: backParameters.fillPass.serializedProperties.Array.data[18].Property.ColorValue.g
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: backParameters.fillPass.serializedProperties.Array.data[18].Property.ColorValue.b
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: backParameters.fillPass.serializedProperties.Array.data[18].Property.ColorValue.a
+    value: 0.2
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: backParameters.fillPass.serializedProperties.Array.data[18].Property.FloatValue
+    value: 0.67
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: backParameters.fillPass.serializedProperties.Array.data[18].Property.VectorValue.x
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: backParameters.fillPass.serializedProperties.Array.data[18].Property.VectorValue.y
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: backParameters.fillPass.serializedProperties.Array.data[18].Property.VectorValue.z
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: backParameters.fillPass.serializedProperties.Array.data[18].Property.VectorValue.w
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: backParameters.fillPass.serializedProperties.Array.data[18].Property.PropertyType
+    value: 3
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: backParameters.fillPass.serializedProperties.Array.data[19].PropertyName
+    value: _PublicSpeed
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: backParameters.fillPass.serializedProperties.Array.data[19].Property.ColorValue.r
+    value: 1
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: backParameters.fillPass.serializedProperties.Array.data[19].Property.ColorValue.g
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: backParameters.fillPass.serializedProperties.Array.data[19].Property.ColorValue.b
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: backParameters.fillPass.serializedProperties.Array.data[19].Property.ColorValue.a
+    value: 0.2
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: backParameters.fillPass.serializedProperties.Array.data[19].Property.FloatValue
+    value: 1
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: backParameters.fillPass.serializedProperties.Array.data[19].Property.VectorValue.x
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: backParameters.fillPass.serializedProperties.Array.data[19].Property.VectorValue.y
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: backParameters.fillPass.serializedProperties.Array.data[19].Property.VectorValue.z
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: backParameters.fillPass.serializedProperties.Array.data[19].Property.VectorValue.w
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: backParameters.fillPass.serializedProperties.Array.data[19].Property.PropertyType
+    value: 2
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: frontParameters.enabled
+    value: 1
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: frontParameters.color.r
+    value: 1
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: frontParameters.color.g
+    value: 0.108900346
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: frontParameters.color.b
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: frontParameters.color.a
+    value: 1
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: frontParameters.dilateShift
+    value: 1
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: frontParameters.blurShift
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: frontParameters.fillPass.shader
+    value: 
+    objectReference: {fileID: 4800000, guid: 213090e563021044c92d1c27258b93f0, type: 3}
+  - target: {fileID: 0}
+    propertyPath: frontParameters.fillPass.serializedProperties.Array.size
+    value: 1
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: frontParameters.fillPass.serializedProperties.Array.data[0].PropertyName
+    value: _PublicColor
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: frontParameters.fillPass.serializedProperties.Array.data[0].Property.ColorValue.r
+    value: 0.25
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: frontParameters.fillPass.serializedProperties.Array.data[0].Property.ColorValue.g
+    value: 0.08137255
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: frontParameters.fillPass.serializedProperties.Array.data[0].Property.ColorValue.b
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: frontParameters.fillPass.serializedProperties.Array.data[0].Property.ColorValue.a
+    value: 0.6039216
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: frontParameters.fillPass.serializedProperties.Array.data[0].Property.FloatValue
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: frontParameters.fillPass.serializedProperties.Array.data[0].Property.VectorValue.x
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: frontParameters.fillPass.serializedProperties.Array.data[0].Property.VectorValue.y
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: frontParameters.fillPass.serializedProperties.Array.data[0].Property.VectorValue.z
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: frontParameters.fillPass.serializedProperties.Array.data[0].Property.VectorValue.w
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: frontParameters.fillPass.serializedProperties.Array.data[0].Property.PropertyType
+    value: 0
+    objectReference: {fileID: 0}
+  m_ExcludedProperties: []

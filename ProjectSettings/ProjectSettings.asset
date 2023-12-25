@@ -4,16 +4,16 @@
 PlayerSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 26
-  productGUID: 2badf06b509808d49a6229aeec03b2da
+  productGUID: 1b5316647b256d846b3febf12e220024
   AndroidProfiler: 0
   AndroidFilterTouchesWhenObscured: 0
   AndroidEnableSustainedPerformanceMode: 0
-  defaultScreenOrientation: 2
+  defaultScreenOrientation: 4
   targetDevice: 2
   useOnDemandResources: 0
   accelerometerFrequency: 60
-  companyName: MLA
-  productName: Jumping booble
+  companyName: DefaultCompany
+  productName: TestOUT
   defaultCursor: {fileID: 0}
   cursorHotspot: {x: 0, y: 0}
   m_SplashScreenBackgroundColor: {r: 0.13725491, g: 0.12156863, b: 0.1254902, a: 1}
@@ -135,7 +135,7 @@ PlayerSettings:
   vulkanEnableLateAcquireNextImage: 0
   vulkanEnableCommandBufferRecycling: 1
   loadStoreDebugModeEnabled: 0
-  bundleVersion: 1.1.0
+  bundleVersion: 0.1.0
   preloadedAssets: []
   metroInputSource: 0
   wsaTransparentSwapchain: 0
@@ -801,11 +801,27 @@ PlayerSettings:
   webGLMemoryGeometricGrowthStep: 0.2
   webGLMemoryGeometricGrowthCap: 96
   webGLPowerPreference: 2
-  scriptingDefineSymbols: {}
+  scriptingDefineSymbols:
+    Android: EPO_DOTWEEN;URP_OUTLINE
+    EmbeddedLinux: EPO_DOTWEEN;URP_OUTLINE
+    GameCoreScarlett: EPO_DOTWEEN;URP_OUTLINE
+    GameCoreXboxOne: EPO_DOTWEEN;URP_OUTLINE
+    LinuxHeadlessSimulation: EPO_DOTWEEN;URP_OUTLINE
+    Nintendo Switch: EPO_DOTWEEN;URP_OUTLINE
+    PS4: EPO_DOTWEEN;URP_OUTLINE
+    PS5: EPO_DOTWEEN;URP_OUTLINE
+    QNX: EPO_DOTWEEN;URP_OUTLINE
+    Stadia: EPO_DOTWEEN;URP_OUTLINE
+    Standalone: URP_OUTLINE
+    VisionOS: EPO_DOTWEEN;URP_OUTLINE
+    WebGL: EPO_DOTWEEN;URP_OUTLINE
+    Windows Store Apps: EPO_DOTWEEN;URP_OUTLINE
+    XboxOne: EPO_DOTWEEN;URP_OUTLINE
+    iPhone: EPO_DOTWEEN;URP_OUTLINE
+    tvOS: EPO_DOTWEEN;URP_OUTLINE
   additionalCompilerArguments: {}
   platformArchitecture: {}
-  scriptingBackend:
-    Android: 0
+  scriptingBackend: {}
   il2cppCompilerConfiguration: {}
   il2cppCodeGeneration: {}
   managedStrippingLevel:
@@ -834,14 +850,14 @@ PlayerSettings:
   apiCompatibilityLevelPerPlatform: {}
   m_RenderingPath: 1
   m_MobileRenderingPath: 1
-  metroPackageName: Jumping booble
+  metroPackageName: TestOUT
   metroPackageVersion: 
   metroCertificatePath: 
   metroCertificatePassword: 
   metroCertificateSubject: 
   metroCertificateIssuer: 
   metroCertificateNotAfter: 0000000000000000
-  metroApplicationDescription: Jumping booble
+  metroApplicationDescription: TestOUT
   wsaImages: {}
   metroTileShortName: 
   metroTileShowName: 0
@@ -910,11 +926,11 @@ PlayerSettings:
   apiCompatibilityLevel: 6
   activeInputHandler: 0
   windowsGamepadBackendHint: 0
-  cloudProjectId: d673a8c7-26eb-44a4-9d19-d7f229d25b24
+  cloudProjectId: 
   framebufferDepthMemorylessMode: 0
   qualitySettingsNames: []
-  projectName: Jumping booble
-  organizationId: minilabapps
+  projectName: 
+  organizationId: 
   cloudEnabled: 0
   legacyClampBlendShapeWeights: 0
   hmiLoadingImage: {fileID: 0}
