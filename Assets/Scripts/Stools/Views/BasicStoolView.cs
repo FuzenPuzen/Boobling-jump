@@ -1,4 +1,3 @@
-using System.Collections;
 using UnityEngine;
 using DG.Tweening;
 using System;
@@ -10,13 +9,11 @@ public class BasicStoolView : MonoBehaviour, IStoolView
     protected DG.Tweening.Sequence _moveSequence;
     public event Action CompleteMoveEvent;
 
-
     public virtual void ActivateView()
     {
         transform.localScale = Vector3.zero;
         StartMove();
     }
-
 
     public virtual void StartMove()
     {
@@ -35,6 +32,9 @@ public class BasicStoolView : MonoBehaviour, IStoolView
     public virtual void DeActivateView()
     {
         _moveSequence.Kill();
+        CompleteMoveEvent?.Invoke();
         transform.localPosition = Vector3.zero;
+        gameObject.SetActive(false);
     }
+
 }

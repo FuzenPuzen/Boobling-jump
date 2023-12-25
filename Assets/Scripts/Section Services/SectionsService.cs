@@ -8,7 +8,7 @@ public class SectionsService : Iservice
     private List<IStoolService> _stoolServices = new();
     private IFabric _fabric;
     private ITimerService _timerService;
-    private TiersService _tiersService;
+    private StoolPoolService _poolsService;
     private ScoreService _scoreService;
     private ConfigSO _configSO;
 
@@ -19,12 +19,14 @@ public class SectionsService : Iservice
     private int _changeSpeedScore = 200;
     private float _stoolSpawnTime = 1.5f;
     private float _minStoolSpawnTime = 1f;
+    private Vector3 _stoolStartPos = new(-10, 1.6f, 0);
+    private Vector3 _stoolPoolPos = new(0, 0, 30);
 
     public void ActivateService()
     {
         _scoreService.SetActionOnTierChange(AddTier, _configSO._difficultyLevels, _changeSpeedScore);
         _timerService.SetActionOnTimerComplete(_stoolSpawnTime, TakeStool);
-        _tiersService = new(_fabric.SpawnObjectAndGetType<TiersView>(new Vector3(0, 0, 30)));
+        _poolsService = new(_fabric.SpawnObjectAndGetType<StoolPoolView>(_stoolPoolPos));
         SetNewSection();
     }
 
@@ -53,7 +55,7 @@ public class SectionsService : Iservice
 
     private void SetNewSection()
     {
-        section = _tiersService.GetSectionFromTier(_tierId);        
+        section = _poolsService.GetSectionFromTier(_tierId);
     }
 
     private void TakeStool()
@@ -66,7 +68,7 @@ public class SectionsService : Iservice
             return;
         }
         var stool = section.transform.GetChild(stoolId);
-        stool.transform.position = new(-10, 1.6f, 0);
+        stool.transform.position = _stoolStartPos;
         if (stool.GetComponent<IStoolView>() != null)
         {           
             StoolService stoolService = new(stool.GetComponent<IStoolView>());

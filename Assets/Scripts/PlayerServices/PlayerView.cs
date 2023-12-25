@@ -22,7 +22,7 @@ public class PlayerView : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        _currentBehavior?.ColliderBehavior(other);
+        //_currentBehavior?.ColliderBehavior(other);
     }
 
     internal Transform GetPlayerModel()

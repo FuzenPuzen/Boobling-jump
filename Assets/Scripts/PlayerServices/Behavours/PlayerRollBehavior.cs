@@ -48,8 +48,7 @@ public class PlayerRollBehavior : IPlayerBehavior
     {
         if (other.gameObject.CompareTag("Enemy"))
         {
-            //other.gameObject.GetComponent<IStoolService>().ViewCompleteMove(); //эмуляция
-            MonoBehaviour.Destroy(other.gameObject);
+            other.gameObject.GetComponent<BasicStoolView>().DeActivateView(); //эмуляция
         }
     }
 

@@ -1,4 +1,3 @@
-using System;
 using Zenject;
 
 public class CoinsService : Iservice
