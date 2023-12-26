@@ -1,0 +1,28 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1c7de4e9377f1ab459ae2f8d27178a30, type: 3}
+  m_Name: PlayerRollSODatas
+  m_EditorClassIdentifier: 
+  dictionary:
+    _serializedList:
+    - Key: 5
+      Value: {fileID: 11400000, guid: b3aceee0f48536b40aa086d8a8ce7c5c, type: 2}
+    - Key: 6
+      Value: {fileID: 11400000, guid: 3d03fc6e0fd4b1a4bb1804b7ed84f6c3, type: 2}
+    - Key: 0
+      Value: {fileID: 11400000, guid: 5602af6e74ead5c4e898ee671a311baf, type: 2}
+    - Key: 1
+      Value: {fileID: 11400000, guid: ae5a3a221555ceb44ada1c3159cf7ce5, type: 2}
+    - Key: 2
+      Value: {fileID: 11400000, guid: f94d823473f5fb942aaedc33c18f502d, type: 2}
+    - Key: 4
+      Value: {fileID: 11400000, guid: b45746c9be61ef44e8c90cee15ab88ea, type: 2}
