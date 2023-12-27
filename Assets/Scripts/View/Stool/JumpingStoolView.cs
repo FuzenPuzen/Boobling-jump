@@ -11,11 +11,6 @@ public class JumpingStoolView : BasicStoolView
     private float _jumpHight = 2f;
 
 
-    public void Update()
-    {
-        Debug.Log(_canJump);
-    }
-
     public override void ActivateView()
     {
         _canJump = true;
@@ -51,8 +46,8 @@ public class JumpingStoolView : BasicStoolView
         _jumpSequence.Kill();
         _jumpSequence = DOTween.Sequence();
         _jumpSequence.Append(_child.DOLocalMoveY(_jumpHight, 0.5f).SetEase(Ease.OutCirc));
-        //_jumpSequence.Join(_child.DOLocalRotate(new(0, 0, 180), 0.5f, RotateMode.LocalAxisAdd).SetEase(Ease.Linear));       
-        _jumpSequence.Join(_child.DOScale(new Vector3(1, _startScale.y * 2f, 1), 0.5f).SetEase(Ease.Linear));       
+        //_jumpSequence.Join(_child.DOLocalRotate(new(0, 0, 180), 0.5f, RotateMode.LocalAxisAdd).SetEase(Ease.Linear));
+        _jumpSequence.Join(_child.DOScale(new Vector3(1, _startScale.y * 2f, 1), 0.5f).SetEase(Ease.Linear));
         _jumpSequence.Append(_child.DOLocalMoveY(0, 0.5f).SetEase(Ease.InCirc));
         //_jumpSequence.Join(_child.DOLocalRotate(new(0, 0, 180), 0.5f, RotateMode.LocalAxisAdd).SetEase(Ease.Linear));
         _jumpSequence.Join(_child.DOScale(_startScale, 0.5f).SetEase(Ease.Linear));
