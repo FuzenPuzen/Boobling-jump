@@ -4,13 +4,14 @@ using System;
 
 public class BasicStoolView : MonoBehaviour, IStoolView
 {
-    protected float _moveTarget = -5.5f;
+    protected float _moveTarget = -7f;
     protected float _movingTime = 2.5f;
-    protected DG.Tweening.Sequence _moveSequence;
+    protected Sequence _moveSequence;
     public event Action CompleteMoveEvent;
 
     public virtual void ActivateView()
     {
+        transform.rotation = Quaternion.identity;
         transform.localScale = Vector3.zero;
         StartMove();
     }
@@ -20,7 +21,9 @@ public class BasicStoolView : MonoBehaviour, IStoolView
         _moveSequence = DOTween.Sequence();
         _moveSequence.Append(transform.DOScale(Vector3.one , 0.25f));
         _moveSequence.Append(transform.DOMoveX(_moveTarget, _movingTime).SetEase(Ease.Linear));
-        _moveSequence.Append(transform.DOScale(Vector3.zero, 0.25f)).OnComplete(OnComplete);
+        _moveSequence.Insert(_movingTime,transform.DOLocalRotate(new(0, 0, 180), 1f, RotateMode.LocalAxisAdd).SetEase(Ease.Linear));
+        _moveSequence.Join(transform.DOMoveY(_moveTarget, 1f).SetEase(Ease.Linear)).OnComplete(OnComplete);
+        //_moveSequence.Join(transform.DOScale(Vector3.zero, 1f)).OnComplete(OnComplete);
     }
 
     public void OnComplete()

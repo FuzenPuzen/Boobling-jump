@@ -10,6 +10,7 @@ public class PlayerJumpBehavior : IPlayerBehavior
 
     private bool _isFall;
     private bool _canJump;
+    private bool _canFall;
     private Vector3 _startPos;
 
     private float period = 0.5f;
@@ -29,9 +30,11 @@ public class PlayerJumpBehavior : IPlayerBehavior
     private Sequence _looseSequence;
     private Sequence _landSequence;
     private Sequence _timerSequence;
+    private Sequence _fallTimerSequence;
 
     public PlayerJumpBehavior(PlayerView playerView)
     {
+        _canFall = true;
         _transform = playerView.GetComponent<Transform>();
         _playerModel = playerView.GetPlayerModel();
         _startPos = new(-4.8f, 1.24f, 0);
@@ -74,12 +77,23 @@ public class PlayerJumpBehavior : IPlayerBehavior
 
     public virtual void UpdateBehavior()
     {
-        if (Input.GetMouseButtonDown(0))
-            if (_canJump && !_isFall)
+        MonoBehaviour.print(_canFall);
+        if (Input.GetMouseButton(0))
+            if (_canJump && !_isFall && _canFall)
             {
                 Fall(FallCallback);
+                _canFall = false;
+                FallCDTimer();
             }
+        MonoBehaviour.print(_canFall);
     }
+    private void FallCDTimer()
+    {
+        _fallTimerSequence = DOTween.Sequence();
+        _fallTimerSequence.AppendInterval(0.25f);
+        _fallTimerSequence.OnComplete(() => _canFall = true);
+    }
+
 
     public virtual void StartBehavior()
     {

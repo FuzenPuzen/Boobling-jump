@@ -10,6 +10,7 @@ public class RocketStoolView : BasicStoolView
     {
         _defaultMovingTime = _movingTime;
         _movingTime /= 2;
+        _moveTarget -= 3;
         base.StartMove();
     }
 
