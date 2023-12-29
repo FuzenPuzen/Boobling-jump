@@ -13,7 +13,7 @@ public class StartState : IBaseState
     public void Constructor(
                         SectionsService sectionsService,
                         StateMachine statemachine,
-                        ScoreService scoreService,
+                        CurrentScoreService scoreService,
                         CoinsService coinsService,
                         CoinsPoolService coinsPoolService
                      )

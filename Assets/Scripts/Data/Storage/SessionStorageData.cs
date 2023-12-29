@@ -3,14 +3,14 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
-public class SessionStorageData : IPlayerBehaviourStorageData, ICoinsStoradeData
+public class SessionStorageData : IPlayerBehaviourStorageData, ICoinsStoradeData, ICurrentScoreStoradeData
 {
-    public ICoinData _coinsData;
+    private ICurrentScoreData _currentScoreData;
+    private ICoinData _coinsData;
+    private List<IPlayerBehaviourData> playerBehaviourDatas = new();
 
     public event Action<IPlayerBehaviourData> PlayerBehaviourChanged;
     public event Action<ICoinData> CoinDataChanged;
-
-    private List<IPlayerBehaviourData> playerBehaviourDatas = new();
 
     public IPlayerBehaviourData GetPlayerBehaviourData(Type type) 
     {
@@ -32,5 +32,16 @@ public class SessionStorageData : IPlayerBehaviourStorageData, ICoinsStoradeData
     public ICoinData GetCoinsSLData()
     {
         return _coinsData;
+    }
+
+    public ICurrentScoreData GetCurrentScoreData()
+    {
+        if (_currentScoreData == null) _currentScoreData = new CurrentScoreData();
+        return _currentScoreData;
+    }
+
+    public void SetCurrentScoreData(ICurrentScoreData newCurrentScore)
+    {
+        _currentScoreData = newCurrentScore;
     }
 }

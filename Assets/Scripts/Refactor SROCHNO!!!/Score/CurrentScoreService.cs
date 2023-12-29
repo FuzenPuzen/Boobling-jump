@@ -5,47 +5,38 @@ using System.Reflection;
 using UnityEngine;
 using Zenject;
 
-public class ScoreService : Iservice
+public class CurrentScoreService : Iservice
 {
-    private ScorePanelView _scoreView;
+    private CurrentScorePanelView _currentScoreView;
     private int[] _difficultyLevels;
     private int _difficultyLevel;
     private int _currentlevel;
     private int _scoreIncreaseStep;
     private IFabric _fabric;
+    private IScoreDataManager _scoreDataManager;
 
     private Action _ChangeTierAction;
-    private ScoreData _scoreData = new();
+    private CurrentScoreData _currentScoreData = new();
 
     [Inject]
-    public void Constructor(IFabric fabric)
+    public void Constructor(IFabric fabric, IScoreDataManager scoreDataManager)
     {
-        _fabric = fabric;       
+        _fabric = fabric;    
+        _scoreDataManager = scoreDataManager;
     }
 
     public void ActivateService()
     {
-        _scoreView = _fabric.SpawnObjectAndGetType<ScorePanelView>();
-        _scoreView.SetActionOnScoreChange(OnScoreChange);
-        _scoreView.SetScoreData(_scoreData);
+        _currentScoreData = _scoreDataManager.GetCurrentScoreData();
+        _currentScoreView = _fabric.SpawnObjectAndGetType<CurrentScorePanelView>();
+        _currentScoreView.SetActionOnScoreChange(OnScoreChange);
+        _currentScoreView.SetScoreData(_currentScoreData);
     }
 
-    public int GetScore()
+    private void OnScoreChange(int count)
     {
-        return _scoreData.Score;
-    }
-
-    public void SetActionOnTierChange(Action action, int[] difficultyLevels, int scoreIncreaseStep)
-    {
-        _scoreIncreaseStep = scoreIncreaseStep;
-        _ChangeTierAction = action;
-        _difficultyLevels = difficultyLevels;
-        _currentlevel = difficultyLevels[0];
-    }
-
-    private void OnScoreChange()
-    {
-        if (_scoreData.Score >= _currentlevel)
+        _scoreDataManager.AddCurrentScore(count);
+       /* if (_currentScoreData.Score >= _currentlevel)
         {
             if (_difficultyLevel < _difficultyLevels.Length - 1)
             {
@@ -58,12 +49,12 @@ public class ScoreService : Iservice
                 _ChangeTierAction.Invoke();
                 _currentlevel += _scoreIncreaseStep;
             }
-        }
+        }*/
     }
 
     public void HideView()
     {
-        _scoreView.HideView();
+        _currentScoreView.HideView();
     }
 
 }

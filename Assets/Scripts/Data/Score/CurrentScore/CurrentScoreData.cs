@@ -1,4 +1,4 @@
-public class ScoreData 
+public class CurrentScoreData : ICurrentScoreData
 {
     private int _score = 0;
 

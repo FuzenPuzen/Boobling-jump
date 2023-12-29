@@ -2,26 +2,26 @@ using System;
 using TMPro;
 using UnityEngine;
 
-public class ScorePanelView : MonoBehaviour
+public class CurrentScorePanelView : MonoBehaviour
 {
     [SerializeField] private TextMeshProUGUI _scoreText;
 
-    private Action _scoreChangedAction;
-    private ScoreData _scoreData;
+    private Action<int> _scoreChangedAction;
+    private CurrentScoreData _scoreData;
+    private int scoreStep = 1;
 
     void FixedUpdate()
     {
-        _scoreData.Score++;
-        _scoreChangedAction?.Invoke();
+        _scoreChangedAction?.Invoke(scoreStep);
         _scoreText.text = "Ñ÷¸ò\n" + _scoreData.Score.ToString();
     }
 
-    public void SetActionOnScoreChange(Action action)
+    public void SetActionOnScoreChange(Action<int> action)
     {
         _scoreChangedAction = action;
     }
 
-    public void SetScoreData(ScoreData scoreData)
+    public void SetScoreData(CurrentScoreData scoreData)
     {
         _scoreData = scoreData;
     }

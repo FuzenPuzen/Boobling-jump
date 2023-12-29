@@ -9,7 +9,7 @@ public class SectionsService : Iservice
     private IFabric _fabric;
     private ITimerService _timerService;
     private StoolPoolService _poolsService;
-    private ScoreService _scoreService;
+    private CurrentScoreService _scoreService;
     private ConfigSO _configSO;
 
     private GameObject section;
@@ -24,14 +24,14 @@ public class SectionsService : Iservice
 
     public void ActivateService()
     {
-        _scoreService.SetActionOnTierChange(AddTier, _configSO._difficultyLevels, _changeSpeedScore);
+        //_scoreService.SetActionOnTierChange(AddTier, _configSO._difficultyLevels, _changeSpeedScore);
         _timerService.SetActionOnTimerComplete(_stoolSpawnTime, TakeStool);
         _poolsService = new(_fabric.SpawnObjectAndGetType<StoolPoolView>(_stoolPoolPos));
         SetNewSection();
     }
 
     [Inject]
-    public void Constructor(IFabric fabric, ITimerService timerService, ScoreService scoreService, ConfigSO configSO)
+    public void Constructor(IFabric fabric, ITimerService timerService, CurrentScoreService scoreService, ConfigSO configSO)
     {
         _scoreService = scoreService;
         _fabric = fabric;
