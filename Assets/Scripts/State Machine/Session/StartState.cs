@@ -4,33 +4,32 @@ public class StartState : IBaseState
 {
     private StateMachine _statemachine;
     private Iservice _sectionsService;
-    private Iservice _scoreService;
+    private Iservice _currentScoreService;
+    private Iservice _recordScoreService;
     private Iservice _coinsPoolService;
 
-    private Iservice _coinsService;
 
     [Inject]
     public void Constructor(
                         SectionsService sectionsService,
                         StateMachine statemachine,
-                        CurrentScoreService scoreService,
-                        CoinsService coinsService,
-                        CoinsPoolService coinsPoolService
+                        CurrentScorePanelService scoreService,
+                        CoinsPoolService coinsPoolService,
+                        RecordScorePanelService recordScoreService
                      )
     {
         _coinsPoolService = coinsPoolService;
-        _coinsService = coinsService;
-        _scoreService = scoreService;
+        _currentScoreService = scoreService;
         _sectionsService = sectionsService;
         _statemachine = statemachine;
+        _recordScoreService = recordScoreService;
     }
 
     public void Enter()
     {
-        _scoreService.ActivateService();
+        _currentScoreService.ActivateService();
         _sectionsService.ActivateService();
         _coinsPoolService.ActivateService();
-        _coinsService.ActivateService();
         _statemachine.SetState<GameState>();
     }
 

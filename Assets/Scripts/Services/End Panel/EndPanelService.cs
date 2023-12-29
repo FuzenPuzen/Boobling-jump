@@ -5,13 +5,13 @@ public class EndPanelService : Iservice
 {
 
     private EndPanelView _endPanelview;
-    private CurrentScoreService _scoreService;
-    private RecordService _recordService;
+    private CurrentScorePanelService _scoreService;
+    private RecordScorePanelService _recordService;
     private IFabric _fabric;
     private IScoreDataManager _scoreDataManager;
 
     [Inject]
-    public void Constructor(IFabric fabric, IScoreDataManager scoreDataManager, CurrentScoreService scoreService, RecordService recordService)
+    public void Constructor(IFabric fabric, IScoreDataManager scoreDataManager, CurrentScorePanelService scoreService, RecordScorePanelService recordService)
     {
         _recordService = recordService;
         _scoreService = scoreService;

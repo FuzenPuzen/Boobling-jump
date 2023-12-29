@@ -6,16 +6,24 @@ using Zenject;
 
 public class ScoreDataManager : IScoreDataManager
 {
-    public event Action<int> currentScoreMoreRecord;
+    public event Action<int> RecordChanged;
 
     private CurrentScoreData _currentScoreData;
-    private ICurrentScoreStoradeData _currentScoreStoradeData;
+    private RecordScoreSLData _recordScoreSLData;
+    private ICurrentScoreStorageData _currentScoreStoradeData;
+    private IRecordScoreStorageData _recordScoreStoradeData;
 
     [Inject]
-    public void Constructor(ICurrentScoreStoradeData currentScoreStoradeData)
+    public void Constructor(
+        ICurrentScoreStorageData currentScoreStoradeData,
+        IRecordScoreStorageData recordScoreStoradeData
+        )
     {
         _currentScoreStoradeData = currentScoreStoradeData;
+        _recordScoreStoradeData = recordScoreStoradeData;
         _currentScoreData = (CurrentScoreData)_currentScoreStoradeData.GetCurrentScoreData();
+        _recordScoreSLData = (RecordScoreSLData)_recordScoreStoradeData.GetRecordScoreSLData();
+       
     }
 
     public int GetCurrentScore()
@@ -25,17 +33,23 @@ public class ScoreDataManager : IScoreDataManager
 
     public int GetRecordScore()
     {
-        return 0;
+        return _recordScoreSLData.Score;
     }
 
     public void AddCurrentScore(int count)
     {
         _currentScoreData.Score += count;
         _currentScoreStoradeData.SetCurrentScoreData(_currentScoreData);
+        CheckCurrentScoreForNewRecord();
     }
 
-    public CurrentScoreData GetCurrentScoreData()
+    private void CheckCurrentScoreForNewRecord()
     {
-        return _currentScoreData;
+        if (_currentScoreData.Score > _recordScoreSLData.Score)
+        {
+            _recordScoreSLData.Score = _currentScoreData.Score;
+            _recordScoreStoradeData.SetRecordScoreSLData(_recordScoreSLData);
+            RecordChanged?.Invoke(_recordScoreSLData.Score);
+        }
     }
 }

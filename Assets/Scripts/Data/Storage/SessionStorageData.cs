@@ -3,23 +3,25 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
-public class SessionStorageData : IPlayerBehaviourStorageData, ICoinsStoradeData, ICurrentScoreStoradeData
+public class SessionStorageData : IPlayerBehaviourStorageData, ICoinsStorageData, ICurrentScoreStorageData, IRecordScoreStorageData
 {
     private ICurrentScoreData _currentScoreData;
     private ICoinData _coinsData;
-    private List<IPlayerBehaviourData> playerBehaviourDatas = new();
+    private List<IPlayerBehaviourData> _playerBehaviourDatas = new();
+    private IRecordScoreSLData _recordScoreSLData;
 
     public event Action<IPlayerBehaviourData> PlayerBehaviourChanged;
     public event Action<ICoinData> CoinDataChanged;
+    public event Action<IRecordScoreSLData> RecordDataSlChanged;
 
     public IPlayerBehaviourData GetPlayerBehaviourData(Type type) 
     {
-        return playerBehaviourDatas.Find(x => x.GetType() == type);
+        return _playerBehaviourDatas.Find(x => x.GetType() == type);
     }
 
     public void SetPlayerBehaviour<T>(T playerBehaviour) where T : IPlayerBehaviourData
     {
-        playerBehaviourDatas.Add(playerBehaviour);
+        _playerBehaviourDatas.Add(playerBehaviour);
         PlayerBehaviourChanged?.Invoke(playerBehaviour);
     }
 
@@ -36,12 +38,23 @@ public class SessionStorageData : IPlayerBehaviourStorageData, ICoinsStoradeData
 
     public ICurrentScoreData GetCurrentScoreData()
     {
-        if (_currentScoreData == null) _currentScoreData = new CurrentScoreData();
+        _currentScoreData ??= new CurrentScoreData();
         return _currentScoreData;
     }
 
-    public void SetCurrentScoreData(ICurrentScoreData newCurrentScore)
+    public void SetCurrentScoreData(ICurrentScoreData newCurrentScoreData)
     {
-        _currentScoreData = newCurrentScore;
+        _currentScoreData = newCurrentScoreData;
+    }
+
+    public IRecordScoreSLData GetRecordScoreSLData()
+    {
+        return _recordScoreSLData;
+    }
+
+    public void SetRecordScoreSLData(IRecordScoreSLData newRecordScoreData)
+    {
+        _recordScoreSLData = newRecordScoreData;
+        RecordDataSlChanged?.Invoke(newRecordScoreData);
     }
 }

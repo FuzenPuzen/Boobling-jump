@@ -3,12 +3,12 @@ using Zenject;
 
 public class CoinDataManager : ICoinDataManager
 {
-    private ICoinsStoradeData _coinsStoradeData;
+    private ICoinsStorageData _coinsStoradeData;
     private CoinsSLData _coinsSLData;
     public event Action<int> coinsChanged;
 
     [Inject]
-    public void constructor(ICoinsStoradeData coinsStoradeData)
+    public void constructor(ICoinsStorageData coinsStoradeData)
     {
         _coinsStoradeData = coinsStoradeData;
         _coinsSLData = (CoinsSLData)_coinsStoradeData.GetCoinsSLData();

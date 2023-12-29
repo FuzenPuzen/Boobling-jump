@@ -4,15 +4,15 @@ using Zenject;
 
 public class EndGameState : IBaseState
 {
-    private CurrentScoreService _scoreService;
-    private RecordService _recordService;
+    private CurrentScorePanelService _scoreService;
+    private RecordScorePanelService _recordService;
     private EndPanelService _endPanelService;
     private IScoreDataManager _scoreDataManager;
 
     [Inject]
     public void Constructor(
-        CurrentScoreService scoreService,
-        RecordService recordService,
+        CurrentScorePanelService scoreService,
+        RecordScorePanelService recordService,
         EndPanelService endPanelService,
         IScoreDataManager scoreDataManager
         )
@@ -27,7 +27,6 @@ public class EndGameState : IBaseState
     {
         _endPanelService.ActivateService();
         _endPanelService.SetActionOnRestartButtonClick(RestartScene);
-        _recordService.SetRecord(_scoreDataManager.GetCurrentScore());
         _scoreService.HideView();
         _recordService.HideView();       
     }

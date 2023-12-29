@@ -9,7 +9,7 @@ public class SectionsService : Iservice
     private IFabric _fabric;
     private ITimerService _timerService;
     private StoolPoolService _poolsService;
-    private CurrentScoreService _scoreService;
+    private CurrentScorePanelService _scoreService;
     private ConfigSO _configSO;
 
     private GameObject section;
@@ -31,7 +31,7 @@ public class SectionsService : Iservice
     }
 
     [Inject]
-    public void Constructor(IFabric fabric, ITimerService timerService, CurrentScoreService scoreService, ConfigSO configSO)
+    public void Constructor(IFabric fabric, ITimerService timerService, CurrentScorePanelService scoreService, ConfigSO configSO)
     {
         _scoreService = scoreService;
         _fabric = fabric;

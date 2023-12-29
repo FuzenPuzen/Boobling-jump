@@ -5,9 +5,8 @@ using UnityEngine;
 
 public interface IScoreDataManager
 {
-    public event Action<int> currentScoreMoreRecord;
+    public event Action<int> RecordChanged;
     public int GetCurrentScore();
     public int GetRecordScore();
     public void AddCurrentScore(int count);
-    CurrentScoreData GetCurrentScoreData();
 }

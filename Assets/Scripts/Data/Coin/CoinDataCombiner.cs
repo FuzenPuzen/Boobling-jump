@@ -4,12 +4,12 @@ using Zenject;
 
 public class CoinDataCombiner 
 {
-    ICoinsStoradeData _coinsStoradeData;
+    ICoinsStorageData _coinsStoradeData;
     private const string _coinsSLDataKey = "coinsSLDataKey";
     CoinsSLData _coinsSLData;
 
     [Inject]
-    public void Constructor(ICoinsStoradeData coinsStoradeData)
+    public void Constructor(ICoinsStorageData coinsStoradeData)
     {
         _coinsStoradeData = coinsStoradeData;
         _coinsStoradeData.CoinDataChanged += SaveCoinData;

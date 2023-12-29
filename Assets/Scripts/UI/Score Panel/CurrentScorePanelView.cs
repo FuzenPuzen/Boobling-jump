@@ -7,13 +7,13 @@ public class CurrentScorePanelView : MonoBehaviour
     [SerializeField] private TextMeshProUGUI _scoreText;
 
     private Action<int> _scoreChangedAction;
-    private CurrentScoreData _scoreData;
+    private int _score;
     private int scoreStep = 1;
 
     void FixedUpdate()
     {
         _scoreChangedAction?.Invoke(scoreStep);
-        _scoreText.text = "Ñ÷¸ò\n" + _scoreData.Score.ToString();
+        _scoreText.text = "Ñ÷¸ò\n" + _score.ToString();
     }
 
     public void SetActionOnScoreChange(Action<int> action)
@@ -21,9 +21,9 @@ public class CurrentScorePanelView : MonoBehaviour
         _scoreChangedAction = action;
     }
 
-    public void SetScoreData(CurrentScoreData scoreData)
+    public void SetScoreData(int score)
     {
-        _scoreData = scoreData;
+        _score = score;
     }
 
     public void HideView()

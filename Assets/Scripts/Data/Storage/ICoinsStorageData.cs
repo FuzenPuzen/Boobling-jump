@@ -1,6 +1,6 @@
 using System;
 
-public interface ICoinsStoradeData 
+public interface ICoinsStorageData 
 {
     public event Action<ICoinData> CoinDataChanged;
     public void SetCoinsSLData(ICoinData coinsSLData);

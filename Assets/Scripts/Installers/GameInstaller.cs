@@ -13,11 +13,14 @@ public class GameInstaller : MonoInstaller
 
         Container.Bind(
             typeof(IPlayerBehaviourStorageData),
-            typeof(ICoinsStoradeData),
-            typeof(ICurrentScoreStoradeData)
+            typeof(ICoinsStorageData),
+            typeof(ICurrentScoreStorageData),
+            typeof(IRecordScoreStorageData)
             ).To(typeof(SessionStorageData)).AsSingle();
+
         Container.Bind<PlayerBehaviourDataCombiner>().AsSingle().NonLazy();
         Container.Bind<CoinDataCombiner>().AsSingle().NonLazy();
+        Container.Bind<RecordScoreDataCombiner>().AsSingle().NonLazy();
 
 
         Container.Bind<ICoinDataManager>().To<CoinDataManager>().AsSingle();
@@ -28,8 +31,8 @@ public class GameInstaller : MonoInstaller
 
 
         Container.Bind<ITimerService>().To<TimerService>().AsSingle();
-        Container.Bind<RecordService>().AsSingle();
-        Container.Bind<CurrentScoreService>().AsSingle();
+        Container.Bind<RecordScorePanelService>().AsSingle();
+        Container.Bind<CurrentScorePanelService>().AsSingle();
         Container.Bind<TutorialPanelService>().AsSingle();
         Container.Bind<EndPanelService>().AsSingle();
 
