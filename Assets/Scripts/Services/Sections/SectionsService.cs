@@ -1,5 +1,4 @@
 using System.Collections.Generic;
-using System.Linq;
 using UnityEngine;
 using Zenject;
 
@@ -9,8 +8,6 @@ public class SectionsService : Iservice
     private IFabric _fabric;
     private ITimerService _timerService;
     private StoolPoolService _poolsService;
-    private CurrentScorePanelService _scoreService;
-    private ConfigSO _configSO;
 
     private GameObject section;
     private int stoolId = 0;
@@ -24,34 +21,18 @@ public class SectionsService : Iservice
 
     public void ActivateService()
     {
-        //_scoreService.SetActionOnTierChange(AddTier, _configSO._difficultyLevels, _changeSpeedScore);
         _timerService.SetActionOnTimerComplete(_stoolSpawnTime, TakeStool);
         _poolsService = new(_fabric.SpawnObjectAndGetType<StoolPoolView>(_stoolPoolPos));
         SetNewSection();
     }
 
     [Inject]
-    public void Constructor(IFabric fabric, ITimerService timerService, CurrentScorePanelService scoreService, ConfigSO configSO)
+    public void Constructor(IFabric fabric, ITimerService timerService)
     {
-        _scoreService = scoreService;
         _fabric = fabric;
         _timerService = timerService;
-        _configSO = configSO;
     }
 
-    private void AddTier()
-    {
-        if (_tierId < _configSO._difficultyLevels.Count())
-        {
-            _tierId++;
-            return;
-        }
-        if (_stoolSpawnTime > _minStoolSpawnTime)
-        {
-            _stoolSpawnTime -= 0.1f;
-        }
-
-    }
 
     private void SetNewSection()
     {
