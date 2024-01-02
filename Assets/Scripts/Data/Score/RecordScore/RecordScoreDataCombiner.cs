@@ -4,9 +4,9 @@ using Zenject;
 
 public class RecordScoreDataCombiner
 {
-    IRecordScoreStorageData _recordScoreStoradeData;
+    private IRecordScoreStorageData _recordScoreStoradeData;
     private const string _recordSLDataKey = "RecordKey";
-    RecordScoreSLData _recordScoreSLData;
+    private RecordScoreSLData _recordScoreSLData;
 
     [Inject]
     public void Constructor(IRecordScoreStorageData recordScoreStoradeData)

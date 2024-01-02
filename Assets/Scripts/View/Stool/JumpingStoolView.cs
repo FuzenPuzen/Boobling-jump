@@ -6,7 +6,7 @@ public class JumpingStoolView : BasicStoolView
 {
     [SerializeField] private Transform _child;
     private Vector3 _startScale;
-    Sequence _jumpSequence;
+    private Sequence _jumpSequence;
     private bool _canJump;
     private float _jumpHight = 2f;
 

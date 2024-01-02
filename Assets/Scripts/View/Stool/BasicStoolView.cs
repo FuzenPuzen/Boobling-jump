@@ -13,7 +13,7 @@ public class BasicStoolView : MonoBehaviour, IStoolView
     {
         transform.rotation = Quaternion.identity;
         transform.localScale = Vector3.zero;
-        StartMove();
+        //StartMove();
     }
 
     public virtual void StartMove()
