@@ -25,6 +25,7 @@ public class GameInstaller : MonoInstaller
 
         Container.Bind<ICoinDataManager>().To<CoinDataManager>().AsSingle();
         Container.Bind<IScoreDataManager>().To<ScoreDataManager>().AsSingle();
+        Container.Bind<IRoomViewManager>().To<RoomViewManager>().AsSingle().NonLazy();
         Container.Bind<CoinsPoolService>().AsSingle();
         Container.Bind<CoinsService>().AsSingle();
         Container.Bind<CoinsPanelService>().AsSingle();

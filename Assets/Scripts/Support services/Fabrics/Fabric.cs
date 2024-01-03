@@ -21,11 +21,17 @@ public class Fabric : IFabric
         return obj.GetComponent<T>();
     }
 
-    public T SpawnObjectAndGetType<T>(Vector3 position)
+    public T SpawnObjectAndGetType<T>(Vector3 position, Transform parent = null)
     {
         var obj = MonoBehaviour.Instantiate(_prefabsStorageService.GetPrefabByType<T>(),
                                     position,
-                                    Quaternion.identity);
+                                    Quaternion.identity, parent);
+        return obj.GetComponent<T>();
+    }
+
+    public T SpawnObjectAndGetType<T>(Transform parent)
+    {
+        var obj = MonoBehaviour.Instantiate(_prefabsStorageService.GetPrefabByType<T>(), parent);
         return obj.GetComponent<T>();
     }
 }

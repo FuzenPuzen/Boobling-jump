@@ -4,14 +4,14 @@ using Zenject;
 public class RecordScorePanelService: Iservice
 {
     private IScoreDataManager _scoreDataManager;
+    private IRoomViewManager _roomViewManager;
     private RecordScorePanelView _recordView;
     private int _recordScore;
     private IFabric _fabric;
-    private Vector3 spawnPanelPos = new(6.75f, 3.75f, 2.75f);
 
     public void ActivateService()
     {
-        _recordView = _fabric.SpawnObjectAndGetType<RecordScorePanelView>(spawnPanelPos);
+        _recordView = _fabric.SpawnObjectAndGetType<RecordScorePanelView>(_roomViewManager.GetRecordScorePos());
         _scoreDataManager.RecordChanged += UpdateView;
         _recordScore = _scoreDataManager.GetRecordScore();
         UpdateView(_recordScore);
@@ -20,10 +20,11 @@ public class RecordScorePanelService: Iservice
     [Inject]
     public void Constructor(
         IFabric fabric,
-        IScoreDataManager scoreDataManager)
+        IScoreDataManager scoreDataManager, IRoomViewManager roomViewManager)
     {
         _fabric = fabric;
         _scoreDataManager = scoreDataManager;
+        _roomViewManager = roomViewManager;
     }
 
     public void HideView()
