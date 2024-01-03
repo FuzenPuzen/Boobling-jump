@@ -4,6 +4,7 @@ using Zenject;
 public class ScoreDataManager : IScoreDataManager
 {
     public event Action<int> RecordChanged;
+    public event Action<int> CurrentScoreChanged;
 
     private CurrentScoreData _currentScoreData;
     private RecordScoreSLData _recordScoreSLData;
@@ -37,6 +38,7 @@ public class ScoreDataManager : IScoreDataManager
     {
         _currentScoreData.Score += count;
         _currentScoreStoradeData.SetCurrentScoreData(_currentScoreData);
+        CurrentScoreChanged?.Invoke(_currentScoreData.Score);
         CheckCurrentScoreForNewRecord();
     }
 

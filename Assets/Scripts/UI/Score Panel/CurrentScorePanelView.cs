@@ -13,7 +13,6 @@ public class CurrentScorePanelView : MonoBehaviour
     void FixedUpdate()
     {
         _scoreChangedAction?.Invoke(scoreStep);
-        _scoreText.text = "Ñ÷¸ò\n" + _score.ToString();
     }
 
     public void SetActionOnScoreChange(Action<int> action)
@@ -21,14 +20,14 @@ public class CurrentScorePanelView : MonoBehaviour
         _scoreChangedAction = action;
     }
 
-    public void SetScoreData(int score)
-    {
-        _score = score;
-    }
-
     public void HideView()
     {
         gameObject.SetActive(false);
     }
 
+    public void UpdateView(int score)
+    {
+        _score = score;
+        _scoreText.text = "Ñ÷¸ò\n" + _score.ToString();
+    }
 }

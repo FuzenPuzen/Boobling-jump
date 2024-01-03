@@ -1,3 +1,4 @@
+using UnityEngine;
 using Zenject;
 
 public class RecordScorePanelService: Iservice
@@ -9,7 +10,11 @@ public class RecordScorePanelService: Iservice
 
     public void ActivateService()
     {
-        
+        MonoBehaviour.print("TEST ACTIVATE");
+        _recordView = _fabric.SpawnObjectAndGetType<RecordScorePanelView>();
+        _scoreDataManager.RecordChanged += UpdateView;
+        _recordScore = _scoreDataManager.GetRecordScore();
+        UpdateView(_recordScore);
     }
 
     [Inject]
@@ -17,11 +22,8 @@ public class RecordScorePanelService: Iservice
         IFabric fabric,
         IScoreDataManager scoreDataManager)
     {
-        _recordView = fabric.SpawnObjectAndGetType<RecordScorePanelView>();
+        _fabric = fabric;
         _scoreDataManager = scoreDataManager;
-        _scoreDataManager.RecordChanged += UpdateView;
-        _recordScore = _scoreDataManager.GetRecordScore();
-        UpdateView(_recordScore);
     }
 
     public void HideView()

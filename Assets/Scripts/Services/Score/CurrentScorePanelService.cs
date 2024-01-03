@@ -25,7 +25,8 @@ public class CurrentScorePanelService : Iservice
         _currentScore = _scoreDataManager.GetCurrentScore();
         _currentScoreView = _fabric.SpawnObjectAndGetType<CurrentScorePanelView>();
         _currentScoreView.SetActionOnScoreChange(OnScoreChange);
-        _currentScoreView.SetScoreData(_currentScore);
+        _scoreDataManager.CurrentScoreChanged += UpdateView;
+        UpdateView(_currentScore);
     }
 
     private void OnScoreChange(int count)
@@ -36,6 +37,11 @@ public class CurrentScorePanelService : Iservice
     public void HideView()
     {
         _currentScoreView.HideView();
+    }
+
+    private void UpdateView(int record)
+    {
+        _currentScoreView.UpdateView(record);
     }
 
 }

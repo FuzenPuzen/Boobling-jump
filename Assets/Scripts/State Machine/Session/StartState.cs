@@ -28,6 +28,7 @@ public class StartState : IBaseState
     public void Enter()
     {
         _currentScoreService.ActivateService();
+        _recordScoreService.ActivateService();
         _sectionsService.ActivateService();
         _coinsPoolService.ActivateService();
         _statemachine.SetState<GameState>();
