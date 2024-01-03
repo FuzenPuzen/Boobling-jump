@@ -4,39 +4,53 @@ using System;
 
 public class BasicStoolView : MonoBehaviour, IStoolView
 {
-    protected float _moveTarget = -7f;
-    protected float _movingTime = 2.5f;
     protected Sequence _moveSequence;
+    protected Sequence _fallSequence;
+    protected Vector3 _startPos;
     public event Action CompleteMoveEvent;
 
     public virtual void ActivateView()
     {
-        transform.rotation = Quaternion.identity;
-        transform.localScale = Vector3.zero;
-        //StartMove();
+        _startPos = transform.position;
+        _moveSequence = DOTween.Sequence();
+        _moveSequence.Append(transform.DOScale(Vector3.one, 0.25f));
     }
 
-    public virtual void StartMove()
+    public void Fall()
     {
-        _moveSequence = DOTween.Sequence();
-        _moveSequence.Append(transform.DOScale(Vector3.one , 0.25f));
-        _moveSequence.Append(transform.DOMoveX(_moveTarget, _movingTime).SetEase(Ease.Linear));
-        _moveSequence.Insert(_movingTime,transform.DOLocalRotate(new(0, 0, 180), 1f, RotateMode.LocalAxisAdd).SetEase(Ease.Linear));
-        _moveSequence.Join(transform.DOMoveY(_moveTarget, 1f).SetEase(Ease.Linear)).OnComplete(OnComplete);
+        _fallSequence = DOTween.Sequence();
+        _fallSequence.Append(transform.DOLocalRotate(new(0, 0, 180), 1f, RotateMode.LocalAxisAdd).SetEase(Ease.Linear));
+        _fallSequence.Join(transform.DOMoveY(-10, 1f)).OnComplete(OnComplete);
     }
 
     public void OnComplete()
     {       
         CompleteMoveEvent?.Invoke();
+        SetStartValues();
         DeActivateView();
     }
 
     public virtual void DeActivateView()
     {
-        _moveSequence.Kill();
-        CompleteMoveEvent?.Invoke();
-        transform.localPosition = Vector3.zero;
-        gameObject.SetActive(false);
+        //gameObject.SetActive(false); //Под вопросом
+    }
+
+    public virtual void SetStartValues()
+    {
+        transform.position = _startPos;
+        transform.rotation = Quaternion.identity;
+        transform.localScale = Vector3.zero;
+    }
+
+
+    private void OnTriggerEnter(Collider other)
+    {
+        ActivateView();
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        Fall();
     }
 
 }

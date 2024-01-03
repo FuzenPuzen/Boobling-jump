@@ -31,7 +31,6 @@ public class SectionsService : Iservice
         _timerService = timerService;
     }
 
-
     private void SetNewSection()
     {
         section = _poolsService.GetSectionFromTier(_tierId);
