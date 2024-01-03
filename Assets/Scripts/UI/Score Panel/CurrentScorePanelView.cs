@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class CurrentScorePanelView : MonoBehaviour
 {
-    [SerializeField] private TextMeshProUGUI _scoreText;
+    [SerializeField] private TMP_Text _scoreText;
 
     private Action<int> _scoreChangedAction;
     private int _score;
@@ -28,6 +28,6 @@ public class CurrentScorePanelView : MonoBehaviour
     public void UpdateView(int score)
     {
         _score = score;
-        _scoreText.text = "Ñ÷¸ò\n" + _score.ToString();
+        _scoreText.text = "Ñ×¨Ò\n" + _score.ToString();
     }
 }

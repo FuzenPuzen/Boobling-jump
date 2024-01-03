@@ -10,6 +10,7 @@ public class CurrentScorePanelService : Iservice
     private CurrentScorePanelView _currentScoreView;
     private IFabric _fabric;
     private IScoreDataManager _scoreDataManager;
+    private Vector3 spawnPanelPos = new(6.75f , 3.75f , 0f);
 
     private int _currentScore;
 
@@ -23,7 +24,7 @@ public class CurrentScorePanelService : Iservice
     public void ActivateService()
     {
         _currentScore = _scoreDataManager.GetCurrentScore();
-        _currentScoreView = _fabric.SpawnObjectAndGetType<CurrentScorePanelView>();
+        _currentScoreView = _fabric.SpawnObjectAndGetType<CurrentScorePanelView>(spawnPanelPos);
         _currentScoreView.SetActionOnScoreChange(OnScoreChange);
         _scoreDataManager.CurrentScoreChanged += UpdateView;
         UpdateView(_currentScore);

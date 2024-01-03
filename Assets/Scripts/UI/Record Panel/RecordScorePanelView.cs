@@ -4,11 +4,11 @@ using UnityEngine;
 public class RecordScorePanelView : MonoBehaviour
 {
 
-    [SerializeField] private TextMeshProUGUI _recordText;
+    [SerializeField] private TMP_Text _recordText;
 
     public void UpdateView(int record)
     {
-        _recordText.text = record.ToString();
+        _recordText.text = "ÐÅÊÎÐÄ\n" + record.ToString();
     }
     internal void HideView()
     {

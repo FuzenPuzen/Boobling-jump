@@ -7,11 +7,11 @@ public class RecordScorePanelService: Iservice
     private RecordScorePanelView _recordView;
     private int _recordScore;
     private IFabric _fabric;
+    private Vector3 spawnPanelPos = new(6.75f, 3.75f, 2.75f);
 
     public void ActivateService()
     {
-        MonoBehaviour.print("TEST ACTIVATE");
-        _recordView = _fabric.SpawnObjectAndGetType<RecordScorePanelView>();
+        _recordView = _fabric.SpawnObjectAndGetType<RecordScorePanelView>(spawnPanelPos);
         _scoreDataManager.RecordChanged += UpdateView;
         _recordScore = _scoreDataManager.GetRecordScore();
         UpdateView(_recordScore);
