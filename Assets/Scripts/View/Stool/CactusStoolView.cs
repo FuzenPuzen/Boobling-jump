@@ -5,12 +5,11 @@ using DG.Tweening;
 
 public class CactusStoolView : BasicStoolView
 {
-
     private float _growInterval;
 
     public override void ActivateView()
     {
-        _growInterval = _movingTime / (transform.GetChild(0).transform.childCount + 1);
+        _growInterval = 5f / (transform.GetChild(0).transform.childCount + 1);
         StartCoroutine(GrowCD());
         base.ActivateView();
     }
@@ -29,14 +28,13 @@ public class CactusStoolView : BasicStoolView
         }
     }
 
-    public override void DeActivateView()
+    public override void SetStartValues()
     {
         foreach (Transform piece in transform.GetChild(0).transform)
         {
             piece.localScale = Vector3.zero;
         }
-        base.DeActivateView();
+        base.SetStartValues();
     }
-
 
 }

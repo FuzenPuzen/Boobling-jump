@@ -14,9 +14,9 @@ public class StoolService : IStoolService, Iservice
         _stoolView.CompleteMoveEvent += ViewCompleteMove;
     }
 
-
     public void ActivateService()
     {
+        
         _stoolView.ActivateView();
     }
 

@@ -1,7 +1,6 @@
 using UnityEngine;
 using DG.Tweening;
 using System.Collections.Generic;
-using UnityEngine.UIElements;
 
 public class PlayerJumpBehavior : IPlayerBehavior
 {

@@ -1,16 +1,20 @@
-
 public class SectionViewService 
 {
     private SectionView _sectionView;
 
-    public void SetSectionView()
+    public void SetSectionView(SectionView sectionView)
     {
-        _sectionView = new SectionView();
+        _sectionView = sectionView;
     }
 
-    public void SetValuesToView()
+    public void SetValuesToView(float movingTime, float endPosX)
     {
-        
+        _sectionView.SetValues(movingTime, endPosX);
+    }
+
+    public void ActivateView()
+    {
+        _sectionView.ActivateView();
     }
     
 }

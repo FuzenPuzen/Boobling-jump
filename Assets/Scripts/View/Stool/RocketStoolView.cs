@@ -5,20 +5,15 @@ using UnityEngine;
 
 public class RocketStoolView : BasicStoolView
 {
-    private float _defaultMovingTime;
-    public override void StartMove()
+    public override void ActivateView()
     {
-        _defaultMovingTime = _movingTime;
-        _movingTime /= 2;
-        _moveTarget -= 3;
-        base.StartMove();
+        base.ActivateView();
+        StartMove();
     }
 
-
-    public override void DeActivateView()
+    public void StartMove()
     {
-        _movingTime = _defaultMovingTime;
-        base.DeActivateView();
+
     }
 
 }

@@ -5,10 +5,10 @@ public class SectionView : MonoBehaviour
 {
 
     private Sequence _moveSequence;
-    private float _endPosX = -22f;
+    private float _endPosX = -42f;
     private float _movingTime = 5f;
 
-    private void Start()
+    public void ActivateView()
     {
         StartMove();
     }
@@ -17,6 +17,12 @@ public class SectionView : MonoBehaviour
     {
         _moveSequence = DOTween.Sequence();
         _moveSequence.Append(transform.DOMoveX(_endPosX, _movingTime).SetEase(Ease.Linear));
+    }
+
+    public void SetValues(float movingTime, float endPosX)
+    {
+        _movingTime = movingTime;
+        _endPosX = endPosX;       
     }
 
     private void OnTriggerExit(Collider other)
