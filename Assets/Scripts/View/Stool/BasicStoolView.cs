@@ -23,7 +23,6 @@ public class BasicStoolView : MonoBehaviour, IStoolView
         _moveSequence.Append(transform.DOMoveX(_moveTarget, _movingTime).SetEase(Ease.Linear));
         _moveSequence.Insert(_movingTime,transform.DOLocalRotate(new(0, 0, 180), 1f, RotateMode.LocalAxisAdd).SetEase(Ease.Linear));
         _moveSequence.Join(transform.DOMoveY(_moveTarget, 1f).SetEase(Ease.Linear)).OnComplete(OnComplete);
-        //_moveSequence.Join(transform.DOScale(Vector3.zero, 1f)).OnComplete(OnComplete);
     }
 
     public void OnComplete()
