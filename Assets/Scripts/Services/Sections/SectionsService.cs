@@ -13,9 +13,7 @@ public class SectionsService : Iservice
     private int stoolId = 0;
     
     private int _tierId = 0;
-    private int _changeSpeedScore = 200;
     private float _stoolSpawnTime = 1.5f;
-    private float _minStoolSpawnTime = 1f;
     private Vector3 _stoolStartPos = new(4.5f, 0.77f, 0);
     private Vector3 _stoolPoolPos = new(0, 0, 30);
 

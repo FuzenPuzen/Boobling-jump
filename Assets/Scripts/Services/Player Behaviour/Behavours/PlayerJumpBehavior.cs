@@ -120,7 +120,7 @@ public class PlayerJumpBehavior : IPlayerBehavior
     public void StopBehavior()
     {
         _canJump = false;
-        _fallSequence.Kill();
+        _fallSequence.Kill(); //Для тестов
         _jumpSequence.Kill();
     }
 

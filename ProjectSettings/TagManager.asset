@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Enemy
   - Collector
+  - SectionActivator
   layers:
   - Default
   - TransparentFX
