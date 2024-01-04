@@ -1,12 +1,18 @@
 using System;
 using System.Collections.Generic;
 
-public class SessionStorageData : IPlayerBehaviourStorageData, ICoinsStorageData, ICurrentScoreStorageData, IRecordScoreStorageData
+public class SessionStorageData :
+    IPlayerBehaviourStorageData,
+    ICoinsStorageData,
+    ICurrentScoreStorageData,
+    IRecordScoreStorageData,
+    IGiftScoreStorageData
 {
     private ICurrentScoreData _currentScoreData;
     private ICoinData _coinsData;
     private List<IPlayerBehaviourData> _playerBehaviourDatas = new();
     private IRecordScoreSLData _recordScoreSLData;
+    private IGiftScoreData _giftScoreData;
 
     public event Action<IPlayerBehaviourData> PlayerBehaviourChanged;
     public event Action<ICoinData> CoinDataChanged;
@@ -54,5 +60,15 @@ public class SessionStorageData : IPlayerBehaviourStorageData, ICoinsStorageData
     {
         _recordScoreSLData = newRecordScoreData;
         RecordDataSlChanged?.Invoke(newRecordScoreData);
+    }
+
+    public IGiftScoreData GetGiftScoreData()
+    {
+        return _giftScoreData;
+    }
+
+    public void SetGiftScoreData(IGiftScoreData giftScoreData)
+    {
+        _giftScoreData = giftScoreData;
     }
 }

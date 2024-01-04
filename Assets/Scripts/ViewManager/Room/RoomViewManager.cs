@@ -14,10 +14,6 @@ public class RoomViewManager: IRoomViewManager
         _fabric = fabric;
         _roomView = _fabric.SpawnObjectAndGetType<RoomView>();
     }
-    public void ActivateManager()
-    {
-        
-    }
 
     public Transform GetCurrentScorePos()
     {
@@ -32,5 +28,10 @@ public class RoomViewManager: IRoomViewManager
     public Transform GetRecordScorePos()
     {
         return _roomView.GetRecordScorePos();
+    }
+
+    public Transform GetGiftBoxSpawnPos()
+    {
+        return _roomView.GetGiftBoxSpawnPos();
     }
 }
