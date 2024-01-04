@@ -2,7 +2,7 @@
 using UnityEngine;
 using Zenject;
 
-public class GiftScorePanelService : Iservice
+public class GiftScorePanelService : IService
 {
     private IFabric _fabric;
     private IScoreDataManager _scoreDataManager;

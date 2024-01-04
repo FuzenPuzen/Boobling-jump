@@ -7,7 +7,7 @@ public class PreStartState : IBaseState
     private TutorialPanelService _tutorialService;
     private IService _coinsPanelService;
     private IPlayerBehaviorService _playerBehaviorService;
-    private ISectionBehaviorService _sectionBehaviorService;
+    private ISectionBehavioursService _sectionBehaviorService;
 
     [Inject]
     public void Constructor(
@@ -15,7 +15,7 @@ public class PreStartState : IBaseState
                     StateMachine statemachine,
                     TutorialPanelService tutorialService,
                     IPlayerBehaviorService playerBehaviorService,
-                    ISectionBehaviorService sectionBehaviorService,
+                    ISectionBehavioursService sectionBehaviorService,
                     CoinsPanelService coinsPanelService
                  )
     {

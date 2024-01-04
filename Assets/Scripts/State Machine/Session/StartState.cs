@@ -3,26 +3,26 @@ using Zenject;
 public class StartState : IBaseState
 {
     private StateMachine _statemachine;
-    private Iservice _sectionsService;
-    private Iservice _currentScoreService;
-    private Iservice _recordScoreService;
-    private Iservice _giftScoreService;
-    private Iservice _coinsPoolService;
-    private Iservice _giftService;
+    private IService _sectionsService;
+    private IService _currentScoreService;
+    private IService _recordScoreService;
+    private IService _giftScoreService;
+    private IService _coinPoolViewManager;
+    private IService _giftService;
 
 
     [Inject]
     public void Constructor(
-                        SectionsBehaviourService sectionsService,
+                        ISectionBehavioursService sectionsService,
                         StateMachine statemachine,
                         CurrentScorePanelService scoreService,
-                        CoinsPoolService coinsPoolService,
+                        CoinPoolViewManager coinPoolViewManager,
                         RecordScorePanelService recordScoreService,
                         GiftScorePanelService giftScorePanelService,
                         GiftService giftService
                      )
     {
-        _coinsPoolService = coinsPoolService;
+        _coinPoolViewManager = coinPoolViewManager;
         _currentScoreService = scoreService;
         _sectionsService = sectionsService;
         _statemachine = statemachine;
@@ -37,7 +37,7 @@ public class StartState : IBaseState
         _recordScoreService.ActivateService();
         _giftScoreService.ActivateService();
         _sectionsService.ActivateService();
-        _coinsPoolService.ActivateService();
+        _coinPoolViewManager.ActivateService();
         _giftService.ActivateService();
         _statemachine.SetState<GameState>();
     }

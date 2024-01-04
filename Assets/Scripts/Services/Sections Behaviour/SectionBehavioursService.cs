@@ -2,7 +2,7 @@ using System.Collections.Generic;
 using System.Linq;
 using Zenject;
 
-public class SectionsBehaviourService : ISectionBehaviorService
+public class SectionBehavioursService : ISectionBehavioursService
 {
     private List<ISectionBehavior> _sectionBehaviors = new();
     private ISectionBehavior _currentBehavior;

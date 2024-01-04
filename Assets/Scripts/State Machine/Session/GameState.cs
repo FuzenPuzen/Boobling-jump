@@ -5,12 +5,12 @@ public class GameState : IBaseState
 {
     private StateMachine _statemachine;
     private IPlayerBehaviorService _playerBehaviorService;
-    private ISectionBehaviorService _sectionBehaviorService;
+    private ISectionBehavioursService _sectionBehaviorService;
 
     [Inject]
     public void Constructor(StateMachine statemachine,
                           IPlayerBehaviorService playerBehaviorService,
-                          ISectionBehaviorService sectionBehaviorService)
+                          ISectionBehavioursService sectionBehaviorService)
     {
         _sectionBehaviorService = sectionBehaviorService;
         _statemachine = statemachine;
