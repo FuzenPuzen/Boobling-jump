@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System;
 using System.Linq;
 using Zenject;
+using UnityEngine;
 
 public class PlayerBehaviorService : IPlayerBehaviorService
 {
@@ -54,7 +55,7 @@ public class PlayerBehaviorService : IPlayerBehaviorService
 
     private void SpawnPlayer()
     {
-        _playerView = _fabric.SpawnObjectAndGetType<PlayerView>(new(4.83f, 1.24f, 0));
+        _playerView = _fabric.SpawnObjectAndGetType<PlayerView>(new Vector3(4.83f, 1.24f, 0));
     }
 
     public void StartBehaviourTimer()
