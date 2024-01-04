@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class StoolService : IStoolService, Iservice
+public class StoolService : IStoolService, IService
 {
     private IStoolView _stoolView;
     public Action<StoolService> MoveCompleteAction;

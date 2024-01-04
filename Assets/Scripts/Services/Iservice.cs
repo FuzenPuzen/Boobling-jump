@@ -1,4 +1,4 @@
-public interface Iservice 
+public interface IService 
 {
     void ActivateService();
 }

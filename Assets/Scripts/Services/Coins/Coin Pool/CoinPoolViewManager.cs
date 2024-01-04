@@ -2,7 +2,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Zenject;
 
-public class CoinsPoolService : Iservice
+public class CoinPoolViewManager : IService
 {
     private List<CoinView> Coins = new();
     private CoinView _coinView;

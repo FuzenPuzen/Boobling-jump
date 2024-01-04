@@ -1,7 +1,7 @@
 using UnityEngine;
 using Zenject;
 
-public class RecordScorePanelService: Iservice
+public class RecordScorePanelService: IService
 {
     private IScoreDataManager _scoreDataManager;
     private IRoomViewManager _roomViewManager;

@@ -1,17 +1,17 @@
 using Zenject;
 
-public class CoinsService : Iservice
+public class CoinsService : IService
 {
     private ICoinDataManager _coinManager;
     private ITimerService _timerService;
-    private CoinsPoolService _coinsPoolService;
+    private CoinPoolViewManager _coinsPoolService;
 
     private CoinView _coinView;
     private int _lineCoins;
     private int _lineCoinsCount = 5;
 
     [Inject]
-    public void Constructor(ICoinDataManager coinManager, CoinsPoolService coinsPoolService, ITimerService timerService)
+    public void Constructor(ICoinDataManager coinManager, CoinPoolViewManager coinsPoolService, ITimerService timerService)
     {
         _timerService = timerService;
         _coinsPoolService = coinsPoolService;

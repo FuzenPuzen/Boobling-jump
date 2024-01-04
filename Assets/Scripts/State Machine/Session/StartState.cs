@@ -3,18 +3,18 @@ using Zenject;
 public class StartState : IBaseState
 {
     private StateMachine _statemachine;
-    private Iservice _sectionsService;
-    private Iservice _currentScoreService;
-    private Iservice _recordScoreService;
-    private Iservice _coinsPoolService;
+    private IService _sectionsService;
+    private IService _currentScoreService;
+    private IService _recordScoreService;
+    private IService _coinsPoolService;
 
 
     [Inject]
     public void Constructor(
-                        SectionsService sectionsService,
+                        SectionsBehaviourService sectionsService,
                         StateMachine statemachine,
                         CurrentScorePanelService scoreService,
-                        CoinsPoolService coinsPoolService,
+                        CoinPoolViewManager coinsPoolService,
                         RecordScorePanelService recordScoreService
                      )
     {

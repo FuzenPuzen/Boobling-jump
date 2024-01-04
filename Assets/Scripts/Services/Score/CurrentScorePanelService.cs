@@ -5,7 +5,7 @@ using System.Reflection;
 using UnityEngine;
 using Zenject;
 
-public class CurrentScorePanelService : Iservice
+public class CurrentScorePanelService : IService
 {
     private CurrentScorePanelView _currentScoreView;
     private IFabric _fabric;

@@ -1,6 +1,6 @@
 using Zenject;
 
-public class CoinsPanelService : Iservice
+public class CoinsPanelService : IService
 {
     private CoinsPanelView _coinView;
     private ICoinDataManager _coinManager;

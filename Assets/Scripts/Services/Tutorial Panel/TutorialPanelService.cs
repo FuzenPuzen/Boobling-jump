@@ -1,7 +1,7 @@
 using UnityEngine;
 using Zenject;
 
-public class TutorialPanelService : Iservice
+public class TutorialPanelService : IService
 {
 
     private TutorialPanelView _tutorialView;

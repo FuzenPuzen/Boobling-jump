@@ -1,7 +1,7 @@
 using System;
 using Zenject;
 
-public class EndPanelService : Iservice
+public class EndPanelService : IService
 {
 
     private EndPanelView _endPanelview;

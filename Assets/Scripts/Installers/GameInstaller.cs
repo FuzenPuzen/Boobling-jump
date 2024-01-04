@@ -26,7 +26,7 @@ public class GameInstaller : MonoInstaller
         Container.Bind<ICoinDataManager>().To<CoinDataManager>().AsSingle();
         Container.Bind<IScoreDataManager>().To<ScoreDataManager>().AsSingle();
         Container.Bind<IRoomViewManager>().To<RoomViewManager>().AsSingle().NonLazy();
-        Container.Bind<CoinsPoolService>().AsSingle();
+        Container.Bind<CoinPoolViewManager>().AsSingle();
         Container.Bind<CoinsService>().AsSingle();
         Container.Bind<CoinsPanelService>().AsSingle();
 
@@ -37,10 +37,14 @@ public class GameInstaller : MonoInstaller
         Container.Bind<TutorialPanelService>().AsSingle();
         Container.Bind<EndPanelService>().AsSingle();
 
-        Container.Bind(typeof(IPlayerBehaviorService), typeof(Iservice)).To(typeof(PlayerBehaviorService)).AsSingle();
+        Container.Bind(typeof(IPlayerBehaviorService)).To(typeof(PlayerBehaviorService)).AsSingle();
+
+        Container.Bind<InfinityStoolPoolViewService>().AsSingle();
+
+        Container.Bind<SectionSimpleJumpBehaviour>().AsSingle();
+        Container.Bind<SectionsBehaviourService>().AsSingle();
 
 
-        Container.Bind<SectionsService>().AsSingle();
 
         Container.Bind<StateMachine>().AsSingle();
         Container.Bind<EndGameState>().AsSingle();
