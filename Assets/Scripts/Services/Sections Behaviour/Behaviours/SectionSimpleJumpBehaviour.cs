@@ -32,16 +32,16 @@ public class SectionSimpleJumpBehaviour : ISectionBehavior
         _currentSectionViewService = new SectionViewService();
         _sectionViewServices.Add(_currentSectionViewService);
         _currentSectionViewService.SetSectionView(_poolViewService.GetSection());
-        _currentSectionViewService.ActivateSection();
         SetSectionActivatorEnterAction(_currentSectionViewService);
         SetSectionActivatorExitAction(_currentSectionViewService);
+        _currentSectionViewService.ActivateSection();
+        
     }
 
     private void ReturnSectionToPool(SectionViewService sectionViewService)
     {
         _sectionViewServices.Remove(sectionViewService);
         _poolViewService.ReturnSection(sectionViewService.GetSectionView());
-        sectionViewService.SetSectionView(null);
     }
 
     public void StopBehavior()
