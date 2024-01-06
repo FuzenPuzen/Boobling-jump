@@ -76,7 +76,6 @@ public class PlayerJumpBehavior : IPlayerBehavior
 
     public virtual void UpdateBehavior()
     {
-        MonoBehaviour.print(_canFall);
         if (Input.GetMouseButton(0))
             if (_canJump && !_isFall && _canFall)
             {
@@ -84,7 +83,6 @@ public class PlayerJumpBehavior : IPlayerBehavior
                 _canFall = false;
                 FallCDTimer();
             }
-        MonoBehaviour.print(_canFall);
     }
     private void FallCDTimer()
     {
@@ -109,7 +107,6 @@ public class PlayerJumpBehavior : IPlayerBehavior
 
     private void GoToLand()
     {
-        MonoBehaviour.print("GoToLand");
         _landSequence = DOTween.Sequence();
         _landSequence.Append(_transform.DOMove(_startPos, period / 2f));
         _landSequence.OnComplete(Jump);

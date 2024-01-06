@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7633716434658345098}
-  - component: {fileID: 6529392722239058876}
+  - component: {fileID: 1661675257721451804}
   m_Layer: 0
   m_Name: CurrentScoreView
   m_TagString: Untagged
@@ -33,7 +33,7 @@ Transform:
   - {fileID: 7041078222010509647}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &6529392722239058876
+--- !u!114 &1661675257721451804
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}

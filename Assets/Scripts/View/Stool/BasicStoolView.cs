@@ -9,9 +9,13 @@ public class BasicStoolView : MonoBehaviour, IStoolView
     protected Vector3 _startPos;
     public event Action CompleteMoveEvent;
 
-    public virtual void ActivateView()
+    public void Start()
     {
-        _startPos = transform.position;
+        _startPos = transform.localPosition;
+    }
+
+    public virtual void ActivateView()
+    {       
         _moveSequence = DOTween.Sequence();
         _moveSequence.Append(transform.DOScale(Vector3.one, 0.25f));
     }
@@ -37,7 +41,7 @@ public class BasicStoolView : MonoBehaviour, IStoolView
 
     public virtual void SetStartValues()
     {
-        transform.position = _startPos;
+        transform.localPosition = _startPos;
         transform.rotation = Quaternion.identity;
         transform.localScale = Vector3.zero;
     }
@@ -45,12 +49,18 @@ public class BasicStoolView : MonoBehaviour, IStoolView
 
     private void OnTriggerEnter(Collider other)
     {
-        ActivateView();
+        if (other.CompareTag("SectionActivator"))
+        {            
+            ActivateView();
+        }
     }
 
     private void OnTriggerExit(Collider other)
     {
-        Fall();
+        if (other.CompareTag("SectionActivator"))
+        {
+            Fall();
+        }
     }
 
 }

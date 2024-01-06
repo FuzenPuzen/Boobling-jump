@@ -11,7 +11,6 @@ public class CurrentScorePanelService : IService
     private IFabric _fabric;
     private IScoreDataManager _scoreDataManager;
     private IRoomViewManager _roomViewManager;
-    private Vector3 spawnPanelPos = new(6.75f , 3.75f , 0f);
 
     private int _currentScore;
 

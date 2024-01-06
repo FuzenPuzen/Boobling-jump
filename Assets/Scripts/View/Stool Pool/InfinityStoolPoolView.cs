@@ -30,7 +30,9 @@ public class InfinityStoolPoolView : MonoBehaviour
 
     public void ReturnSection(SectionView sectionView)
     {
-        GameObject temp = sectionView.GetComponent<GameObject>();
+        GameObject temp = sectionView.GameObject();
+        temp.transform.localPosition = Vector3.zero;
+        temp.SetActive(false);
         _busySections.Remove(temp);
     }
 }
