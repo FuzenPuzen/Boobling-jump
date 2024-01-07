@@ -4,24 +4,24 @@ public class PlayerView : MonoBehaviour
 {
     [SerializeField] private Transform _playerModel;
 
-    private IPlayerBehavior _currentBehavior;
+    private IPlayerBehaviour _currentBehaviour;
 
-    public void SetNewBehavior(IPlayerBehavior playerBehavior)
+    public void SetNewBehaviour(IPlayerBehaviour playerBehaviour)
     {
-        _currentBehavior = playerBehavior;
-        _currentBehavior.StartBehavior();
+        _currentBehaviour = playerBehaviour;
+        _currentBehaviour.StartBehaviour();
     }
 
 
     private void Update()
     {
-        _currentBehavior?.UpdateBehavior();
+        _currentBehaviour?.UpdateBehaviour();
     }
 
 
     private void OnTriggerEnter(Collider other)
     {
-        //_currentBehavior?.ColliderBehavior(other);
+        //_currentBehaviour?.ColliderBehaviour(other);
     }
 
     internal Transform GetPlayerModel()

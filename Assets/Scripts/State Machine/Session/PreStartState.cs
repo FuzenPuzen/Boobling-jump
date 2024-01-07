@@ -6,32 +6,32 @@ public class PreStartState : IBaseState
     private ITimerService _timerService;
     private TutorialPanelService _tutorialService;
     private IService _coinsPanelService;
-    private IPlayerBehaviorService _playerBehaviorService;
-    private ISectionBehavioursService _sectionBehaviorService;
+    private IPlayerBehaviourService _playerBehaviourService;
+    private ISectionBehavioursService _sectionBehaviourService;
 
     [Inject]
     public void Constructor(
                     ITimerService timerService,
                     StateMachine statemachine,
                     TutorialPanelService tutorialService,
-                    IPlayerBehaviorService playerBehaviorService,
-                    ISectionBehavioursService sectionBehaviorService,
+                    IPlayerBehaviourService playerBehaviourService,
+                    ISectionBehavioursService sectionBehaviourService,
                     CoinsPanelService coinsPanelService
                  )
     {
-        _sectionBehaviorService = sectionBehaviorService;
+        _sectionBehaviourService = sectionBehaviourService;
         _coinsPanelService = coinsPanelService;
-        _playerBehaviorService = playerBehaviorService;
+        _playerBehaviourService = playerBehaviourService;
         _tutorialService = tutorialService;
         _timerService = timerService;
         _statemachine = statemachine;
     }
     public void Enter()
     {
-        _sectionBehaviorService.ActivateService();
-        _playerBehaviorService.ActivateService();
-        _playerBehaviorService.SetBehavior<PlayerStartBehaviour>();
-        _playerBehaviorService.SetActionEndBehavior(OnBehavourEnd);
+        _sectionBehaviourService.ActivateService();
+        _playerBehaviourService.ActivateService();
+        _playerBehaviourService.SetBehaviour<PlayerStartBehaviour>();
+        _playerBehaviourService.SetActionEndBehaviour(OnBehavourEnd);
 
         _tutorialService.ActivateService();
         _timerService.ActivateService();

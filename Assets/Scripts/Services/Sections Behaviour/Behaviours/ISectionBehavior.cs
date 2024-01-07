@@ -1,6 +1,6 @@
-﻿public interface ISectionBehavior
+﻿public interface ISectionBehaviour
 {
-    public void UpdateBehavior();
-    public void StartBehavior();
-    public void StopBehavior();
+    public void UpdateBehaviour();
+    public void StartBehaviour();
+    public void StopBehaviour();
 }

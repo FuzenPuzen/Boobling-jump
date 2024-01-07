@@ -1,7 +1,7 @@
 using System;
 
-public interface IPlayerBehaviorService : IService
+public interface IPlayerBehaviourService : IService
 {
-    public void SetBehavior<T>() where T : IPlayerBehavior;
-    public void SetActionEndBehavior(Action action);
+    public void SetBehaviour<T>() where T : IPlayerBehaviour;
+    public void SetActionEndBehaviour(Action action);
 }

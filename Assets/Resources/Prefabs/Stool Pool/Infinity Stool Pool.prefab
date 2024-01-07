@@ -1185,6 +1185,11 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 7766493710088647943}
     m_Modifications:
+    - target: {fileID: 3132924704702790470, guid: afcb0bdf40edf054ca2ed98c112e3a74,
+        type: 3}
+      propertyPath: outlineTargets.Array.data[0].IsVisible
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3931465608811095370, guid: afcb0bdf40edf054ca2ed98c112e3a74,
         type: 3}
       propertyPath: m_Name
@@ -1609,6 +1614,11 @@ PrefabInstance:
     - target: {fileID: 4863603138919939138, guid: 81c6b784e8ab6bd40b087c8d0301125a,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6802699952815553629, guid: 81c6b784e8ab6bd40b087c8d0301125a,
+        type: 3}
+      propertyPath: outlineTargets.Array.data[0].IsVisible
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6859274609975037532, guid: 81c6b784e8ab6bd40b087c8d0301125a,

@@ -3,19 +3,19 @@ using Zenject;
 public class SuperJumpState : IBaseState
 {
     private StateMachine _statemachine;
-    private IPlayerBehaviorService _playerBehaviorService;
+    private IPlayerBehaviourService _playerBehaviourService;
 
     [Inject]
-    public void Constructor(IPlayerBehaviorService playerBehaviorService, StateMachine statemachine)
+    public void Constructor(IPlayerBehaviourService playerBehaviourService, StateMachine statemachine)
     {
-        _playerBehaviorService = playerBehaviorService;
+        _playerBehaviourService = playerBehaviourService;
         _statemachine = statemachine;
     }
 
     public void Enter()
     {
-        _playerBehaviorService.SetBehavior<PlayerSuperJumpBehavior>();
-        _playerBehaviorService.SetActionEndBehavior(OnBehavourEnd);
+        _playerBehaviourService.SetBehaviour<PlayerSuperJumpBehaviour>();
+        _playerBehaviourService.SetActionEndBehaviour(OnBehavourEnd);
     }
 
     public void Exit()

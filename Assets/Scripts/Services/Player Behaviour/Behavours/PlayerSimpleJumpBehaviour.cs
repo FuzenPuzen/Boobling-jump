@@ -1,8 +1,8 @@
 using System;
 
-public class PlayerSimpleJumpBehaviour : PlayerJumpBehavior
+public class PlayerSimpleJumpBehaviour : PlayerJumpBehaviour
 {
-    private PlayerSimpleBehaviourSOData _PlayerBehaviorData;
+    private PlayerSimpleBehaviourSOData _PlayerBehaviourData;
     public PlayerSimpleJumpBehaviour(PlayerView playerView) : base(playerView)
     {
 
@@ -15,6 +15,6 @@ public class PlayerSimpleJumpBehaviour : PlayerJumpBehavior
 
     public override void SetBehaviourData(IPlayerBehaviourData playerBehaviourData)
     {
-        _PlayerBehaviorData = (PlayerSimpleBehaviourSOData)playerBehaviourData;
+        _PlayerBehaviourData = (PlayerSimpleBehaviourSOData)playerBehaviourData;
     }
 }
