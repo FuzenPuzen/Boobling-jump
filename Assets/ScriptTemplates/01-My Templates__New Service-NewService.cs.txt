@@ -1,18 +1,18 @@
 using Zenject;
-using UnityEngine;
 #NOTRIM#
-public class #SCRIPTNAME# : MonoBehaviour
+public interface I#SCRIPTNAME# : IService
 {
 #NOTRIM#
 }
-public class #SCRIPTNAME#Service : IService
+#NOTRIM#
+public class #SCRIPTNAME# : I#SCRIPTNAME#
 {
 	[Inject]
 	public void Constructor()
 	{
 	#NOTRIM#
 	}
-
+	#NOTRIM#
 	public void ActivateService()
 	{       
         #NOTRIM#

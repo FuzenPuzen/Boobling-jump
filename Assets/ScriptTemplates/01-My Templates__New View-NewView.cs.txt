@@ -1,0 +1,22 @@
+using Zenject;
+using UnityEngine;
+#NOTRIM#
+public class #SCRIPTNAME# : MonoBehaviour
+{
+#NOTRIM#
+}
+#NOTRIM#
+public class #SCRIPTNAME#Service : IService
+{
+	private IViewFabric _fabric;
+	[Inject]
+	public void Constructor(IViewFabric fabric)
+	{
+		_fabric = fabric;
+	}
+
+	public void ActivateService()
+	{       
+        #NOTRIM#
+	}
+}
