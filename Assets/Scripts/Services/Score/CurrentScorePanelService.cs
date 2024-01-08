@@ -8,7 +8,7 @@ using Zenject;
 public class CurrentScorePanelService : IService
 {
     private CurrentScorePanelView _currentScoreView;
-    private IFabric _fabric;
+    private IViewFabric _fabric;
     private IScoreDataManager _scoreDataManager;
     private IRoomViewManager _roomViewManager;
 
@@ -16,7 +16,7 @@ public class CurrentScorePanelService : IService
 
     [Inject]
     public void Constructor(
-        IFabric fabric,
+        IViewFabric fabric,
         IScoreDataManager scoreDataManager,
         IRoomViewManager roomViewManager)
     {
@@ -28,7 +28,7 @@ public class CurrentScorePanelService : IService
     public void ActivateService()
     {
         _currentScore = _scoreDataManager.GetCurrentScore();
-        _currentScoreView = _fabric.SpawnObjectAndGetType<CurrentScorePanelView>(_roomViewManager.GetCurrentScorePos());
+        _currentScoreView = _fabric.SpawnObject<CurrentScorePanelView>(_roomViewManager.GetCurrentScorePos());
         _currentScoreView.SetActionOnScoreChange(OnScoreChange);
         _scoreDataManager.CurrentScoreChanged += UpdateView;
         UpdateView(_currentScore);

@@ -6,11 +6,11 @@ public class CoinPoolViewManager : IService
 {
     private List<CoinView> Coins = new();
     private CoinView _coinView;
-    private IFabric _fabric;
+    private IViewFabric _fabric;
     private int CoinsInPool = 20; //перенести в coinData
 
     [Inject]
-    public void Constructor(IFabric fabric)
+    public void Constructor(IViewFabric fabric)
     {
         _fabric = fabric;
     }
@@ -24,7 +24,7 @@ public class CoinPoolViewManager : IService
     {
         for (int i = 0; i < CoinsInPool; i++)
         {
-            _coinView = _fabric.SpawnObjectAndGetType<CoinView>();
+            _coinView = _fabric.SpawnObject<CoinView>();
             Coins.Add(_coinView);
             _coinView.gameObject.SetActive(false);
         }

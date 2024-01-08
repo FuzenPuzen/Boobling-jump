@@ -4,10 +4,10 @@ public class CoinsPanelService : IService
 {
     private CoinsPanelView _coinView;
     private ICoinDataManager _coinManager;
-    private IFabric _fabric;
+    private IViewFabric _fabric;
 
     [Inject]
-    public void Constructor(IFabric fabric, ICoinDataManager coinManager)
+    public void Constructor(IViewFabric fabric, ICoinDataManager coinManager)
     {
         _fabric = fabric;
         _coinManager = coinManager;       
@@ -15,7 +15,7 @@ public class CoinsPanelService : IService
 
     public void ActivateService()
     {
-        _coinView = _fabric.SpawnObjectAndGetType<CoinsPanelView>();
+        _coinView = _fabric.SpawnObject<CoinsPanelView>();
         _coinManager.coinsChanged += UpdateView;
         UpdateView(_coinManager.GetCoins());
     }

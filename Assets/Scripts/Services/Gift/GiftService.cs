@@ -5,12 +5,12 @@ using Zenject;
 public class GiftService: IService
 {
     private IScoreDataManager _scoreDataManger;
-    private IFabric _fabric;
+    private IViewFabric _fabric;
     private IRoomViewManager _roomViewManager;
     private GiftBoxViewService _giftBoxViewService;
 
     [Inject]
-    public void Constructor(IScoreDataManager scoreDataManager, IFabric fabric, IRoomViewManager roomViewManager)
+    public void Constructor(IScoreDataManager scoreDataManager, IViewFabric fabric, IRoomViewManager roomViewManager)
     {
         _scoreDataManger = scoreDataManager;
         _fabric = fabric;
@@ -24,7 +24,7 @@ public class GiftService: IService
 
     private void SpawnGift(int count)
     {
-        GiftBoxView giftBoxView = _fabric.SpawnObjectAndGetType<GiftBoxView>(_roomViewManager.GetGiftBoxSpawnPos());
+        GiftBoxView giftBoxView = _fabric.SpawnObject<GiftBoxView>(_roomViewManager.GetGiftBoxSpawnPos());
         _giftBoxViewService = new GiftBoxViewService();
         _giftBoxViewService.ActivateService(giftBoxView);
     }

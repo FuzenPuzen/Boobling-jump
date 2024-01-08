@@ -9,7 +9,7 @@ public class PlayerBehaviorService : IPlayerBehaviorService
 {
     private IPlayerBehavior _currentBehavior;
     private PlayerView _playerView;
-    private IFabric _fabric;
+    private IViewFabric _fabric;
 
     private IPlayerBehaviourData _playerBehaviourData;
     private List<IPlayerBehavior> _playerBehaviors = new();
@@ -38,7 +38,7 @@ public class PlayerBehaviorService : IPlayerBehaviorService
     }
 
     [Inject]
-    public void Constructor(IFabric fabric, IPlayerBehaviourStorageData playerBehaviourStorageData)
+    public void Constructor(IViewFabric fabric, IPlayerBehaviourStorageData playerBehaviourStorageData)
     {
         _playerBehaviourStorageData = playerBehaviourStorageData;
         _fabric = fabric;
@@ -55,7 +55,7 @@ public class PlayerBehaviorService : IPlayerBehaviorService
 
     private void SpawnPlayer()
     {
-        _playerView = _fabric.SpawnObjectAndGetType<PlayerView>(new Vector3(4.83f, 1.24f, 0));
+        _playerView = _fabric.SpawnObject<PlayerView>(new Vector3(4.83f, 1.24f, 0));
     }
 
     public void StartBehaviourTimer()

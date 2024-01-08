@@ -5,15 +5,15 @@ public class TimerService : ITimerService
 {
     private TimerView _timerView;
 
-    private IFabric _fabric;
+    private IViewFabric _fabric;
 
     public void ActivateService()
     {
-        _timerView = _fabric.SpawnObjectAndGetType<TimerView>();
+        _timerView = _fabric.SpawnObject<TimerView>();
     }
 
     [Inject]
-    public void Constructor(IFabric fabric)
+    public void Constructor(IViewFabric fabric)
     {
         _fabric = fabric;
     }

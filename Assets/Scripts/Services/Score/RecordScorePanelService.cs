@@ -7,11 +7,11 @@ public class RecordScorePanelService: IService
     private IRoomViewManager _roomViewManager;
     private RecordScorePanelView _recordView;
     private int _recordScore;
-    private IFabric _fabric;
+    private IViewFabric _fabric;
 
     public void ActivateService()
     {
-        _recordView = _fabric.SpawnObjectAndGetType<RecordScorePanelView>(_roomViewManager.GetRecordScorePos());
+        _recordView = _fabric.SpawnObject<RecordScorePanelView>(_roomViewManager.GetRecordScorePos());
         _scoreDataManager.RecordChanged += UpdateView;
         _recordScore = _scoreDataManager.GetRecordScore();
         UpdateView(_recordScore);
@@ -19,7 +19,7 @@ public class RecordScorePanelService: IService
 
     [Inject]
     public void Constructor(
-        IFabric fabric,
+        IViewFabric fabric,
         IScoreDataManager scoreDataManager, IRoomViewManager roomViewManager)
     {
         _fabric = fabric;

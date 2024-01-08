@@ -4,7 +4,7 @@ using Zenject;
 
 public class GiftScorePanelService : IService
 {
-    private IFabric _fabric;
+    private IViewFabric _fabric;
     private IScoreDataManager _scoreDataManager;
     private IRoomViewManager _roomViewManager;
     private GiftScorePanelView _giftScoreView;
@@ -12,7 +12,7 @@ public class GiftScorePanelService : IService
 
     [Inject]
     public void Constructor(
-      IFabric fabric,
+      IViewFabric fabric,
       IScoreDataManager scoreDataManager, IRoomViewManager roomViewManager)
     {
         _fabric = fabric;
@@ -22,7 +22,7 @@ public class GiftScorePanelService : IService
 
     public void ActivateService()
     {
-        _giftScoreView = _fabric.SpawnObjectAndGetType<GiftScorePanelView>(_roomViewManager.GetGiftScorePos());
+        _giftScoreView = _fabric.SpawnObject<GiftScorePanelView>(_roomViewManager.GetGiftScorePos());
         _scoreDataManager.GiftScoreAchived += UpdateView;
         _giftScore = _scoreDataManager.GetGiftScore();
         UpdateView(_giftScore);

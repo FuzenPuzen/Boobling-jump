@@ -9,7 +9,9 @@ public class GameInstaller : MonoInstaller
             typeof(IPrefabStorageService),
             typeof(ISOStorageService)
             ).To(typeof(StorageService)).AsSingle();
-        Container.Bind<IFabric>().To<Fabric>().AsSingle();
+
+        Container.Bind<IViewFabric>().To<ViewFabric>().AsSingle();
+        Container.Bind<IServiceFabric>().To<ServiceFabric>().AsSingle();
 
         Container.Bind(
             typeof(IPlayerBehaviourStorageData),
@@ -48,6 +50,8 @@ public class GameInstaller : MonoInstaller
 
         Container.Bind<SectionSimpleJumpBehaviour>().AsSingle();
         Container.Bind<ISectionBehavioursService>().To<SectionBehavioursService>().AsSingle();
+
+        Container.Bind<TestA>().AsSingle();
 
         Container.Bind<StateMachine>().AsSingle();
         Container.Bind<EndGameState>().AsSingle();

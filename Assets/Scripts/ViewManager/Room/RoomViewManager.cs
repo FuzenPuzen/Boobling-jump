@@ -5,14 +5,14 @@ using Zenject;
 
 public class RoomViewManager: IRoomViewManager
 {
-    private IFabric _fabric;
+    private IViewFabric _fabric;
     private RoomView _roomView;
 
     [Inject]
-    public void Constructor(IFabric fabric)
+    public void Constructor(IViewFabric fabric)
     {
         _fabric = fabric;
-        _roomView = _fabric.SpawnObjectAndGetType<RoomView>();
+        _roomView = _fabric.SpawnObject<RoomView>();
     }
 
     public Transform GetCurrentScorePos()

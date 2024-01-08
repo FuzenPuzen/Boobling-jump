@@ -7,11 +7,11 @@ public class EndPanelService : IService
     private EndPanelView _endPanelview;
     private CurrentScorePanelService _scoreService;
     private RecordScorePanelService _recordService;
-    private IFabric _fabric;
+    private IViewFabric _fabric;
     private IScoreDataManager _scoreDataManager;
 
     [Inject]
-    public void Constructor(IFabric fabric, IScoreDataManager scoreDataManager, CurrentScorePanelService scoreService, RecordScorePanelService recordService)
+    public void Constructor(IViewFabric fabric, IScoreDataManager scoreDataManager, CurrentScorePanelService scoreService, RecordScorePanelService recordService)
     {
         _recordService = recordService;
         _scoreService = scoreService;
@@ -21,7 +21,7 @@ public class EndPanelService : IService
 
     public void ActivateService()
     {
-        _endPanelview = _fabric.SpawnObjectAndGetType<EndPanelView>();
+        _endPanelview = _fabric.SpawnObject<EndPanelView>();
         _endPanelview.SetScoreAndRecord(_scoreDataManager.GetCurrentScore(), _scoreDataManager.GetCurrentScore());
         _endPanelview.StartAction();
     }
