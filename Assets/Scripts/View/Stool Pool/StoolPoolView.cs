@@ -28,11 +28,11 @@ public class StoolPoolView : MonoBehaviour, IstoolPoolView
         }
     }
 
-    public void ReturnSection(SectionView sectionView)
+    public virtual void ReturnSection(SectionView sectionView)
     {
-        GameObject temp = sectionView.GameObject();
-        temp.transform.localPosition = Vector3.zero;
-        temp.SetActive(false);
-        _busySections.Remove(temp);
+        GameObject sectionObj = sectionView.GameObject();
+        sectionObj.transform.localPosition = Vector3.zero;
+        sectionObj.SetActive(false);
+        _busySections.Remove(sectionObj);
     }
 }

@@ -9,18 +9,18 @@ public class SectionView : MonoBehaviour
     private Sequence _moveSequence;
     private float _endPosX = -42f;
     private float _movingTime = 5f;
-    private Vector3 _startPosition = new(6, 1.1f, 0);
+    private Vector3 _startPosition = new(6, 1.1f, -30);
 
     public void ActivateView()
     {
-        transform.position = _startPosition;
+        transform.localPosition = _startPosition;
         StartMove();
     }
 
     private void StartMove()
     {
         _moveSequence = DOTween.Sequence();
-        _moveSequence.Append(transform.DOMoveX(_endPosX, _movingTime).SetEase(Ease.Linear));
+        _moveSequence.Append(transform.DOLocalMoveX(_endPosX, _movingTime).SetEase(Ease.Linear));
     }
 
     public void SetValues(float movingTime, float endPosX)
