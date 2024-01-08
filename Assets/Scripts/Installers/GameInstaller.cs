@@ -56,8 +56,6 @@ public class GameInstaller : MonoInstaller
         Container.Bind<SectionSuperJumpBehaviour>().AsSingle();
         Container.Bind<ISectionBehavioursService>().To<SectionBehavioursService>().AsSingle();
 
-        Container.Bind<TestA>().AsSingle();
-
         Container.Bind<StateMachine>().AsSingle();
         Container.Bind<EndGameState>().AsSingle();
         Container.Bind<PreStartState>().AsSingle();

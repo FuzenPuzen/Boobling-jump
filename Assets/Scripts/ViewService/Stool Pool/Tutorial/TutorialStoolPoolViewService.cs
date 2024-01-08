@@ -5,6 +5,6 @@ public class TutorialStoolPoolViewService : PoolViewService
 {
     public override void SpawnView()
     {
-        _poolView = _fabric.SpawnObjectAndGetType<TutorialStoolPoolView>(_stoolPoolPos);
+        _poolView = _fabric.SpawnObject<TutorialStoolPoolView>(_stoolPoolPos);
     }
 }

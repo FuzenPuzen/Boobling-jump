@@ -4,11 +4,11 @@ using Zenject;
 public abstract class PoolViewService : IPoolViewService
 {
     private protected IstoolPoolView _poolView;
-    private protected IFabric _fabric;
+    private protected IViewFabric _fabric;
     private protected Vector3 _stoolPoolPos = new(0, 0, 30);
 
     [Inject]
-    public void Constructor(IFabric fabric)
+    public void Constructor(IViewFabric fabric)
     {
         _fabric = fabric;
         SpawnView();

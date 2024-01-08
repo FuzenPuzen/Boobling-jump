@@ -2,6 +2,6 @@ public class SuperJumpStoolPoolViewService : PoolViewService
 {
     public override void SpawnView()
     {
-        _poolView = _fabric.SpawnObjectAndGetType<SuperJumpStoolPoolView>(_stoolPoolPos);
+        _poolView = _fabric.SpawnObject<SuperJumpStoolPoolView>(_stoolPoolPos);
     }
 }
