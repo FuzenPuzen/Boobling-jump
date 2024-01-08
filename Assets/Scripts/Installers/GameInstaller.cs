@@ -4,6 +4,8 @@ public class GameInstaller : MonoInstaller
 {
     public override void InstallBindings()
     {
+        Container.Bind<IMarkerService>().To<MarkerService>().AsSingle();
+
         Container.Bind(
             typeof(IPrefabStorageService),
             typeof(ISOStorageService)

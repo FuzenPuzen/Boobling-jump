@@ -8,7 +8,7 @@ public class PreStartState : IBaseState
     private IService _coinsPanelService;
     private IPlayerBehaviourService _playerBehaviourService;
     private ISectionBehavioursService _sectionBehaviourService;
-
+    private IMarkerService _markerService;
     [Inject]
     public void Constructor(
                     ITimerService timerService,
@@ -16,7 +16,8 @@ public class PreStartState : IBaseState
                     TutorialPanelService tutorialService,
                     IPlayerBehaviourService playerBehaviourService,
                     ISectionBehavioursService sectionBehaviourService,
-                    CoinsPanelService coinsPanelService
+                    CoinsPanelService coinsPanelService,
+                    IMarkerService markerService
                  )
     {
         _sectionBehaviourService = sectionBehaviourService;
@@ -25,6 +26,7 @@ public class PreStartState : IBaseState
         _tutorialService = tutorialService;
         _timerService = timerService;
         _statemachine = statemachine;
+        _markerService = markerService;
     }
     public void Enter()
     {
@@ -36,6 +38,7 @@ public class PreStartState : IBaseState
         _tutorialService.ActivateService();
         _timerService.ActivateService();
         _coinsPanelService.ActivateService();
+        _markerService.ActivateService();
     }
 
     public void Exit()

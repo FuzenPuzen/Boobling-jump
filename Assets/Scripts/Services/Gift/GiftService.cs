@@ -7,14 +7,16 @@ public class GiftService: IService
     private IScoreDataManager _scoreDataManger;
     private IViewFabric _fabric;
     private IRoomViewManager _roomViewManager;
+    private IMarkerService _markerService;
     private GiftBoxViewService _giftBoxViewService;
 
     [Inject]
-    public void Constructor(IScoreDataManager scoreDataManager, IViewFabric fabric, IRoomViewManager roomViewManager)
+    public void Constructor(IScoreDataManager scoreDataManager, IViewFabric fabric, IRoomViewManager roomViewManager, IMarkerService markerService)
     {
         _scoreDataManger = scoreDataManager;
         _fabric = fabric;
         _roomViewManager = roomViewManager;
+        _markerService = markerService;
     }
 
     public void ActivateService()

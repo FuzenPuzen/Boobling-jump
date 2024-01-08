@@ -13,6 +13,7 @@ public class SessionTypeDataManager : ISessionTypeDataManager
 
     public SessionTypeDataManager()
     {
+        SaveTutorialGameType(true);
         GetTutorialGameType();
     }
 
@@ -23,7 +24,7 @@ public class SessionTypeDataManager : ISessionTypeDataManager
 
     public bool GetTutorialGameType()
     {
-        _tutorial = SaveLoader.LoadItem<bool>( TutorialKey);
+        _tutorial = SaveLoader.LoadItem<bool>(TutorialKey);
         return _tutorial;
     }
 }
