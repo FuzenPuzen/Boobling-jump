@@ -5,35 +5,35 @@ using System.Linq;
 using Zenject;
 using UnityEngine;
 
-public class PlayerBehaviorService : IPlayerBehaviorService
+public class PlayerBehaviourService : IPlayerBehaviourService
 {
-    private IPlayerBehavior _currentBehavior;
+    private IPlayerBehaviour _currentBehaviour;
     private PlayerView _playerView;
     private IViewFabric _fabric;
 
     private IPlayerBehaviourData _playerBehaviourData;
-    private List<IPlayerBehavior> _playerBehaviors = new();
+    private List<IPlayerBehaviour> _playerBehaviours = new();
     private IPlayerBehaviourStorageData _playerBehaviourStorageData;
 
     private Sequence _timerSequence;
     private Action _onEndAction;
 
-    public void SetBehavior<T>() where T : IPlayerBehavior
+    public void SetBehaviour<T>() where T : IPlayerBehaviour
     {
-        if (_currentBehavior != null)
-            _currentBehavior.StopBehavior();
+        if (_currentBehaviour != null)
+            _currentBehaviour.StopBehaviour();
 
-        _currentBehavior = _playerBehaviors.OfType<T>().FirstOrDefault();
+        _currentBehaviour = _playerBehaviours.OfType<T>().FirstOrDefault();
         if (typeof(T) == typeof(PlayerStartBehaviour))
         {
-            var temp = (PlayerStartBehaviour)_currentBehavior;
-            temp.SetStartAction(EndBehaviorTimer);
+            var temp = (PlayerStartBehaviour)_currentBehaviour;
+            temp.SetStartAction(EndBehaviourTimer);
         }
 
-        _playerBehaviourData = _playerBehaviourStorageData.GetPlayerBehaviourData(_currentBehavior.GetBehaviourDataType());
-        _currentBehavior.SetBehaviourData(_playerBehaviourData);
+        _playerBehaviourData = _playerBehaviourStorageData.GetPlayerBehaviourData(_currentBehaviour.GetBehaviourDataType());
+        _currentBehaviour.SetBehaviourData(_playerBehaviourData);
 
-        _playerView.SetNewBehavior(_currentBehavior);
+        _playerView.SetNewBehaviour(_currentBehaviour);
         StartBehaviourTimer();
     }
 
@@ -47,10 +47,10 @@ public class PlayerBehaviorService : IPlayerBehaviorService
     public void ActivateService()
     {
         SpawnPlayer();
-        _playerBehaviors.Add(new PlayerRollBehavior(_playerView));
-        _playerBehaviors.Add(new PlayerStartBehaviour(_playerView));
-        _playerBehaviors.Add(new PlayerSuperJumpBehavior(_playerView));
-        _playerBehaviors.Add(new PlayerSimpleJumpBehaviour(_playerView));
+        _playerBehaviours.Add(new PlayerRollBehaviour(_playerView));
+        _playerBehaviours.Add(new PlayerStartBehaviour(_playerView));
+        _playerBehaviours.Add(new PlayerSuperJumpBehaviour(_playerView));
+        _playerBehaviours.Add(new PlayerSimpleJumpBehaviour(_playerView));
     }
 
     private void SpawnPlayer()
@@ -62,15 +62,15 @@ public class PlayerBehaviorService : IPlayerBehaviorService
     {
         _timerSequence = DOTween.Sequence();
         _timerSequence.AppendInterval(_playerBehaviourData.GetDuration());
-        _timerSequence.OnComplete(EndBehaviorTimer);
+        _timerSequence.OnComplete(EndBehaviourTimer);
     }
 
-    public void SetActionEndBehavior(Action action)
+    public void SetActionEndBehaviour(Action action)
     {
         _onEndAction = action;
     }
 
-    private void EndBehaviorTimer()
+    private void EndBehaviourTimer()
     {
         _onEndAction?.Invoke();
     }

@@ -1,27 +1,26 @@
-using UnityEngine;
 using Zenject;
 
 public class GameState : IBaseState
 {
     private StateMachine _statemachine;
-    private IPlayerBehaviorService _playerBehaviorService;
-    private ISectionBehavioursService _sectionBehaviorService;
+    private IPlayerBehaviourService _playerBehaviourService;
+    private ISectionBehavioursService _sectionBehaviourService;
 
     [Inject]
     public void Constructor(StateMachine statemachine,
-                          IPlayerBehaviorService playerBehaviorService,
-                          ISectionBehavioursService sectionBehaviorService)
+                          IPlayerBehaviourService playerBehaviourService,
+                          ISectionBehavioursService sectionBehaviourService)
     {
-        _sectionBehaviorService = sectionBehaviorService;
+        _sectionBehaviourService = sectionBehaviourService;
         _statemachine = statemachine;
-        _playerBehaviorService = playerBehaviorService;
+        _playerBehaviourService = playerBehaviourService;
     }
 
     public void Enter()
     {
-        _playerBehaviorService.SetBehavior<PlayerSimpleJumpBehaviour>();
-        _sectionBehaviorService.SetBehavior<SectionSimpleJumpBehaviour>();
-        _playerBehaviorService.SetActionEndBehavior(OnBehavourEnd);
+        _playerBehaviourService.SetBehaviour<PlayerSimpleJumpBehaviour>();
+        _sectionBehaviourService.SetBehaviour<SectionSimpleJumpBehaviour>();
+        _playerBehaviourService.SetActionEndBehaviour(OnBehavourEnd);
     }
 
     public void Exit()
@@ -36,7 +35,7 @@ public class GameState : IBaseState
 
     public void OnBehavourEnd()
     {
-        _statemachine.SetState<SuperJumpState>();
+        _statemachine.SetState<RollingState>();
     }
 
 }

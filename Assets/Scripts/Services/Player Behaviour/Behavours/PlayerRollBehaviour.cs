@@ -2,24 +2,23 @@ using UnityEngine;
 using DG.Tweening;
 using System;
 
-public class PlayerRollBehavior : IPlayerBehavior
+public class PlayerRollBehaviour : IPlayerBehaviour
 {
     private Transform _transform;
     private Transform _playerModel;
     private Sequence _rollSequence;
-    private float _behaviorTime;
     private Vector3 _startPos;
 
     private PlayerRollBehaviourSOData _playerRollBehaviourSOData;
 
-    public PlayerRollBehavior(PlayerView playerView)
+    public PlayerRollBehaviour(PlayerView playerView)
     {
         _transform = playerView.GetComponent<Transform>();
         _playerModel = playerView.GetPlayerModel();
-        _startPos = new(9.5f, 0.6f, 0);
+        _startPos = new(0, 0.5f, 0);
     }
 
-    public void StartBehavior()
+    public void StartBehaviour()
     {
         GoToLand();
     }
@@ -31,20 +30,20 @@ public class PlayerRollBehavior : IPlayerBehavior
         _rollSequence.Join(_transform.DORotate(new(-90, 0, 0), 0.5f));
     }
 
-    public void StopBehavior()
+    public void StopBehaviour()
     {
         _playerModel.transform.localRotation = new Quaternion(90, 0, 0, 0);
         _transform.localRotation = new Quaternion(0, 0, 0, 0);
         _rollSequence.Kill();
     }
 
-    public void UpdateBehavior()
+    public void UpdateBehaviour()
     {
         _playerModel.Rotate(new(0, 0, 1));
     }
 
 
-    public void ColliderBehavior(Collider other)
+    public void ColliderBehaviour(Collider other)
     {
         if (other.gameObject.CompareTag("Enemy"))
         {

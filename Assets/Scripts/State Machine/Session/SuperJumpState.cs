@@ -3,19 +3,22 @@ using Zenject;
 public class SuperJumpState : IBaseState
 {
     private StateMachine _statemachine;
-    private IPlayerBehaviorService _playerBehaviorService;
+    private IPlayerBehaviourService _playerBehaviourService;
+    private ISectionBehavioursService _sectionBehaviourService;
 
     [Inject]
-    public void Constructor(IPlayerBehaviorService playerBehaviorService, StateMachine statemachine)
+    public void Constructor(IPlayerBehaviourService playerBehaviourService, StateMachine statemachine, ISectionBehavioursService sectionBehavioursService)
     {
-        _playerBehaviorService = playerBehaviorService;
+        _sectionBehaviourService = sectionBehavioursService;
+        _playerBehaviourService = playerBehaviourService;
         _statemachine = statemachine;
     }
 
     public void Enter()
     {
-        _playerBehaviorService.SetBehavior<PlayerSuperJumpBehavior>();
-        _playerBehaviorService.SetActionEndBehavior(OnBehavourEnd);
+        _playerBehaviourService.SetBehaviour<PlayerSuperJumpBehaviour>();
+        _sectionBehaviourService.SetBehaviour<SectionSuperJumpBehaviour>();
+        _playerBehaviourService.SetActionEndBehaviour(OnBehavourEnd);
     }
 
     public void Exit()
@@ -30,6 +33,6 @@ public class SuperJumpState : IBaseState
 
     public void OnBehavourEnd()
     {
-        _statemachine.SetState<RollingState>();
+        _statemachine.SetState<GameState>();
     }
 }

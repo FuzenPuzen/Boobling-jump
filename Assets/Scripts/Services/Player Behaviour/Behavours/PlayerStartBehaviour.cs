@@ -1,9 +1,9 @@
 using System;
 using UnityEngine;
 
-public class PlayerStartBehaviour : PlayerJumpBehavior
+public class PlayerStartBehaviour : PlayerJumpBehaviour
 {
-    private PlayerStartBehaviourSOData _PlayerBehaviorData;
+    private PlayerStartBehaviourSOData _PlayerBehaviourData;
     private Action _startAction;
 
     public PlayerStartBehaviour(PlayerView playerView) : base(playerView)
@@ -18,7 +18,7 @@ public class PlayerStartBehaviour : PlayerJumpBehavior
 
     public override void SetBehaviourData(IPlayerBehaviourData playerBehaviourData)
     {
-        _PlayerBehaviorData = (PlayerStartBehaviourSOData)playerBehaviourData;
+        _PlayerBehaviourData = (PlayerStartBehaviourSOData)playerBehaviourData;
     }
 
     protected override void FallCallback()

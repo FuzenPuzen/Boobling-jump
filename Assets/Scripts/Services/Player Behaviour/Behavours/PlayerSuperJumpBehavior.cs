@@ -2,11 +2,11 @@ using DG.Tweening;
 using System;
 using UnityEngine;
 
-public class PlayerSuperJumpBehavior : PlayerJumpBehavior
+public class PlayerSuperJumpBehaviour : PlayerJumpBehaviour
 {
-    private PlayerSuperJumpBehaviourSOData _PlayerBehaviorData;
+    private PlayerSuperJumpBehaviourSOData _PlayerBehaviourData;
 
-    public PlayerSuperJumpBehavior(PlayerView playerView) : base(playerView)
+    public PlayerSuperJumpBehaviour(PlayerView playerView) : base(playerView)
     {
 
     }
@@ -26,7 +26,7 @@ public class PlayerSuperJumpBehavior : PlayerJumpBehavior
 
     public override void SetBehaviourData(IPlayerBehaviourData playerBehaviourData)
     {
-        _PlayerBehaviorData = (PlayerSuperJumpBehaviourSOData)playerBehaviourData;
+        _PlayerBehaviourData = (PlayerSuperJumpBehaviourSOData)playerBehaviourData;
     }
 
 }

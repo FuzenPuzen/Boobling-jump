@@ -2,7 +2,7 @@ using UnityEngine;
 using DG.Tweening;
 using System.Collections.Generic;
 
-public class PlayerJumpBehavior : IPlayerBehavior
+public class PlayerJumpBehaviour : IPlayerBehaviour
 {
     private Transform _transform;
     private Transform _playerModel;
@@ -31,7 +31,7 @@ public class PlayerJumpBehavior : IPlayerBehavior
     private Sequence _timerSequence;
     private Sequence _fallTimerSequence;
 
-    public PlayerJumpBehavior(PlayerView playerView)
+    public PlayerJumpBehaviour(PlayerView playerView)
     {
         _canFall = true;
         _transform = playerView.GetComponent<Transform>();
@@ -63,6 +63,7 @@ public class PlayerJumpBehavior : IPlayerBehavior
 
     protected void Jump()
     {
+        _canFall = true;
         if (_canJump)
         {
             _jumpSequence = DOTween.Sequence();
@@ -74,13 +75,12 @@ public class PlayerJumpBehavior : IPlayerBehavior
         }
     }
 
-    public virtual void UpdateBehavior()
+    public virtual void UpdateBehaviour()
     {
         if (Input.GetMouseButton(0))
             if (_canJump && !_isFall && _canFall)
             {
                 Fall(FallCallback);
-                _canFall = false;
                 FallCDTimer();
             }
     }
@@ -92,8 +92,9 @@ public class PlayerJumpBehavior : IPlayerBehavior
     }
 
 
-    public virtual void StartBehavior()
+    public virtual void StartBehaviour()
     {
+        
         if (Vector3.Distance(_transform.position, _startPos) >= 0.5f)
         {           
             GoToLand();
@@ -113,14 +114,16 @@ public class PlayerJumpBehavior : IPlayerBehavior
         _canJump = true;
     }
 
-    public void StopBehavior()
+    public void StopBehaviour()
     {
         _canJump = false;
+        _isFall = false;
+        _fallTimerSequence.Kill();
         _fallSequence.Kill(); //Для тестов
         _jumpSequence.Kill();
     }
 
-    public void ColliderBehavior(Collider other)
+    public void ColliderBehaviour(Collider other)
     {
         if (other.gameObject.CompareTag("Enemy"))
         {

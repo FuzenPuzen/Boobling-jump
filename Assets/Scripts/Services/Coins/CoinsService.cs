@@ -36,7 +36,6 @@ public class CoinsService : IService
             _coinView = _coinsPoolService.GetCoinFromPool();
             _coinView.transform.position = new(4.8f, 2, 0);
             _coinView.SetCollectAction(CoinCollectAction);
-            _coinView.StartMove();
             _lineCoins++;
             _timerService.SetActionOnTimerComplete(1, LinePlacement);
         }

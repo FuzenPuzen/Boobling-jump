@@ -4,28 +4,37 @@ using Zenject;
 
 public class SectionBehavioursService : ISectionBehavioursService
 {
-    private List<ISectionBehavior> _sectionBehaviors = new();
-    private ISectionBehavior _currentBehavior;
+    private List<ISectionBehaviour> _sectionBehaviours = new();
+    private ISectionBehaviour _currentBehaviour;
 
-    private ISectionBehavior _sectionSimpleJumpBehaviour;
+    private ISectionBehaviour _sectionSimpleJumpBehaviour;
+    private ISectionBehaviour _sectionSuperJumpBehaviour;
+    private ISectionBehaviour _sectionRollBehaviour;
     
 
     public void ActivateService()
     {
-        _sectionBehaviors.Add(_sectionSimpleJumpBehaviour);
+        _sectionBehaviours.Add(_sectionSimpleJumpBehaviour);
+        _sectionBehaviours.Add(_sectionSuperJumpBehaviour);
+        _sectionBehaviours.Add(_sectionRollBehaviour);
     }
 
     [Inject]
-    public void Constructor(SectionSimpleJumpBehaviour sectionSimpleJumpBehaviour)
+    public void Constructor(SectionSimpleJumpBehaviour sectionSimpleJumpBehaviour,
+                            SectionRollBehaviour sectionRollBehaviour,
+                            SectionSuperJumpBehaviour sectionSuperJumpBehaviour)
     {
+        _sectionSuperJumpBehaviour = sectionSuperJumpBehaviour;
         _sectionSimpleJumpBehaviour = sectionSimpleJumpBehaviour;
+        _sectionRollBehaviour = sectionRollBehaviour;
+        _sectionRollBehaviour = sectionRollBehaviour;
     }
 
-    public void SetBehavior<T>() where T : ISectionBehavior
+    public void SetBehaviour<T>() where T : ISectionBehaviour
     {
-        if (_currentBehavior != null)
-            _currentBehavior.StopBehavior();
-        _currentBehavior = _sectionBehaviors.OfType<T>().FirstOrDefault();
-        _currentBehavior.StartBehavior();
+        if (_currentBehaviour != null)
+            _currentBehaviour.StopBehaviour();
+        _currentBehaviour = _sectionBehaviours.OfType<T>().FirstOrDefault();
+        _currentBehaviour.StartBehaviour();
     }
 }
