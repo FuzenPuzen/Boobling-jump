@@ -4,7 +4,7 @@ public class GameInstaller : MonoInstaller
 {
     public override void InstallBindings()
     {
-        Container.Bind<IMarkerService>().To<MarkerService>().AsSingle();
+        Container.Bind<IMarkerService>().To< MarkerService>().AsSingle();
 
         Container.Bind(
             typeof(IPrefabStorageService),
@@ -30,7 +30,7 @@ public class GameInstaller : MonoInstaller
 
         Container.Bind<ICoinDataManager>().To<CoinDataManager>().AsSingle();
         Container.Bind<IScoreDataManager>().To<ScoreDataManager>().AsSingle();
-        Container.Bind<IRoomViewManager>().To<RoomViewManager>().AsSingle().NonLazy();
+        Container.Bind<RoomViewService>().AsSingle();
 
         Container.Bind<CoinPoolViewManager>().AsSingle();
         Container.Bind<CoinsService>().AsSingle();

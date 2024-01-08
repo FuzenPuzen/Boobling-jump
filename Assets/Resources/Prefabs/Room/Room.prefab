@@ -240,7 +240,7 @@ MonoBehaviour:
     cutoutTextureName: 
     DilateRenderingMode: 0
     cutoutTextureIndex: 0
-  - IsVisible: 0
+  - IsVisible: 1
     CutoutMask: 8
     edgeDilateAmount: 5
     frontEdgeDilateAmount: 5
@@ -272,7 +272,7 @@ MonoBehaviour:
     cutoutTextureName: 
     DilateRenderingMode: 0
     cutoutTextureIndex: 0
-  - IsVisible: 0
+  - IsVisible: 1
     CutoutMask: 8
     edgeDilateAmount: 5
     frontEdgeDilateAmount: 5
@@ -334,6 +334,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3219063443228903909}
+  - component: {fileID: 5488400990780432492}
   m_Layer: 0
   m_Name: GiftScorePos
   m_TagString: Untagged
@@ -356,6 +357,18 @@ Transform:
   m_Children: []
   m_Father: {fileID: 4541816040905738961}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &5488400990780432492
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 388659445064361942}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5d50fb8725ecb6449a2c815010d57ecf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &426960864876124353
 GameObject:
   m_ObjectHideFlags: 0
@@ -816,6 +829,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2954168286049066329}
+  - component: {fileID: 1298476923190347336}
   m_Layer: 0
   m_Name: CurrentScorePos
   m_TagString: Untagged
@@ -838,6 +852,18 @@ Transform:
   m_Children: []
   m_Father: {fileID: 4541816040905738961}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1298476923190347336
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1404417622054931253}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c1498df897d9e8a4b83a8995a9f86ca9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1515187484262951646
 GameObject:
   m_ObjectHideFlags: 0
@@ -1196,7 +1222,7 @@ MonoBehaviour:
   drawingMode: 1
   outlineLayer: 0
   outlineTargets:
-  - IsVisible: 1
+  - IsVisible: 0
     CutoutMask: 8
     edgeDilateAmount: 5
     frontEdgeDilateAmount: 5
@@ -1212,7 +1238,7 @@ MonoBehaviour:
     cutoutTextureName: 
     DilateRenderingMode: 0
     cutoutTextureIndex: 0
-  - IsVisible: 1
+  - IsVisible: 0
     CutoutMask: 8
     edgeDilateAmount: 5
     frontEdgeDilateAmount: 5
@@ -1493,6 +1519,7 @@ Transform:
   - {fileID: 6672571474504300396}
   - {fileID: 7364945158079644983}
   - {fileID: 9137101435658241999}
+  - {fileID: 393037183759498694}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &5758690820365395229
@@ -1507,10 +1534,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2ddb544b66d689f43a59671486cc67c8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _currentScorePos: {fileID: 2954168286049066329}
-  _giftScorePos: {fileID: 3219063443228903909}
-  _recordScorePos: {fileID: 2126185466676226672}
-  _giftBoxSpawnPos: {fileID: 9137101435658241999}
 --- !u!1 &2792616701825236317
 GameObject:
   m_ObjectHideFlags: 0
@@ -2881,6 +2904,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 9137101435658241999}
+  - component: {fileID: 6777742430783787339}
   m_Layer: 0
   m_Name: GiftBoxSpawnPos
   m_TagString: Untagged
@@ -2903,6 +2927,18 @@ Transform:
   m_Children: []
   m_Father: {fileID: 3887582960655909441}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &6777742430783787339
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4821936145927210783}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6dc7c0e4c328b024c95189ce1cc36600, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &4878280940639978811
 GameObject:
   m_ObjectHideFlags: 0
@@ -3846,6 +3882,50 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!1 &6994189396514499658
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 393037183759498694}
+  - component: {fileID: 2676841528166817721}
+  m_Layer: 0
+  m_Name: Section Start Pos
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &393037183759498694
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6994189396514499658}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 6, y: 1, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 3887582960655909441}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2676841528166817721
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6994189396514499658}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1c719ae6a9784254589be1356b854511, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &7040031433805673207
 GameObject:
   m_ObjectHideFlags: 0
@@ -4423,7 +4503,7 @@ MonoBehaviour:
   drawingMode: 1
   outlineLayer: 0
   outlineTargets:
-  - IsVisible: 1
+  - IsVisible: 0
     CutoutMask: 8
     edgeDilateAmount: 5
     frontEdgeDilateAmount: 5
@@ -4439,7 +4519,7 @@ MonoBehaviour:
     cutoutTextureName: 
     DilateRenderingMode: 0
     cutoutTextureIndex: 0
-  - IsVisible: 1
+  - IsVisible: 0
     CutoutMask: 8
     edgeDilateAmount: 5
     frontEdgeDilateAmount: 5
@@ -4944,7 +5024,7 @@ MonoBehaviour:
   drawingMode: 1
   outlineLayer: 0
   outlineTargets:
-  - IsVisible: 1
+  - IsVisible: 0
     CutoutMask: 8
     edgeDilateAmount: 5
     frontEdgeDilateAmount: 5
@@ -4960,7 +5040,7 @@ MonoBehaviour:
     cutoutTextureName: 
     DilateRenderingMode: 0
     cutoutTextureIndex: 0
-  - IsVisible: 1
+  - IsVisible: 0
     CutoutMask: 8
     edgeDilateAmount: 5
     frontEdgeDilateAmount: 5
@@ -5022,6 +5102,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2126185466676226672}
+  - component: {fileID: 2184437830933050385}
   m_Layer: 0
   m_Name: RecordScorePos
   m_TagString: Untagged
@@ -5044,6 +5125,18 @@ Transform:
   m_Children: []
   m_Father: {fileID: 4541816040905738961}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2184437830933050385
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8779139475218269859}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 26e1080dc280bda4ab869cfdf65cd7a3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &8892377629966625571
 GameObject:
   m_ObjectHideFlags: 0

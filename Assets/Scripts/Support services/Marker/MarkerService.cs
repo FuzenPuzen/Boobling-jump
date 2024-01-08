@@ -1,50 +1,44 @@
-using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
-using Zenject;
 
-public class MarkerService : IMarkerService
+public class  MarkerService : IMarkerService
 {
-    public static MarkerService Instance { get; private set; }
+    public static  MarkerService Instance { get; private set; }
 
     private List<IMarker> markers = new List<IMarker>();
 
     public void ActivateService()
     {
         Instance = this;
-        MonoBehaviour.print("MarkerServiceActivate");
     }
 
-    public T GetTransformMarker<T>()
+    public T GetTransformMarker<T>() where T : IMarker
     {
-        return (T)markers.OfType<T>();
+        return markers.OfType<T>().FirstOrDefault();
     }
 
     public void SetMarker(IMarker marker)
     {
-        MonoBehaviour.print($"AddNewMarker: {marker}");
         markers.Add(marker);
     }
 }
 
 public interface IMarkerService: IService
 {
-    public T GetTransformMarker<T>();
+    public T GetTransformMarker<T>() where T : IMarker;
 }
 
 public class Marker: MonoBehaviour, IMarker
 {
     public void Start()
     {
-        print("Marker Start");
         ActivateMarker();
     }
 
     public void ActivateMarker()
     {
-        MarkerService.Instance?.SetMarker(this);
+         MarkerService.Instance?.SetMarker(this);
     }
 }
 

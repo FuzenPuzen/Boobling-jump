@@ -9,11 +9,12 @@ public class SectionView : MonoBehaviour
     private Sequence _moveSequence;
     private float _endPosX = -42f;
     private float _movingTime = 5f;
-    private Vector3 _startPosition = new(6, 1.1f, -30);
+    private Vector3 _startPosition;
 
-    public void ActivateView()
+    public void ActivateView(Vector3 startPos)
     {
-        transform.localPosition = _startPosition;
+        _startPosition = startPos;
+        transform.position = _startPosition;
         StartMove();
     }
 

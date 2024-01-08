@@ -1,10 +1,18 @@
 using System;
+using Zenject;
 
 public class SectionViewService 
 {
     private SectionView _sectionView;
     private Action<SectionViewService> _sectionActivatorExitAction;
     private Action _sectionActivatorEnterAction;
+    private IMarkerService _markerService;
+
+    [Inject]
+    public void Constructor(IMarkerService  markerService)
+    {
+        _markerService =  markerService;
+    }
 
     public void SetSectionView(SectionView sectionView)
     {
@@ -25,7 +33,7 @@ public class SectionViewService
 
     public void ActivateSection()
     {
-        _sectionView.ActivateView();
+        _sectionView.ActivateView(_markerService.GetTransformMarker<SectionStartPosMarker>().transform.position);
     }
 
     //Enter Activator Collider

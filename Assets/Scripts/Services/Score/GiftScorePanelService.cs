@@ -6,23 +6,23 @@ public class GiftScorePanelService : IService
 {
     private IViewFabric _fabric;
     private IScoreDataManager _scoreDataManager;
-    private IRoomViewManager _roomViewManager;
+    private IMarkerService _markerService;
     private GiftScorePanelView _giftScoreView;
     private int _giftScore;
 
     [Inject]
     public void Constructor(
       IViewFabric fabric,
-      IScoreDataManager scoreDataManager, IRoomViewManager roomViewManager)
+      IScoreDataManager scoreDataManager, IMarkerService  markerService)
     {
         _fabric = fabric;
         _scoreDataManager = scoreDataManager;
-        _roomViewManager = roomViewManager;
+        _markerService =  markerService;
     }
 
     public void ActivateService()
     {
-        _giftScoreView = _fabric.SpawnObject<GiftScorePanelView>(_roomViewManager.GetGiftScorePos());
+        _giftScoreView = _fabric.SpawnObject<GiftScorePanelView>(_markerService.GetTransformMarker<GiftScorePanelPosMarker>().transform.position);
         _scoreDataManager.GiftScoreAchived += UpdateView;
         _giftScore = _scoreDataManager.GetGiftScore();
         UpdateView(_giftScore);

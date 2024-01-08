@@ -6,16 +6,14 @@ public class GiftService: IService
 {
     private IScoreDataManager _scoreDataManger;
     private IViewFabric _fabric;
-    private IRoomViewManager _roomViewManager;
     private IMarkerService _markerService;
     private GiftBoxViewService _giftBoxViewService;
 
     [Inject]
-    public void Constructor(IScoreDataManager scoreDataManager, IViewFabric fabric, IRoomViewManager roomViewManager, IMarkerService markerService)
+    public void Constructor(IScoreDataManager scoreDataManager, IViewFabric fabric, IMarkerService markerService)
     {
         _scoreDataManger = scoreDataManager;
         _fabric = fabric;
-        _roomViewManager = roomViewManager;
         _markerService = markerService;
     }
 
@@ -26,7 +24,7 @@ public class GiftService: IService
 
     private void SpawnGift(int count)
     {
-        GiftBoxView giftBoxView = _fabric.SpawnObject<GiftBoxView>(_roomViewManager.GetGiftBoxSpawnPos());
+        GiftBoxView giftBoxView = _fabric.SpawnObject<GiftBoxView>(_markerService.GetTransformMarker<GiftBoxSpawnPosMarker>().transform.position);
         _giftBoxViewService = new GiftBoxViewService();
         _giftBoxViewService.ActivateService(giftBoxView);
     }

@@ -1,10 +1,18 @@
 using System.Collections.Generic;
+using Zenject;
 
 public class SectionBehaviour : ISectionBehaviour
 {
     private protected IPoolViewService _poolViewService;
     private protected List<SectionViewService> _sectionViewServices = new();
     private protected SectionViewService _currentSectionViewService;
+    private protected IServiceFabric _serviceFabric;
+
+    [Inject]
+    public void Constructor(IServiceFabric serviceFabric)
+    {
+        _serviceFabric = serviceFabric;
+    }
 
     public virtual void StartBehaviour()
     {
@@ -22,7 +30,8 @@ public class SectionBehaviour : ISectionBehaviour
 
     private protected virtual void GetAndStartNewSection()
     {
-        _currentSectionViewService = new SectionViewService();
+        _currentSectionViewService = _serviceFabric.Create<SectionViewService>();
+        //_currentSectionViewService = new SectionViewService();
         _sectionViewServices.Add(_currentSectionViewService);
         _currentSectionViewService.SetSectionView(_poolViewService.GetSection());
         SetSectionActivatorEnterAction(_currentSectionViewService);
