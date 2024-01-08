@@ -33,6 +33,6 @@ public class RollingState : IBaseState
 
     public void OnBehavourEnd()
     {
-        _statemachine.SetState<GameState>();
+        _statemachine.SetState<SuperJumpState>();
     }
 }

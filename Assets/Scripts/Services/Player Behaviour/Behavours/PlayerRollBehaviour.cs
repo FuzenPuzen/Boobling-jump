@@ -7,7 +7,6 @@ public class PlayerRollBehaviour : IPlayerBehaviour
     private Transform _transform;
     private Transform _playerModel;
     private Sequence _rollSequence;
-    private float _BehaviourTime;
     private Vector3 _startPos;
 
     private PlayerRollBehaviourSOData _playerRollBehaviourSOData;
@@ -16,7 +15,7 @@ public class PlayerRollBehaviour : IPlayerBehaviour
     {
         _transform = playerView.GetComponent<Transform>();
         _playerModel = playerView.GetPlayerModel();
-        _startPos = new(9.5f, 0.6f, 0);
+        _startPos = new(0, 0.5f, 0);
     }
 
     public void StartBehaviour()

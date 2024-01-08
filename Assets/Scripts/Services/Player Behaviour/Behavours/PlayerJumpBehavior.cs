@@ -63,6 +63,7 @@ public class PlayerJumpBehaviour : IPlayerBehaviour
 
     protected void Jump()
     {
+        _canFall = true;
         if (_canJump)
         {
             _jumpSequence = DOTween.Sequence();
@@ -80,7 +81,6 @@ public class PlayerJumpBehaviour : IPlayerBehaviour
             if (_canJump && !_isFall && _canFall)
             {
                 Fall(FallCallback);
-                _canFall = false;
                 FallCDTimer();
             }
     }
@@ -94,6 +94,7 @@ public class PlayerJumpBehaviour : IPlayerBehaviour
 
     public virtual void StartBehaviour()
     {
+        
         if (Vector3.Distance(_transform.position, _startPos) >= 0.5f)
         {           
             GoToLand();
@@ -116,6 +117,8 @@ public class PlayerJumpBehaviour : IPlayerBehaviour
     public void StopBehaviour()
     {
         _canJump = false;
+        _isFall = false;
+        _fallTimerSequence.Kill();
         _fallSequence.Kill(); //Для тестов
         _jumpSequence.Kill();
     }

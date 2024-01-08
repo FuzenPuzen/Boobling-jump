@@ -8,20 +8,25 @@ public class SectionBehavioursService : ISectionBehavioursService
     private ISectionBehaviour _currentBehaviour;
 
     private ISectionBehaviour _sectionSimpleJumpBehaviour;
+    private ISectionBehaviour _sectionSuperJumpBehaviour;
     private ISectionBehaviour _sectionRollBehaviour;
     
 
     public void ActivateService()
     {
         _sectionBehaviours.Add(_sectionSimpleJumpBehaviour);
+        _sectionBehaviours.Add(_sectionSuperJumpBehaviour);
         _sectionBehaviours.Add(_sectionRollBehaviour);
     }
 
     [Inject]
     public void Constructor(SectionSimpleJumpBehaviour sectionSimpleJumpBehaviour,
-                            SectionRollBehaviour sectionRollBehaviour)
+                            SectionRollBehaviour sectionRollBehaviour,
+                            SectionSuperJumpBehaviour sectionSuperJumpBehaviour)
     {
+        _sectionSuperJumpBehaviour = sectionSuperJumpBehaviour;
         _sectionSimpleJumpBehaviour = sectionSimpleJumpBehaviour;
+        _sectionRollBehaviour = sectionRollBehaviour;
         _sectionRollBehaviour = sectionRollBehaviour;
     }
 

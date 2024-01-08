@@ -42,13 +42,16 @@ public class GameInstaller : MonoInstaller
         Container.Bind<EndPanelService>().AsSingle();
 
         Container.Bind(typeof(IPlayerBehaviourService)).To(typeof(PlayerBehaviourService)).AsSingle();
+        Container.Bind(typeof(ISessionTypeDataManager)).To(typeof(SessionTypeDataManager)).AsSingle();
 
         Container.Bind<InfinityStoolPoolViewService>().AsSingle();
         Container.Bind<RollStoolPoolViewService>().AsSingle();
         Container.Bind<TutorialStoolPoolViewService>().AsSingle();
+        Container.Bind<SuperJumpStoolPoolViewService>().AsSingle();
 
         Container.Bind<SectionSimpleJumpBehaviour>().AsSingle();
         Container.Bind<SectionRollBehaviour>().AsSingle();
+        Container.Bind<SectionSuperJumpBehaviour>().AsSingle();
         Container.Bind<ISectionBehavioursService>().To<SectionBehavioursService>().AsSingle();
 
         Container.Bind<StateMachine>().AsSingle();

@@ -4,10 +4,12 @@ public class SuperJumpState : IBaseState
 {
     private StateMachine _statemachine;
     private IPlayerBehaviourService _playerBehaviourService;
+    private ISectionBehavioursService _sectionBehaviourService;
 
     [Inject]
-    public void Constructor(IPlayerBehaviourService playerBehaviourService, StateMachine statemachine)
+    public void Constructor(IPlayerBehaviourService playerBehaviourService, StateMachine statemachine, ISectionBehavioursService sectionBehavioursService)
     {
+        _sectionBehaviourService = sectionBehavioursService;
         _playerBehaviourService = playerBehaviourService;
         _statemachine = statemachine;
     }
@@ -15,6 +17,7 @@ public class SuperJumpState : IBaseState
     public void Enter()
     {
         _playerBehaviourService.SetBehaviour<PlayerSuperJumpBehaviour>();
+        _sectionBehaviourService.SetBehaviour<SectionSuperJumpBehaviour>();
         _playerBehaviourService.SetActionEndBehaviour(OnBehavourEnd);
     }
 
@@ -30,6 +33,6 @@ public class SuperJumpState : IBaseState
 
     public void OnBehavourEnd()
     {
-        _statemachine.SetState<RollingState>();
+        _statemachine.SetState<GameState>();
     }
 }
