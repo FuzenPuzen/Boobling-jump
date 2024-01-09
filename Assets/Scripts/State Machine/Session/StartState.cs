@@ -7,7 +7,6 @@ public class StartState : IBaseState
     private IService _currentScoreService;
     private IService _recordScoreService;
     private IService _giftScoreService;
-    private IService _coinPoolViewManager;
     private IService _giftService;
 
 
@@ -16,13 +15,11 @@ public class StartState : IBaseState
                         ISectionBehavioursService sectionsService,
                         StateMachine statemachine,
                         CurrentScorePanelService scoreService,
-                        CoinPoolViewManager coinPoolViewManager,
                         RecordScorePanelService recordScoreService,
                         GiftScorePanelService giftScorePanelService,
                         GiftService giftService
                      )
     {
-        _coinPoolViewManager = coinPoolViewManager;
         _currentScoreService = scoreService;
         _sectionsService = sectionsService;
         _statemachine = statemachine;
@@ -37,7 +34,6 @@ public class StartState : IBaseState
         _recordScoreService.ActivateService();
         _giftScoreService.ActivateService();
         _sectionsService.ActivateService();
-        _coinPoolViewManager.ActivateService();
         _giftService.ActivateService();
         _statemachine.SetState<GameState>();
     }
