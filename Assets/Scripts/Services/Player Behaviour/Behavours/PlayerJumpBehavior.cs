@@ -33,6 +33,7 @@ public class PlayerJumpBehaviour : IPlayerBehaviour
 
     public PlayerJumpBehaviour(PlayerView playerView)
     {
+        _isFall = false;
         _canFall = true;
         _transform = playerView.GetComponent<Transform>();
         _playerModel = playerView.GetPlayerModel();
@@ -46,9 +47,9 @@ public class PlayerJumpBehaviour : IPlayerBehaviour
 
     public virtual void Fall(TweenCallback tweenCallback)
     {
+        _jumpSequence.Kill();
         _fallSequence = DOTween.Sequence();
         _isFall = true;
-        _jumpSequence.Kill();
         _fallSequence.Append(_transform.DOMoveY(_startPos.y, period / 2f));
         _fallSequence.Join(_transform.DORotate(new Vector3(0, 0, 0), period / 2f));
         _fallSequence.OnComplete(tweenCallback);
@@ -63,7 +64,6 @@ public class PlayerJumpBehaviour : IPlayerBehaviour
 
     protected void Jump()
     {
-        _canFall = true;
         if (_canJump)
         {
             _jumpSequence = DOTween.Sequence();
@@ -102,6 +102,7 @@ public class PlayerJumpBehaviour : IPlayerBehaviour
         else
         {
             _canJump = true;
+            _canFall = true;
             Jump();
         }
     }
@@ -109,18 +110,28 @@ public class PlayerJumpBehaviour : IPlayerBehaviour
     private void GoToLand()
     {
         _landSequence = DOTween.Sequence();
-        _landSequence.Append(_transform.DOMove(_startPos, period / 2f));
-        _landSequence.OnComplete(Jump);
+        _landSequence.Append(_transform.DOMove(_startPos, period));
+        _landSequence.Join(_transform.DORotate(new Vector3(0, 0, 0), period));
+        _landSequence.OnComplete(LandComplete);
+    }
+
+    private void LandComplete()
+    {
         _canJump = true;
+        _canFall = true;
+        Jump();
     }
 
     public void StopBehaviour()
     {
+        _fallTimerSequence.Kill();
+        _fallSequence.Kill();
+        _jumpSequence.Kill();
+        _landSequence.Kill();
+        _timerSequence.Kill();
         _canJump = false;
         _isFall = false;
-        _fallTimerSequence.Kill();
-        _fallSequence.Kill(); //Для тестов
-        _jumpSequence.Kill();
+        _canFall = false;
     }
 
     public void ColliderBehaviour(Collider other)

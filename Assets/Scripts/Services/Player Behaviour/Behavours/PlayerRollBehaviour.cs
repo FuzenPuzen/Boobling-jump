@@ -32,14 +32,14 @@ public class PlayerRollBehaviour : IPlayerBehaviour
 
     public void StopBehaviour()
     {
-        _playerModel.transform.localRotation = new Quaternion(90, 0, 0, 0);
-        _transform.localRotation = new Quaternion(0, 0, 0, 0);
         _rollSequence.Kill();
+        _playerModel.transform.localRotation = new Quaternion(180, 0, 0, 0);
+        _transform.localRotation = new Quaternion(0, 0, 0, 0);
     }
 
     public void UpdateBehaviour()
     {
-        _playerModel.Rotate(new(0, 0, 1));
+        _playerModel.Rotate(new(0, 1, 0));
     }
 
 
