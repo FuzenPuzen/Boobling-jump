@@ -1,9 +1,8 @@
 using System.Collections.Generic;
 using System.Linq;
-using UnityEngine;
 using Zenject;
 
-public class StateMachine 
+public class SessionStateMachine 
 {
     private IBaseState _currentState;
 

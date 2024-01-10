@@ -2,12 +2,12 @@ using Zenject;
 
 public class GameState : IBaseState
 {
-    private StateMachine _statemachine;
+    private SessionStateMachine _statemachine;
     private IPlayerBehaviourService _playerBehaviourService;
     private ISectionBehavioursService _sectionBehaviourService;
 
     [Inject]
-    public void Constructor(StateMachine statemachine,
+    public void Constructor(SessionStateMachine statemachine,
                           IPlayerBehaviourService playerBehaviourService,
                           ISectionBehavioursService sectionBehaviourService)
     {

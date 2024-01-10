@@ -2,7 +2,7 @@ using Zenject;
 
 public class StartState : IBaseState
 {
-    private StateMachine _statemachine;
+    private SessionStateMachine _statemachine;
     private IService _sectionsService;
     private IService _currentScoreService;
     private IService _recordScoreService;
@@ -13,7 +13,7 @@ public class StartState : IBaseState
     [Inject]
     public void Constructor(
                         ISectionBehavioursService sectionsService,
-                        StateMachine statemachine,
+                        SessionStateMachine statemachine,
                         CurrentScorePanelService scoreService,
                         RecordScorePanelService recordScoreService,
                         GiftScorePanelService giftScorePanelService,

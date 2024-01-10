@@ -4,7 +4,7 @@ public class GameInstaller : MonoInstaller
 {
     public override void InstallBindings()
     {
-        Container.Bind<IMarkerService>().To< MarkerService>().AsSingle();
+        Container.Bind<IMarkerService>().To<MarkerService>().AsSingle();
 
         Container.Bind(
             typeof(IPrefabStorageService),
@@ -60,7 +60,7 @@ public class GameInstaller : MonoInstaller
         Container.Bind<SectionSuperJumpBehaviour>().AsSingle();
         Container.Bind<ISectionBehavioursService>().To<SectionBehavioursService>().AsSingle();
 
-        Container.Bind<StateMachine>().AsSingle();
+        Container.Bind<SessionStateMachine>().AsSingle();
         Container.Bind<EndGameState>().AsSingle();
         Container.Bind<PreStartState>().AsSingle();
         Container.Bind<SuperJumpState>().AsSingle();

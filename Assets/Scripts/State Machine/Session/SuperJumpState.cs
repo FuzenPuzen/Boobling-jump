@@ -2,12 +2,12 @@ using Zenject;
 
 public class SuperJumpState : IBaseState
 {
-    private StateMachine _statemachine;
+    private SessionStateMachine _statemachine;
     private IPlayerBehaviourService _playerBehaviourService;
     private ISectionBehavioursService _sectionBehaviourService;
 
     [Inject]
-    public void Constructor(IPlayerBehaviourService playerBehaviourService, StateMachine statemachine, ISectionBehavioursService sectionBehavioursService)
+    public void Constructor(IPlayerBehaviourService playerBehaviourService, SessionStateMachine statemachine, ISectionBehavioursService sectionBehavioursService)
     {
         _sectionBehaviourService = sectionBehavioursService;
         _playerBehaviourService = playerBehaviourService;
