@@ -2,7 +2,7 @@ using Zenject;
 
 public class PreStartState : IBaseState
 {
-    private StateMachine _statemachine;
+    private SessionStateMachine _statemachine;
     private ITimerService _timerService;
     private TutorialPanelService _tutorialService;
     private IService _coinsPanelService;
@@ -14,7 +14,7 @@ public class PreStartState : IBaseState
     [Inject]
     public void Constructor(
                     ITimerService timerService,
-                    StateMachine statemachine,
+                    SessionStateMachine statemachine,
                     TutorialPanelService tutorialService,
                     IPlayerBehaviourService playerBehaviourService,
                     ISectionBehavioursService sectionBehaviourService,

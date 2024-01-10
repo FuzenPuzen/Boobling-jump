@@ -3,10 +3,10 @@ using Zenject;
 
 public class GameManager : MonoBehaviour
 {
-    private StateMachine _stateMachine;
+    private SessionStateMachine _stateMachine;
 
     [Inject]
-    private void Construct(StateMachine stateMachine)
+    private void Construct(SessionStateMachine stateMachine)
     {
         _stateMachine = stateMachine;
     }

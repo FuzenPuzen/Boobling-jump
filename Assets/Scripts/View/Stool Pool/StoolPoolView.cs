@@ -2,7 +2,7 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 
-public class StoolPoolView : MonoBehaviour, IstoolPoolView
+public class StoolPoolView : MonoBehaviour, IPoolView
 {
     private List<GameObject> _busySections = new();
     private List<GameObject> _freeSections = new();

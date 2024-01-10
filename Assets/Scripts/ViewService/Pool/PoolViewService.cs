@@ -3,9 +3,9 @@ using Zenject;
 
 public abstract class PoolViewService : IPoolViewService
 {
-    private protected IstoolPoolView _poolView;
+    private protected IPoolView _poolView;
     private protected IViewFabric _fabric;
-    private protected Vector3 _stoolPoolPos = new(0, 0, 30);
+    private protected Vector3 _poolPos = new(0, 0, 30);
 
     [Inject]
     public void Constructor(IViewFabric fabric)
