@@ -31,7 +31,7 @@ public interface IMarkerService: IService
 
 public class Marker: MonoBehaviour, IMarker
 {
-    public void Start()
+    public void Awake()
     {
         ActivateMarker();
     }

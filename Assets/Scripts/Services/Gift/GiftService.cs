@@ -5,16 +5,22 @@ using Zenject;
 public class GiftService: IService
 {
     private IScoreDataManager _scoreDataManger;
-    private IViewFabric _fabric;
+    private IViewFabric _viewFabric;
     private IMarkerService _markerService;
+    private IServiceFabric _serviceFabric;
     private GiftBoxViewService _giftBoxViewService;
 
     [Inject]
-    public void Constructor(IScoreDataManager scoreDataManager, IViewFabric fabric, IMarkerService markerService)
+    public void Constructor(
+        IScoreDataManager scoreDataManager,
+        IViewFabric viewFabric,
+        IMarkerService markerService,
+        IServiceFabric serviceFabric)
     {
         _scoreDataManger = scoreDataManager;
-        _fabric = fabric;
+        _viewFabric = viewFabric;
         _markerService = markerService;
+        _serviceFabric = serviceFabric;
     }
 
     public void ActivateService()
@@ -24,8 +30,9 @@ public class GiftService: IService
 
     private void SpawnGift(int count)
     {
-        GiftBoxView giftBoxView = _fabric.SpawnObject<GiftBoxView>(_markerService.GetTransformMarker<GiftBoxSpawnPosMarker>().transform.position);
-        _giftBoxViewService = new GiftBoxViewService();
+        //Заменить создание на взятие из пула
+        GiftBoxView giftBoxView = _viewFabric.SpawnObject<GiftBoxView>(_markerService.GetTransformMarker<GiftBoxSpawnPosMarker>().transform.position);
+        _giftBoxViewService = _serviceFabric.Create<GiftBoxViewService>();
         _giftBoxViewService.ActivateService(giftBoxView);
     }
 }

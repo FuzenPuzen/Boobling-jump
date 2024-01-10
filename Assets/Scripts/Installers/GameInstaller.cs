@@ -33,7 +33,10 @@ public class GameInstaller : MonoInstaller
         Container.Bind<RoomViewService>().AsSingle();
 
         Container.Bind<GiftService>().AsSingle();
+        Container.Bind<GiftCollectViewService>().AsSingle();
+
         Container.Bind<CoinsPanelService>().AsSingle();
+        Container.Bind<CoinPalleteViewService>().AsSingle();
 
 
         Container.Bind<ITimerService>().To<TimerService>().AsSingle();
