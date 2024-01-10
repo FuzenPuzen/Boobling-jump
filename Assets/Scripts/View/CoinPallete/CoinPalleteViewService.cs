@@ -1,24 +1,5 @@
-using Zenject;
+﻿using Zenject;
 using UnityEngine;
-using System;
-
-public class CoinPalleteView : MonoBehaviour
-{
-	private Action _cointCollected;
-
-    private void OnTriggerEnter(Collider other)
-    {
-        if (other.TryGetComponent<DropedCoinView>(out DropedCoinView component))
-        {
-			_cointCollected?.Invoke();
-        }
-    }
-
-    public void SetActionCoinCollecte(Action cointCollected)
-    {
-        _cointCollected = cointCollected;
-    }
-}
 
 public class CoinPalleteViewService : IService
 {
@@ -26,7 +7,10 @@ public class CoinPalleteViewService : IService
 	private IViewFabric _fabric;
 	private IMarkerService _markerService;
 	private ICoinDataManager _coinDataManager;
-	[Inject]
+
+	private int _coinCountTotal;
+	private int _coinCountAdded;
+    [Inject]
 	public void Constructor(
 		IViewFabric fabric,
 		IMarkerService markerService,
@@ -41,6 +25,8 @@ public class CoinPalleteViewService : IService
 	{
 		Transform target = _markerService.GetTransformMarker<CoinPalleteSpawnPosMarker>().transform;
         _coinPalleteView = _fabric.SpawnObject<CoinPalleteView>(target);
+		_coinCountTotal = _coinDataManager.GetCoins();
+        _coinPalleteView.UpdateView(_coinCountTotal, _coinCountAdded);
 		_coinPalleteView.SetActionCoinCollecte(OnCoinCollected);
 
     }
