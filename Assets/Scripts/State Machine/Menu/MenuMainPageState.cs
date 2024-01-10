@@ -1,7 +1,11 @@
+using EventBus;
 using Zenject;
+using UnityEngine.SceneManagement;
 
 public class MenuMainPageState : IBaseState
 {
+    EventBinding<OnClickGame> _onClickGame;
+
     [Inject]
     public void Constructor()
     {
@@ -10,16 +14,21 @@ public class MenuMainPageState : IBaseState
 
     public void Enter()
     {
-        throw new System.NotImplementedException();
+        _onClickGame = new EventBinding<OnClickGame>(OnGameClickEvent);
     }
 
     public void Exit()
     {
-        throw new System.NotImplementedException();
+        
     }
 
     public void Update()
     {
-        throw new System.NotImplementedException();
+        
+    }
+
+    public void OnGameClickEvent()
+    {
+        SceneManager.LoadScene("SessionSceneV1");
     }
 }

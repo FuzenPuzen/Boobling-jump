@@ -1,9 +1,22 @@
 using Zenject;
 using UnityEngine;
+using UnityEngine.UI;
+using EventBus;
 
 public class MenuUpgradePanelView : MonoBehaviour
 {
+    private Button _upgradeButton;
 
+    private void Start()
+    {
+        _upgradeButton = GetComponent<Button>();
+        _upgradeButton.onClick.AddListener(OnButtonClick);
+    }
+
+    public void OnButtonClick()
+    {
+        EventBus<OnClickUpgrade>.Raise();
+    }
 }
 
 public class MenuUpgradePanelViewService : IService

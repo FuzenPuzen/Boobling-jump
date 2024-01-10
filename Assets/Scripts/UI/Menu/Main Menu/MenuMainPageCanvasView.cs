@@ -1,14 +1,14 @@
 using Zenject;
 using UnityEngine;
 
-public class MenuMainPageView : MonoBehaviour
+public class MenuMainPageCanvasView : MonoBehaviour
 {
 
 }
 
-public class MenuMainPageViewService : IService
+public class MenuMainPageCanvasViewService : IService
 {
-	private MenuMainPageView _menuMainPageView;
+	private MenuMainPageCanvasView _menuMainPageView;
 	private IViewFabric _fabric;
 	private IMarkerService _markerService;
 
@@ -22,8 +22,6 @@ public class MenuMainPageViewService : IService
 
 	public void ActivateService()
 	{
-		MonoBehaviour.print(_markerService);
-		MonoBehaviour.print(_fabric);
-		_menuMainPageView = _fabric.SpawnObject<MenuMainPageView>();
+		_menuMainPageView = _fabric.SpawnObject<MenuMainPageCanvasView>();
     }
 }

@@ -1,17 +1,17 @@
 using Zenject;
 using UnityEngine;
-#NOTRIM#
-public class #SCRIPTNAME# : MonoBehaviour
+
+public class MenuSkinShopPageCanvasView : MonoBehaviour
 {
-#NOTRIM#
+
 }
-#NOTRIM#
-public class #SCRIPTNAME#Service : IService
+
+public class MenuSkinShopPageCanvasViewService : IService
 {
 	private IViewFabric _fabric;
-	private #SCRIPTNAME# _#SCRIPTNAME#;
+	private MenuSkinShopPageCanvasView _menuSkinShopPageView;
     private IMarkerService _markerService;
-	#NOTRIM#
+
 	[Inject]
 	public void Constructor(IViewFabric fabric, IMarkerService markerService)
 	{
@@ -21,6 +21,6 @@ public class #SCRIPTNAME#Service : IService
 
 	public void ActivateService()
 	{       
-        _#SCRIPTNAME# = _fabric.SpawnObject<#SCRIPTNAME#>();
+        _menuSkinShopPageView = _fabric.SpawnObject<MenuSkinShopPageCanvasView>();
 	}
 }
