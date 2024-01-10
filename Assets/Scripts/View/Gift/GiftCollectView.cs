@@ -50,7 +50,7 @@ public class GiftCollectViewService : IService
 
 	private void DropeCoinBonus()
 	{
-		_serviceFabric.Create<GiftCoinViewService>().ActivateService(_view.transform);
+		_serviceFabric.Create<DropedCoinViewService>().ActivateService(_view.transform);
 	}
 
     private void DropeSuperJumpBonus()

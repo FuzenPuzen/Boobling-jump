@@ -4,7 +4,7 @@ using System;
 using DG.Tweening;
 using static UnityEngine.GraphicsBuffer;
 
-public class GiftCoinView : MonoBehaviour
+public class DropedCoinView : MonoBehaviour
 {
     private Sequence _moveSequence;
     private Transform _target;
@@ -24,9 +24,9 @@ public class GiftCoinView : MonoBehaviour
     }
 }
 
-public class GiftCoinViewService
+public class DropedCoinViewService
 {
-	private GiftCoinView _dropedCoinView;
+	private DropedCoinView _dropedCoinView;
 	private IViewFabric _fabric;
 	private IMarkerService _markerService;
 	[Inject]
@@ -40,7 +40,7 @@ public class GiftCoinViewService
 
 	public void ActivateService(Transform target)
 	{
-		_dropedCoinView = _fabric.SpawnObject<GiftCoinView>(target.position);
+		_dropedCoinView = _fabric.SpawnObject<DropedCoinView>(target.position);
 		_dropedCoinView.ActivateView(_markerService.GetTransformMarker<CoinPalleteMarker>().transform);
 	}
 }

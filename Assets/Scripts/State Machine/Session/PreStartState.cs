@@ -11,6 +11,7 @@ public class PreStartState : IBaseState
     private IMarkerService _markerService;
     private IService _roomViewService;
     private GiftCollectViewService _giftCollectViewService;
+    private CoinCollectViewService _coinCollectViewService;
     private CoinPalleteViewService _coinPalleteViewService;
 
     [Inject]
@@ -24,7 +25,8 @@ public class PreStartState : IBaseState
                     IMarkerService  markerService,
                     RoomViewService roomViewService,
                     CoinPalleteViewService coinPalleteViewService,
-                    GiftCollectViewService giftCollectViewService
+                    GiftCollectViewService giftCollectViewService,
+                    CoinCollectViewService coinCollectViewService
                  )
     {
         _roomViewService = roomViewService;
@@ -36,6 +38,7 @@ public class PreStartState : IBaseState
         _statemachine = statemachine;
         _markerService =  markerService;
         _giftCollectViewService = giftCollectViewService;
+        _coinCollectViewService = coinCollectViewService;
         _coinPalleteViewService = coinPalleteViewService;
     }
     public void Enter()
@@ -48,6 +51,7 @@ public class PreStartState : IBaseState
         _playerBehaviourService.SetBehaviour<PlayerStartBehaviour>();
         _playerBehaviourService.SetActionEndBehaviour(OnBehavourEnd);
         _giftCollectViewService.ActivateService();
+        _coinCollectViewService.ActivateService();
         _tutorialService.ActivateService();
         _timerService.ActivateService();
         _coinsPanelService.ActivateService();

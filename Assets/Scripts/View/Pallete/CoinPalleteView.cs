@@ -8,7 +8,7 @@ public class CoinPalleteView : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.TryGetComponent<GiftCoinView>(out GiftCoinView component))
+        if (other.TryGetComponent<DropedCoinView>(out DropedCoinView component))
         {
 			_cointCollected?.Invoke();
         }

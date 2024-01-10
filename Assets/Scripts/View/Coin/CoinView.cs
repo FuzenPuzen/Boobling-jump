@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class CoinView : MonoBehaviour
 {
-    private Action<CoinView> CollectAction;
     private Sequence _moveSequence;
     protected Sequence _fallSequence;
     protected float _moveTarget = -5.5f;
@@ -20,7 +19,7 @@ public class CoinView : MonoBehaviour
     {
         if (other.CompareTag("Collector"))
         {
-            CollectAction?.Invoke(this);
+            OnCollect();
 
         }
         if (other.CompareTag("SectionActivator"))
@@ -53,9 +52,10 @@ public class CoinView : MonoBehaviour
         transform.localScale = Vector3.zero;
     }
 
-    public void SetCollectAction(Action<CoinView> action)
+    public void OnCollect()
     {
-        CollectAction = action;
+        _moveSequence.Kill();
+        SetStartValues();
     }
 
     public virtual void ActivateView()

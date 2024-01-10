@@ -34,6 +34,7 @@ public class GameInstaller : MonoInstaller
 
         Container.Bind<GiftService>().AsSingle();
         Container.Bind<GiftCollectViewService>().AsSingle();
+        Container.Bind<CoinCollectViewService>().AsSingle();
 
         Container.Bind<CoinsPanelService>().AsSingle();
         Container.Bind<CoinPalleteViewService>().AsSingle();
