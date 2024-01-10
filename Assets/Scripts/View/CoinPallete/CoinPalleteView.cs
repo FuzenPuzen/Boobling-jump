@@ -7,12 +7,14 @@ public class CoinPalleteView : MonoBehaviour
 	private Action _cointCollected;
     [SerializeField] private TMP_Text _coinCountTotalText;
     [SerializeField] private TMP_Text _coinCountAddedText;
+    private int _coinCount;
 
     private void OnTriggerEnter(Collider other)
     {
         if (other.TryGetComponent<DropedCoinView>(out DropedCoinView component))
         {
 			_cointCollected?.Invoke();
+            _coinCountAddedText.text = _coinCount++.ToString();
         }
     }
 
