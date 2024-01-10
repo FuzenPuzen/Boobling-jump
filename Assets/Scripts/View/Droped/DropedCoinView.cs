@@ -1,26 +1,37 @@
 using Zenject;
 using UnityEngine;
-using System;
 using DG.Tweening;
-using static UnityEngine.GraphicsBuffer;
 
 public class DropedCoinView : MonoBehaviour
 {
+    private Rigidbody _rb;
+    private BoxCollider _boxCollider;
     private Sequence _moveSequence;
     private Transform _target;
     private Vector3 _velocity;
-    private float _duration = 0.5f;
+    private float _duration = 0.25f;
+    private bool _isTargetAchived;
+
+    public void Awake()
+    {
+        _rb = GetComponent<Rigidbody>();
+        _boxCollider = GetComponent<BoxCollider>();
+    }
 
     public void ActivateView(Transform target)
     {
         _target = target;
         _moveSequence = DOTween.Sequence();
-        _moveSequence.Append(transform.DOScale(Vector3.one, 0.25f));
+        _moveSequence.Append(transform.DOScale(Vector3.one, _duration));
+        _moveSequence.Join(transform.DOMove(target.position, _duration));
+        _moveSequence.OnComplete(OnComplete);
     }
 
-    public void FixedUpdate()
+    public void OnComplete()
     {
-        transform.position = Vector3.SmoothDamp(transform.position, _target.position, ref _velocity, _duration);
+        _rb.useGravity = true;
+        _rb.isKinematic = false;
+        _boxCollider.isTrigger = false;
     }
 }
 
