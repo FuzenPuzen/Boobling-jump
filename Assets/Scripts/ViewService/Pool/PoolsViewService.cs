@@ -21,16 +21,18 @@ public class PoolsViewService : IPoolsViewService
 	
 	public void ActivateService()
 	{
-		InitPool();
+		InitPools();
     }
 
-	private void InitPool()
+	private void InitPools()
 	{
 		_coinPoolViewService = _serviceFabric.Create<PoolViewService>();
-		_coinPoolViewService.SpawPool<DropedCoinViewService>();
+		_coinPoolViewService.SpawPool<DropedCoinViewService>(200);
 
         _bonusPoolViewService = _serviceFabric.Create<PoolViewService>();
     }
+
+	// Вынести создание пула в 1 метод
 
 	public IPoolViewService GetCoinPoolViewService()
 	{

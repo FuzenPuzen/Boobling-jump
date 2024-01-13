@@ -7,6 +7,7 @@ public class MenuStartState : IBaseState
     private IService _menuTutorialPanelViewService;
     private IService _menuSkinShopPanelViewService;
     private IService _menuUpgradePanelViewService;
+    private IService _menuSkinShopPageCanvasViewService;
     private IMarkerService _markerService;
             
     [Inject]
@@ -15,10 +16,12 @@ public class MenuStartState : IBaseState
                             MenuTutorialPanelViewService menuTutorialPanelViewService,
                             MenuSkinShopPanelViewService menuSkinShopPanelViewService,
                             MenuUpgradePanelViewService menuUpgradePanelViewService,
+                            MenuSkinShopPageCanvasViewService menuSkinShopPageCanvasViewService,
                             IMarkerService markerService)
     {
         _stateMachine = stateMachine;
         _markerService = markerService;
+        _menuSkinShopPageCanvasViewService = menuSkinShopPageCanvasViewService;
         _menuMainPageViewService = menuMainPageViewService;
         _menuSkinShopPanelViewService = menuSkinShopPanelViewService;
         _menuTutorialPanelViewService = menuTutorialPanelViewService;
@@ -32,6 +35,7 @@ public class MenuStartState : IBaseState
         _menuTutorialPanelViewService.ActivateService();
         _menuUpgradePanelViewService.ActivateService();
         _menuSkinShopPanelViewService.ActivateService();
+        _menuSkinShopPageCanvasViewService.ActivateService();
         _stateMachine.SetState<MenuMainPageState>();
     }
 

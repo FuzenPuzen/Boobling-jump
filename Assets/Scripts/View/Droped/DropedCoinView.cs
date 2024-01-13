@@ -18,6 +18,8 @@ public class DropedCoinView : MonoBehaviour
 
     public void ActivateView(Transform target)
     {
+        transform.position = transform.parent.position;
+        transform.parent = target;
         _moveSequence = DOTween.Sequence();
         _moveSequence.Append(transform.DOScale(Vector3.one, _duration));
         _moveSequence.Join(transform.DOMove(target.position, _duration));
@@ -32,13 +34,13 @@ public class DropedCoinView : MonoBehaviour
     }
 }
 
-public class DropedCoinViewService : IViewService
+public class DropedCoinViewService : IPoolingViewService
 {
 	private DropedCoinView _dropedCoinView;
 	private IViewFabric _fabric;
 	private IMarkerService _markerService;
 
-	[Inject]
+    [Inject]
 	public void Constructor(
 		IViewFabric fabric,
 		IMarkerService markerService)
@@ -48,12 +50,15 @@ public class DropedCoinViewService : IViewService
     }
 
 	public void ActivateService()
-	{		
-		_dropedCoinView.ActivateView(_markerService.GetTransformMarker<CoinPalleteMarker>().transform);
-	}
-
-    public void SpawnView()
-    {
-        _dropedCoinView = _fabric.SpawnObject<DropedCoinView>(_markerService.GetTransformMarker<PlayerMarker>().transform.position);
+	{
+        _dropedCoinView.ActivateView(_markerService.GetTransformMarker<CoinPalleteMarker>().transform);
     }
+
+    public void ActivateServiceFromPool()
+    {
+        Vector3 spawnPos = _markerService.GetTransformMarker<PlayerMarker>().transform.position;
+        Transform parent = _markerService.GetTransformMarker<PlayerMarker>().transform;
+        _dropedCoinView = _fabric.SpawnObject<DropedCoinView>(spawnPos,parent);
+    }
+
 }

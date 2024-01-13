@@ -1,4 +1,4 @@
 public interface IService 
 {
-    void ActivateService();
+    public void ActivateService();
 }

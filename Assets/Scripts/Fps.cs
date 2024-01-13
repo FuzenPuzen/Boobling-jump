@@ -18,8 +18,4 @@ public class Fps : MonoBehaviour
         }
     }
 
-    private void OnGUI()
-    {
-        GUI.Label(new Rect(5, 40, 500, 250), "FPS: " + Mathf.Round(count));
-    }
 }

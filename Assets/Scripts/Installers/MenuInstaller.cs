@@ -29,6 +29,8 @@ public class MenuInstaller : MonoInstaller
         Container.Bind<MenuSkinShopPanelViewService>().AsSingle().NonLazy();
         Container.Bind<MenuUpgradePanelViewService>().AsSingle().NonLazy();
 
+        Container.Bind<MenuSkinShopPageCanvasViewService>().AsSingle().NonLazy();
+
 
         Container.Bind<ICoinDataManager>().To<CoinDataManager>().AsSingle();
         Container.Bind<IScoreDataManager>().To<ScoreDataManager>().AsSingle();
