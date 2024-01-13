@@ -19,7 +19,7 @@ public class GiftBoxView : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.TryGetComponent<GiftCollectView>(out GiftCollectView component))
+        if (other.TryGetComponent<GiftCollectorView>(out GiftCollectorView component))
         {
            //Заменить на возвращение в пулл
             Destroy(gameObject);

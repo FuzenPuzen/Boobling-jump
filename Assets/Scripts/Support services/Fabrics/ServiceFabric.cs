@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -5,6 +6,7 @@ using Zenject;
 public interface IServiceFabric
 {
     T Create<T>();
+    public object Create(Type Type);
 }
 
 public class ServiceFabric: IServiceFabric
@@ -24,6 +26,11 @@ public class ServiceFabric: IServiceFabric
 
         // Возвращаем созданный объект
         return fabricableObject;
+    }
+
+    public object Create(Type Type)
+    {
+        return _container.Instantiate(Type);
     }
 
 }

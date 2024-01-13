@@ -1,7 +1,7 @@
 using UnityEngine;
 using Zenject;
 
-public class TutorialStoolPoolViewService : PoolViewService
+public class TutorialStoolPoolViewService : SectionPoolViewService
 {
     public override void SpawnView()
     {

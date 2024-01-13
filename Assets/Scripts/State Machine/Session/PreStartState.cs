@@ -10,9 +10,11 @@ public class PreStartState : IBaseState
     private ISectionBehavioursService _sectionBehaviourService;
     private IMarkerService _markerService;
     private IService _roomViewService;
-    private GiftCollectViewService _giftCollectViewService;
-    private CoinCollectViewService _coinCollectViewService;
+    private IPoolsViewService _poolsViewService;
+    private GiftCollectorViewService _giftCollectViewService;
+    private CoinCollectorViewService _coinCollectViewService;
     private CoinPalleteViewService _coinPalleteViewService;
+
 
     [Inject]
     public void Constructor(
@@ -25,10 +27,12 @@ public class PreStartState : IBaseState
                     IMarkerService  markerService,
                     RoomViewService roomViewService,
                     CoinPalleteViewService coinPalleteViewService,
-                    GiftCollectViewService giftCollectViewService,
-                    CoinCollectViewService coinCollectViewService
+                    GiftCollectorViewService giftCollectViewService,
+                    CoinCollectorViewService coinCollectViewService,
+                    IPoolsViewService poolsViewService
                  )
     {
+        _poolsViewService = poolsViewService;
         _roomViewService = roomViewService;
         _sectionBehaviourService = sectionBehaviourService;
         _coinsPanelService = coinsPanelService;
@@ -44,12 +48,16 @@ public class PreStartState : IBaseState
     public void Enter()
     {
         _markerService.ActivateService();
-        
+
+
         _roomViewService.ActivateService();
         _sectionBehaviourService.ActivateService();
+
         _playerBehaviourService.ActivateService();
         _playerBehaviourService.SetBehaviour<PlayerStartBehaviour>();
         _playerBehaviourService.SetActionEndBehaviour(OnBehavourEnd);
+        _poolsViewService.ActivateService();
+
         _giftCollectViewService.ActivateService();
         _coinCollectViewService.ActivateService();
         _tutorialService.ActivateService();

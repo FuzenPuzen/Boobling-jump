@@ -2,7 +2,7 @@ using Zenject;
 using UnityEngine;
 using System;
 
-public class GiftCollectView : MonoBehaviour
+public class GiftCollectorView : MonoBehaviour
 {
 	private Action _collectAction;
 
@@ -21,23 +21,26 @@ public class GiftCollectView : MonoBehaviour
     }
 }
 
-public class GiftCollectViewService : IService
+public class GiftCollectorViewService : IService
 {
-	private GiftCollectView _view;
+	private GiftCollectorView _view;
 	private IViewFabric _viewFabric;
 	private IMarkerService _markerService;
-	private IServiceFabric _serviceFabric;
-	[Inject]
-	public void Constructor(IViewFabric viewFabric, IMarkerService markerService, IServiceFabric serviceFabric)
+    private IPoolsViewService _poolsViewService;
+    private IPoolViewService _coinPoolViewService;
+
+    [Inject]
+	public void Constructor(IViewFabric viewFabric, IMarkerService markerService, IPoolsViewService poolsViewService)
 	{
 		_viewFabric = viewFabric;
 		_markerService = markerService;
-		_serviceFabric = serviceFabric;
-	}
+        _poolsViewService = poolsViewService;
+    }
 
 	public void ActivateService()
 	{
-        _view = _viewFabric.SpawnObject<GiftCollectView>(_markerService.GetTransformMarker<PlayerMarker>().transform);
+        _coinPoolViewService = _poolsViewService.GetCoinPoolViewService();
+        _view = _viewFabric.SpawnObject<GiftCollectorView>(_markerService.GetTransformMarker<PlayerMarker>().transform);
         _view.SetCollectAction(GiftBoxCollected);
     }
 
@@ -50,7 +53,7 @@ public class GiftCollectViewService : IService
 
 	private void DropeCoinBonus()
 	{
-		_serviceFabric.Create<DropedCoinViewService>().ActivateService(_view.transform);
+        _coinPoolViewService.GetItem().ActivateService();
 	}
 
     private void DropeSuperJumpBonus()

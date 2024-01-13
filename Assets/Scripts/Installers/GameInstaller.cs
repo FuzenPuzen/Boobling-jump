@@ -27,14 +27,16 @@ public class GameInstaller : MonoInstaller
         Container.Bind<RecordScoreDataCombiner>().AsSingle().NonLazy();
         Container.Bind<GiftScoreDataCombiner>().AsSingle().NonLazy();
 
+        Container.Bind<IPoolsViewService>().To<PoolsViewService>().AsSingle();
+
 
         Container.Bind<ICoinDataManager>().To<CoinDataManager>().AsSingle();
         Container.Bind<IScoreDataManager>().To<ScoreDataManager>().AsSingle();
         Container.Bind<RoomViewService>().AsSingle();
 
         Container.Bind<GiftService>().AsSingle();
-        Container.Bind<GiftCollectViewService>().AsSingle();
-        Container.Bind<CoinCollectViewService>().AsSingle();
+        Container.Bind<GiftCollectorViewService>().AsSingle();
+        Container.Bind<CoinCollectorViewService>().AsSingle();
 
         Container.Bind<CoinsPanelService>().AsSingle();
         Container.Bind<CoinPalleteViewService>().AsSingle();

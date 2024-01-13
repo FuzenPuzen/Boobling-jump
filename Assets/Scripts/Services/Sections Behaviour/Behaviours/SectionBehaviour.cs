@@ -3,7 +3,7 @@ using Zenject;
 
 public class SectionBehaviour : ISectionBehaviour
 {
-    private protected IPoolViewService _poolViewService;
+    private protected ISectionPoolViewService _poolViewService;
     private protected List<SectionViewService> _sectionViewServices = new();
     private protected SectionViewService _currentSectionViewService;
     private protected IServiceFabric _serviceFabric;

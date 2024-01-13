@@ -7,10 +7,7 @@ public class DropedCoinView : MonoBehaviour
     private Rigidbody _rb;
     private BoxCollider _boxCollider;
     private Sequence _moveSequence;
-    private Transform _target;
-    private Vector3 _velocity;
     private float _duration = 0.25f;
-    private bool _isTargetAchived;
 
     public void Awake()
     {
@@ -18,9 +15,9 @@ public class DropedCoinView : MonoBehaviour
         _boxCollider = GetComponent<BoxCollider>();
     }
 
+
     public void ActivateView(Transform target)
     {
-        _target = target;
         _moveSequence = DOTween.Sequence();
         _moveSequence.Append(transform.DOScale(Vector3.one, _duration));
         _moveSequence.Join(transform.DOMove(target.position, _duration));
@@ -35,11 +32,12 @@ public class DropedCoinView : MonoBehaviour
     }
 }
 
-public class DropedCoinViewService
+public class DropedCoinViewService : IViewService
 {
 	private DropedCoinView _dropedCoinView;
 	private IViewFabric _fabric;
 	private IMarkerService _markerService;
+
 	[Inject]
 	public void Constructor(
 		IViewFabric fabric,
@@ -47,11 +45,15 @@ public class DropedCoinViewService
 	{
 		_fabric = fabric;
 		_markerService = markerService;
-	}
+    }
 
-	public void ActivateService(Transform target)
-	{
-		_dropedCoinView = _fabric.SpawnObject<DropedCoinView>(target.position);
+	public void ActivateService()
+	{		
 		_dropedCoinView.ActivateView(_markerService.GetTransformMarker<CoinPalleteMarker>().transform);
 	}
+
+    public void SpawnView()
+    {
+        _dropedCoinView = _fabric.SpawnObject<DropedCoinView>(_markerService.GetTransformMarker<PlayerMarker>().transform.position);
+    }
 }

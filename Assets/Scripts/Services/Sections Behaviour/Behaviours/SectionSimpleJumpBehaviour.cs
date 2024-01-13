@@ -3,8 +3,8 @@ using Zenject;
 public class SectionSimpleJumpBehaviour : SectionBehaviour
 {
     private ISessionTypeDataManager _sessionTypeDataManager;
-    private IPoolViewService _infinityStoolPoolViewService;
-    private IPoolViewService _tutorialStoolPoolViewService;
+    private ISectionPoolViewService _infinityStoolPoolViewService;
+    private ISectionPoolViewService _tutorialStoolPoolViewService;
 
     [Inject]
     public void Constructor(ISessionTypeDataManager sessionTypeDataManager,
