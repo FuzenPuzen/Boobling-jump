@@ -35,7 +35,7 @@ public class MenuStartState : IBaseState
         _menuTutorialPanelViewService.ActivateService();
         _menuUpgradePanelViewService.ActivateService();
         _menuSkinShopPanelViewService.ActivateService();
-        _menuSkinShopPageCanvasViewService.ActivateService();
+        //_menuSkinShopPageCanvasViewService.ActivateService();
         _stateMachine.SetState<MenuMainPageState>();
     }
 
