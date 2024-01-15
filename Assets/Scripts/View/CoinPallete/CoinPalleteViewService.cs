@@ -1,5 +1,5 @@
-﻿using Zenject;
-using UnityEngine;
+﻿using UnityEngine;
+using Zenject;
 
 public class CoinPalleteViewService : IService
 {
@@ -9,7 +9,9 @@ public class CoinPalleteViewService : IService
 	private ICoinDataManager _coinDataManager;
 
 	private int _coinCountTotal;
-	private int _coinCountAdded;
+	private int _coinCountCollected;
+    private int _cleanCoinCount = 10;
+
     [Inject]
 	public void Constructor(
 		IViewFabric fabric,
@@ -26,7 +28,8 @@ public class CoinPalleteViewService : IService
 		Transform target = _markerService.GetTransformMarker<CoinPalleteSpawnPosMarker>().transform;
         _coinPalleteView = _fabric.SpawnObject<CoinPalleteView>(target);
 		_coinCountTotal = _coinDataManager.GetCoins();
-        _coinPalleteView.UpdateView(_coinCountTotal, _coinCountAdded);
+		_coinDataManager.coinsChanged += _coinPalleteView.UpdateView;
+        _coinPalleteView.UpdateView(_coinCountTotal);
 		_coinPalleteView.SetActionCoinCollecte(OnCoinCollected);
 
     }
@@ -34,5 +37,13 @@ public class CoinPalleteViewService : IService
 	private void OnCoinCollected()
 	{
 		_coinDataManager.CollectCoins();
+		_coinCountCollected++;
+		MonoBehaviour.print(_coinCountCollected);
+		if(_coinCountCollected >= _cleanCoinCount)
+		{
+			MonoBehaviour.print("OpenDoor");
+			_coinCountCollected = 0;
+			_coinPalleteView.OpenDoors();
+		}
 	}
 }

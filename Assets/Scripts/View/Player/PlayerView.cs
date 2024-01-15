@@ -13,7 +13,7 @@ public class PlayerView : MonoBehaviour
     }
 
 
-    private void Update()
+    private void FixedUpdate()
     {
         _currentBehaviour?.UpdateBehaviour();
     }
