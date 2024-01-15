@@ -1,17 +1,17 @@
+using System;
+using System.Collections.Generic;
 using UnityEngine;
 using Zenject;
 
 public interface IPoolsViewService : IService
 {
-	public IPoolViewService GetCoinPoolViewService();
-	public IPoolViewService GetBonusPoolViewService();
+	public IPoolViewService GetPool<T>() where T : IPoolingViewService;
 }
 
 public class PoolsViewService : IPoolsViewService
 {
 	private IServiceFabric _serviceFabric;
-	private IPoolViewService _coinPoolViewService;
-	private IPoolViewService _bonusPoolViewService;
+	private Dictionary<Type, IPoolViewService> _pools = new();
 
     [Inject]
 	public void Constructor(IServiceFabric serviceFabric)
@@ -26,22 +26,23 @@ public class PoolsViewService : IPoolsViewService
 
 	private void InitPools()
 	{
-		_coinPoolViewService = _serviceFabric.Create<PoolViewService>();
-		_coinPoolViewService.SpawPool<DropedCoinViewService>(200);
 
-        _bonusPoolViewService = _serviceFabric.Create<PoolViewService>();
+        //_bonusPoolViewService = _serviceFabric.Create<PoolViewService>();
+
+		InitPool<DropedCoinViewService>(10);
     }
 
+	private void InitPool<T>(int count = 0) 
+		where T : IPoolingViewService
+	{
+        PoolViewService newPool = _serviceFabric.Create<PoolViewService>();
+         newPool.SpawPool(typeof(T), 10);
+		_pools.Add(typeof(T), newPool);
+    }
 	// Вынести создание пула в 1 метод
 
-	public IPoolViewService GetCoinPoolViewService()
+	public IPoolViewService GetPool<T>() where T : IPoolingViewService
 	{
-		return _coinPoolViewService;
+        return _pools[typeof(T)];
 	}
-
-    public IPoolViewService GetBonusPoolViewService()
-    {
-        return _bonusPoolViewService;
-    }
-
 }

@@ -4,20 +4,14 @@ using System;
 
 public class GiftCollectorView : MonoBehaviour
 {
-	private Action _collectAction;
+	public Action collectAction;
 
     private void OnTriggerEnter(Collider other)
     {
         if(other.TryGetComponent<GiftBoxView>(out GiftBoxView component))
 		{
-			_collectAction?.Invoke();
-
+			collectAction?.Invoke();
         }
-    }
-
-    public void SetCollectAction(Action collectAction)
-    {
-        _collectAction = collectAction;
     }
 }
 
@@ -39,9 +33,9 @@ public class GiftCollectorViewService : IService
 
 	public void ActivateService()
 	{
-        _coinPoolViewService = _poolsViewService.GetCoinPoolViewService();
+        _coinPoolViewService = _poolsViewService.GetPool<DropedCoinViewService>();
         _view = _viewFabric.SpawnObject<GiftCollectorView>(_markerService.GetTransformMarker<PlayerMarker>().transform);
-        _view.SetCollectAction(GiftBoxCollected);
+        _view.collectAction = GiftBoxCollected;
     }
 
 	public void GiftBoxCollected()
@@ -54,6 +48,7 @@ public class GiftCollectorViewService : IService
 	private void DropeCoinBonus()
 	{
         _coinPoolViewService.GetItem().ActivateService();
+        MonoBehaviour.print("GIFT:" + _coinPoolViewService.GetViewServicesCount());
 	}
 
     private void DropeSuperJumpBonus()
