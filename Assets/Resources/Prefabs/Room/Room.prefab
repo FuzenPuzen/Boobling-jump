@@ -1322,6 +1322,7 @@ GameObject:
   - component: {fileID: 54361013968151195}
   - component: {fileID: 5534302584073711264}
   - component: {fileID: 6520636679384506925}
+  - component: {fileID: 1808445381543667}
   m_Layer: 0
   m_Name: BonusBlenderSuperJump
   m_TagString: Untagged
@@ -1484,6 +1485,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 034bc47afcbf5e141a58d5c20b7808e4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1808445381543667
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3420856873185918398}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: de2f52f7a9f3cd940b34d1c025e3b0e6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &3690904325069604590
@@ -2222,6 +2235,7 @@ GameObject:
   - component: {fileID: 2877003903027030241}
   - component: {fileID: 1859538311570850205}
   - component: {fileID: 3824952897351270790}
+  - component: {fileID: 4606356646177113845}
   m_Layer: 0
   m_Name: BonusBlenderRoll
   m_TagString: Untagged
@@ -2382,6 +2396,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 034bc47afcbf5e141a58d5c20b7808e4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &4606356646177113845
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5154810159800426390}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ad31b8db1f838df40925ad10b27b2002, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &5328609323586393350

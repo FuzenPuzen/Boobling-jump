@@ -30,6 +30,8 @@ public class PoolsViewService : IPoolsViewService
         //_bonusPoolViewService = _serviceFabric.Create<PoolViewService>();
 
 		InitPool<DropedCoinViewService>(10);
+		InitPool<DropedRollBonusViewService>(10);
+		InitPool<DropedSuperJumpBonusViewService>(10);
     }
 
 	private void InitPool<T>(int count = 0) 

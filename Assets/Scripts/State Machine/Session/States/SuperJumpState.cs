@@ -1,13 +1,20 @@
+using EventBus;
 using Zenject;
 
 public class SuperJumpState : IBaseState
 {
+
     private SessionStateMachine _statemachine;
     private IPlayerBehaviourService _playerBehaviourService;
     private ISectionBehavioursService _sectionBehaviourService;
 
+    private EventBinding<OnSupperJumpDeactivate> _onSupperJumpDeactivate;
+
     [Inject]
-    public void Constructor(IPlayerBehaviourService playerBehaviourService, SessionStateMachine statemachine, ISectionBehavioursService sectionBehavioursService)
+    public void Constructor(
+        IPlayerBehaviourService playerBehaviourService,
+        SessionStateMachine statemachine,
+        ISectionBehavioursService sectionBehavioursService)
     {
         _sectionBehaviourService = sectionBehavioursService;
         _playerBehaviourService = playerBehaviourService;
@@ -18,7 +25,8 @@ public class SuperJumpState : IBaseState
     {
         _playerBehaviourService.SetBehaviour<PlayerSuperJumpBehaviour>();
         _sectionBehaviourService.SetBehaviour<SectionSuperJumpBehaviour>();
-        _playerBehaviourService.SetActionEndBehaviour(OnBehavourEnd);
+        _onSupperJumpDeactivate = new EventBinding<OnSupperJumpDeactivate>(OnSuperJumpBehaviourEnd);
+        //_playerBehaviourService.SetActionEndBehaviour(OnBehavourEnd);
     }
 
     public void Exit()
@@ -30,8 +38,7 @@ public class SuperJumpState : IBaseState
     {
         //do nothing
     }
-
-    public void OnBehavourEnd()
+    public void OnSuperJumpBehaviourEnd()
     {
         _statemachine.SetState<GameState>();
     }

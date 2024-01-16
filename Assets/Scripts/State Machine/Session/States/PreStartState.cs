@@ -55,7 +55,6 @@ public class PreStartState : IBaseState
 
         _playerBehaviourService.ActivateService();
         _playerBehaviourService.SetBehaviour<PlayerStartBehaviour>();
-        _playerBehaviourService.SetActionEndBehaviour(OnBehavourEnd);
         _poolsViewService.ActivateService();
 
         _giftCollectViewService.ActivateService();
@@ -64,7 +63,9 @@ public class PreStartState : IBaseState
         _timerService.ActivateService();
         _coinsPanelService.ActivateService();
         _coinPalleteViewService.ActivateService();
-        
+
+        _statemachine.SetState<StartState>();
+
     }
 
     public void Exit()
@@ -77,8 +78,4 @@ public class PreStartState : IBaseState
         //do nothing
     }
 
-    public void OnBehavourEnd()
-    {
-        _statemachine.SetState<StartState>();
-    }
 }

@@ -1,6 +1,8 @@
 using Zenject;
 using UnityEngine;
 using System;
+using System.Collections.Generic;
+using System.Linq;
 
 public class GiftCollectorView : MonoBehaviour
 {
@@ -22,6 +24,8 @@ public class GiftCollectorViewService : IService
 	private IMarkerService _markerService;
     private IPoolsViewService _poolsViewService;
     private IPoolViewService _coinPoolViewService;
+    private IPoolViewService _roolBonusPoolViewService;
+    private IPoolViewService _superJumpBonusPoolViewService;
 
     [Inject]
 	public void Constructor(IViewFabric viewFabric, IMarkerService markerService, IPoolsViewService poolsViewService)
@@ -34,30 +38,64 @@ public class GiftCollectorViewService : IService
 	public void ActivateService()
 	{
         _coinPoolViewService = _poolsViewService.GetPool<DropedCoinViewService>();
+        _roolBonusPoolViewService = _poolsViewService.GetPool<DropedRollBonusViewService>();
+        _superJumpBonusPoolViewService = _poolsViewService.GetPool<DropedSuperJumpBonusViewService>();
         _view = _viewFabric.SpawnObject<GiftCollectorView>(_markerService.GetTransformMarker<PlayerMarker>().transform);
         _view.collectAction = GiftBoxCollected;
     }
 
 	public void GiftBoxCollected()
 	{
-		//условия выбора спавна конкретного бонуса
-		DropeCoinBonus();
-		//другие бонусы
+        MethodCaller methodCaller = new MethodCaller();
+        methodCaller.AddMethod(DropeCoinBonus, 30);  // 30% вероятность вызова Method1
+        methodCaller.AddMethod(DropeSuperJumpBonus, 40);  // 40% вероятность вызова Method2
+        methodCaller.AddMethod(DropeRollBonus, 30);  // 30% вероятность вызова Method3
+
+        // Вызываем методы согласно заданной вероятности
+        methodCaller.CallRandomMethod();
     }
 
 	private void DropeCoinBonus()
 	{
         _coinPoolViewService.GetItem().ActivateService();
-        MonoBehaviour.print("GIFT:" + _coinPoolViewService.GetViewServicesCount());
 	}
 
     private void DropeSuperJumpBonus()
     {
-
+        _superJumpBonusPoolViewService.GetItem().ActivateService();
     }
 
     private void DropeRollBonus()
     {
+        _roolBonusPoolViewService.GetItem().ActivateService();
+    }
+}
 
+class MethodCaller
+{
+    private Dictionary<Action, int> methodProbabilities = new Dictionary<Action, int>();
+    private System.Random random = new System.Random();
+
+    // Добавление метода и его вероятности
+    public void AddMethod(Action method, int probability)
+    {
+        methodProbabilities[method] = probability;
+    }
+
+    // Вызов случайного метода с учетом вероятности
+    public void CallRandomMethod()
+    {
+        int totalProbability = methodProbabilities.Values.Sum();
+        int randomNumber = random.Next(1, totalProbability + 1);
+
+        foreach (var kvp in methodProbabilities)
+        {
+            if (randomNumber <= kvp.Value)
+            {
+                kvp.Key.Invoke();
+                break;
+            }
+            randomNumber -= kvp.Value;
+        }
     }
 }
