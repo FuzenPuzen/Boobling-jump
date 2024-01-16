@@ -14,9 +14,11 @@ public class PreStartState : IBaseState
     private GiftCollectorViewService _giftCollectViewService;
     private CoinCollectorViewService _coinCollectViewService;
     private CoinPalleteViewService _coinPalleteViewService;
+    private RollBonusBlenderViewService _rollBonusBlenderViewService;
+    private SuperJumpBonusBlenderViewService _superJumpBonusBlenderViewService;
 
 
-    [Inject]
+   [Inject]
     public void Constructor(
                     ITimerService timerService,
                     SessionStateMachine statemachine,
@@ -29,7 +31,9 @@ public class PreStartState : IBaseState
                     CoinPalleteViewService coinPalleteViewService,
                     GiftCollectorViewService giftCollectViewService,
                     CoinCollectorViewService coinCollectViewService,
-                    IPoolsViewService poolsViewService
+                    IPoolsViewService poolsViewService,
+                    RollBonusBlenderViewService rollBonusBlenderViewService,
+                    SuperJumpBonusBlenderViewService superJumpBonusBlenderViewService
                  )
     {
         _poolsViewService = poolsViewService;
@@ -44,14 +48,17 @@ public class PreStartState : IBaseState
         _giftCollectViewService = giftCollectViewService;
         _coinCollectViewService = coinCollectViewService;
         _coinPalleteViewService = coinPalleteViewService;
+        _rollBonusBlenderViewService = rollBonusBlenderViewService;
+        _superJumpBonusBlenderViewService = superJumpBonusBlenderViewService;
     }
     public void Enter()
     {
         _markerService.ActivateService();
 
-
         _roomViewService.ActivateService();
         _sectionBehaviourService.ActivateService();
+        _rollBonusBlenderViewService.ActivateService();
+        _superJumpBonusBlenderViewService.ActivateService();
 
         _playerBehaviourService.ActivateService();
         _playerBehaviourService.SetBehaviour<PlayerStartBehaviour>();

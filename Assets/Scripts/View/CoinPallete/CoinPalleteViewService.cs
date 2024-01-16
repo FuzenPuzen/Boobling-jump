@@ -38,10 +38,8 @@ public class CoinPalleteViewService : IService
 	{
 		_coinDataManager.CollectCoins();
 		_coinCountCollected++;
-		MonoBehaviour.print(_coinCountCollected);
 		if(_coinCountCollected >= _cleanCoinCount)
 		{
-			MonoBehaviour.print("OpenDoor");
 			_coinCountCollected = 0;
 			_coinPalleteView.OpenDoors();
 		}

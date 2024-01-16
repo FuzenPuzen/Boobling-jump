@@ -5,11 +5,12 @@ using System;
 
 public class DropedCoinView : MonoBehaviour
 {
+    public Action _deactivateToPool;
+
     private Rigidbody _rb;
     private BoxCollider _boxCollider;
     private Sequence _moveSequence;
     private float _duration = 0.25f;
-    private Action _deactivateToPool;
     private Transform _startParent;
 
     public void Awake()
@@ -56,11 +57,6 @@ public class DropedCoinView : MonoBehaviour
         transform.gameObject.SetActive(false);
         
     }
-
-    public void SetDeactivateToPoolAction(Action deactivateToPool)
-    {
-        _deactivateToPool = deactivateToPool;
-    }
 }
 
 public class DropedCoinViewService : IPoolingViewService
@@ -89,13 +85,12 @@ public class DropedCoinViewService : IPoolingViewService
     {
         if(_dropedCoinView == null)
         {
-            Vector3 spawnPos = _markerService.GetTransformMarker<PlayerMarker>().transform.position;
             Transform parent = _markerService.GetTransformMarker<PlayerMarker>().transform;
+            Vector3 spawnPos = parent.position;
             //_dropedCoinView = _dropedCoinView == null? _fabric.SpawnObject<DropedCoinView>(spawnPos,parent) : _dropedCoinView;
             _dropedCoinView = _fabric.SpawnObject<DropedCoinView>(spawnPos, parent);
-            _dropedCoinView.SetDeactivateToPoolAction(DeactivateServiceToPool);
-        }
-      
+            _dropedCoinView._deactivateToPool = DeactivateServiceToPool;
+        }     
     }
 
     public void DeactivateServiceToPool()

@@ -3,6 +3,7 @@ using UnityEngine;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using EventBus;
 
 public class GiftCollectorView : MonoBehaviour
 {
@@ -27,6 +28,13 @@ public class GiftCollectorViewService : IService
     private IPoolViewService _roolBonusPoolViewService;
     private IPoolViewService _superJumpBonusPoolViewService;
 
+    private bool isFullDrop = true;
+
+    private EventBinding<OnRollActivate> _onRollActivate;
+    private EventBinding<OnRollDeactivate> _onRollDeactivate;
+    private EventBinding<OnSupperJumpActivate> _onSupperJumpActivate;
+    private EventBinding<OnSupperJumpDeactivate> _onSupperJumpDeactivate;
+
     [Inject]
 	public void Constructor(IViewFabric viewFabric, IMarkerService markerService, IPoolsViewService poolsViewService)
 	{
@@ -42,18 +50,37 @@ public class GiftCollectorViewService : IService
         _superJumpBonusPoolViewService = _poolsViewService.GetPool<DropedSuperJumpBonusViewService>();
         _view = _viewFabric.SpawnObject<GiftCollectorView>(_markerService.GetTransformMarker<PlayerMarker>().transform);
         _view.collectAction = GiftBoxCollected;
+
+        _onRollActivate = new(DeactivateFullDrop);
+        _onSupperJumpActivate = new(DeactivateFullDrop);
+        
+        _onRollDeactivate = new(ActivateFullDrop);
+        _onSupperJumpDeactivate = new(ActivateFullDrop);
     }
 
 	public void GiftBoxCollected()
 	{
-        MethodCaller methodCaller = new MethodCaller();
-        methodCaller.AddMethod(DropeCoinBonus, 30);  // 30% вероятность вызова Method1
-        methodCaller.AddMethod(DropeSuperJumpBonus, 40);  // 40% вероятность вызова Method2
-        methodCaller.AddMethod(DropeRollBonus, 30);  // 30% вероятность вызова Method3
+        MonoBehaviour.print("isfilldrop " + isFullDrop);
+        if(isFullDrop)
+        {
+            MethodCaller methodCaller = new MethodCaller();
+            methodCaller.AddMethod(DropeCoinBonus, 30);  // 30% вероятность вызова Method1
+            methodCaller.AddMethod(DropeSuperJumpBonus, 40);  // 40% вероятность вызова Method2
+            methodCaller.AddMethod(DropeRollBonus, 30);  // 30% вероятность вызова Method3
 
-        // Вызываем методы согласно заданной вероятности
-        methodCaller.CallRandomMethod();
+            // Вызываем методы согласно заданной вероятности
+            methodCaller.CallRandomMethod();
+        }
+        else
+        {
+            DropeCoinBonus();
+        }
+
     }
+
+    private void ActivateFullDrop() => isFullDrop = true;
+    private void DeactivateFullDrop() => isFullDrop = false;
+
 
 	private void DropeCoinBonus()
 	{

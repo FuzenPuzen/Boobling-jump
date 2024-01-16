@@ -40,6 +40,8 @@ public class GameInstaller : MonoInstaller
 
         Container.Bind<CoinsPanelService>().AsSingle();
         Container.Bind<CoinPalleteViewService>().AsSingle();
+        Container.Bind<SuperJumpBonusBlenderViewService>().AsSingle();
+        Container.Bind<RollBonusBlenderViewService>().AsSingle();
 
 
         Container.Bind<ITimerService>().To<TimerService>().AsSingle();
