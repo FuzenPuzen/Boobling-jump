@@ -1,4 +1,4 @@
-public class RollStoolPoolViewService : SectionPoolViewService
+public class RollSectionPoolViewService : SectionPoolViewService
 {
     public override void SpawnView()
     {

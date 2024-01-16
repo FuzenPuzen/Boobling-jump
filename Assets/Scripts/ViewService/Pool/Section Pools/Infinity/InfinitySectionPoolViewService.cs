@@ -1,4 +1,4 @@
-public class InfinityStoolPoolViewService : SectionPoolViewService
+public class InfinitySectionPoolViewService : SectionPoolViewService
 {
     public override void SpawnView()
     {

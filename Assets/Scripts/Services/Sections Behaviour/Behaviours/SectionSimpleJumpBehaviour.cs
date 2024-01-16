@@ -8,8 +8,8 @@ public class SectionSimpleJumpBehaviour : SectionBehaviour
 
     [Inject]
     public void Constructor(ISessionTypeDataManager sessionTypeDataManager,
-                            InfinityStoolPoolViewService infinityStoolPoolViewService,
-                            TutorialStoolPoolViewService tutorialStoolPoolViewService)
+                            InfinitySectionPoolViewService infinityStoolPoolViewService,
+                            TutorialSectionPoolViewService tutorialStoolPoolViewService)
     {
         _tutorialStoolPoolViewService = tutorialStoolPoolViewService;
         _infinityStoolPoolViewService = infinityStoolPoolViewService;

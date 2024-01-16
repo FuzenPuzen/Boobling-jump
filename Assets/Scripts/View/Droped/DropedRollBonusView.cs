@@ -13,25 +13,26 @@ public class DropedRollBonusView : MonoBehaviour
     public void Awake()
     {
         _startParent = transform.parent;
+        gameObject.SetActive(false);
     }
 
     public void ActivateView(Transform target)
     {
+        gameObject.SetActive(true);
         transform.position = transform.parent.position;
         transform.parent = target;
         _moveSequence = DOTween.Sequence();
         _moveSequence.Append(transform.DOScale(Vector3.one, _duration));
         _moveSequence.Join(transform.DOMove(target.position, _duration));
-        _moveSequence.OnComplete(DeactivateView);
+        _moveSequence.OnComplete(()=>_deactivateToPool?.Invoke());
     }
 
-    private void DeactivateView()
+    public void DeactivateView()
     {
         _moveSequence.Kill();
         transform.parent = _startParent;
         transform.localScale = Vector3.zero;
-        _deactivateToPool?.Invoke();
-        transform.gameObject.SetActive(false);
+        gameObject.SetActive(false);
     }
 }
 
@@ -51,8 +52,8 @@ public class DropedRollBonusViewService : IPoolingViewService
 
 	public void ActivateService()
 	{
-        _dropedRollBonusView.gameObject.SetActive(true);
-        _dropedRollBonusView.ActivateView(_markerService.GetTransformMarker<RollBonusBlenderPosMarker>().transform);
+        Transform target = _markerService.GetTransformMarker<RollBonusBlenderPosMarker>().transform;
+        _dropedRollBonusView.ActivateView(target);
     }
 
     public void ActivateServiceFromPool()
@@ -60,13 +61,13 @@ public class DropedRollBonusViewService : IPoolingViewService
         if(_dropedRollBonusView == null)
         {
             Transform parent = _markerService.GetTransformMarker<PlayerMarker>().transform;
-            Vector3 spawnPos = parent.position;
-            _dropedRollBonusView = _fabric.SpawnObject<DropedRollBonusView>(spawnPos, parent);
+            _dropedRollBonusView = _fabric.SpawnObject<DropedRollBonusView>(parent);
             _dropedRollBonusView._deactivateToPool = DeactivateServiceToPool;
         }
     }
     public void DeactivateServiceToPool()
     {
+        _dropedRollBonusView.DeactivateView();
         _onDeactivateAction?.Invoke(this);
     }
 

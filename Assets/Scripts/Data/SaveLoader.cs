@@ -49,6 +49,7 @@ namespace MLALib
     {
         public static T LoadItem<T>(string key)
         {
+            YandexGame.LoadCloud();
             return JsonConvert.DeserializeObject<T>(YandexGame.savesData.myData[key]);
         }
 
@@ -73,6 +74,7 @@ namespace MLALib
 
         public static T LoadData<T>(T obj, string key)
         {
+            
             if (!YandexGame.savesData.myData.ContainsKey(key))
             {
                 SaveItem(obj, key);

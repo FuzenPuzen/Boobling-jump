@@ -1,4 +1,4 @@
-public class SuperJumpStoolPoolViewService : SectionPoolViewService
+public class SuperJumpSectionPoolViewService : SectionPoolViewService
 {
     public override void SpawnView()
     {
