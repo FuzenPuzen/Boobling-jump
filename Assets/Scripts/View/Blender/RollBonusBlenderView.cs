@@ -68,7 +68,11 @@ public class RollBonusBlenderViewService : IService
 
     }
 
-	private void OnRollActivate() 
+    public void DeactivateService()
+    {
+        _rollBonusBlenderView.collectAction = null;
+    }
+    private void OnRollActivate() 
 	{
 		EventBus<OnRollActivate>.Raise();
 		_rollBonusBlenderView.BlenderStart(OnRollDeactivate);

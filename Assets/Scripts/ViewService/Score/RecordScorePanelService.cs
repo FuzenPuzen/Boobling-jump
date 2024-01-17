@@ -1,3 +1,4 @@
+using UnityEngine;
 using Zenject;
 
 public class RecordScorePanelService: IService
@@ -10,7 +11,8 @@ public class RecordScorePanelService: IService
 
     public void ActivateService()
     {
-        _recordView = _fabric.SpawnObject<RecordScorePanelView>(_markerService.GetTransformMarker<RecordScorePanelPosMarker>().transform.position);
+        Transform parent = _markerService.GetTransformMarker<RecordScorePanelPosMarker>().transform;
+        _recordView = _fabric.SpawnObject<RecordScorePanelView>(parent);
         _scoreDataManager.RecordChanged += UpdateView;
         _recordScore = _scoreDataManager.GetRecordScore();
         UpdateView(_recordScore);

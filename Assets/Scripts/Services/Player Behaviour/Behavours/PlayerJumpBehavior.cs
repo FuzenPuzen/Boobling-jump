@@ -2,6 +2,7 @@ using UnityEngine;
 using DG.Tweening;
 using System.Collections.Generic;
 using EventBus;
+using static UnityEngine.Rendering.SplashScreen;
 
 public class PlayerJumpBehaviour : IPlayerBehaviour
 {
@@ -139,10 +140,11 @@ public class PlayerJumpBehaviour : IPlayerBehaviour
     {
         if (other.gameObject.CompareTag("Enemy"))
         {
+            _transform.GetComponent<BoxCollider>().enabled = false;
             EventBus<OnPlayerDie>.Raise();
-            DieSequence();
             Time.timeScale = 0.1f;
             SeqTimer();
+           
         }
     }
 
@@ -156,23 +158,25 @@ public class PlayerJumpBehaviour : IPlayerBehaviour
     private void NormalizeTime()
     {
         Time.timeScale = 1f;
+       
         DieSequence();
     }
 
     public void DieSequence()
-    {        
+    {
+        StopBehaviour();
         _looseSequence = DOTween.Sequence();
         _transform.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeRotation;
-        _looseSequence.Append(_transform.DOMove(new(6.3f, 9.95f, 10.5f), 0.2f).SetEase(Ease.Linear));
-        _looseSequence.Join(_transform.DOLocalRotate(Vector3.zero, 0.2f).SetEase(Ease.Linear));
-        _looseSequence.Join(_playerModel.DOLocalRotate(new(80.24f, 2.87f, -85.43f), 0.2f).SetEase(Ease.Linear));
+        _looseSequence.Append(_transform.DOMove(new(-11f, 3.3f, 0.2f), 0.2f).SetEase(Ease.Linear));
+        _looseSequence.Join(_transform.DOLocalRotate(new(7f, 130f, 30f), 0.2f).SetEase(Ease.Linear));
+        _looseSequence.Join(_playerModel.DOLocalRotate(new (180,0,0), 0.2f).SetEase(Ease.Linear));
+        _looseSequence.Join(_transform.DOScale(Vector3.one * 7, 0.2f).SetEase(Ease.Linear));
         _looseSequence.OnComplete(DieAction);
     }
 
     private void DieAction()
-    {
+    {      
         _transform.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeAll;
-        //playerDieAction?.Invoke();
     }
 
     public virtual System.Type GetBehaviourDataType()

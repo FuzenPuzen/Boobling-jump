@@ -33,7 +33,7 @@ public class GameInstaller : MonoInstaller
         Container.Bind<ICoinDataManager>().To<CoinDataManager>().AsSingle();
         Container.Bind<IScoreDataManager>().To<ScoreDataManager>().AsSingle();
         Container.Bind<RoomViewService>().AsSingle();
-
+        Container.Bind<BlackBoardViewService>().AsSingle();
         Container.Bind<GiftService>().AsSingle();
         Container.Bind<GiftCollectorViewService>().AsSingle();
         Container.Bind<CoinCollectorViewService>().AsSingle();

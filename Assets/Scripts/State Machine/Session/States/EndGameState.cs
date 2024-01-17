@@ -8,30 +8,38 @@ public class EndGameState : IBaseState
     private RecordScorePanelService _recordService;
     private EndPanelService _endPanelService;
     private IScoreDataManager _scoreDataManager;
+    private GiftCollectorViewService _giftCollectorViewService;
+    private RollBonusBlenderViewService _rollBonusBlenderViewService;
+    private SuperJumpBonusBlenderViewService _superJumpBonusBlenderViewService;
 
     [Inject]
     public void Constructor(
         CurrentScorePanelService scoreService,
         RecordScorePanelService recordService,
         EndPanelService endPanelService,
-        IScoreDataManager scoreDataManager
+        IScoreDataManager scoreDataManager,
+        GiftCollectorViewService giftCollectorViewService,
+        RollBonusBlenderViewService rollBonusBlenderViewService,
+        SuperJumpBonusBlenderViewService superJumpBonusBlenderViewService
         )
     {
         _endPanelService = endPanelService;
         _recordService = recordService;
         _scoreService = scoreService;
         _scoreDataManager = scoreDataManager;
+        _giftCollectorViewService = giftCollectorViewService;
+        _rollBonusBlenderViewService = rollBonusBlenderViewService;
+        _superJumpBonusBlenderViewService = superJumpBonusBlenderViewService;
     }
 
     public void Enter()
     {
         _scoreService.DeactivateScoreChange();
-        //beldner deactivate
-        //gift collector deactivate
         _endPanelService.ActivateService();
         _endPanelService.SetActionOnRestartButtonClick(RestartScene);
-        _scoreService.HideView();
-        _recordService.HideView();     
+        _giftCollectorViewService.DeactivateService();
+        _superJumpBonusBlenderViewService.DeactivateService();
+        _rollBonusBlenderViewService.DeactivateService();
     }
 
     public void RestartScene()
@@ -41,11 +49,11 @@ public class EndGameState : IBaseState
 
     public void Exit()
     {
-        throw new System.NotImplementedException();
+        
     }
 
     public void Update()
     {
-        throw new System.NotImplementedException();
+        
     }
 }

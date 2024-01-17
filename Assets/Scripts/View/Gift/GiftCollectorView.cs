@@ -28,7 +28,7 @@ public class GiftCollectorViewService : IService
     private IPoolViewService _roolBonusPoolViewService;
     private IPoolViewService _superJumpBonusPoolViewService;
 
-    private bool isFullDrop = true;
+    private DropMode _currentDropMode = DropMode.Full;
 
     private EventBinding<OnRollActivate> _onRollActivate;
     private EventBinding<OnRollDeactivate> _onRollDeactivate;
@@ -60,26 +60,28 @@ public class GiftCollectorViewService : IService
 
 	public void GiftBoxCollected()
 	{
-        MonoBehaviour.print("isfilldrop " + isFullDrop);
-        if(isFullDrop)
+        switch(_currentDropMode)
         {
-            MethodCaller methodCaller = new MethodCaller();
-            methodCaller.AddMethod(DropeCoinBonus, 30);  // 30% вероятность вызова Method1
-            methodCaller.AddMethod(DropeSuperJumpBonus, 40);  // 40% вероятность вызова Method2
-            methodCaller.AddMethod(DropeRollBonus, 1000);  // 30% вероятность вызова Method3
+            case DropMode.Full:
+                MethodCaller methodCaller = new MethodCaller();
+                methodCaller.AddMethod(DropeCoinBonus, 30);  // 30% вероятность вызова Method1
+                methodCaller.AddMethod(DropeSuperJumpBonus, 40);  // 40% вероятность вызова Method2
+                methodCaller.AddMethod(DropeRollBonus, 1000);  // 30% вероятность вызова Method3
+                methodCaller.CallRandomMethod();
+                break;
 
-            // Вызываем методы согласно заданной вероятности
-            methodCaller.CallRandomMethod();
-        }
-        else
-        {
-            DropeCoinBonus();
+            case DropMode.OnlyCoins:
+                DropeCoinBonus();
+                break;
+
+            case DropMode.Nothing:
+                break;
         }
 
     }
 
-    private void ActivateFullDrop() => isFullDrop = true;
-    private void DeactivateFullDrop() => isFullDrop = false;
+    private void ActivateFullDrop() => _currentDropMode = DropMode.Nothing;
+    private void DeactivateFullDrop() => _currentDropMode = DropMode.OnlyCoins;
 
 
 	private void DropeCoinBonus()
@@ -96,6 +98,18 @@ public class GiftCollectorViewService : IService
     {
         _roolBonusPoolViewService.GetItem().ActivateService();
     }
+
+    public void DeactivateService()
+    {
+        _currentDropMode = DropMode.Nothing;
+    }
+}
+
+public enum DropMode
+{
+    Full,
+    Nothing,
+    OnlyCoins
 }
 
 class MethodCaller
