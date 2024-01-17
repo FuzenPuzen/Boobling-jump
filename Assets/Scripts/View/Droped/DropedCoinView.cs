@@ -18,10 +18,14 @@ public class DropedCoinView : MonoBehaviour
         _rb = GetComponent<Rigidbody>();
         _boxCollider = GetComponent<BoxCollider>();
         _startParent = transform.parent;
+        transform.localScale = Vector3.zero;
+        gameObject.SetActive(false);
+
     }
 
     public void ActivateView(Transform target)
     {
+        gameObject.SetActive(true);
         transform.position = transform.parent.position;
         transform.parent = target;
         _moveSequence = DOTween.Sequence();
@@ -54,7 +58,7 @@ public class DropedCoinView : MonoBehaviour
         transform.parent = _startParent;
         transform.localScale = Vector3.zero;
         _deactivateToPool?.Invoke();
-        transform.gameObject.SetActive(false);
+        gameObject.SetActive(false);
         
     }
 }

@@ -13,6 +13,7 @@ public class DropedRollBonusView : MonoBehaviour
     public void Awake()
     {
         _startParent = transform.parent;
+        transform.localScale = Vector3.zero;
         gameObject.SetActive(false);
     }
 
@@ -58,12 +59,9 @@ public class DropedRollBonusViewService : IPoolingViewService
 
     public void ActivateServiceFromPool()
     {
-        if(_dropedRollBonusView == null)
-        {
-            Transform parent = _markerService.GetTransformMarker<PlayerMarker>().transform;
-            _dropedRollBonusView = _fabric.SpawnObject<DropedRollBonusView>(parent);
-            _dropedRollBonusView._deactivateToPool = DeactivateServiceToPool;
-        }
+        Transform parent = _markerService.GetTransformMarker<PlayerMarker>().transform;
+        _dropedRollBonusView = _fabric.SpawnObject<DropedRollBonusView>(parent);
+        _dropedRollBonusView._deactivateToPool = DeactivateServiceToPool;
     }
     public void DeactivateServiceToPool()
     {

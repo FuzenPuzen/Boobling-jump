@@ -4,6 +4,7 @@ using System;
 using System.Linq;
 using Zenject;
 using UnityEngine;
+using EventBus;
 
 public class PlayerBehaviourService : IPlayerBehaviourService
 {
@@ -27,14 +28,13 @@ public class PlayerBehaviourService : IPlayerBehaviourService
         if (typeof(T) == typeof(PlayerStartBehaviour))
         {
             var temp = (PlayerStartBehaviour)_currentBehaviour;
-            temp.SetStartAction(EndBehaviourTimer);
+            temp.SetStartAction(StartBehaviourEnd);
         }
 
         _playerBehaviourData = _playerBehaviourStorageData.GetPlayerBehaviourData(_currentBehaviour.GetBehaviourDataType());
         _currentBehaviour.SetBehaviourData(_playerBehaviourData);
 
         _playerView.SetNewBehaviour(_currentBehaviour);
-        StartBehaviourTimer();
     }
 
     [Inject]
@@ -58,20 +58,13 @@ public class PlayerBehaviourService : IPlayerBehaviourService
         _playerView = _fabric.SpawnObject<PlayerView>(new Vector3(4.83f, 1.24f, 0));
     }
 
-    public void StartBehaviourTimer()
-    {
-        _timerSequence = DOTween.Sequence();
-        _timerSequence.AppendInterval(_playerBehaviourData.GetDuration());
-        _timerSequence.OnComplete(EndBehaviourTimer);
-    }
-
     public void SetActionEndBehaviour(Action action)
     {
         _onEndAction = action;
     }
 
-    private void EndBehaviourTimer()
+    private void StartBehaviourEnd()
     {
-        _onEndAction?.Invoke();
+        EventBus<OnStartBehaviourEnd>.Raise();
     }
 }

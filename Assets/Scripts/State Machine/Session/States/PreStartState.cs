@@ -1,3 +1,4 @@
+using EventBus;
 using Zenject;
 
 public class PreStartState : IBaseState
@@ -17,8 +18,10 @@ public class PreStartState : IBaseState
     private RollBonusBlenderViewService _rollBonusBlenderViewService;
     private SuperJumpBonusBlenderViewService _superJumpBonusBlenderViewService;
 
+    private EventBinding<OnStartBehaviourEnd> _onStartBehaviourEnd;
 
-   [Inject]
+
+    [Inject]
     public void Constructor(
                     ITimerService timerService,
                     SessionStateMachine statemachine,
@@ -71,7 +74,7 @@ public class PreStartState : IBaseState
         _coinsPanelService.ActivateService();
         _coinPalleteViewService.ActivateService();
 
-        _statemachine.SetState<StartState>();
+        _onStartBehaviourEnd = new(OnStartBehaviourEnd);
 
     }
 
@@ -83,6 +86,11 @@ public class PreStartState : IBaseState
     public void Update()
     {
         //do nothing
+    }
+
+    public void OnStartBehaviourEnd()
+    {
+        _statemachine.SetState<StartState>();
     }
 
 }

@@ -66,7 +66,7 @@ public class GiftCollectorViewService : IService
             MethodCaller methodCaller = new MethodCaller();
             methodCaller.AddMethod(DropeCoinBonus, 30);  // 30% вероятность вызова Method1
             methodCaller.AddMethod(DropeSuperJumpBonus, 40);  // 40% вероятность вызова Method2
-            methodCaller.AddMethod(DropeRollBonus, 100);  // 30% вероятность вызова Method3
+            methodCaller.AddMethod(DropeRollBonus, 1000);  // 30% вероятность вызова Method3
 
             // Вызываем методы согласно заданной вероятности
             methodCaller.CallRandomMethod();
