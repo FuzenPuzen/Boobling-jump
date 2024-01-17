@@ -1,6 +1,7 @@
 using UnityEngine;
 using DG.Tweening;
 using System.Collections.Generic;
+using EventBus;
 
 public class PlayerJumpBehaviour : IPlayerBehaviour
 {
@@ -138,6 +139,7 @@ public class PlayerJumpBehaviour : IPlayerBehaviour
     {
         if (other.gameObject.CompareTag("Enemy"))
         {
+            EventBus<OnPlayerDie>.Raise();
             DieSequence();
             Time.timeScale = 0.1f;
             SeqTimer();

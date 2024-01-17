@@ -33,10 +33,9 @@ public class CurrentScorePanelService : IService
         _scoreDataManager.CurrentScoreChanged += UpdateView;
         UpdateView(_currentScore);
     }
-
-    private void OnScoreChange(int count)
+    public void DeactivateScoreChange()
     {
-        _scoreDataManager.AddCurrentScore(count);
+        _currentScoreView.SetActionOnScoreChange(null);
     }
 
     public void HideView()
@@ -47,6 +46,10 @@ public class CurrentScorePanelService : IService
     private void UpdateView(int record)
     {
         _currentScoreView.UpdateView(record);
+    }
+    private void OnScoreChange(int count)
+    {
+        _scoreDataManager.AddCurrentScore(count);
     }
 
 }

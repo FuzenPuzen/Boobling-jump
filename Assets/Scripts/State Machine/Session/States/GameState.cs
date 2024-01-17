@@ -9,6 +9,7 @@ public class GameState : IBaseState
 
     private EventBinding<OnRollActivate> _onRollActivate;
     private EventBinding<OnSupperJumpActivate> _onSupperJumpActivate;
+    private EventBinding<OnPlayerDie> _onPlayerDie;
 
     [Inject]
     public void Constructor(SessionStateMachine statemachine,
@@ -24,8 +25,9 @@ public class GameState : IBaseState
     {
         _playerBehaviourService.SetBehaviour<PlayerSimpleJumpBehaviour>();
         _sectionBehaviourService.SetBehaviour<SectionSimpleJumpBehaviour>();
-        _onRollActivate = new EventBinding<OnRollActivate>(OnRollBehaviourStart);
-        _onSupperJumpActivate = new EventBinding<OnSupperJumpActivate>(OnSuperJumpBehaviourStart);
+        _onRollActivate = new (OnRollBehaviourStart);
+        _onSupperJumpActivate = new (OnSuperJumpBehaviourStart);
+        _onPlayerDie = new(OnPlayerDie);
     }
 
     public void Exit()
@@ -46,5 +48,10 @@ public class GameState : IBaseState
     public void OnSuperJumpBehaviourStart()
     {
         _statemachine.SetState<SuperJumpState>();
+    }
+
+    public void OnPlayerDie()
+    {
+        _statemachine.SetState<EndGameState>();
     }
 }

@@ -25,10 +25,13 @@ public class EndGameState : IBaseState
 
     public void Enter()
     {
+        _scoreService.DeactivateScoreChange();
+        //beldner deactivate
+        //gift collector deactivate
         _endPanelService.ActivateService();
         _endPanelService.SetActionOnRestartButtonClick(RestartScene);
         _scoreService.HideView();
-        _recordService.HideView();       
+        _recordService.HideView();     
     }
 
     public void RestartScene()

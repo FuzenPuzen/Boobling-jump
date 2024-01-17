@@ -21,7 +21,7 @@ public class RollingState : IBaseState
     {
         _playerBehaviourService.SetBehaviour<PlayerRollBehaviour>();
         _sectionBehaviourService.SetBehaviour<SectionRollBehaviour>();
-        _onRollDeactivate = new EventBinding<OnRollDeactivate>(OnRollBehaviourEnd);
+        _onRollDeactivate = new (OnRollBehaviourEnd);
     }
 
     public void Exit()
