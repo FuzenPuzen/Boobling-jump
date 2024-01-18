@@ -33,6 +33,7 @@ public class MenuInstaller : MonoInstaller
         Container.Bind<MenuUpgradePageCanvasViewService>().AsSingle();
 
         Container.Bind<MenuCoinPageCanvasViewService>().AsSingle();
+        Container.Bind<BackButtonCanvasViewService>().AsSingle();
 
 
         Container.Bind<ICoinDataManager>().To<CoinDataManager>().AsSingle();

@@ -12,8 +12,7 @@ public class MenuMainPageState : IBaseState
 
 
     [Inject]
-    public void Constructor(MenuMainPageCanvasViewService menuMainPageViewService,
-                            
+    public void Constructor(MenuMainPageCanvasViewService menuMainPageViewService,                          
                             MenuStateMachine menuStateMachine)
     {
         _menuStateMachine = menuStateMachine;
