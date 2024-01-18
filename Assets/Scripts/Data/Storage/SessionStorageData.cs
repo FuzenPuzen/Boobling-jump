@@ -28,10 +28,10 @@ public class SessionStorageData :
         where T1 : IPlayerBehaviourData
         where T2 : ISLData
     {
-        /*var temp = _playerBehaviourDatasSO.Find(x => x.GetType() == playerBehaviourSO.GetType());
+        var temp = _playerBehaviourDatasSO.Find(x => x.GetType() == playerBehaviourSO.GetType());
         _playerBehaviourDatasSO.Remove(temp);
         var tempsl = _playerBehaviourDatasSL.Find(x => x.GetType() == playerBehaviourSL.GetType());
-        _playerBehaviourDatasSL.Remove(tempsl);*/
+        _playerBehaviourDatasSL.Remove(tempsl);
 
         _playerBehaviourDatasSO.Add(playerBehaviourSO);
         _playerBehaviourDatasSL.Add(playerBehaviourSL);

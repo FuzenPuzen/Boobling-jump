@@ -8,7 +8,7 @@ public class RoomViewService : IService
 
     public void ActivateService()
     {
-        _roomView = _fabric.SpawnObject<RoomView>();
+        _roomView = _fabric.Init<RoomView>();
     }
 
     [Inject]

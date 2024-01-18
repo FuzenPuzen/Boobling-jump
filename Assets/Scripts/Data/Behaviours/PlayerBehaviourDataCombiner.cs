@@ -110,4 +110,9 @@ public class PlayerBehaviourDataCombiner
         return _playerSuperJumpBehaviourSODatas;
     }
 
+    public PlayerRollBehaviourSODatas GetPlayerRollBehaviourSODatas()
+    {
+        return _playerRollBehaviourSODatas;
+    }
+
 }

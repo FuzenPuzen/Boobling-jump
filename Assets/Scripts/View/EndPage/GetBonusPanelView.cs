@@ -64,7 +64,7 @@ public class GetBonusPanelViewService : IService
 	public void ActivateService()
 	{
 		Transform parent = _markerService.GetTransformMarker<EndPageMarker>().transform;
-        _getBonusPanelView = _fabric.SpawnObject<GetBonusPanelView>(parent);
+        _getBonusPanelView = _fabric.Init<GetBonusPanelView>(parent);
 		_getBonusPanelView.ActivateView();
         _getBonusPanelView.onSelectBonusTypeAction = OnSelectBonusType;
     }

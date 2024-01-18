@@ -2,6 +2,8 @@ using Zenject;
 
 public class MenuSkinShopPage : IBaseState
 {
+
+
     [Inject]
     public void Constructor()
     {
@@ -10,7 +12,7 @@ public class MenuSkinShopPage : IBaseState
 
     public void Enter()
     {
-        throw new System.NotImplementedException();
+        
     }
 
     public void Exit()

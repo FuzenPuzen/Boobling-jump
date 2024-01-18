@@ -5,6 +5,6 @@ public class TutorialSectionPoolViewService : SectionPoolViewService
 {
     public override void SpawnView()
     {
-        _poolView = _fabric.SpawnObject<TutorialStoolPoolView>(_poolPos);
+        _poolView = _fabric.Init<TutorialStoolPoolView>(_poolPos);
     }
 }

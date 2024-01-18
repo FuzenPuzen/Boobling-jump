@@ -19,7 +19,7 @@ public class MenuStateMachine
     [Inject]
     public void Constructor(MenuSkinShopPage menuSkinShopPage,
                             MenuStartState menuStartState,
-                            MenuBonusPageState menuBonusPageState,
+                            MenuUpgradePageState menuBonusPageState,
                             MenuMainPageState menuMainPageState)
     {
         _baseStates.Add(menuStartState);

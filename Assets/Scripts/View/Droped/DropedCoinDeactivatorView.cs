@@ -21,6 +21,6 @@ public class DropedCoinDeactivatorViewService : IService
 
 	public void ActivateService()
 	{       
-        _DropedCoinDeactivatorView = _fabric.SpawnObject<DropedCoinDeactivatorView>();
+        _DropedCoinDeactivatorView = _fabric.Init<DropedCoinDeactivatorView>();
 	}
 }

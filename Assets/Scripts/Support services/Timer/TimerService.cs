@@ -9,7 +9,7 @@ public class TimerService : ITimerService
 
     public void ActivateService()
     {
-        _timerView = _fabric.SpawnObject<TimerView>();
+        _timerView = _fabric.Init<TimerView>();
     }
 
     [Inject]

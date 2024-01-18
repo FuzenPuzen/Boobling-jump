@@ -34,6 +34,6 @@ public class MenuSkinShopPanelViewService : IService
 
     public void ActivateService()
     {
-        _menuSkinShopPanelView = _fabric.SpawnObject<MenuSkinShopPanelView>(_markerService.GetTransformMarker<MenuMainPageMarker>().transform);
+        _menuSkinShopPanelView = _fabric.Init<MenuSkinShopPanelView>(_markerService.GetTransformMarker<MenuMainPageMarker>().transform);
     }
 }

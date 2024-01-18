@@ -35,6 +35,6 @@ public class MenuTutorialPanelViewService : IService
 
     public void ActivateService()
     {
-        _menuTutorialShopPanelView = _fabric.SpawnObject<MenuTutorialPanelView>(_markerService.GetTransformMarker<MenuMainPageMarker>().transform);
+        _menuTutorialShopPanelView = _fabric.Init<MenuTutorialPanelView>(_markerService.GetTransformMarker<MenuMainPageMarker>().transform);
     }
 }

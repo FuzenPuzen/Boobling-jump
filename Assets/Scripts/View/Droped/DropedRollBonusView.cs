@@ -60,7 +60,7 @@ public class DropedRollBonusViewService : IPoolingViewService
     public void ActivateServiceFromPool()
     {
         Transform parent = _markerService.GetTransformMarker<PlayerMarker>().transform;
-        _dropedRollBonusView = _fabric.SpawnObject<DropedRollBonusView>(parent);
+        _dropedRollBonusView = _fabric.Init<DropedRollBonusView>(parent);
         _dropedRollBonusView._deactivateToPool = DeactivateServiceToPool;
     }
     public void DeactivateServiceToPool()

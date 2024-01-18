@@ -26,7 +26,7 @@ public class CoinPalleteViewService : IService
 	public void ActivateService()
 	{
 		Transform target = _markerService.GetTransformMarker<CoinPalleteSpawnPosMarker>().transform;
-        _coinPalleteView = _fabric.SpawnObject<CoinPalleteView>(target);
+        _coinPalleteView = _fabric.Init<CoinPalleteView>(target);
 		_coinCountTotal = _coinDataManager.GetCoins();
 		_coinDataManager.coinsChanged += _coinPalleteView.UpdateView;
         _coinPalleteView.UpdateView(_coinCountTotal);

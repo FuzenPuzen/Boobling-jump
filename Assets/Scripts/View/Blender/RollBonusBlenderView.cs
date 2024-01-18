@@ -63,7 +63,7 @@ public class RollBonusBlenderViewService : IService
 
 	public void ActivateService()
 	{       
-        _rollBonusBlenderView = _fabric.SpawnObject<RollBonusBlenderView>(_markerService.GetTransformMarker<RollBonusBlenderPosMarker>().transform);
+        _rollBonusBlenderView = _fabric.Init<RollBonusBlenderView>(_markerService.GetTransformMarker<RollBonusBlenderPosMarker>().transform);
 		_rollBonusBlenderView.collectAction = OnRollActivate;
 
     }

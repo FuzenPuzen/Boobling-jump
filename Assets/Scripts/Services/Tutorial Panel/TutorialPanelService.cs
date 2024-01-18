@@ -15,7 +15,7 @@ public class TutorialPanelService : IService
 
     public void ActivateService()
     {
-        _tutorialView = _fabric.SpawnObject<TutorialPanelView>(new Vector3(0.9f, 1.54f, 3.96f));
+        _tutorialView = _fabric.Init<TutorialPanelView>(new Vector3(0.9f, 1.54f, 3.96f));
         _tutorialView.transform.rotation = Quaternion.Euler(-76, 0, 0);
     }
 

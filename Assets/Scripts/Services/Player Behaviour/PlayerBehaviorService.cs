@@ -55,7 +55,7 @@ public class PlayerBehaviourService : IPlayerBehaviourService
 
     private void SpawnPlayer()
     {
-        _playerView = _fabric.SpawnObject<PlayerView>(new Vector3(4.83f, 1.24f, 0));
+        _playerView = _fabric.Init<PlayerView>(new Vector3(4.83f, 1.24f, 0));
     }
 
     public void SetActionEndBehaviour(Action action)

@@ -41,7 +41,7 @@ public class CoinCollectorViewService : IService
     public void ActivateService()
 	{
         _coinPoolViewService = _poolsViewService.GetPool<DropedCoinViewService>();
-        _coinCollectView = _viewFabric.SpawnObject<CoinCollectorView>(_markerService.GetTransformMarker<PlayerMarker>().transform);
+        _coinCollectView = _viewFabric.Init<CoinCollectorView>(_markerService.GetTransformMarker<PlayerMarker>().transform);
         _coinCollectView.SetCollectAction(DropeCoinBonus);
     }
 

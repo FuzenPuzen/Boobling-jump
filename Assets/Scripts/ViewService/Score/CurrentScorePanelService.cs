@@ -29,7 +29,7 @@ public class CurrentScorePanelService : IService
     {
         _currentScore = _scoreDataManager.GetCurrentScore();
         Transform parent = _markerService.GetTransformMarker<CurrentScorePanelPosMarker>().transform;
-        _currentScoreView = _fabric.SpawnObject<CurrentScorePanelView>(parent);
+        _currentScoreView = _fabric.Init<CurrentScorePanelView>(parent);
         _currentScoreView.SetActionOnScoreChange(OnScoreChange);
         _scoreDataManager.CurrentScoreChanged += UpdateView;
         UpdateView(_currentScore);

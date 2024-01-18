@@ -5,8 +5,8 @@ using UnityEngine;
 using Zenject;
 public interface IServiceFabric
 {
-    T Create<T>();
-    public object Create(Type Type);
+    T Init<T>();
+    public object Init(Type Type);
 }
 
 public class ServiceFabric: IServiceFabric
@@ -19,7 +19,7 @@ public class ServiceFabric: IServiceFabric
         _container = container;
     }
 
-    public T Create<T>()
+    public T Init<T>()
     {
         // »спользуем контейнер дл€ создани€ экземпл€ра ConcreteFabricable
         T fabricableObject = _container.Instantiate<T>();
@@ -28,7 +28,7 @@ public class ServiceFabric: IServiceFabric
         return fabricableObject;
     }
 
-    public object Create(Type Type)
+    public object Init(Type Type)
     {
         return _container.Instantiate(Type);
     }

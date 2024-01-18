@@ -21,6 +21,6 @@ public class #SCRIPTNAME#Service : IService
 
 	public void ActivateService()
 	{       
-        _#SCRIPTNAME# = _fabric.SpawnObject<#SCRIPTNAME#>();
+        _#SCRIPTNAME# = _fabric.Init<#SCRIPTNAME#>();
 	}
 }

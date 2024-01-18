@@ -92,7 +92,7 @@ public class DropedCoinViewService : IPoolingViewService
             Transform parent = _markerService.GetTransformMarker<PlayerMarker>().transform;
             Vector3 spawnPos = parent.position;
             //_dropedCoinView = _dropedCoinView == null? _fabric.SpawnObject<DropedCoinView>(spawnPos,parent) : _dropedCoinView;
-            _dropedCoinView = _fabric.SpawnObject<DropedCoinView>(spawnPos, parent);
+            _dropedCoinView = _fabric.Init<DropedCoinView>(spawnPos, parent);
             _dropedCoinView._deactivateToPool = DeactivateServiceToPool;
         }     
     }

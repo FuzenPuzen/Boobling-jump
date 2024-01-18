@@ -31,8 +31,8 @@ public class GiftService: IService
     private void SpawnGift(int count)
     {
         //Заменить создание на взятие из пула
-        GiftBoxView giftBoxView = _viewFabric.SpawnObject<GiftBoxView>(_markerService.GetTransformMarker<GiftBoxSpawnPosMarker>().transform.position);
-        _giftBoxViewService = _serviceFabric.Create<GiftBoxViewService>();
+        GiftBoxView giftBoxView = _viewFabric.Init<GiftBoxView>(_markerService.GetTransformMarker<GiftBoxSpawnPosMarker>().transform.position);
+        _giftBoxViewService = _serviceFabric.Init<GiftBoxViewService>();
         _giftBoxViewService.ActivateService(giftBoxView);
     }
 }

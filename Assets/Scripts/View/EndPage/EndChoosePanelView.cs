@@ -39,7 +39,7 @@ public class EndChoosePanelViewService : IService
 	public void ActivateService()
 	{
         Transform parent = _markerService.GetTransformMarker<EndPageMarker>().transform;
-        _endChoosePanelView = _fabric.SpawnObject<EndChoosePanelView>(parent);
+        _endChoosePanelView = _fabric.Init<EndChoosePanelView>(parent);
         _endChoosePanelView.ActivateView();
 
     }

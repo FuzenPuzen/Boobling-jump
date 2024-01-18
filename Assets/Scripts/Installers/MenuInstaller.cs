@@ -27,14 +27,12 @@ public class MenuInstaller : MonoInstaller
         Container.Bind<IPlayerBehaviourDataManager>().To<PlayerBehaviourDataManager>().AsSingle();
 
         Container.Bind<MenuMainPageCanvasViewService>().AsSingle();
-        Container.Bind<MenuTutorialPanelViewService>().AsSingle();
-        Container.Bind<MenuSkinShopPanelViewService>().AsSingle();
-        Container.Bind<MenuUpgradePanelViewService>().AsSingle();
 
         Container.Bind<MenuSkinShopPageCanvasViewService>().AsSingle();
 
         Container.Bind<MenuUpgradePageCanvasViewService>().AsSingle();
-        Container.Bind<SuperJumpUpgradePanelViewService>().AsSingle();
+
+        Container.Bind<MenuCoinPageCanvasViewService>().AsSingle();
 
 
         Container.Bind<ICoinDataManager>().To<CoinDataManager>().AsSingle();
@@ -44,7 +42,7 @@ public class MenuInstaller : MonoInstaller
         Container.Bind<MenuStartState>().AsSingle();
         Container.Bind<MenuMainPageState>().AsSingle();
         Container.Bind<MenuSkinShopPage>().AsSingle();
-        Container.Bind<MenuBonusPageState>().AsSingle();
+        Container.Bind<MenuUpgradePageState>().AsSingle();
 
     }
 }

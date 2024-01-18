@@ -34,7 +34,7 @@ public class BlackBoardViewService : IService
 	public void ActivateService()
 	{
 		Transform parent = _markerService.GetTransformMarker<BlackBoardSpawnMarker>().transform;
-        _blackBoardView = _fabric.SpawnObject<BlackBoardView>(parent);
+        _blackBoardView = _fabric.Init<BlackBoardView>(parent);
         _onPlayerDie = new(OnPlayerDie);
 
     }

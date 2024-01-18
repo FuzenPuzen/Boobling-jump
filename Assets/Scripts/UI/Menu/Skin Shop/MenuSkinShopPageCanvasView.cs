@@ -21,6 +21,6 @@ public class MenuSkinShopPageCanvasViewService : IService
 
 	public void ActivateService()
 	{       
-        _menuSkinShopPageView = _fabric.SpawnObject<MenuSkinShopPageCanvasView>();
+        _menuSkinShopPageView = _fabric.Init<MenuSkinShopPageCanvasView>();
 	}
 }

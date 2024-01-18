@@ -57,7 +57,7 @@ public class PoolViewService : IPoolViewService
 
     private void SpawnAddedItem()
     {
-        IPoolingViewService item = (IPoolingViewService)_serviceFabric.Create(_objType);
+        IPoolingViewService item = (IPoolingViewService)_serviceFabric.Init(_objType);
         item.ActivateServiceFromPool();
         item.SetDeactivateAction(ReturnItem);
         _viewServices.Add(item);

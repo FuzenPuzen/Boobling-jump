@@ -63,7 +63,7 @@ public class DropedSuperJumpBonusViewService : IPoolingViewService
         {
             Transform parent = _markerService.GetTransformMarker<PlayerMarker>().transform;
             Vector3 spawnPos = parent.position;
-            _dropedSuperJumpBonusView = _fabric.SpawnObject<DropedSuperJumpBonusView>(spawnPos, parent);
+            _dropedSuperJumpBonusView = _fabric.Init<DropedSuperJumpBonusView>(spawnPos, parent);
             _dropedSuperJumpBonusView._deactivateToPool = DeactivateServiceToPool;
         }
     }

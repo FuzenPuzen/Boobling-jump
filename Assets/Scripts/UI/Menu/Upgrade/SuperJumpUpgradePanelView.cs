@@ -60,10 +60,12 @@ public class SuperJumpUpgradePanelViewService : IService
 
 	public void ActivateService()
 	{
-        Transform parent = _markerService.GetTransformMarker<UpgradePageMarker>().transform;
-        _superJumpUpgradePanelView = _fabric.SpawnObject<SuperJumpUpgradePanelView>(parent);
-		_superJumpUpgradePanelView.buyUpgradeAction = BuyUpgrade;
-        
+        if (_superJumpUpgradePanelView == null)
+        {
+            Transform parent = _markerService.GetTransformMarker<UpgradePageMarker>().transform;
+            _superJumpUpgradePanelView = _fabric.Init<SuperJumpUpgradePanelView>(parent);
+            _superJumpUpgradePanelView.buyUpgradeAction = BuyUpgrade;
+        }       
         UpdateView();
     }
 

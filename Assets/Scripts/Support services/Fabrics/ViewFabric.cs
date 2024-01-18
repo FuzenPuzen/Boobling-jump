@@ -3,9 +3,9 @@ using Zenject;
 
 public interface IViewFabric
 {
-    public T SpawnObject<T>(Vector3 position, Transform parent = null);
-    public T SpawnObject<T>(Transform parent = null);
-    public T SpawnObject<T>();
+    public T Init<T>(Vector3 position, Transform parent = null);
+    public T Init<T>(Transform parent = null);
+    public T Init<T>();
 }
 
 public class ViewFabric : IViewFabric
@@ -18,7 +18,7 @@ public class ViewFabric : IViewFabric
         _prefabsStorageService = prefabsStorageService;
     }
 
-    public T SpawnObject<T>()
+    public T Init<T>()
     {
         var obj = MonoBehaviour.Instantiate(_prefabsStorageService.GetPrefabByType<T>(),
                                     Vector3.zero,
@@ -26,7 +26,7 @@ public class ViewFabric : IViewFabric
         return obj.GetComponent<T>();
     }
 
-    public T SpawnObject<T>(Vector3 position, Transform parent = null)
+    public T Init<T>(Vector3 position, Transform parent = null)
     {
         var obj = MonoBehaviour.Instantiate(_prefabsStorageService.GetPrefabByType<T>(),
                                     position,
@@ -34,7 +34,7 @@ public class ViewFabric : IViewFabric
         return obj.GetComponent<T>();
     }
 
-    public T SpawnObject<T>(Transform parent)
+    public T Init<T>(Transform parent)
     {
         var obj = MonoBehaviour.Instantiate(_prefabsStorageService.GetPrefabByType<T>(), parent);
         return obj.GetComponent<T>();

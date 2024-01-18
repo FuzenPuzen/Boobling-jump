@@ -34,6 +34,6 @@ public class MenuUpgradePanelViewService : IService
 
     public void ActivateService()
     {
-        _menuUpgradePanelView = _fabric.SpawnObject<MenuUpgradePanelView>(_markerService.GetTransformMarker<MenuMainPageMarker>().transform);
+        _menuUpgradePanelView = _fabric.Init<MenuUpgradePanelView>(_markerService.GetTransformMarker<MenuMainPageMarker>().transform);
     }
 }

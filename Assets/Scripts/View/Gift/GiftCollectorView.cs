@@ -48,7 +48,7 @@ public class GiftCollectorViewService : IService
         _coinPoolViewService = _poolsViewService.GetPool<DropedCoinViewService>();
         _roolBonusPoolViewService = _poolsViewService.GetPool<DropedRollBonusViewService>();
         _superJumpBonusPoolViewService = _poolsViewService.GetPool<DropedSuperJumpBonusViewService>();
-        _view = _viewFabric.SpawnObject<GiftCollectorView>(_markerService.GetTransformMarker<PlayerMarker>().transform);
+        _view = _viewFabric.Init<GiftCollectorView>(_markerService.GetTransformMarker<PlayerMarker>().transform);
         _view.collectAction = GiftBoxCollected;
 
         _onRollActivate = new(DeactivateFullDrop);

@@ -25,10 +25,10 @@ public class EndPageViewService : IService
 
 	public void ActivateService()
 	{       
-        _EndPageView = _viewFabric.SpawnObject<EndPageView>();
-		_bonusPanelViewService = _serviceFabric.Create<GetBonusPanelViewService>();
+        _EndPageView = _viewFabric.Init<EndPageView>();
+		_bonusPanelViewService = _serviceFabric.Init<GetBonusPanelViewService>();
 		_bonusPanelViewService.ActivateService();
-        _endChoosePanelViewService = _serviceFabric.Create<EndChoosePanelViewService>();
+        _endChoosePanelViewService = _serviceFabric.Init<EndChoosePanelViewService>();
 		_endChoosePanelViewService.ActivateService();
 	}
 }

@@ -4,6 +4,8 @@ using UnityEngine;
 public class PlayerRollBehaviourSOData : ScriptableObject, IPlayerBehaviourData
 {
     public float duration;
+    public int cost;
+
 
     public float GetDuration()
     {

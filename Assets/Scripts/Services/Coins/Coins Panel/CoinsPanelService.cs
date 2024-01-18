@@ -15,7 +15,7 @@ public class CoinsPanelService : IService
 
     public void ActivateService()
     {
-        _coinView = _fabric.SpawnObject<CoinsPanelView>();
+        _coinView = _fabric.Init<CoinsPanelView>();
         _coinManager.coinsChanged += UpdateView;
         UpdateView(_coinManager.GetCoins());
     }

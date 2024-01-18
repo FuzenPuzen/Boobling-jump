@@ -12,7 +12,7 @@ public class RecordScorePanelService: IService
     public void ActivateService()
     {
         Transform parent = _markerService.GetTransformMarker<RecordScorePanelPosMarker>().transform;
-        _recordView = _fabric.SpawnObject<RecordScorePanelView>(parent);
+        _recordView = _fabric.Init<RecordScorePanelView>(parent);
         _scoreDataManager.RecordChanged += UpdateView;
         _recordScore = _scoreDataManager.GetRecordScore();
         UpdateView(_recordScore);

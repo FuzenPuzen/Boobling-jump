@@ -1,26 +1,23 @@
 using Zenject;
-using static PlayerBehaviourDataManager;
 
 public interface IPlayerBehaviourDataManager : IService
 {
 	public bool BuySuperJumpLevel(int coins);
 	public bool BuyRollLevel(int coins);
     public UpgradeDataPackage GetUpgradeSuperJumpDataPackage();
+    public UpgradeDataPackage GetUpgradeRollDataPackage();
 }
 
 public class PlayerBehaviourDataManager : IPlayerBehaviourDataManager
 {
-    private PlayerRollBehaviourSOData _playerRollBehaviourSOData;
     private PlayerRollBehaviourSLData _playerRollBehaviourSLData;
     private PlayerRollBehaviourSODatas _playerRollBehaviourSODatas;
 
-    private PlayerSuperJumpBehaviourSOData _playerSuperJumpBehaviourSOData;
     private PlayerSuperJumpBehaviourSODatas _playerSuperJumpBehaviourSODatas;
     private PlayerSuperJumpBehaviourSLData _playerSuperJumpBehaviourSLData;
 
 	private PlayerBehaviourDataCombiner _playerBehaviourDataCombiner;
 	private ICoinDataManager _coinDataManager;
-    private IPlayerBehaviourStorageData _playerBehaviourStorageData;
 
     [Inject]
 	public void Constructor(PlayerBehaviourDataCombiner playerBehaviourDataCombiner,
@@ -29,7 +26,6 @@ public class PlayerBehaviourDataManager : IPlayerBehaviourDataManager
 	{
 		_coinDataManager = coinDataManager;
 		_playerBehaviourDataCombiner = playerBehaviourDataCombiner;
-		_playerBehaviourStorageData = playerBehaviourStorageData;
     }
 	
 	public void ActivateService()
@@ -37,6 +33,7 @@ public class PlayerBehaviourDataManager : IPlayerBehaviourDataManager
         _playerSuperJumpBehaviourSLData = _playerBehaviourDataCombiner.playerSuperJumpBehaviourSLData;
         _playerRollBehaviourSLData = _playerBehaviourDataCombiner.playerRollBehaviourSLData;
         _playerSuperJumpBehaviourSODatas = _playerBehaviourDataCombiner.GetPlayerSuperJumpBehaviourSODatas();
+        _playerRollBehaviourSODatas = _playerBehaviourDataCombiner.GetPlayerRollBehaviourSODatas();
     }
 
 	public bool BuySuperJumpLevel(int coins)
@@ -57,8 +54,15 @@ public class PlayerBehaviourDataManager : IPlayerBehaviourDataManager
         return _playerSuperJumpBehaviourSODatas.dictionary.Count == _playerBehaviourDataCombiner.playerSuperJumpBehaviourSLData.level + 1;
     }
 
+    private bool IsLastRollJumpLevel()
+    {
+        return _playerRollBehaviourSODatas.dictionary.Count == _playerBehaviourDataCombiner.playerRollBehaviourSLData.level + 1;
+    }
+
     public bool BuyRollLevel(int coins)
     {
+        if (IsLastRollJumpLevel())
+            return false;
         if (_coinDataManager.SpendCoins(coins))
         {
             _playerRollBehaviourSLData.level++;
@@ -80,6 +84,22 @@ public class PlayerBehaviourDataManager : IPlayerBehaviourDataManager
         }
         upgradeDataPackage.nextDuration = _playerSuperJumpBehaviourSODatas.dictionary[_playerSuperJumpBehaviourSLData.level + 1].duration;
         upgradeDataPackage.nextLevelCost = _playerSuperJumpBehaviourSODatas.dictionary[_playerSuperJumpBehaviourSLData.level + 1].cost;
+        upgradeDataPackage.isLastLevel = false;
+        return upgradeDataPackage;
+    }
+
+    public UpgradeDataPackage GetUpgradeRollDataPackage()
+    {
+        UpgradeDataPackage upgradeDataPackage = new();
+        upgradeDataPackage.currentLevel = _playerBehaviourDataCombiner.playerRollBehaviourSLData.level;
+        upgradeDataPackage.currentDuration = _playerRollBehaviourSODatas.dictionary[_playerRollBehaviourSLData.level].duration;
+        if (_playerRollBehaviourSODatas.dictionary.Count == upgradeDataPackage.currentLevel + 1)
+        {
+            upgradeDataPackage.isLastLevel = true;
+            return upgradeDataPackage;
+        }
+        upgradeDataPackage.nextDuration = _playerRollBehaviourSODatas.dictionary[_playerRollBehaviourSLData.level + 1].duration;
+        upgradeDataPackage.nextLevelCost = _playerRollBehaviourSODatas.dictionary[_playerRollBehaviourSLData.level + 1].cost;
         upgradeDataPackage.isLastLevel = false;
         return upgradeDataPackage;
     }
