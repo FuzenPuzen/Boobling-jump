@@ -17,7 +17,7 @@ public class PreStartState : IBaseState
     private CoinPalleteViewService _coinPalleteViewService;
     private RollBonusBlenderViewService _rollBonusBlenderViewService;
     private SuperJumpBonusBlenderViewService _superJumpBonusBlenderViewService;
-
+    private BlackBoardViewService _blackBoardViewService;
     private EventBinding<OnStartBehaviourEnd> _onStartBehaviourEnd;
 
 
@@ -36,7 +36,8 @@ public class PreStartState : IBaseState
                     CoinCollectorViewService coinCollectViewService,
                     IPoolsViewService poolsViewService,
                     RollBonusBlenderViewService rollBonusBlenderViewService,
-                    SuperJumpBonusBlenderViewService superJumpBonusBlenderViewService
+                    SuperJumpBonusBlenderViewService superJumpBonusBlenderViewService,
+                    BlackBoardViewService blackBoardViewService
                  )
     {
         _poolsViewService = poolsViewService;
@@ -53,12 +54,14 @@ public class PreStartState : IBaseState
         _coinPalleteViewService = coinPalleteViewService;
         _rollBonusBlenderViewService = rollBonusBlenderViewService;
         _superJumpBonusBlenderViewService = superJumpBonusBlenderViewService;
+        _blackBoardViewService = blackBoardViewService;
     }
     public void Enter()
     {
         _markerService.ActivateService();
 
         _roomViewService.ActivateService();
+        _blackBoardViewService.ActivateService();
         _sectionBehaviourService.ActivateService();
         _rollBonusBlenderViewService.ActivateService();
         _superJumpBonusBlenderViewService.ActivateService();

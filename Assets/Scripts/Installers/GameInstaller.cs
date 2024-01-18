@@ -33,7 +33,7 @@ public class GameInstaller : MonoInstaller
         Container.Bind<ICoinDataManager>().To<CoinDataManager>().AsSingle();
         Container.Bind<IScoreDataManager>().To<ScoreDataManager>().AsSingle();
         Container.Bind<RoomViewService>().AsSingle();
-
+        Container.Bind<BlackBoardViewService>().AsSingle();
         Container.Bind<GiftService>().AsSingle();
         Container.Bind<GiftCollectorViewService>().AsSingle();
         Container.Bind<CoinCollectorViewService>().AsSingle();
@@ -49,7 +49,7 @@ public class GameInstaller : MonoInstaller
         Container.Bind<CurrentScorePanelService>().AsSingle();
         Container.Bind<GiftScorePanelService>().AsSingle();
         Container.Bind<TutorialPanelService>().AsSingle();
-        Container.Bind<EndPanelService>().AsSingle();
+        Container.Bind<EndPageViewService>().AsSingle();
 
         Container.Bind(typeof(IPlayerBehaviourService)).To(typeof(PlayerBehaviourService)).AsSingle();
         Container.Bind(typeof(ISessionTypeDataManager)).To(typeof(SessionTypeDataManager)).AsSingle();

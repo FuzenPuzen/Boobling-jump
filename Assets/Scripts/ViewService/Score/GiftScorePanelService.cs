@@ -22,7 +22,8 @@ public class GiftScorePanelService : IService
 
     public void ActivateService()
     {
-        _giftScoreView = _fabric.SpawnObject<GiftScorePanelView>(_markerService.GetTransformMarker<GiftScorePanelPosMarker>().transform.position);
+        Transform parent = _markerService.GetTransformMarker<GiftScorePanelPosMarker>().transform;
+        _giftScoreView = _fabric.SpawnObject<GiftScorePanelView>(parent);
         _scoreDataManager.GiftScoreAchived += UpdateView;
         _giftScore = _scoreDataManager.GetGiftScore();
         UpdateView(_giftScore);

@@ -61,10 +61,13 @@ public class SuperJumpBonusBlenderViewService : IService
 
 	public void ActivateService()
 	{       
-
         _superJumpBonusBlenderView = _fabric.SpawnObject<SuperJumpBonusBlenderView>(_markerService.GetTransformMarker<SuperJumpBonusBlenderPosMarker>().transform);
         _superJumpBonusBlenderView.collectAction = OnSuperJumpActivate;
+    }
 
+    public void DeactivateService()
+    {
+        _superJumpBonusBlenderView.collectAction = null;
     }
 
     private void OnSuperJumpActivate()

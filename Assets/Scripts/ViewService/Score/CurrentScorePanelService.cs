@@ -28,7 +28,8 @@ public class CurrentScorePanelService : IService
     public void ActivateService()
     {
         _currentScore = _scoreDataManager.GetCurrentScore();
-        _currentScoreView = _fabric.SpawnObject<CurrentScorePanelView>(_markerService.GetTransformMarker<CurrentScorePanelPosMarker>().transform.position);
+        Transform parent = _markerService.GetTransformMarker<CurrentScorePanelPosMarker>().transform;
+        _currentScoreView = _fabric.SpawnObject<CurrentScorePanelView>(parent);
         _currentScoreView.SetActionOnScoreChange(OnScoreChange);
         _scoreDataManager.CurrentScoreChanged += UpdateView;
         UpdateView(_currentScore);
@@ -36,6 +37,10 @@ public class CurrentScorePanelService : IService
     public void DeactivateScoreChange()
     {
         _currentScoreView.SetActionOnScoreChange(null);
+    }
+    private void OnScoreChange(int count)
+    {
+        _scoreDataManager.AddCurrentScore(count);
     }
 
     public void HideView()
@@ -47,9 +52,6 @@ public class CurrentScorePanelService : IService
     {
         _currentScoreView.UpdateView(record);
     }
-    private void OnScoreChange(int count)
-    {
-        _scoreDataManager.AddCurrentScore(count);
-    }
+
 
 }
