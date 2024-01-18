@@ -42,7 +42,7 @@ public class MenuInstaller : MonoInstaller
         Container.Bind<MenuStateMachine>().AsSingle();
         Container.Bind<MenuStartState>().AsSingle();
         Container.Bind<MenuMainPageState>().AsSingle();
-        Container.Bind<MenuSkinShopPage>().AsSingle();
+        Container.Bind<MenuSkinShopPageState>().AsSingle();
         Container.Bind<MenuUpgradePageState>().AsSingle();
 
     }

@@ -17,7 +17,7 @@ public class MenuStateMachine
     }
 
     [Inject]
-    public void Constructor(MenuSkinShopPage menuSkinShopPage,
+    public void Constructor(MenuSkinShopPageState menuSkinShopPage,
                             MenuStartState menuStartState,
                             MenuUpgradePageState menuBonusPageState,
                             MenuMainPageState menuMainPageState)

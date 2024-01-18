@@ -6,6 +6,7 @@ public class MenuMainPageState : IBaseState
 {
     EventBinding<OnClickGame> _onClickGame;
     EventBinding<OnClickUpgrade> _onClickUpgrade;
+    EventBinding<OnClickSkinShop> _onClickSkinShop;
 
     private MenuStateMachine _menuStateMachine;
     private MenuMainPageCanvasViewService _menuMainPageViewService;
@@ -26,6 +27,7 @@ public class MenuMainPageState : IBaseState
 
         _onClickGame = new EventBinding<OnClickGame>(OnGameClickEvent);
         _onClickUpgrade = new EventBinding<OnClickUpgrade>(OnUpgradeClickEvent);
+        _onClickSkinShop = new EventBinding<OnClickSkinShop>(OnSkinShopClickEvent);
     }
 
     public void Exit()
@@ -46,5 +48,10 @@ public class MenuMainPageState : IBaseState
     public void OnUpgradeClickEvent()
     {
         _menuStateMachine.SetState<MenuUpgradePageState>();
+    }    
+
+    public void OnSkinShopClickEvent()
+    {
+        _menuStateMachine.SetState<MenuSkinShopPageState>();
     }
 }
