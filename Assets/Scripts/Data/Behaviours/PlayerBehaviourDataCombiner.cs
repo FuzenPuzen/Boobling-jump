@@ -6,13 +6,13 @@ using UnityEngine;
 public class PlayerBehaviourDataCombiner
 {
     private PlayerSuperJumpBehaviourSODatas _playerSuperJumpBehaviourSODatas;
-    private PlayerSuperJumpBehaviourSOData _playerSuperJumpBehaviourSOData;
-    private PlayerSuperJumpBehaviourSLData _playerSuperJumpBehaviourSLData;
+    public PlayerSuperJumpBehaviourSOData playerSuperJumpBehaviourSOData;
+    public PlayerSuperJumpBehaviourSLData playerSuperJumpBehaviourSLData;
     private const string superJumpBehaviourKey = "superJumpBehaviourKey";
 
     private PlayerRollBehaviourSODatas _playerRollBehaviourSODatas;
-    private PlayerRollBehaviourSOData _playerRollBehaviourSOData;
-    private PlayerRollBehaviourSLData _playerRollBehaviourSLData;
+    public PlayerRollBehaviourSOData playerRollBehaviourSOData;
+    public PlayerRollBehaviourSLData playerRollBehaviourSLData;
     private const string rollBehaviourKey = "rollBehaviourKey";
 
     private PlayerSimpleBehaviourSODatas _playerSimpleBehaviourSODatas;
@@ -46,7 +46,7 @@ public class PlayerBehaviourDataCombiner
         _playerStartBehaviourSLData = SaveLoader.LoadData<PlayerStartBehaviourSLData>(_playerStartBehaviourSLData, startBehaviourKey);
         _playerStartBehaviourSODatas = GetConvertedSO<PlayerStartBehaviourSODatas>();
         _playerStartBehaviourSOData = _playerStartBehaviourSODatas.dictionary[_playerStartBehaviourSLData.level];
-        SetDataToStorage(_playerStartBehaviourSOData);
+        SetDataToStorage(_playerStartBehaviourSOData, _playerStartBehaviourSLData);
     }
 
     private void GetAndPullSimpleDataToStorage ()
@@ -55,40 +55,42 @@ public class PlayerBehaviourDataCombiner
         _playerSimpleBehaviourSLData = SaveLoader.LoadData<PlayerSimpleBehaviourSLData>(_playerSimpleBehaviourSLData, simpleBehaviourKey);
         _playerSimpleBehaviourSODatas = GetConvertedSO<PlayerSimpleBehaviourSODatas>();
         _playerSimpleBehaviourSOData = _playerSimpleBehaviourSODatas.dictionary[_playerSimpleBehaviourSLData.level];
-        SetDataToStorage(_playerSimpleBehaviourSOData);
+        SetDataToStorage(_playerSimpleBehaviourSOData, _playerSimpleBehaviourSLData);
     }
 
 
     private void GetAndPullRollDataToStorage()
     {
-        _playerRollBehaviourSLData = new();
-        _playerRollBehaviourSLData = SaveLoader.LoadData<PlayerRollBehaviourSLData>(_playerRollBehaviourSLData, rollBehaviourKey);
+        playerRollBehaviourSLData = new();
+        playerRollBehaviourSLData = SaveLoader.LoadData<PlayerRollBehaviourSLData>(playerRollBehaviourSLData, rollBehaviourKey);
         _playerRollBehaviourSODatas = GetConvertedSO<PlayerRollBehaviourSODatas>();        
-        _playerRollBehaviourSOData = _playerRollBehaviourSODatas.dictionary[_playerRollBehaviourSLData.level];
-        SetDataToStorage(_playerRollBehaviourSOData);
+        playerRollBehaviourSOData = _playerRollBehaviourSODatas.dictionary[playerRollBehaviourSLData.level];
+        SetDataToStorage(playerRollBehaviourSOData, playerRollBehaviourSLData);
     }
 
     private void GetAndPullSuperJumpDataToStorage()
     {
-        _playerSuperJumpBehaviourSLData = new();
-        _playerSuperJumpBehaviourSLData = SaveLoader.LoadData<PlayerSuperJumpBehaviourSLData>(_playerSuperJumpBehaviourSLData, superJumpBehaviourKey);
+        playerSuperJumpBehaviourSLData = new();
+        playerSuperJumpBehaviourSLData = SaveLoader.LoadData<PlayerSuperJumpBehaviourSLData>(playerSuperJumpBehaviourSLData, superJumpBehaviourKey);
         _playerSuperJumpBehaviourSODatas = GetConvertedSO<PlayerSuperJumpBehaviourSODatas>();
-        _playerSuperJumpBehaviourSOData = _playerSuperJumpBehaviourSODatas.dictionary[_playerSuperJumpBehaviourSLData.level];
-        SetDataToStorage(_playerSuperJumpBehaviourSOData);
+        playerSuperJumpBehaviourSOData = _playerSuperJumpBehaviourSODatas.dictionary[playerSuperJumpBehaviourSLData.level];
+        SetDataToStorage(playerSuperJumpBehaviourSOData, playerSuperJumpBehaviourSLData);
     }
 
-    public void SaveData(IPlayerBehaviourData playerBehaviourData)
+    public void SaveData(ISLData playerBehaviourData)
     {
         switch (playerBehaviourData)
         {
-            case PlayerSimpleBehaviourSOData :
+            case PlayerSimpleBehaviourSLData:
                 SaveLoader.SaveItem(playerBehaviourData, simpleBehaviourKey);
                 break;
-            case PlayerRollBehaviourSOData:
+            case PlayerRollBehaviourSLData:
                 SaveLoader.SaveItem(playerBehaviourData, rollBehaviourKey);
+                GetAndPullRollDataToStorage();
                 break;
-            case PlayerSuperJumpBehaviourSOData:
+            case PlayerSuperJumpBehaviourSLData:
                 SaveLoader.SaveItem(playerBehaviourData, superJumpBehaviourKey);
+                GetAndPullSuperJumpDataToStorage();
                 break;
         }
     }
@@ -98,10 +100,14 @@ public class PlayerBehaviourDataCombiner
         return _sOStorageService.GetSOByType<T>().ConvertTo<T>();
     }
 
-    public void SetDataToStorage(IPlayerBehaviourData playerBehaviourData)
+    public void SetDataToStorage(IPlayerBehaviourData playerBehaviourData, ISLData sLData)
     {
-        _playerBehaviourStorageData.SetPlayerBehaviour(playerBehaviourData);
+        _playerBehaviourStorageData.SetPlayerBehaviour(playerBehaviourData, sLData);
     }
 
+    public PlayerSuperJumpBehaviourSODatas GetPlayerSuperJumpBehaviourSODatas()
+    {
+        return _playerSuperJumpBehaviourSODatas;
+    }
 
 }

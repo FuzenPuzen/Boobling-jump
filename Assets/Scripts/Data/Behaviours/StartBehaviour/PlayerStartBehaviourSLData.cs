@@ -1,4 +1,4 @@
-public class PlayerStartBehaviourSLData
+public class PlayerStartBehaviourSLData : ISLData
 {
     public int level = 0;
 }

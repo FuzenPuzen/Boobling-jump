@@ -6,6 +6,7 @@ using UnityEngine;
 public class PlayerStartBehaviourSOData : ScriptableObject, IPlayerBehaviourData
 {
     public float duration;
+    public float cost;
 
     public float GetDuration()
     {

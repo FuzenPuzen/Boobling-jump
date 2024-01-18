@@ -1,4 +1,6 @@
 using System;
+using System.Diagnostics;
+using UnityEngine;
 using Zenject;
 
 public class CoinDataManager : ICoinDataManager
@@ -30,10 +32,12 @@ public class CoinDataManager : ICoinDataManager
 
     public bool SpendCoins(int coins)
     {
+        MonoBehaviour.print(_coinsSLData.coins);
         if (_coinsSLData.coins >= coins)
         {
             _coinsSLData.coins -= coins;
             CoinsChanged();
+            MonoBehaviour.print(_coinsSLData.coins);
             return true; 
         }
         return false;

@@ -12,4 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3b7ace86e2e63274bba1711482001060, type: 3}
   m_Name: Level 0
   m_EditorClassIdentifier: 
-  duration: 4
+  duration: 1
+  cost: 50
