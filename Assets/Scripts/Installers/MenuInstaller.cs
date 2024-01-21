@@ -22,13 +22,17 @@ public class MenuInstaller : MonoInstaller
            ).To(typeof(SessionStorageData)).AsSingle();
 
         Container.Bind<CoinDataCombiner>().AsSingle().NonLazy();
+        Container.Bind<PlayerSkinDataCombiner>().AsSingle().NonLazy();
         Container.Bind<PlayerBehaviourDataCombiner>().AsSingle().NonLazy();
         Container.Bind<RecordScoreDataCombiner>().AsSingle().NonLazy();
+
+        Container.Bind<IPlayerSkinDataManager>().To<PlayerSkinDataManager>().AsSingle();
         Container.Bind<IPlayerBehaviourDataManager>().To<PlayerBehaviourDataManager>().AsSingle();
 
         Container.Bind<MenuMainPageCanvasViewService>().AsSingle();
 
         Container.Bind<MenuSkinShopPageCanvasViewService>().AsSingle();
+        Container.Bind<SkinShopItemsService>().AsSingle();
 
         Container.Bind<MenuUpgradePageCanvasViewService>().AsSingle();
 

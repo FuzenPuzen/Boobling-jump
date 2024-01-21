@@ -27,6 +27,7 @@ public class MenuSkinShopPageState : IBaseState
 
     public void Exit()
     {
+        _menuSkinShopPageCanvasViewService.HideView();
         _backButtonCanvasViewService.HideView();
     }
 

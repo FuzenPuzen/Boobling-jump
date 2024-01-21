@@ -50,7 +50,7 @@ Canvas:
   m_GameObject: {fileID: 142832277854316844}
   m_Enabled: 1
   serializedVersion: 3
-  m_RenderMode: 0
+  m_RenderMode: 1
   m_Camera: {fileID: 0}
   m_PlaneDistance: 100
   m_PixelPerfect: 0
@@ -140,6 +140,7 @@ GameObject:
   - component: {fileID: 760697263426809024}
   - component: {fileID: 1578868395762457392}
   - component: {fileID: 3072119063905024315}
+  - component: {fileID: 4419947898946407967}
   m_Layer: 5
   m_Name: Shik Shop Page
   m_TagString: Untagged
@@ -216,3 +217,27 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3bbd9597c273a6143b81c76035deca05, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &4419947898946407967
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2063014033159154129}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8a8695521f0d02e499659fee002a26c2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Padding:
+    m_Left: 10
+    m_Right: 0
+    m_Top: 0
+    m_Bottom: 0
+  m_ChildAlignment: 4
+  m_StartCorner: 0
+  m_StartAxis: 0
+  m_CellSize: {x: 600, y: 1080}
+  m_Spacing: {x: 50, y: 0}
+  m_Constraint: 2
+  m_ConstraintCount: 1

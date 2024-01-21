@@ -43,6 +43,20 @@ namespace MLALib
 
             return obj;
         }
+
+        public static List<T> LoadDatas<T>(List<T> objs, string key)
+        {
+            if (!PlayerPrefs.HasKey(key))
+            {
+                SaveItems(objs, key);
+            }
+            else
+            {
+                objs = LoadItems<T>(key);
+            }
+
+            return objs;
+        }
     }
 
     public static class NewSaveLoader
