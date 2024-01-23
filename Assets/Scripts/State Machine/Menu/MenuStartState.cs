@@ -19,7 +19,6 @@ public class MenuStartState : IBaseState
         _stateMachine = stateMachine;
         _markerService = markerService;
         _menuCoinPageCanvasViewService = menuCoinPageCanvasViewService;
-        
     }
 
     public void Enter()

@@ -18,16 +18,14 @@ public class MenuMainPageState : IBaseState
     {
         _menuStateMachine = menuStateMachine;
         _menuMainPageViewService = menuMainPageViewService;
-
+        _onClickGame = new(OnGameClickEvent);
+        _onClickUpgrade = new(OnUpgradeClickEvent);
+        _onClickSkinShop = new(OnSkinShopClickEvent);
     }
 
     public void Enter()
     {
         _menuMainPageViewService.ActivateService();
-
-        _onClickGame = new EventBinding<OnClickGame>(OnGameClickEvent);
-        _onClickUpgrade = new EventBinding<OnClickUpgrade>(OnUpgradeClickEvent);
-        _onClickSkinShop = new EventBinding<OnClickSkinShop>(OnSkinShopClickEvent);
     }
 
     public void Exit()

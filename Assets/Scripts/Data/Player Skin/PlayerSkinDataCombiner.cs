@@ -39,6 +39,7 @@ public class PlayerSkinDataCombiner
     private void LoadPlayerSkinDatas()
     {
         _playerSkinDatas = SaveLoader.LoadDatas<PlayerSkinData>(_playerSkinDatas, PlayerSkinDataKey);
+        //переделать на SL
         if (_playerSkinDatas.IsEmpty())
         {
             for (int i = 0; i < _playerSkinSODatas.dictionary.Count; i++)
@@ -48,6 +49,7 @@ public class PlayerSkinDataCombiner
             }
             _playerSkinDatas[0].PlayerSkinSLData.IsOpen = true;
             _playerSkinDatas[0].PlayerSkinSLData.IsSelected = true;
+           // SaveLoader.SaveItems<PlayerSkinData>(_playerSkinDatas, PlayerSkinDataKey);
         }
     }
 

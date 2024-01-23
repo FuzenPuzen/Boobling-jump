@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using UnityEngine;
 using Zenject;
 
 public class SkinShopItemsService : IService
@@ -22,9 +23,11 @@ public class SkinShopItemsService : IService
 
 	public void ActivateService()
 	{
+
         _playerSkinDatas = _playerSkinDataManager.GetPlayerSkinDatas();
 		foreach (PlayerSkinData data in _playerSkinDatas)
 		{
+            MonoBehaviour.print("12");
             SkinShopItemViewService skinShopItemViewService = _serviceFabric.Init<SkinShopItemViewService>();
 			skinShopItemViewService.ActivateService();
             skinShopItemViewService.SetData(data);

@@ -4,7 +4,7 @@ using Zenject;
 public class MenuUpgradePageState : IBaseState
 {
     private MenuUpgradePageCanvasViewService _menuUpgradePageCanvasViewService;
-    EventBinding<OnClickMenu> _onClickMenu;
+    private EventBinding<OnClickMenu> _onClickMenu;
     private MenuStateMachine _menuStateMachine;
     private BackButtonCanvasViewService _backButtonCanvasViewService;
 
@@ -19,13 +19,13 @@ public class MenuUpgradePageState : IBaseState
         _menuStateMachine = menuStateMachine;
         _playerBehaviourDataManager = playerBehaviourDataManager;
         _menuUpgradePageCanvasViewService = menuUpgradePageCanvasViewService;
+        _onClickMenu = new(ToMenu);
     }
 
     public void Enter()
     {
         _playerBehaviourDataManager.ActivateService();
-        _menuUpgradePageCanvasViewService.ActivateService();
-        _onClickMenu = new EventBinding<OnClickMenu>(ToMenu);
+        _menuUpgradePageCanvasViewService.ActivateService();       
         _backButtonCanvasViewService.ShowView();
     }
 

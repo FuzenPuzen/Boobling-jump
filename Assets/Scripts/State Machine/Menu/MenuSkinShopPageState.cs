@@ -5,23 +5,27 @@ public class MenuSkinShopPageState : IBaseState
 {
     private MenuSkinShopPageCanvasViewService _menuSkinShopPageCanvasViewService;
     private BackButtonCanvasViewService _backButtonCanvasViewService;
-    EventBinding<OnClickMenu> _onClickMenu;
+    private EventBinding<OnClickMenu> _onClickMenu;
     private MenuStateMachine _menuStateMachine;
+    private IPlayerSkinDataManager _playerSkinDataManager;
 
     [Inject]
     public void Constructor(MenuSkinShopPageCanvasViewService menuSkinShopPageCanvasViewService,
                             BackButtonCanvasViewService backButtonCanvasViewService,
-                            MenuStateMachine menuStateMachine)
+                            MenuStateMachine menuStateMachine,
+                            IPlayerSkinDataManager playerSkinDataManager)
     {
+        _playerSkinDataManager = playerSkinDataManager;
         _backButtonCanvasViewService = backButtonCanvasViewService;
         _menuSkinShopPageCanvasViewService = menuSkinShopPageCanvasViewService;
         _menuStateMachine = menuStateMachine;
+        _onClickMenu = new(ToMenu);
     }
 
     public void Enter()
     {
+        _playerSkinDataManager.ActivateService();
         _menuSkinShopPageCanvasViewService.ActivateService();
-        _onClickMenu = new EventBinding<OnClickMenu>(ToMenu);
         _backButtonCanvasViewService.ShowView();
     }
 
