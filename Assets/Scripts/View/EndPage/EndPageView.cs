@@ -30,5 +30,13 @@ public class EndPageViewService : IService
 		_bonusPanelViewService.ActivateService();
         _endChoosePanelViewService = _serviceFabric.Init<EndChoosePanelViewService>();
 		_endChoosePanelViewService.ActivateService();
+		_bonusPanelViewService.SetOnGetBonusCompleteAction(OnGetBonusComplete);
+		_bonusPanelViewService.ShowView();
+	}
+
+	public void OnGetBonusComplete()
+	{
+		_bonusPanelViewService.HideView();
+		_endChoosePanelViewService.ShowView();
 	}
 }
