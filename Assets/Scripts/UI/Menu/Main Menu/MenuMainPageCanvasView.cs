@@ -4,7 +4,6 @@ using System;
 
 public class MenuMainPageCanvasView : MonoBehaviour
 {
-
     internal void HideView()
     {
         gameObject.SetActive(false);
@@ -41,22 +40,24 @@ public class MenuMainPageCanvasViewService : IService
 
     public void ActivateService()
     {
-        if (_menuSkinShopPanelViewService == null)
-        {
-            _menuSkinShopPanelViewService = _serviceFabric.Init<MenuSkinShopPanelViewService>();
-            _menuTutorialPanelViewService = _serviceFabric.Init<MenuTutorialPanelViewService>();
-            _menuUpgradePanelViewService = _serviceFabric.Init<MenuUpgradePanelViewService>();
-
-            _menuMainPageView = _fabric.Init<MenuMainPageCanvasView>();
-            _menuTutorialPanelViewService.ActivateService();
-            _menuUpgradePanelViewService.ActivateService();
-            _menuSkinShopPanelViewService.ActivateService();
-        }
-        _menuMainPageView.ShowView();
+        _menuMainPageView = _fabric.Init<MenuMainPageCanvasView>();
+        _menuSkinShopPanelViewService = _serviceFabric.Init<MenuSkinShopPanelViewService>();
+        _menuTutorialPanelViewService = _serviceFabric.Init<MenuTutorialPanelViewService>();
+        _menuUpgradePanelViewService = _serviceFabric.Init<MenuUpgradePanelViewService>();
+           
+        _menuTutorialPanelViewService.ActivateService();
+        _menuUpgradePanelViewService.ActivateService();
+        _menuSkinShopPanelViewService.ActivateService();
+        HideView();
     }
 
 	public void HideView()
 	{
-		_menuMainPageView.HideView();
+        _menuMainPageView.HideView();
+    }
+
+    public void ShowView()
+    {
+        _menuMainPageView.ShowView();
     }
 }

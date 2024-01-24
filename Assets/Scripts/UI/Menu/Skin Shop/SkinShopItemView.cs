@@ -27,7 +27,12 @@ public class SkinShopItemView : MonoBehaviour
 
 	public void UpdateView()
 	{
+		print("UpdateView");
         _cost.text = _playerSkinData.PlayerSkinSOData.Cost.ToString();
+		if (!_playerSkinData.PlayerSkinSLData.IsOpen)
+			_cost.color = Color.red;
+		else 
+			_cost.color = Color.green;
     }
 }
 
@@ -38,7 +43,6 @@ public class SkinShopItemViewService : IService
 	private PlayerSkinView _playerSkinModel;
     private IMarkerService _markerService;
 	private PlayerSkinData _playerSkinData;
-    private EventBinding<OnBuySkin> _onBuySkin;
 
     [Inject]
 	public void Constructor(IViewFabric fabric, IMarkerService markerService)
@@ -51,7 +55,6 @@ public class SkinShopItemViewService : IService
 	{
 		Transform parent = _markerService.GetTransformMarker<SkinShopPageMarker>().transform;
         _SkinShopItemView = _fabric.Init<SkinShopItemView>(parent);
-        _onBuySkin = new EventBinding<OnBuySkin>(UpdateView);
     }
 	public void UpdateView()
 	{
@@ -60,10 +63,15 @@ public class SkinShopItemViewService : IService
 
 	public void SetData(PlayerSkinData playerSkinData)
 	{
+		UpdateData(playerSkinData);
+        Transform parent = _SkinShopItemView.transform;
+        _playerSkinModel = _fabric.Init<PlayerSkinView>(_playerSkinData.PlayerSkinSOData.SkinPrefab, parent);
+    }
+
+	public void UpdateData(PlayerSkinData playerSkinData)
+	{
         _playerSkinData = playerSkinData;
         _SkinShopItemView.SetValues(_playerSkinData);
         _SkinShopItemView.UpdateView();
-		Transform parent = _SkinShopItemView.transform;
-        _playerSkinModel = _fabric.Init<PlayerSkinView>(_playerSkinData.PlayerSkinSOData.SkinPrefab, parent);
     }
 }

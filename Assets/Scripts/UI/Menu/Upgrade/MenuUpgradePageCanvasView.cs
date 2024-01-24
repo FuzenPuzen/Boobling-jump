@@ -3,7 +3,6 @@ using UnityEngine;
 
 public class MenuUpgradePageCanvasView : MonoBehaviour
 {
-
     internal void HideView()
     {
         gameObject.SetActive(false);
@@ -35,20 +34,21 @@ public class MenuUpgradePageCanvasViewService : IService
 
     public void ActivateService()
     {
-        if (_menuUpgradePageView == null)
-        {
-            _superJumpUpgradePanelViewService = _serviceFabric.Init<SuperJumpUpgradePanelViewService>();
-            _rollUpgradePanelViewService = _serviceFabric.Init<RollUpgradePanelViewService>();
+        _superJumpUpgradePanelViewService = _serviceFabric.Init<SuperJumpUpgradePanelViewService>();
+        _rollUpgradePanelViewService = _serviceFabric.Init<RollUpgradePanelViewService>();
 
-            _menuUpgradePageView = _fabric.Init<MenuUpgradePageCanvasView>();
-            _superJumpUpgradePanelViewService.ActivateService();
-            _rollUpgradePanelViewService.ActivateService();
-        }
-        _menuUpgradePageView.ShowView();
+        _menuUpgradePageView = _fabric.Init<MenuUpgradePageCanvasView>();
+        _superJumpUpgradePanelViewService.ActivateService();
+        _rollUpgradePanelViewService.ActivateService();
+        HideView();
     }
 
     public void HideView()
     {
         _menuUpgradePageView.HideView();
+    }
+    public void ShowView()
+    {
+        _menuUpgradePageView.ShowView();
     }
 }

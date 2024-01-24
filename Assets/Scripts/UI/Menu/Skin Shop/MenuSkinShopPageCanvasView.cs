@@ -39,16 +39,18 @@ public class MenuSkinShopPageCanvasViewService : IService
 
 	public void ActivateService()
 	{
-		if (_menuSkinShopPageView == null)
-		{
-			_menuSkinShopPageView = _fabric.Init<MenuSkinShopPageCanvasView>();
-			_skinShopItemsService.ActivateService();
-		}
-        _menuSkinShopPageView.ShowView();
+		_menuSkinShopPageView = _fabric.Init<MenuSkinShopPageCanvasView>();
+		_skinShopItemsService.ActivateService();
+        HideView();
     }
 
     public void HideView()
     {
         _menuSkinShopPageView.HideView();
+    }
+
+    public void ShowView()
+    {
+        _menuSkinShopPageView.ShowView();
     }
 }

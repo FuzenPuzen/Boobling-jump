@@ -1,6 +1,7 @@
 using EventBus;
 using Zenject;
 using UnityEngine.SceneManagement;
+using UnityEngine;
 
 public class MenuMainPageState : IBaseState
 {
@@ -25,7 +26,7 @@ public class MenuMainPageState : IBaseState
 
     public void Enter()
     {
-        _menuMainPageViewService.ActivateService();
+        _menuMainPageViewService.ShowView();
     }
 
     public void Exit()
