@@ -20,6 +20,7 @@ public class MenuUpgradePageState : IBaseState
         _playerBehaviourDataManager = playerBehaviourDataManager;
         _menuUpgradePageCanvasViewService = menuUpgradePageCanvasViewService;
         _onClickMenu = new(ToMenu);
+        _onClickMenu.Remove(ToMenu);
     }
 
     public void Enter()

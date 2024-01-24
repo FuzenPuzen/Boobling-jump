@@ -1,6 +1,7 @@
 using DG.Tweening;
 using System;
 using UnityEngine;
+using EventBus;
 
 public class PlayerSuperJumpBehaviour : PlayerJumpBehaviour
 {
@@ -15,6 +16,7 @@ public class PlayerSuperJumpBehaviour : PlayerJumpBehaviour
     public override void Fall(TweenCallback tweenCallback)
     {
         base.Fall(FallCallback);
+        EventBus<OnSupperJumpFall>.Raise();
         //add force wave spawn
         MonoBehaviour.print("Super Jump Spawn");
     }
