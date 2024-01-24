@@ -51,30 +51,41 @@ public class GetBonusPanelView : MonoBehaviour
 
 public class GetBonusPanelViewService : IService
 {
-	private IViewFabric _fabric;
-	private GetBonusPanelView _getBonusPanelView;
+	private IViewFabric _viewFabric;
+    private IServiceFabric _serviceFabric;
+    private GetBonusPanelView _getBonusPanelView;
+    private RewardBonusTypeViewService _rewardBonusTypeViewService;
     private IMarkerService _markerService;
     private Action _getBonusCompleteAction;
+    private RewardBonusType _rewardBonusType;
 
     [Inject]
-	public void Constructor(IViewFabric fabric, IMarkerService markerService)
+	public void Constructor(
+        IViewFabric viewFabric,
+        IMarkerService markerService,
+        IServiceFabric serviceFabric)
 	{
 		_markerService = markerService;
-		_fabric = fabric;
+		_viewFabric = viewFabric;
+        _serviceFabric = serviceFabric;
 	}
 
 	public void ActivateService()
 	{
 		Transform parent = _markerService.GetTransformMarker<EndPageMarker>().transform;
-        _getBonusPanelView = _fabric.Init<GetBonusPanelView>(parent);
+        _getBonusPanelView = _viewFabric.Init<GetBonusPanelView>(parent);
 		_getBonusPanelView.ActivateView();
         _getBonusPanelView.onSelectBonusTypeAction = OnSelectBonusType;
         _getBonusPanelView.onGetRewardAction = OnGetReward;
+        _rewardBonusTypeViewService = _serviceFabric.Init<RewardBonusTypeViewService>();
+        HideView();
+
     }
 
 	public void ShowView()
 	{
 		_getBonusPanelView.ShowView();
+        _rewardBonusTypeViewService.ActivateService();
 
     }
     public void HideView()
@@ -84,7 +95,7 @@ public class GetBonusPanelViewService : IService
     }
     private void OnSelectBonusType()
     {
-        //selectbonustype button hide in view
+        _rewardBonusType = _rewardBonusTypeViewService.StopChangeType();
     }
 
     private void OnGetReward(RewardType type)
@@ -104,9 +115,4 @@ public enum RewardType
     Bonus
 }
 
-public enum RewardBonusType
-{
-    X2 = 2,
-    X3 = 3,
-    X5 = 5
-}
+

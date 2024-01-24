@@ -51,6 +51,7 @@ public class EndChoosePanelViewService : IService
         _endChoosePanelView.ActivateView();
         _endChoosePanelView.OnMenuOpen = OnMenuOpen;
         _endChoosePanelView.OnRestart = OnRestart;
+        HideView();
 
     }
     public void ShowView()
