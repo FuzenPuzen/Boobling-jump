@@ -24,16 +24,21 @@ public class MenuMainPageCanvasViewService : IService
     private IMarkerService _markerService;
 
     private IService _menuTutorialPanelViewService;
+    private IService _menuInfinityPanelViewService;
+
     private IService _menuSkinShopPanelViewService;
     private IService _menuUpgradePanelViewService;
+    private ISessionTypeDataManager _sessionTypeDataManager;
 
 
     [Inject]
 	public void Constructor(IViewFabric fabric,
                             IMarkerService markerService,
-                            IServiceFabric serviceFabric)
+                            IServiceFabric serviceFabric,
+                            ISessionTypeDataManager sessionTypeDataManager)
 	{
-		_markerService = markerService;
+        _sessionTypeDataManager = sessionTypeDataManager;
+        _markerService = markerService;
 		_fabric = fabric;
         _serviceFabric = serviceFabric;
     }
@@ -41,11 +46,20 @@ public class MenuMainPageCanvasViewService : IService
     public void ActivateService()
     {
         _menuMainPageView = _fabric.Init<MenuMainPageCanvasView>();
-        _menuSkinShopPanelViewService = _serviceFabric.Init<MenuSkinShopPanelViewService>();
-        _menuTutorialPanelViewService = _serviceFabric.Init<MenuTutorialPanelViewService>();
+        _menuSkinShopPanelViewService = _serviceFabric.Init<MenuSkinShopPanelViewService>();       
         _menuUpgradePanelViewService = _serviceFabric.Init<MenuUpgradePanelViewService>();
-           
-        _menuTutorialPanelViewService.ActivateService();
+        if (_sessionTypeDataManager.GetTutorialGameType())
+        {
+            _menuTutorialPanelViewService = _serviceFabric.Init<MenuTutorialPanelViewService>();
+            _menuTutorialPanelViewService.ActivateService();
+        }
+        else
+        {
+            _menuInfinityPanelViewService = _serviceFabric.Init<MenuInfinityPanelViewService>();
+            _menuInfinityPanelViewService.ActivateService();
+        }
+
+
         _menuUpgradePanelViewService.ActivateService();
         _menuSkinShopPanelViewService.ActivateService();
         HideView();

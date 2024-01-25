@@ -15,6 +15,8 @@ public class PlayerBehaviourService : IPlayerBehaviourService
     private IPlayerBehaviourData _playerBehaviourData;
     private List<IPlayerBehaviour> _playerBehaviours = new();
     private IPlayerBehaviourStorageData _playerBehaviourStorageData;
+    private IPlayerSkinDataManager _playerSkinDataManager;
+    private IMarkerService _markerService;
 
     private Sequence _timerSequence;
     private Action _onEndAction;
@@ -38,8 +40,12 @@ public class PlayerBehaviourService : IPlayerBehaviourService
     }
 
     [Inject]
-    public void Constructor(IViewFabric fabric, IPlayerBehaviourStorageData playerBehaviourStorageData)
+    public void Constructor(IViewFabric fabric, IPlayerBehaviourStorageData playerBehaviourStorageData,
+                            IPlayerSkinDataManager playerSkinDataManager,
+                            IMarkerService markerService)
     {
+        _markerService = markerService;
+        _playerSkinDataManager = playerSkinDataManager;
         _playerBehaviourStorageData = playerBehaviourStorageData;
         _fabric = fabric;
     }
@@ -55,7 +61,11 @@ public class PlayerBehaviourService : IPlayerBehaviourService
 
     private void SpawnPlayer()
     {
+        GameObject PlayerModel = _playerSkinDataManager.GetCurrentSkin().PlayerSkinSOData.SkinPrefab.transform.GetChild(0).gameObject;
         _playerView = _fabric.Init<PlayerView>(new Vector3(4.83f, 1.24f, 0));
+        Transform parent = _markerService.GetTransformMarker<PlayerMarker>().transform;
+        _fabric.Init(PlayerModel, parent);
+        _playerView.SetPlayerModel(PlayerModel.transform);
     }
 
     public void SetActionEndBehaviour(Action action)

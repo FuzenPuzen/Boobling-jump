@@ -1,4 +1,5 @@
 using EventBus;
+using Unity.VisualScripting;
 using Zenject;
 
 public class GameState : IBaseState
@@ -20,14 +21,14 @@ public class GameState : IBaseState
         _statemachine = statemachine;
         _playerBehaviourService = playerBehaviourService;
     }
-
+    
     public void Enter()
     {
         _playerBehaviourService.SetBehaviour<PlayerSimpleJumpBehaviour>();
         _sectionBehaviourService.SetBehaviour<SectionSimpleJumpBehaviour>();
         _onRollActivate = new (OnRollBehaviourStart);
         _onSupperJumpActivate = new (OnSuperJumpBehaviourStart);
-        _onPlayerDie = new(OnPlayerDie);
+        _onPlayerDie = new (OnPlayerDie);
     }
 
     public void Exit()

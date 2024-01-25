@@ -3,9 +3,13 @@ using UnityEngine;
 public class PlayerView : MonoBehaviour
 {
     [SerializeField] private Transform _playerModel;
-    [SerializeField] public int id;
 
     private IPlayerBehaviour _currentBehaviour;
+
+    public void SetPlayerModel(Transform model)
+    {
+        _playerModel = model;
+    }
 
     public void SetNewBehaviour(IPlayerBehaviour playerBehaviour)
     {

@@ -6,6 +6,7 @@ using Zenject;
 public interface IPlayerSkinDataManager : IService
 {
     public List<PlayerSkinData> GetPlayerSkinDatas();
+    public PlayerSkinData GetCurrentSkin();
 }
 
 
@@ -43,5 +44,15 @@ public class PlayerSkinDataManager : IPlayerSkinDataManager
         _onTryBuySkin = new EventBinding<OnTryBuySkin>(BuySkin);
         _playerSkinDatas = _playerSkinDataCombiner.GetPlayerSkinDatas();
         _playerSkinSLDatas = _playerSkinDataCombiner.GetPlayerSkinSLDatas();
+    }
+
+    public PlayerSkinData GetCurrentSkin()
+    {
+        foreach (PlayerSkinData skinData in _playerSkinDatas)
+        {
+            if(skinData.PlayerSkinSLData.IsSelected)
+                return skinData;
+        }
+        return _playerSkinDatas[0];
     }
 }
