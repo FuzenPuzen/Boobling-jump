@@ -12,6 +12,10 @@ public class  MarkerService : IMarkerService
     {
         Instance = this;
     }
+    public void DeactivateService()
+    {
+        markers.Clear();
+    }
 
     public T GetTransformMarker<T>() where T : IMarker
     {

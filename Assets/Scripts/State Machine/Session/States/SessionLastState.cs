@@ -1,17 +1,27 @@
+using DG.Tweening;
+using EventBus;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Zenject;
 
-public class SessionLastState : MonoBehaviour
+public class SessionLastState : IBaseState
 {
-    // Start is called before the first frame update
-    void Start()
+    
+    public void Enter()
+    {
+        DOTween.KillAll();
+        Time.timeScale = 1;
+        MarkerService.Instance.DeactivateService();
+        LoaderSceneService.Instance.LoadBufScene();
+    }
+
+    public void Exit()
     {
         
     }
 
-    // Update is called once per frame
-    void Update()
+    void IBaseState.Update()
     {
         
     }

@@ -21,7 +21,8 @@ public class SessionStateMachine
                             SuperJumpState superJumpState,
                             RollingState rollingState,
                             EndGameState endGameState,
-                            PreStartState preStartState)
+                            PreStartState preStartState,
+                            SessionLastState sessionLastState)
     {
         _baseStates.Add(preStartState);
         _baseStates.Add(startState);
@@ -29,6 +30,7 @@ public class SessionStateMachine
         _baseStates.Add(superJumpState);
         _baseStates.Add(rollingState);
         _baseStates.Add(endGameState);
+        _baseStates.Add(sessionLastState);
     }
 
     public void UpdateState()

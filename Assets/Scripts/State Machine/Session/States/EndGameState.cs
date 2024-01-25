@@ -1,3 +1,4 @@
+using EventBus;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using Zenject;
@@ -11,6 +12,9 @@ public class EndGameState : IBaseState
     private RollBonusBlenderViewService _rollBonusBlenderViewService;
     private SuperJumpBonusBlenderViewService _superJumpBonusBlenderViewService;
     private EndPageViewService _endPageViewService;
+    private EventBinding<OnRestart> _onRestartBinding;
+    private EventBinding<OnOpenMenu> _onOpenMenuBinding;
+    private SessionStateMachine _statemachine;
 
     [Inject]
     public void Constructor(
@@ -20,9 +24,11 @@ public class EndGameState : IBaseState
         GiftCollectorViewService giftCollectorViewService,
         RollBonusBlenderViewService rollBonusBlenderViewService,
         SuperJumpBonusBlenderViewService superJumpBonusBlenderViewService,
-        EndPageViewService endPageViewService
+        EndPageViewService endPageViewService,
+        SessionStateMachine sessionStateMachine
         )
     {
+        _statemachine = sessionStateMachine;
         _recordService = recordService;
         _scoreService = scoreService;
         _scoreDataManager = scoreDataManager;
@@ -30,6 +36,8 @@ public class EndGameState : IBaseState
         _rollBonusBlenderViewService = rollBonusBlenderViewService;
         _superJumpBonusBlenderViewService = superJumpBonusBlenderViewService;
         _endPageViewService = endPageViewService;
+        _onRestartBinding = new(RestartScene);
+        _onOpenMenuBinding = new(OpenMainMenu);
     }
 
     public void Enter()
@@ -43,11 +51,13 @@ public class EndGameState : IBaseState
 
     public void RestartScene()
     {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        LoaderSceneService.Instance.SetBufScene(GameScenes.SessionScene);
+        _statemachine.SetState<SessionLastState>();
     }
     public void OpenMainMenu()
     {
-        SceneManager.LoadScene(0);
+        LoaderSceneService.Instance.SetBufScene(GameScenes.MenuScene);
+        _statemachine.SetState<SessionLastState>();
     }
     public void Exit()
     {

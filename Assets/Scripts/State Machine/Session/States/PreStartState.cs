@@ -10,6 +10,7 @@ public class PreStartState : IBaseState
     private IPlayerBehaviourService _playerBehaviourService;
     private ISectionBehavioursService _sectionBehaviourService;
     private IMarkerService _markerService;
+    private ILoaderSceneService _loaderSceneService;
     private IService _roomViewService;
     private IPoolsViewService _poolsViewService;
     private GiftCollectorViewService _giftCollectViewService;
@@ -30,6 +31,7 @@ public class PreStartState : IBaseState
                     ISectionBehavioursService sectionBehaviourService,
                     CoinsPanelService coinsPanelService,
                     IMarkerService  markerService,
+                    ILoaderSceneService loaderSceneService,
                     RoomViewService roomViewService,
                     CoinPalleteViewService coinPalleteViewService,
                     GiftCollectorViewService giftCollectViewService,
@@ -49,6 +51,7 @@ public class PreStartState : IBaseState
         _timerService = timerService;
         _statemachine = statemachine;
         _markerService =  markerService;
+        _loaderSceneService = loaderSceneService;
         _giftCollectViewService = giftCollectViewService;
         _coinCollectViewService = coinCollectViewService;
         _coinPalleteViewService = coinPalleteViewService;
@@ -59,6 +62,7 @@ public class PreStartState : IBaseState
     public void Enter()
     {
         _markerService.ActivateService();
+        _loaderSceneService.ActivateService();
 
         _roomViewService.ActivateService();
         _blackBoardViewService.ActivateService();

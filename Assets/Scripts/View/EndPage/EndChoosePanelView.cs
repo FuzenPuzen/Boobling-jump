@@ -3,6 +3,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using System;
 using UnityEngine.SceneManagement;
+using EventBus;
 
 public class EndChoosePanelView : MonoBehaviour
 {
@@ -67,12 +68,12 @@ public class EndChoosePanelViewService : IService
 
     private void OnRestart()
     {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        EventBus<OnRestart>.Raise();
     }
     
     private void OnMenuOpen()
     {
-        SceneManager.LoadScene(0);
+        EventBus<OnOpenMenu>.Raise();
     }
 
 

@@ -5,6 +5,7 @@ public class GameInstaller : MonoInstaller
     public override void InstallBindings()
     {
         Container.Bind<IMarkerService>().To<MarkerService>().AsSingle();
+        Container.Bind<ILoaderSceneService>().To<LoaderSceneService>().AsSingle();
 
         Container.Bind(
             typeof(IPrefabStorageService),
@@ -71,5 +72,6 @@ public class GameInstaller : MonoInstaller
         Container.Bind<GameState>().AsSingle();
         Container.Bind<RollingState>().AsSingle();
         Container.Bind<StartState>().AsSingle();
+        Container.Bind<SessionLastState>().AsSingle();
     }
 }
