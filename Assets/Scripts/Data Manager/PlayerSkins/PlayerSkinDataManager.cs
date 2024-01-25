@@ -13,6 +13,7 @@ public class PlayerSkinDataManager : IPlayerSkinDataManager
 {
     private PlayerSkinDataCombiner _playerSkinDataCombiner;
     private List<PlayerSkinData> _playerSkinDatas;
+    private List<PlayerSkinSLData> _playerSkinSLDatas;
     private ICoinDataManager _coinDataManager;
     private EventBinding<OnTryBuySkin> _onTryBuySkin;
 
@@ -29,7 +30,10 @@ public class PlayerSkinDataManager : IPlayerSkinDataManager
     {
         if (_coinDataManager.SpendCoins(onBuySkin.playerSkinData.PlayerSkinSOData.Cost))
         {
-            onBuySkin.playerSkinData.PlayerSkinSLData.IsOpen = true;
+            int dataId = onBuySkin.playerSkinData.PlayerSkinSLData.Id;
+            _playerSkinSLDatas[dataId].IsOpen = true;
+            _playerSkinDatas[dataId].PlayerSkinSLData.IsOpen = true;
+            _playerSkinDataCombiner.SaveData(_playerSkinSLDatas);
             EventBus<OnBuySkin>.Raise();
         }
     }
@@ -38,5 +42,6 @@ public class PlayerSkinDataManager : IPlayerSkinDataManager
     {
         _onTryBuySkin = new EventBinding<OnTryBuySkin>(BuySkin);
         _playerSkinDatas = _playerSkinDataCombiner.GetPlayerSkinDatas();
+        _playerSkinSLDatas = _playerSkinDataCombiner.GetPlayerSkinSLDatas();
     }
 }

@@ -8,25 +8,23 @@ public class MenuUpgradePageState : IBaseState
     private MenuStateMachine _menuStateMachine;
     private BackButtonCanvasViewService _backButtonCanvasViewService;
 
-    private IService _playerBehaviourDataManager;
+    
     [Inject]
     public void Constructor(MenuUpgradePageCanvasViewService menuUpgradePageCanvasViewService,
                             BackButtonCanvasViewService backButtonCanvasViewService,
-                            IPlayerBehaviourDataManager playerBehaviourDataManager,
+                            
                             MenuStateMachine menuStateMachine)
     {
         _backButtonCanvasViewService = backButtonCanvasViewService;
         _menuStateMachine = menuStateMachine;
-        _playerBehaviourDataManager = playerBehaviourDataManager;
+        
         _menuUpgradePageCanvasViewService = menuUpgradePageCanvasViewService;
         _onClickMenu = new(ToMenu);
-        _onClickMenu.Remove(ToMenu);
     }
 
     public void Enter()
     {
-        _playerBehaviourDataManager.ActivateService();
-        _menuUpgradePageCanvasViewService.ActivateService();       
+        _menuUpgradePageCanvasViewService.ShowView();       
         _backButtonCanvasViewService.ShowView();
     }
 

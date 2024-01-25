@@ -27,6 +27,7 @@ public class PlayerSkinDataCombiner
     private PlayerSkinSODatas _playerSkinSODatas;
 
     private List<PlayerSkinData> _playerSkinDatas = new();
+    private List<PlayerSkinSLData> _playerSkinSLDatas = new();
 
     [Inject]
     public void Constructor(ISOStorageService sOStorageService)
@@ -36,22 +37,43 @@ public class PlayerSkinDataCombiner
         LoadPlayerSkinDatas();
     }
 
+    public List<PlayerSkinData> GetPlayerSkinDatas() => _playerSkinDatas;
+    public List<PlayerSkinSLData> GetPlayerSkinSLDatas() => _playerSkinSLDatas;
+
+    public void SaveData(List<PlayerSkinSLData> playerSkinData)
+    {
+        SaveLoader.SaveItems<PlayerSkinSLData>(playerSkinData, PlayerSkinDataKey);
+    }
+
     private void LoadPlayerSkinDatas()
     {
-        _playerSkinDatas = SaveLoader.LoadDatas<PlayerSkinData>(_playerSkinDatas, PlayerSkinDataKey);
-        //переделать на SL
-        if (_playerSkinDatas.IsEmpty())
+        _playerSkinSLDatas = SaveLoader.LoadDatas<PlayerSkinSLData>(_playerSkinSLDatas, PlayerSkinDataKey);
+        if (_playerSkinSLDatas.IsEmpty())
+            CreateSkinDatas();
+        else
+            FillSkinDatas();
+    }
+
+    private void CreateSkinDatas()
+    {
+        for (int i = 0; i < _playerSkinSODatas.dictionary.Count; i++)
         {
-            for (int i = 0; i < _playerSkinSODatas.dictionary.Count; i++)
-            {
-                PlayerSkinSLData playerSkinSLData = new();
-                _playerSkinDatas.Add(new(_playerSkinSODatas.dictionary[i], playerSkinSLData));
-            }
-            _playerSkinDatas[0].PlayerSkinSLData.IsOpen = true;
-            _playerSkinDatas[0].PlayerSkinSLData.IsSelected = true;
-           // SaveLoader.SaveItems<PlayerSkinData>(_playerSkinDatas, PlayerSkinDataKey);
+            PlayerSkinSLData playerSkinSLData = new();
+            playerSkinSLData.Id = i;
+            _playerSkinSLDatas.Add(playerSkinSLData);
+            _playerSkinDatas.Add(new(_playerSkinSODatas.dictionary[i], playerSkinSLData));
+        }
+        _playerSkinDatas[0].PlayerSkinSLData.IsOpen = true;
+        _playerSkinDatas[0].PlayerSkinSLData.IsSelected = true;
+        SaveLoader.SaveItems<PlayerSkinSLData>(_playerSkinSLDatas, PlayerSkinDataKey);
+    }
+
+    private void FillSkinDatas()
+    {
+        for (int i = 0; i < _playerSkinSODatas.dictionary.Count; i++)
+        {
+            _playerSkinDatas.Add(new(_playerSkinSODatas.dictionary[i], _playerSkinSLDatas[i]));
         }
     }
 
-    public List<PlayerSkinData> GetPlayerSkinDatas() => _playerSkinDatas;
 }
