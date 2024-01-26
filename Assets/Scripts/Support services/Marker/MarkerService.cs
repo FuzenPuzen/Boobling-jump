@@ -1,20 +1,18 @@
+using EventBus;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
 public class  MarkerService : IMarkerService
 {
-    public static  MarkerService Instance { get; private set; }
-
     private List<IMarker> markers = new List<IMarker>();
 
+    private EventBinding<OnMarkerAwake> _onMarkerAwake;
+    private int count;
     public void ActivateService()
     {
-        Instance = this;
-    }
-    public void DeactivateService()
-    {
-        markers.Clear();
+        MonoBehaviour.print(markers.Count);
+        _onMarkerAwake = new(SetMarker);
     }
 
     public T GetTransformMarker<T>() where T : IMarker
@@ -22,9 +20,9 @@ public class  MarkerService : IMarkerService
         return markers.OfType<T>().FirstOrDefault();
     }
 
-    public void SetMarker(IMarker marker)
+    public void SetMarker(OnMarkerAwake markerAwake)
     {
-        markers.Add(marker);
+        markers.Add(markerAwake.marker);
     }
 }
 
@@ -37,16 +35,11 @@ public class Marker: MonoBehaviour, IMarker
 {
     public void Awake()
     {
-        ActivateMarker();
-    }
-
-    public void ActivateMarker()
-    {
-         MarkerService.Instance?.SetMarker(this);
+        EventBus<OnMarkerAwake>.Raise(new() {marker = this}) ;
     }
 }
 
 public interface IMarker
 {
-    public void ActivateMarker();
+    
 }

@@ -26,12 +26,11 @@ public class SuperJumpState : IBaseState
         _playerBehaviourService.SetBehaviour<PlayerSuperJumpBehaviour>();
         _sectionBehaviourService.SetBehaviour<SectionSuperJumpBehaviour>();
         _onSupperJumpDeactivate = new (OnSuperJumpBehaviourEnd);
-        //_playerBehaviourService.SetActionEndBehaviour(OnBehavourEnd);
     }
 
     public void Exit()
     {
-        //do nothing
+        _onSupperJumpDeactivate.Remove(OnSuperJumpBehaviourEnd);
     }
 
     public void Update()

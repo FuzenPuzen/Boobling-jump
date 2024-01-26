@@ -58,6 +58,8 @@ public class PreStartState : IBaseState
         _rollBonusBlenderViewService = rollBonusBlenderViewService;
         _superJumpBonusBlenderViewService = superJumpBonusBlenderViewService;
         _blackBoardViewService = blackBoardViewService;
+
+        
     }
     public void Enter()
     {
@@ -80,14 +82,16 @@ public class PreStartState : IBaseState
         _timerService.ActivateService();
         _coinsPanelService.ActivateService();
         _coinPalleteViewService.ActivateService();
+        _onStartBehaviourEnd = new (OnStartBehaviourEnd);
+        //EventBus<OnStartBehaviourEnd>.AddCallback(OnStartBehaviourEnd);
 
-        _onStartBehaviourEnd = new(OnStartBehaviourEnd);
 
     }
 
     public void Exit()
     {
         _tutorialService.DeActivateService();
+        _onStartBehaviourEnd.Remove(OnStartBehaviourEnd);
     }
 
     public void Update()

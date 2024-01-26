@@ -7,12 +7,24 @@ using Zenject;
 
 public class SessionLastState : IBaseState
 {
-    
+    private BlackBoardViewService _blackBoardViewService;
+
+
+    [Inject]
+    public void Constructor(
+                    BlackBoardViewService blackBoardViewService
+                 )
+    {
+        _blackBoardViewService = blackBoardViewService;
+    }
+
     public void Enter()
     {
         DOTween.KillAll();
         Time.timeScale = 1;
-        MarkerService.Instance.DeactivateService();
+
+        _blackBoardViewService.DeactivateService();
+
         LoaderSceneService.Instance.LoadBufScene();
     }
 

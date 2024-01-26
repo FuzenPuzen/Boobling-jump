@@ -19,7 +19,7 @@ public class LoaderSceneService : ILoaderSceneService
 
     public void LoadBufScene()
 	{
-		SceneManager.LoadSceneAsync((int)_bufScene);
+		SceneManager.LoadScene((int)_bufScene);
 	}
 
 	public void SetBufScene(GameScenes gameScenes)

@@ -32,7 +32,9 @@ public class GameState : IBaseState
 
     public void Exit()
     {
-        //do nothing
+        _onRollActivate.Remove(OnRollBehaviourStart);
+        _onSupperJumpActivate.Remove(OnSuperJumpBehaviourStart);
+        _onPlayerDie.Remove(OnPlayerDie);
     }
 
     public void Update()

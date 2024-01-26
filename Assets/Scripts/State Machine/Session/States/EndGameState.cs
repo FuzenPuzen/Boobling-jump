@@ -61,7 +61,8 @@ public class EndGameState : IBaseState
     }
     public void Exit()
     {
-        
+        _onRestartBinding.Remove(RestartScene);
+        _onOpenMenuBinding.Remove(OpenMainMenu);
     }
 
     public void Update()

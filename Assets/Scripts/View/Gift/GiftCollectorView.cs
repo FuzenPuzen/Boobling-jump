@@ -102,6 +102,10 @@ public class GiftCollectorViewService : IService
     public void DeactivateService()
     {
         _currentDropMode = DropMode.Nothing;
+        _onRollActivate.Remove(DeactivateFullDrop);
+        _onSupperJumpActivate.Remove(DeactivateFullDrop);
+        _onRollDeactivate.Remove(ActivateFullDrop);
+        _onSupperJumpDeactivate.Remove(ActivateFullDrop);
     }
 }
 

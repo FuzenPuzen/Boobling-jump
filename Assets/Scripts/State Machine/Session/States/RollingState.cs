@@ -26,7 +26,7 @@ public class RollingState : IBaseState
 
     public void Exit()
     {
-        //do nothing
+        _onRollDeactivate.Remove(OnRollBehaviourEnd);
     }
 
     public void Update()
