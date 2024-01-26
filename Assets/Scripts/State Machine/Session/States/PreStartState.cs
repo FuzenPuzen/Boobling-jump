@@ -20,6 +20,7 @@ public class PreStartState : IBaseState
     private SuperJumpBonusBlenderViewService _superJumpBonusBlenderViewService;
     private BlackBoardViewService _blackBoardViewService;
     private EventBinding<OnStartBehaviourEnd> _onStartBehaviourEnd;
+    private IPlayerSkinDataManager _playerSkinDataManager;
 
 
     [Inject]
@@ -39,9 +40,11 @@ public class PreStartState : IBaseState
                     IPoolsViewService poolsViewService,
                     RollBonusBlenderViewService rollBonusBlenderViewService,
                     SuperJumpBonusBlenderViewService superJumpBonusBlenderViewService,
-                    BlackBoardViewService blackBoardViewService
+                    BlackBoardViewService blackBoardViewService,
+                    IPlayerSkinDataManager playerSkinDataManager
                  )
     {
+        _playerSkinDataManager = playerSkinDataManager;
         _poolsViewService = poolsViewService;
         _roomViewService = roomViewService;
         _sectionBehaviourService = sectionBehaviourService;
