@@ -52,8 +52,8 @@ public class DropedSuperJumpBonusViewService : IPoolingViewService
 		_fabric = fabric;
 	}
 
-	public void ActivateService()
-	{
+	public void ActivateService(StartValues startValues = null)
+    {
         _dropedSuperJumpBonusView.ActivateView(_markerService.GetTransformMarker<SuperJumpBonusBlenderPosMarker>().transform);
     }
 

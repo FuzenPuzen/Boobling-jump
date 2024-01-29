@@ -80,7 +80,7 @@ public class GiftCollectorViewService : IService
 
     }
 
-    private void ActivateFullDrop() => _currentDropMode = DropMode.Nothing;
+    private void ActivateFullDrop() => _currentDropMode = DropMode.Full;
     private void DeactivateFullDrop() => _currentDropMode = DropMode.OnlyCoins;
 
 

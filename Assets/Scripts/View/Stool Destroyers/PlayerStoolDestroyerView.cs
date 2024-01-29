@@ -50,9 +50,9 @@ public class PlayerStoolDestroyerService : IService
 
 	public void OnStoolCollide(Collider other)
 	{
-        if (other.GetComponent<BasicStoolView>())
+        if (other.TryGetComponent(out BasicStoolView stoolView) && stoolView.CanSpawnCoin)
         {
-            other.GetComponent<BasicStoolView>().DeActivateView();
+            stoolView.DeActivateView();
             _coinPoolViewService.GetItem().ActivateService();
         }
     }

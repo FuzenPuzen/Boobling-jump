@@ -23,11 +23,14 @@ public class DropedCoinView : MonoBehaviour
 
     }
 
-    public void ActivateView(Transform target)
+    public void ActivateView(Transform target, StartValues startValues = null)
     {
-        gameObject.SetActive(true);
-        transform.position = transform.parent.position;
+        if (startValues == null)
+            transform.position = transform.parent.position;            
+        else
+            transform.position = startValues.StartPos;
         transform.parent = target;
+        gameObject.SetActive(true);
         _moveSequence = DOTween.Sequence();
         _moveSequence.Append(transform.DOScale(Vector3.one, _duration));
         _moveSequence.Join(transform.DOMove(target.position, _duration));
@@ -78,10 +81,10 @@ public class DropedCoinViewService : IPoolingViewService
 		_markerService = markerService;
     }
 
-	public void ActivateService()
-	{
+	public void ActivateService(StartValues startValues = null)
+    {
         _dropedCoinView.gameObject.SetActive(true);
-        _dropedCoinView.ActivateView(_markerService.GetTransformMarker<CoinPalleteMarker>().transform);
+        _dropedCoinView.ActivateView(_markerService.GetTransformMarker<CoinPalleteMarker>().transform, startValues);
     }
 
     public void ActivateServiceFromPool()

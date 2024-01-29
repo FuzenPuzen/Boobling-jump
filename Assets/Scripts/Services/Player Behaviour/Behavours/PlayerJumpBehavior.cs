@@ -112,8 +112,8 @@ public class PlayerJumpBehaviour : IPlayerBehaviour
     private void GoToLand()
     {
         _landSequence = DOTween.Sequence();
-        _landSequence.Append(_transform.DOMove(_startPos, period));
-        _landSequence.Join(_transform.DORotate(new Vector3(0, 0, 0), period));
+        _landSequence.Append(_transform.DOMove(_startPos, period/2));
+        _landSequence.Join(_transform.DORotate(new Vector3(0, 0, 0), period/2));
         _landSequence.OnComplete(LandComplete);
     }
 

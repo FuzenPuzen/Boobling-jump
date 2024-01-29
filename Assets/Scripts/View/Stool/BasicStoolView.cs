@@ -8,6 +8,7 @@ public class BasicStoolView : MonoBehaviour, IStoolView
     protected Sequence _fallSequence;
     protected Vector3 _startPos;
     public event Action CompleteMoveEvent;
+    public bool CanSpawnCoin;
 
     public void Start()
     {
@@ -15,7 +16,8 @@ public class BasicStoolView : MonoBehaviour, IStoolView
     }
 
     public virtual void ActivateView()
-    {       
+    {
+        CanSpawnCoin = true;
         _moveSequence = DOTween.Sequence();
         _moveSequence.Append(transform.DOScale(Vector3.one, 0.25f));
     }
@@ -35,6 +37,7 @@ public class BasicStoolView : MonoBehaviour, IStoolView
 
     public virtual void DeActivateView()
     {
+        CanSpawnCoin = false;
         _fallSequence.Kill();
         _moveSequence.Kill();
         SetStartValues();

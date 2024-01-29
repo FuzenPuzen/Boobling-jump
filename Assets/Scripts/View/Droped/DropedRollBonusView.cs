@@ -51,8 +51,8 @@ public class DropedRollBonusViewService : IPoolingViewService
 		_fabric = fabric;
 	}
 
-	public void ActivateService()
-	{
+	public void ActivateService(StartValues startValues = null)
+    {
         Transform target = _markerService.GetTransformMarker<RollBonusBlenderPosMarker>().transform;
         _dropedRollBonusView.ActivateView(target);
     }

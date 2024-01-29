@@ -11,7 +11,8 @@ public class SuperJumpWaveView : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        StoolCollideAction.Invoke(other);
+        if(other.gameObject.activeSelf)
+            StoolCollideAction.Invoke(other);
     }
 
     public void StartWave()
@@ -48,6 +49,7 @@ public class SuperJumpWaveViewService : IPoolingViewService
     private IMarkerService _markerService;
     private IPoolsViewService _poolsViewService;
     private IPoolViewService _coinPoolViewService;
+    private StartValues startValue = new();
 
     [Inject]
     public void Constructor(IViewFabric fabric, IMarkerService markerService,
@@ -58,17 +60,18 @@ public class SuperJumpWaveViewService : IPoolingViewService
         _fabric = fabric;
     }
 
-    public void ActivateService()
+    public void ActivateService(StartValues startValues = null)
     {
         StartWave();
     }
 
     public void OnStoolCollide(Collider other)
     {
-        if (other.GetComponent<BasicStoolView>())
+        if (other.TryGetComponent(out BasicStoolView stoolView) && stoolView.CanSpawnCoin)
         {
-            other.GetComponent<BasicStoolView>().DeActivateView();
-            _coinPoolViewService.GetItem().ActivateService();
+            stoolView.DeActivateView();
+            startValue.StartPos = other.transform.position;
+            _coinPoolViewService.GetItem().ActivateService(startValue);
         }
     }
 
