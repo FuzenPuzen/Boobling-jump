@@ -8,13 +8,15 @@ using Zenject;
 public class SessionLastState : IBaseState
 {
     private BlackBoardViewService _blackBoardViewService;
+    private SuperJumpWavesService _superJumpWavesService;
 
 
     [Inject]
     public void Constructor(
-                    BlackBoardViewService blackBoardViewService
-                 )
+                    BlackBoardViewService blackBoardViewService,
+                    SuperJumpWavesService superJumpWavesService)
     {
+        _superJumpWavesService = superJumpWavesService;
         _blackBoardViewService = blackBoardViewService;
     }
 
@@ -24,6 +26,7 @@ public class SessionLastState : IBaseState
         Time.timeScale = 1;
 
         _blackBoardViewService.DeactivateService();
+        _superJumpWavesService.DeactivateService();
 
         LoaderSceneService.Instance.LoadBufScene();
     }

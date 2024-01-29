@@ -6,6 +6,10 @@ public interface IPlayerBehaviourDataManager : IService
 	public bool BuyRollLevel(int coins);
     public UpgradeDataPackage GetUpgradeSuperJumpDataPackage();
     public UpgradeDataPackage GetUpgradeRollDataPackage();
+
+    public float GetSuperJumpCurrentDuration();
+
+    public float GetRollCurrentDuration();
 }
 
 public class PlayerBehaviourDataManager : IPlayerBehaviourDataManager
@@ -36,7 +40,17 @@ public class PlayerBehaviourDataManager : IPlayerBehaviourDataManager
         _playerRollBehaviourSODatas = _playerBehaviourDataCombiner.GetPlayerRollBehaviourSODatas();
     }
 
-	public bool BuySuperJumpLevel(int coins)
+    public float GetSuperJumpCurrentDuration()
+    {
+        return _playerSuperJumpBehaviourSODatas.dictionary[_playerSuperJumpBehaviourSLData.level].duration;
+    }
+
+    public float GetRollCurrentDuration()
+    {
+        return _playerRollBehaviourSODatas.dictionary[_playerRollBehaviourSLData.level].duration;
+    }
+
+    public bool BuySuperJumpLevel(int coins)
 	{
         if (IsLastSuperJumpLevel())
             return false;

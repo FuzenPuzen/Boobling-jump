@@ -21,7 +21,7 @@ public class PlayerStartBehaviour : PlayerJumpBehaviour
         _PlayerBehaviourData = (PlayerStartBehaviourSOData)playerBehaviourData;
     }
 
-    protected override void FallCallback()
+    public override void FallCallback()
     {
         _startAction?.Invoke();
     }

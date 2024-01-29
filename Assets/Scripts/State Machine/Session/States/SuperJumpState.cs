@@ -9,13 +9,16 @@ public class SuperJumpState : IBaseState
     private ISectionBehavioursService _sectionBehaviourService;
 
     private EventBinding<OnSupperJumpDeactivate> _onSupperJumpDeactivate;
+    private PlayerStoolDestroyerService _playerStoolDestroyerService;
 
     [Inject]
     public void Constructor(
         IPlayerBehaviourService playerBehaviourService,
         SessionStateMachine statemachine,
-        ISectionBehavioursService sectionBehavioursService)
+        ISectionBehavioursService sectionBehavioursService,
+        PlayerStoolDestroyerService playerStoolDestroyerService)
     {
+        _playerStoolDestroyerService = playerStoolDestroyerService;
         _sectionBehaviourService = sectionBehavioursService;
         _playerBehaviourService = playerBehaviourService;
         _statemachine = statemachine;
@@ -25,11 +28,13 @@ public class SuperJumpState : IBaseState
     {
         _playerBehaviourService.SetBehaviour<PlayerSuperJumpBehaviour>();
         _sectionBehaviourService.SetBehaviour<SectionSuperJumpBehaviour>();
+        _playerStoolDestroyerService.ShowView();
         _onSupperJumpDeactivate = new (OnSuperJumpBehaviourEnd);
     }
 
     public void Exit()
     {
+        _playerStoolDestroyerService.HideView();
         _onSupperJumpDeactivate.Remove(OnSuperJumpBehaviourEnd);
     }
 

@@ -30,11 +30,15 @@ public class GameInstaller : MonoInstaller
         Container.Bind<PlayerSkinDataCombiner>().AsSingle().NonLazy();
 
         Container.Bind<IPoolsViewService>().To<PoolsViewService>().AsSingle();
+        Container.Bind<IPlayerBehaviourDataManager>().To<PlayerBehaviourDataManager>().AsSingle();
         Container.Bind<IPlayerSkinDataManager>().To<PlayerSkinDataManager>().AsSingle();
 
 
         Container.Bind<ICoinDataManager>().To<CoinDataManager>().AsSingle();
         Container.Bind<IScoreDataManager>().To<ScoreDataManager>().AsSingle();
+
+        Container.Bind<SuperJumpWavesService>().AsSingle();
+
         Container.Bind<RoomViewService>().AsSingle();
         Container.Bind<BlackBoardViewService>().AsSingle();
         Container.Bind<GiftService>().AsSingle();
@@ -56,6 +60,8 @@ public class GameInstaller : MonoInstaller
 
         Container.Bind(typeof(IPlayerBehaviourService)).To(typeof(PlayerBehaviourService)).AsSingle();
         Container.Bind(typeof(ISessionTypeDataManager)).To(typeof(SessionTypeDataManager)).AsSingle();
+
+        Container.Bind<PlayerStoolDestroyerService>().AsSingle();
 
         Container.Bind<InfinitySectionPoolViewService>().AsSingle();
         Container.Bind<RollSectionPoolViewService>().AsSingle();

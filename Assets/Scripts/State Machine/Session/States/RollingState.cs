@@ -8,11 +8,16 @@ public class RollingState : IBaseState
     private ISectionBehavioursService _sectionBehaviourService;
 
     private EventBinding<OnRollDeactivate> _onRollDeactivate;
+    private PlayerStoolDestroyerService _playerStoolDestroyerService;
 
     [Inject]
-    public void Constructor(SessionStateMachine statemachine, IPlayerBehaviourService playerBehaviourService,ISectionBehavioursService sectionBehaviourService)
+    public void Constructor(SessionStateMachine statemachine,
+                            IPlayerBehaviourService playerBehaviourService,
+                            ISectionBehavioursService sectionBehaviourService,
+                            PlayerStoolDestroyerService playerStoolDestroyerService)
     {
         _statemachine = statemachine;
+        _playerStoolDestroyerService = playerStoolDestroyerService;
         _playerBehaviourService = playerBehaviourService;
         _sectionBehaviourService = sectionBehaviourService;
     }
@@ -21,11 +26,13 @@ public class RollingState : IBaseState
     {
         _playerBehaviourService.SetBehaviour<PlayerRollBehaviour>();
         _sectionBehaviourService.SetBehaviour<SectionRollBehaviour>();
+        _playerStoolDestroyerService.ShowView();
         _onRollDeactivate = new (OnRollBehaviourEnd);
     }
 
     public void Exit()
     {
+        _playerStoolDestroyerService.HideView();
         _onRollDeactivate.Remove(OnRollBehaviourEnd);
     }
 

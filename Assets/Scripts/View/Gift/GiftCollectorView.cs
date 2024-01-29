@@ -65,8 +65,8 @@ public class GiftCollectorViewService : IService
             case DropMode.Full:
                 MethodCaller methodCaller = new MethodCaller();
                 methodCaller.AddMethod(DropeCoinBonus, 30);  // 30% вероятность вызова Method1
-                methodCaller.AddMethod(DropeSuperJumpBonus, 40);  // 40% вероятность вызова Method2
-                methodCaller.AddMethod(DropeRollBonus, 1000);  // 30% вероятность вызова Method3
+                methodCaller.AddMethod(DropeSuperJumpBonus, 4000);  // 40% вероятность вызова Method2
+                methodCaller.AddMethod(DropeRollBonus, 10);  // 30% вероятность вызова Method3
                 methodCaller.CallRandomMethod();
                 break;
 

@@ -9,10 +9,15 @@ using UnityEngine.UIElements;
 public class RollBonusBlenderView : MonoBehaviour
 {
     public Action collectAction;
-	private float _duration = 5f;
+	private float _duration;
 	private Action _bonusBlenderEndAction;
 
 	private Sequence _scale;
+
+    public void SetDuration(float duration)
+    {
+        _duration = duration;
+    }
 
     private void OnTriggerEnter(Collider other)
     {
@@ -53,11 +58,13 @@ public class RollBonusBlenderViewService : IService
 	private IViewFabric _fabric;
 	private RollBonusBlenderView _rollBonusBlenderView;
     private IMarkerService _markerService;
-	
-	[Inject]
-	public void Constructor(IViewFabric fabric, IMarkerService markerService)
+    private IPlayerBehaviourDataManager _playerBehaviourDataManager;
+
+    [Inject]
+	public void Constructor(IViewFabric fabric, IMarkerService markerService, IPlayerBehaviourDataManager playerBehaviourDataManager)
 	{
-		_markerService = markerService;
+        _playerBehaviourDataManager = playerBehaviourDataManager;
+        _markerService = markerService;
 		_fabric = fabric;
 	}
 
@@ -65,7 +72,7 @@ public class RollBonusBlenderViewService : IService
 	{       
         _rollBonusBlenderView = _fabric.Init<RollBonusBlenderView>(_markerService.GetTransformMarker<RollBonusBlenderPosMarker>().transform);
 		_rollBonusBlenderView.collectAction = OnRollActivate;
-
+        _rollBonusBlenderView.SetDuration(_playerBehaviourDataManager.GetRollCurrentDuration());
     }
 
     public void DeactivateService()

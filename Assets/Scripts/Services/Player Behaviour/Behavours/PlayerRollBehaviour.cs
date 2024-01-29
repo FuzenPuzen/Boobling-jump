@@ -44,14 +44,7 @@ public class PlayerRollBehaviour : IPlayerBehaviour
         _playerModel.Rotate(new(0, -_rotateSpeed, 0));
     }
 
-
-    public void ColliderBehaviour(Collider other)
-    {
-        if (other.gameObject.CompareTag("Enemy"))
-        {
-            other.gameObject.GetComponent<BasicStoolView>().DeActivateView(); //эмуляция
-        }
-    }
+    public void ColliderBehaviour(Collider other) { }
 
     public Type GetBehaviourDataType() => typeof(PlayerRollBehaviourSOData);
 

@@ -20,6 +20,10 @@ public class SuperJumpBonusBlenderView : MonoBehaviour
             collectAction?.Invoke();
         }
     }
+    public void SetDuration(float duration)
+    {
+        _duration = duration;
+    }
 
     public void BlenderStart(Action action)
     {
@@ -51,11 +55,13 @@ public class SuperJumpBonusBlenderViewService : IService
 	private IViewFabric _fabric;
 	private SuperJumpBonusBlenderView _superJumpBonusBlenderView;
     private IMarkerService _markerService;
-	
-	[Inject]
-	public void Constructor(IViewFabric fabric, IMarkerService markerService)
+    private IPlayerBehaviourDataManager _playerBehaviourDataManager;
+
+    [Inject]
+	public void Constructor(IViewFabric fabric, IMarkerService markerService, IPlayerBehaviourDataManager playerBehaviourDataManager)
 	{
-		_markerService = markerService;
+        _playerBehaviourDataManager = playerBehaviourDataManager;
+        _markerService = markerService;
 		_fabric = fabric;
 	}
 
@@ -63,6 +69,7 @@ public class SuperJumpBonusBlenderViewService : IService
 	{       
         _superJumpBonusBlenderView = _fabric.Init<SuperJumpBonusBlenderView>(_markerService.GetTransformMarker<SuperJumpBonusBlenderPosMarker>().transform);
         _superJumpBonusBlenderView.collectAction = OnSuperJumpActivate;
+        _superJumpBonusBlenderView.SetDuration(_playerBehaviourDataManager.GetSuperJumpCurrentDuration());
     }
 
     public void DeactivateService()

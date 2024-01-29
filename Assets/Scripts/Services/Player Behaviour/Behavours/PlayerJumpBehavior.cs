@@ -57,7 +57,7 @@ public class PlayerJumpBehaviour : IPlayerBehaviour
         _fallSequence.OnComplete(tweenCallback);
     }
 
-    protected virtual void FallCallback()
+    public virtual void FallCallback()
     {
         _isFall = false;
         _playerModel.DOPunchScale(new Vector3(1.25f, 1.25f, 1.25f), period / 3f);
@@ -136,15 +136,14 @@ public class PlayerJumpBehaviour : IPlayerBehaviour
         _canFall = false;
     }
 
-    public void ColliderBehaviour(Collider other)
+    public virtual void ColliderBehaviour(Collider other)
     {
         if (other.gameObject.CompareTag("Enemy"))
         {
             _transform.GetComponent<BoxCollider>().enabled = false;
             EventBus<OnPlayerDie>.Raise();
             Time.timeScale = 0.1f;
-            SeqTimer();
-           
+            SeqTimer();          
         }
     }
 

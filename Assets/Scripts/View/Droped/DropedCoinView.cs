@@ -5,7 +5,7 @@ using System;
 
 public class DropedCoinView : MonoBehaviour
 {
-    public Action _deactivateToPool;
+    public Action DeactivateToPool;
 
     private Rigidbody _rb;
     private BoxCollider _boxCollider;
@@ -57,9 +57,8 @@ public class DropedCoinView : MonoBehaviour
         _boxCollider.isTrigger = true;
         transform.parent = _startParent;
         transform.localScale = Vector3.zero;
-        _deactivateToPool?.Invoke();
-        gameObject.SetActive(false);
-        
+        DeactivateToPool?.Invoke();
+        gameObject.SetActive(false);        
     }
 }
 
@@ -93,7 +92,7 @@ public class DropedCoinViewService : IPoolingViewService
             Vector3 spawnPos = parent.position;
             //_dropedCoinView = _dropedCoinView == null? _fabric.SpawnObject<DropedCoinView>(spawnPos,parent) : _dropedCoinView;
             _dropedCoinView = _fabric.Init<DropedCoinView>(spawnPos, parent);
-            _dropedCoinView._deactivateToPool = DeactivateServiceToPool;
+            _dropedCoinView.DeactivateToPool = DeactivateServiceToPool;
         }     
     }
 

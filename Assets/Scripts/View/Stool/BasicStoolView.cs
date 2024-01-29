@@ -30,13 +30,14 @@ public class BasicStoolView : MonoBehaviour, IStoolView
     public void OnComplete()
     {       
         CompleteMoveEvent?.Invoke();
-        SetStartValues();
         DeActivateView();
     }
 
     public virtual void DeActivateView()
     {
-        //gameObject.SetActive(false); //Под вопросом
+        _fallSequence.Kill();
+        _moveSequence.Kill();
+        SetStartValues();
     }
 
     public virtual void SetStartValues()

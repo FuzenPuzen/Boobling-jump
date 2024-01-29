@@ -16,10 +16,14 @@ public class PlayerSuperJumpBehaviour : PlayerJumpBehaviour
     public override void Fall(TweenCallback tweenCallback)
     {
         base.Fall(FallCallback);
-        EventBus<OnSupperJumpFall>.Raise();
-        //add force wave spawn
-        MonoBehaviour.print("Super Jump Spawn");
     }
+
+    public override void FallCallback()
+    {
+        EventBus<OnSupperJumpFall>.Raise();
+        base.FallCallback();       
+    }
+    public override void ColliderBehaviour(Collider other) { }
 
     public override Type GetBehaviourDataType()
     {

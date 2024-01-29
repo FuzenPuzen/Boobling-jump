@@ -21,6 +21,9 @@ public class PreStartState : IBaseState
     private BlackBoardViewService _blackBoardViewService;
     private EventBinding<OnStartBehaviourEnd> _onStartBehaviourEnd;
     private IPlayerSkinDataManager _playerSkinDataManager;
+    private IService _playerBehaviourDataManager;
+    private PlayerStoolDestroyerService _playerBonusDestroyerService;
+    private SuperJumpWavesService _superJumpWavesService;
 
 
     [Inject]
@@ -41,9 +44,15 @@ public class PreStartState : IBaseState
                     RollBonusBlenderViewService rollBonusBlenderViewService,
                     SuperJumpBonusBlenderViewService superJumpBonusBlenderViewService,
                     BlackBoardViewService blackBoardViewService,
-                    IPlayerSkinDataManager playerSkinDataManager
+                    IPlayerSkinDataManager playerSkinDataManager,
+                    IPlayerBehaviourDataManager playerBehaviourDataManager,
+                    PlayerStoolDestroyerService playerBonusDestroyerService,
+                    SuperJumpWavesService superJumpWavesService
                  )
     {
+        _superJumpWavesService = superJumpWavesService;
+        _playerBonusDestroyerService = playerBonusDestroyerService;
+        _playerBehaviourDataManager = playerBehaviourDataManager;
         _playerSkinDataManager = playerSkinDataManager;
         _poolsViewService = poolsViewService;
         _roomViewService = roomViewService;
@@ -68,6 +77,8 @@ public class PreStartState : IBaseState
     {
         _markerService.ActivateService();
         _loaderSceneService.ActivateService();
+        _playerBehaviourDataManager.ActivateService();
+        _playerSkinDataManager.ActivateService();
 
         _roomViewService.ActivateService();
         _blackBoardViewService.ActivateService();
@@ -75,10 +86,13 @@ public class PreStartState : IBaseState
         _rollBonusBlenderViewService.ActivateService();
         _superJumpBonusBlenderViewService.ActivateService();
 
+
         _playerBehaviourService.ActivateService();
         _playerBehaviourService.SetBehaviour<PlayerStartBehaviour>();
         _poolsViewService.ActivateService();
 
+        _playerBonusDestroyerService.ActivateService();
+        _superJumpWavesService.ActivateService();
         _giftCollectViewService.ActivateService();
         _coinCollectViewService.ActivateService();
         _tutorialService.ActivateService();
