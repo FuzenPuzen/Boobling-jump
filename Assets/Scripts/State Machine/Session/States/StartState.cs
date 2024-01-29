@@ -31,7 +31,6 @@ public class StartState : IBaseState
 
     public void Enter()
     {
-        MonoBehaviour.print("StartState Exist");
         _currentScoreService.ActivateService();
         _recordScoreService.ActivateService();
         _giftScoreService.ActivateService();

@@ -16,7 +16,6 @@ public class SuperJumpBonusBlenderView : MonoBehaviour
     {
         if (other.TryGetComponent<DropedSuperJumpBonusView>(out DropedSuperJumpBonusView component))
         {
-            print("Blender Check Bonus SuperJump");
             collectAction?.Invoke();
         }
     }

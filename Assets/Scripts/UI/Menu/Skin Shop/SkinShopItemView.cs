@@ -27,7 +27,6 @@ public class SkinShopItemView : MonoBehaviour
 
 	public void UpdateView()
 	{
-		print("UpdateView");
         _cost.text = _playerSkinData.PlayerSkinSOData.Cost.ToString();
 		if (!_playerSkinData.PlayerSkinSLData.IsOpen)
 			_cost.color = Color.red;

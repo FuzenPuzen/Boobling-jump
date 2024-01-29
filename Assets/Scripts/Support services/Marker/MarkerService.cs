@@ -11,7 +11,6 @@ public class  MarkerService : IMarkerService
     private int count;
     public void ActivateService()
     {
-        MonoBehaviour.print(markers.Count);
         _onMarkerAwake = new(SetMarker);
     }
 
