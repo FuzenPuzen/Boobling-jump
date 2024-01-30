@@ -167,7 +167,7 @@ public class PlayerJumpBehaviour : IPlayerBehaviour
         _looseSequence = DOTween.Sequence();
         _transform.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeRotation;
         _looseSequence.Append(_transform.DOMove(new(-11f, 3.3f, 0.2f), 0.2f).SetEase(Ease.Linear));
-        _looseSequence.Join(_transform.DOLocalRotate(new(7f, 130f, 30f), 0.2f).SetEase(Ease.Linear));
+        _looseSequence.Join(_transform.DOLocalRotate(new(-8f, 130f, 30f), 0.2f).SetEase(Ease.Linear));
         _looseSequence.Join(_playerModel.DOLocalRotate(new (180,0,0), 0.2f).SetEase(Ease.Linear));
         _looseSequence.Join(_transform.DOScale(Vector3.one * 7, 0.2f).SetEase(Ease.Linear));
         _looseSequence.OnComplete(DieAction);

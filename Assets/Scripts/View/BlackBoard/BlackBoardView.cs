@@ -42,7 +42,7 @@ public class BlackBoardViewService : IService
 
 	public void DeactivateService()
 	{
-        _onPlayerDie.Remove(OnPlayerDie);
+        _onPlayerDie?.Remove(OnPlayerDie);
     }
 
 	private void OnPlayerDie()

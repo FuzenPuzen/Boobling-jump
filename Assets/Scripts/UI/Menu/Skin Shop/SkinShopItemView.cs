@@ -64,7 +64,9 @@ public class SkinShopItemViewService : IService
 	{
 		UpdateData(playerSkinData);
         Transform parent = _SkinShopItemView.transform;
+        MonoBehaviour.print("Rotation " + _playerSkinData.PlayerSkinSOData.SkinPrefab.transform.localEulerAngles);
         _playerSkinModel = _fabric.Init<PlayerSkinView>(_playerSkinData.PlayerSkinSOData.SkinPrefab, parent);
+        
     }
 
 	public void UpdateData(PlayerSkinData playerSkinData)
