@@ -6,6 +6,4 @@ public interface IStoolView
     void DeActivateView();
     void OnComplete();
 
-
-    public event Action CompleteMoveEvent;
 }

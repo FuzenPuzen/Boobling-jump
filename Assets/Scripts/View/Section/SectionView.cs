@@ -30,9 +30,14 @@ public class SectionView : MonoBehaviour
         _endPosX = endPosX;
     }
 
-    private void StopMove()
+    public void StopMove()
     {
         _moveSequence.Kill();
+        for (int i = 0; i < transform.childCount; i++)
+        {
+            transform.GetChild(i).TryGetComponent(out IView view);
+            view.DeactivateView();
+        }
     }
 
     public void SetSectionActivatorEnterAction(Action action)
@@ -53,6 +58,7 @@ public class SectionView : MonoBehaviour
             _sectionActivatorExitAction?.Invoke();
         }
     }
+
     private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("SectionActivator"))

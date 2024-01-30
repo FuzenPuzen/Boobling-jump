@@ -8,7 +8,7 @@ public abstract class SectionPoolViewService : ISectionPoolViewService
     private protected Vector3 _poolPos = new(0, 0, 30);
 
     [Inject]
-    public void Constructor(IViewFabric fabric)
+    public virtual void Constructor(IViewFabric fabric)
     {
         _fabric = fabric;
         SpawnView();

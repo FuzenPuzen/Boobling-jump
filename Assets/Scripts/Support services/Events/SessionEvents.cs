@@ -13,3 +13,5 @@ public struct OnPlayerDie : IEvent { }
 public struct OnRestart: IEvent { }
 public struct OnOpenMenu : IEvent { }
 
+public struct OnTutorialMaxSection : IEvent { public int MaxSection; }
+

@@ -31,7 +31,6 @@ public class SectionBehaviour : ISectionBehaviour
     private protected virtual void GetAndStartNewSection()
     {
         _currentSectionViewService = _serviceFabric.Init<SectionViewService>();
-        //_currentSectionViewService = new SectionViewService();
         _sectionViewServices.Add(_currentSectionViewService);
         _currentSectionViewService.SetSectionView(_poolViewService.GetSection());
         SetSectionActivatorEnterAction(_currentSectionViewService);
@@ -43,13 +42,17 @@ public class SectionBehaviour : ISectionBehaviour
     private protected virtual void ReturnSectionToPool(SectionViewService sectionViewService)
     {
         _sectionViewServices.Remove(sectionViewService);
+        sectionViewService.SpawnDroppedCoin();
         _poolViewService.ReturnSection(sectionViewService.GetSectionView());
     }
 
     public virtual void StopBehaviour()
     {
         foreach (SectionViewService section in _sectionViewServices)
+        {
+            section.SpawnDroppedCoin();
             _poolViewService.ReturnSection(section.GetSectionView());
+        }       
         _sectionViewServices.Clear();
     }
 

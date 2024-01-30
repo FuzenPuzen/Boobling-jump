@@ -2,7 +2,7 @@ using UnityEngine;
 using DG.Tweening;
 using System;
 
-public class BasicStoolView : MonoBehaviour, IStoolView
+public class BasicStoolView : MonoBehaviour, IStoolView, IView
 {
     protected Sequence _moveSequence;
     protected Sequence _fallSequence;
@@ -24,6 +24,7 @@ public class BasicStoolView : MonoBehaviour, IStoolView
 
     public void Fall()
     {
+        CanSpawnCoin = false;
         _fallSequence = DOTween.Sequence();
         _fallSequence.Append(transform.DOLocalRotate(new(0, 0, 180), 1f, RotateMode.LocalAxisAdd).SetEase(Ease.Linear));
         _fallSequence.Join(transform.DOMoveY(-10, 1f)).OnComplete(OnComplete);
@@ -67,4 +68,10 @@ public class BasicStoolView : MonoBehaviour, IStoolView
         }
     }
 
+    public void DeactivateView()
+    {
+        DeActivateView();
+    }
+
+    public bool GetCanSpawnCoin() => CanSpawnCoin;
 }

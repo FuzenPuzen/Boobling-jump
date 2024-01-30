@@ -1,4 +1,5 @@
 using System;
+using UnityEngine;
 using Zenject;
 
 public class SectionViewService 
@@ -7,11 +8,26 @@ public class SectionViewService
     private Action<SectionViewService> _sectionActivatorExitAction;
     private Action _sectionActivatorEnterAction;
     private IMarkerService _markerService;
+    private IPoolsViewService _poolsViewService;
+    private IPoolViewService _coinPoolViewService;
 
     [Inject]
-    public void Constructor(IMarkerService  markerService)
+    public void Constructor(IMarkerService  markerService, IPoolsViewService _poolsViewService)
     {
+        _coinPoolViewService = _poolsViewService.GetPool<DropedCoinViewService>();
         _markerService =  markerService;
+    }
+
+    public void SpawnDroppedCoin()
+    {
+        for (int i = 0; i < _sectionView.transform.childCount; i++)
+        {
+            _sectionView.transform.GetChild(i).TryGetComponent(out IView view);
+            if (!view.GetCanSpawnCoin()) continue;
+            StartValues startValues = new();
+            startValues.StartPos = _sectionView.transform.GetChild(i).transform.position;
+            _coinPoolViewService.GetItem().ActivateService(startValues);
+        }
     }
 
     public void SetSectionView(SectionView sectionView)

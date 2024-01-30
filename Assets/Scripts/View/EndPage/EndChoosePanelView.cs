@@ -11,10 +11,12 @@ public class EndChoosePanelView : MonoBehaviour
     [SerializeField] private Button _restartButton;
     public Action OnMenuOpen;
     public Action OnRestart;
+
     public void Awake()
     {
         gameObject.SetActive(false);
     }
+
     public void ActivateView()
     {
         _menuOpenButton.onClick.AddListener(() => OnMenuOpen?.Invoke());
@@ -55,11 +57,13 @@ public class EndChoosePanelViewService : IService
         HideView();
 
     }
+
     public void ShowView()
     {
         _endChoosePanelView.ShowView();
 
     }
+
     public void HideView()
     {
         _endChoosePanelView.HideView();

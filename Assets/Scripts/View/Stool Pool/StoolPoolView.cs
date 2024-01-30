@@ -31,6 +31,7 @@ public class StoolPoolView : MonoBehaviour, IPoolView
     public virtual void ReturnSection(SectionView sectionView)
     {
         GameObject sectionObj = sectionView.GameObject();
+        sectionView.StopMove();
         sectionObj.transform.localPosition = Vector3.zero;
         sectionObj.SetActive(false);
         _busySections.Remove(sectionObj);
