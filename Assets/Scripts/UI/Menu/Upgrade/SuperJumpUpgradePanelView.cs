@@ -12,7 +12,10 @@ public class SuperJumpUpgradePanelView : MonoBehaviour
     [SerializeField] private TMP_Text _nextDurationText;
     [SerializeField] private TMP_Text _updateCostText;
 	[SerializeField] private Button _updateButton;
-	public Action buyUpgradeAction;
+    [SerializeField] private Image _currentLevelProgress;
+    [SerializeField] private Image _NextLevelProgress;
+
+    public Action buyUpgradeAction;
 
     public void Start()
     {
@@ -26,8 +29,12 @@ public class SuperJumpUpgradePanelView : MonoBehaviour
 
     public void UpdateView(UpgradeDataPackage upgradeDataPackage)
     {
-		_currentLevelText.text = "Уровень: " + upgradeDataPackage.currentLevel.ToString();
-		_currentDurationText.text = "Длительность: " + upgradeDataPackage.currentDuration.ToString();
+        float filledLevel = (float)upgradeDataPackage.currentLevel * 0.1f;
+        _currentLevelProgress.fillAmount = filledLevel;
+        _NextLevelProgress.fillAmount = filledLevel + 0.1f;
+
+        _currentLevelText.text =  upgradeDataPackage.currentLevel.ToString() + "\n Ур";
+		_currentDurationText.text = upgradeDataPackage.currentDuration.ToString() + "\n сек";
 		if (upgradeDataPackage.isLastLevel)
 		{
 			_updateCostText.text = "Прокачано";
@@ -36,9 +43,9 @@ public class SuperJumpUpgradePanelView : MonoBehaviour
             _nextDurationText.text = " ";
 			return;
         }
-        _updateCostText.text = "Стоимоть: " + upgradeDataPackage.nextLevelCost.ToString();
-        _nextLevelText.text = "некст ур: " + ++upgradeDataPackage.currentLevel;
-        _nextDurationText.text = "некст длительность: " + upgradeDataPackage.nextDuration.ToString();
+        _updateCostText.text = upgradeDataPackage.nextLevelCost.ToString();
+        _nextLevelText.text = ++upgradeDataPackage.currentLevel + "\n Ур";
+        _nextDurationText.text = upgradeDataPackage.nextDuration.ToString() + "\n сек";
     }
 }
 
@@ -64,6 +71,7 @@ public class SuperJumpUpgradePanelViewService : IService
         {
             Transform parent = _markerService.GetTransformMarker<UpgradePageMarker>().transform;
             _superJumpUpgradePanelView = _fabric.Init<SuperJumpUpgradePanelView>(parent);
+            _superJumpUpgradePanelView.transform.SetAsFirstSibling();
             _superJumpUpgradePanelView.buyUpgradeAction = BuyUpgrade;
         }       
         UpdateView();
