@@ -29,8 +29,8 @@ public class MenuCoinPanelViewService : IService
     }
 
 	public void ActivateService()
-	{       
-        _MenuCoinPanelView = _fabric.Init<MenuCoinPanelView>(_markerService.GetTransformMarker<CoinPageMarker>().transform);
+	{
+        _MenuCoinPanelView = _fabric.Init<MenuCoinPanelView>(_markerService.GetTransformMarker<NavigationPanelMarker>().transform);
         UpdateView(_coinDataManager.GetCoins());
     }
 

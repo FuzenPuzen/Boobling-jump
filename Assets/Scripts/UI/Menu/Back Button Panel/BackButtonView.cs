@@ -35,7 +35,7 @@ public class BackButtonViewService : IService
 
 	public void ActivateService()
 	{
-		Transform parent = _markerService.GetTransformMarker<BackButtonPanelMarker>().transform;
+		Transform parent = _markerService.GetTransformMarker<NavigationCanvasMarker>().transform;
         _BackButtonView = _fabric.Init<BackButtonView>(parent);
 	}
 }
