@@ -15,17 +15,18 @@ public class MenuUpgradePageState : IBaseState
     {
         _menuStateMachine = menuStateMachine;
         
-        _menuUpgradePageCanvasViewService = menuUpgradePageCanvasViewService;
-        _onClickMenu = new(ToMenu);
+        _menuUpgradePageCanvasViewService = menuUpgradePageCanvasViewService;       
     }
 
     public void Enter()
     {
+        _onClickMenu = new(ToMenu);
         _menuUpgradePageCanvasViewService.ShowView();       
     }
 
     public void Exit()
     {
+        _onClickMenu.Remove(ToMenu);
         _menuUpgradePageCanvasViewService.HideView();
     }
 

@@ -13,17 +13,18 @@ public class MenuSkinShopPageState : IBaseState
                             MenuStateMachine menuStateMachine)
     {
         _menuSkinShopPageCanvasViewService = menuSkinShopPageCanvasViewService;
-        _menuStateMachine = menuStateMachine;
-        _onClickMenu = new(ToMenu);
+        _menuStateMachine = menuStateMachine;      
     }
 
     public void Enter()
     {
+        _onClickMenu = new(ToMenu);
         _menuSkinShopPageCanvasViewService.ShowView();
     }
 
     public void Exit()
     {
+        _onClickMenu.Remove(ToMenu);
         _menuSkinShopPageCanvasViewService.HideView();
     }
 

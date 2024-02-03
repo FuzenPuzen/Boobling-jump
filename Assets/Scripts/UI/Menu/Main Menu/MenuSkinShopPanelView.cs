@@ -5,12 +5,11 @@ using EventBus;
 
 public class MenuSkinShopPanelView : MonoBehaviour
 {
-    private Button _upgradeButton;
+    [SerializeField] private Button _button;
 
     private void Start()
     {
-        _upgradeButton = GetComponent<Button>();
-        _upgradeButton.onClick.AddListener(OnButtonClick);
+        _button.onClick.AddListener(OnButtonClick);
     }
 
     public void OnButtonClick()

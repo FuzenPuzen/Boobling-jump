@@ -10,6 +10,7 @@ public class SkinShopItemsService : IService
 	private IServiceFabric _serviceFabric;
 	private List<PlayerSkinData> _playerSkinDatas;
     private EventBinding<OnBuySkin> _onBuySkin;
+    private EventBinding<OnChangeSkin> _onChangeSkin;
 
     private List<SkinShopItemViewService> _skinShopItemViewServices = new();
 
@@ -26,6 +27,7 @@ public class SkinShopItemsService : IService
 	public void ActivateService()
 	{
         _onBuySkin = new EventBinding<OnBuySkin>(UpdateData);
+        _onChangeSkin = new EventBinding<OnChangeSkin>(UpdateData);
         _playerSkinDatas = _playerSkinDataManager.GetPlayerSkinDatas();
 		foreach (PlayerSkinData data in _playerSkinDatas)
 		{

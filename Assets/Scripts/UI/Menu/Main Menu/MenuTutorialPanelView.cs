@@ -6,11 +6,10 @@ using EventBus.Example.MyGame.Events;
 
 public class MenuTutorialPanelView : MonoBehaviour
 {
-    private Button _gameButton;
+    [SerializeField] private Button _gameButton;
 
     private void Start()
     {
-        _gameButton = GetComponent<Button>();
         _gameButton.onClick.AddListener(OnButtonClick);
     }
 

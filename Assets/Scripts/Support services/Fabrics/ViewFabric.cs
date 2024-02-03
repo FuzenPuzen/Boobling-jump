@@ -8,6 +8,8 @@ public interface IViewFabric
     public T Init<T>();
     public T Init<T>(GameObject pb, Transform parent = null);
     public GameObject Init(GameObject pb, Transform parent = null);
+
+    public T Init<T>(GameObject pb, Vector3 position, Transform parent = null);
 }
 
 public class ViewFabric : IViewFabric
@@ -52,6 +54,13 @@ public class ViewFabric : IViewFabric
     {
         var obj = MonoBehaviour.Instantiate(pb, parent);
         return obj;
+    }
+
+    public T Init<T>(GameObject pb, Vector3 position, Transform parent = null)
+    {
+        var obj = MonoBehaviour.Instantiate(pb, parent);
+        obj.transform.localPosition = position;
+        return obj.GetComponent<T>();
     }
 }
 

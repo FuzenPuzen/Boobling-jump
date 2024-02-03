@@ -8,17 +8,25 @@ public class SkinShopItemView : MonoBehaviour
 {
 	[SerializeField] private TMP_Text _cost;
 	[SerializeField] private Button _buyButton;
+	[SerializeField] private Button _currentSkinButton;
+	[SerializeField] private Button _ChangeSkinButton;
 	private PlayerSkinData _playerSkinData;
 
     private void Start()
     {
 		_buyButton.onClick.AddListener(BuySkin);
+        _ChangeSkinButton.onClick.AddListener(ChangeSkin);
     }
 
 	private void BuySkin()
 	{
 		EventBus<OnTryBuySkin>.Raise(new() { playerSkinData = _playerSkinData });
 	}
+
+	private void ChangeSkin()
+	{
+        EventBus<OnChangeSkin>.Raise(new() { playerSkinData = _playerSkinData });
+    }
 
     public void SetValues(PlayerSkinData playerSkinData)
 	{
@@ -27,11 +35,20 @@ public class SkinShopItemView : MonoBehaviour
 
 	public void UpdateView()
 	{
+        _buyButton.gameObject.SetActive(false);
+		_ChangeSkinButton.gameObject.SetActive(false);
+		_currentSkinButton.gameObject.SetActive(false);
         _cost.text = _playerSkinData.PlayerSkinSOData.Cost.ToString();
+
 		if (!_playerSkinData.PlayerSkinSLData.IsOpen)
-			_cost.color = Color.red;
-		else 
-			_cost.color = Color.green;
+            _buyButton.gameObject.SetActive(true);
+
+		if (_playerSkinData.PlayerSkinSLData.IsSelected)
+			_currentSkinButton.gameObject.SetActive(true);
+
+		if(_playerSkinData.PlayerSkinSLData.IsOpen && !_playerSkinData.PlayerSkinSLData.IsSelected)
+			_ChangeSkinButton.gameObject.SetActive(true);
+
     }
 }
 
@@ -64,7 +81,7 @@ public class SkinShopItemViewService : IService
 	{
 		UpdateData(playerSkinData);
         Transform parent = _SkinShopItemView.transform;
-        _playerSkinModel = _fabric.Init<PlayerSkinView>(_playerSkinData.PlayerSkinSOData.SkinPrefab, parent);
+        _playerSkinModel = _fabric.Init<PlayerSkinView>(_playerSkinData.PlayerSkinSOData.SkinPrefab,new(0, 0, -200), parent);
         
     }
 

@@ -19,18 +19,21 @@ public class MenuMainPageState : IBaseState
     {
         _menuStateMachine = menuStateMachine;
         _menuMainPageViewService = menuMainPageViewService;
-        _onClickGame = new(OnGameClickEvent);
-        _onClickUpgrade = new(OnUpgradeClickEvent);
-        _onClickSkinShop = new(OnSkinShopClickEvent);
     }
 
     public void Enter()
     {
+        _onClickGame = new(OnGameClickEvent);
+        _onClickUpgrade = new(OnUpgradeClickEvent);
+        _onClickSkinShop = new(OnSkinShopClickEvent);
         _menuMainPageViewService.ShowView();
     }
 
     public void Exit()
     {
+        _onClickGame.Remove(OnGameClickEvent);
+        _onClickUpgrade.Remove(OnUpgradeClickEvent);
+        _onClickSkinShop.Remove(OnSkinShopClickEvent);
         _menuMainPageViewService.HideView();
     }
 
