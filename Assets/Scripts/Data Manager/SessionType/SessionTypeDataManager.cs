@@ -3,7 +3,7 @@ using EventBus;
 
 public interface ISessionTypeDataManager
 {
-    public void SaveGameType(bool tutorial, int TutorialMaxSection);
+    public void SaveGameType(bool tutorial, int TutorialMaxSection = 0);
     public bool GetTutorialGameType();
     public int GetTutorialMaxSection();
 }

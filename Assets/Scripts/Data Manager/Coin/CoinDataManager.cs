@@ -49,4 +49,6 @@ public class CoinDataManager : ICoinDataManager
         _coinsSLData.coins += coins;
         CoinsChanged();
     }
+
+    public int GetSesionCollectedCoins() => _sessionCollectedCoins;
 }

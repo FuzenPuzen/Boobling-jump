@@ -8,5 +8,6 @@ public interface ICoinDataManager
     public void AddCoins(int coins);
 
     public void CollectCoins(int coins = 1);
+    public int GetSesionCollectedCoins();
 
 }

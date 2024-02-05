@@ -58,6 +58,7 @@ public class GameInstaller : MonoInstaller
         Container.Bind<GiftScorePanelService>().AsSingle();
         Container.Bind<TutorialPanelService>().AsSingle();
         Container.Bind<EndPageViewService>().AsSingle();
+        Container.Bind<TutorialEndPanelViewService>().AsSingle();
 
         Container.Bind(typeof(IPlayerBehaviourService)).To(typeof(PlayerBehaviourService)).AsSingle();
         Container.Bind(typeof(ISessionTypeDataManager)).To(typeof(SessionTypeDataManager)).AsSingle();

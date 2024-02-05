@@ -11,6 +11,7 @@ public class GameState : IBaseState
     private EventBinding<OnRollActivate> _onRollActivate;
     private EventBinding<OnSupperJumpActivate> _onSupperJumpActivate;
     private EventBinding<OnPlayerDie> _onPlayerDie;
+    private EventBinding<OnTutorialFinish> _onTutorialFinish;
 
     [Inject]
     public void Constructor(SessionStateMachine statemachine,
@@ -54,6 +55,11 @@ public class GameState : IBaseState
     }
 
     public void OnPlayerDie()
+    {
+        _statemachine.SetState<EndGameState>();
+    }    
+    
+    public void OnTutorialFinish()
     {
         _statemachine.SetState<EndGameState>();
     }
