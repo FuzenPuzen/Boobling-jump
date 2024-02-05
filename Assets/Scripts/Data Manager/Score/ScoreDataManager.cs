@@ -1,4 +1,5 @@
 using System;
+using UnityEngine;
 using Zenject;
 
 public class ScoreDataManager : IScoreDataManager
@@ -14,22 +15,27 @@ public class ScoreDataManager : IScoreDataManager
     private IRecordScoreStorageData _recordScoreStoradeData;
     private IGiftScoreStorageData _giftScoreStorageData;
 
+    private ScoreRewardDataPackage _scoreRewardDataPackage;
+    private ScoreRewardDataCombiner _scoreRewardDataCombiner;
+
     private int _giftCounter = 1;
 
     [Inject]
     public void Constructor(
         ICurrentScoreStorageData currentScoreStoradeData,
         IRecordScoreStorageData recordScoreStoradeData,
-        IGiftScoreStorageData giftScoreStorageData
+        IGiftScoreStorageData giftScoreStorageData,
+        ScoreRewardDataCombiner scoreRewardDataCombiner
         )
     {
+        _scoreRewardDataCombiner = scoreRewardDataCombiner;
         _currentScoreStoradeData = currentScoreStoradeData;
         _recordScoreStoradeData = recordScoreStoradeData;
         _giftScoreStorageData = giftScoreStorageData;
         _currentScoreData = (CurrentScoreData)_currentScoreStoradeData.GetCurrentScoreData();
         _recordScoreSLData = (RecordScoreSLData)_recordScoreStoradeData.GetRecordScoreSLData();
         _giftScoreSOData = (GiftScoreSOData)_giftScoreStorageData.GetGiftScoreData();
-       
+        _scoreRewardDataPackage = _scoreRewardDataCombiner.GetScoreRewardDataPackage();
     }
 
     public int GetCurrentScore()
@@ -75,5 +81,33 @@ public class ScoreDataManager : IScoreDataManager
         }
     }
 
-    
+    public void OnPlayerDie()
+    {
+        _scoreRewardDataPackage.CurrentTotalScore += _currentScoreData.Score;
+        _scoreRewardDataPackage.RewardMultiplier = _scoreRewardDataPackage.CurrentTotalScore / _scoreRewardDataPackage.RewardScore;
+        if (_scoreRewardDataPackage.RewardMultiplier >= 1)
+        {
+            _scoreRewardDataPackage.RemaindScore = _scoreRewardDataPackage.CurrentTotalScore % _scoreRewardDataPackage.RewardScore;
+        }
+        _scoreRewardDataPackage.RemaindScore = _scoreRewardDataPackage.CurrentTotalScore;
+        _scoreRewardDataCombiner.SetScoreRewardDataPackage(_scoreRewardDataPackage);
+        MonoBehaviour.print(_scoreRewardDataPackage.RemaindScore);
+    }
+
+    public ScoreRewardDataPackage GetScoreRewardDataPackage() => _scoreRewardDataPackage; 
+
+}
+
+public class ScoreRewardDataPackage
+{
+    public int RewardScore;
+    public int RewardCount;
+    public int CurrentTotalScore;
+    public int RemaindScore;
+    public int RewardMultiplier;
+
+    public ScoreRewardDataPackage()
+    {
+        RemaindScore = 0;
+    }
 }

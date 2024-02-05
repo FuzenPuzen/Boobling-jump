@@ -4,6 +4,14 @@ using System;
 
 public class MenuMainPageCanvasView : MonoBehaviour
 {
+    private Canvas _canvas;
+
+    public void Start()
+    {
+        _canvas = GetComponent<Canvas>();
+        _canvas.worldCamera = Camera.main;
+    }
+
     internal void HideView()
     {
         gameObject.SetActive(false);
@@ -26,7 +34,7 @@ public class MenuMainPageCanvasViewService : IService
     private IService _menuTutorialPanelViewService;
     private IService _menuInfinityPanelViewService;
 
-    private IService _menuSkinShopPanelViewService;
+    private MenuSkinShopPanelViewService _menuSkinShopPanelViewService;
     private IService _menuUpgradePanelViewService;
     private ISessionTypeDataManager _sessionTypeDataManager;
 
@@ -73,5 +81,6 @@ public class MenuMainPageCanvasViewService : IService
     public void ShowView()
     {
         _menuMainPageView.ShowView();
+        _menuSkinShopPanelViewService.UpdateView();
     }
 }

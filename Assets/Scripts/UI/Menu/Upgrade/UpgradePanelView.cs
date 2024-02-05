@@ -50,17 +50,18 @@ public class UpgradePanelView : MonoBehaviour
         if (mod == 0)
         {
             imageList[level / 10 - 1].fillAmount = 1;
+            iconsList[level / 10 - 1].gameObject.SetActive(true);
             return;
         }
 
         if (mod == 1 && level / 10 >= 1)
         {
             imageList[level / 10 - 1].fillAmount = 0;
-            iconsList[level / 10].gameObject.SetActive(true);
         }
 
         int filledColorId = level / 10;
         float filledAmount = (float)mod / 10;
+        iconsList[level / 10].gameObject.SetActive(true);
         imageList[filledColorId].fillAmount = filledAmount;
     }
 

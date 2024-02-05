@@ -13,4 +13,6 @@ public interface IScoreDataManager
     public int GetRecordScore();
     public void AddCurrentScore(int count);
     public int GetGiftScore();
+    public void OnPlayerDie();
+    public ScoreRewardDataPackage GetScoreRewardDataPackage();
 }

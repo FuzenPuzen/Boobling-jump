@@ -18,6 +18,16 @@ public class BackButtonView : MonoBehaviour
 	{
         EventBus<OnClickMenu>.Raise();
     }
+
+    internal void HideView()
+    {
+        gameObject.SetActive(false);
+    }
+
+    internal void ShowView()
+    {
+        gameObject.SetActive(true);
+    }
 }
 
 public class BackButtonViewService : IService
@@ -38,4 +48,14 @@ public class BackButtonViewService : IService
 		Transform parent = _markerService.GetTransformMarker<NavigationCanvasMarker>().transform;
         _BackButtonView = _fabric.Init<BackButtonView>(parent);
 	}
+
+    public void HideView()
+    {
+        _BackButtonView.HideView();
+    }
+
+    public void ShowView()
+    {
+        _BackButtonView.ShowView();
+    }
 }

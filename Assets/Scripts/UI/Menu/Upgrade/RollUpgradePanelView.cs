@@ -1,6 +1,11 @@
 using Zenject;
 using UnityEngine;
 
+public class RollUpgradePanelView : UpgradePanelView
+{
+
+}
+
 public class RollUpgradePanelViewService : IService
 {
     private const string skillName = "роллинг";
@@ -21,7 +26,7 @@ public class RollUpgradePanelViewService : IService
 	public void ActivateService()
 	{
         Transform parent = _markerService.GetTransformMarker<UpgradePageMarker>().transform;
-        _rollUpgradePanelView = _fabric.Init<UpgradePanelView>(parent);
+        _rollUpgradePanelView = _fabric.Init<RollUpgradePanelView>(parent);
 		_rollUpgradePanelView.buyUpgradeAction = BuyUpgrade;
         _rollUpgradePanelView.SetName(skillName);
         UpdateView();

@@ -8,10 +8,12 @@ public class CoinDataManager : ICoinDataManager
     private ICoinsStorageData _coinsStoradeData;
     private CoinsSLData _coinsSLData;
     public event Action<int> coinsChanged;
+    private int _sessionCollectedCoins;
 
     [Inject]
     public void constructor(ICoinsStorageData coinsStoradeData)
     {
+        _sessionCollectedCoins = 0;
         _coinsStoradeData = coinsStoradeData;
         _coinsSLData = (CoinsSLData)_coinsStoradeData.GetCoinsSLData();
     }
@@ -43,6 +45,7 @@ public class CoinDataManager : ICoinDataManager
 
     public void CollectCoins(int coins = 1)
     {
+        _sessionCollectedCoins += coins;
         _coinsSLData.coins += coins;
         CoinsChanged();
     }

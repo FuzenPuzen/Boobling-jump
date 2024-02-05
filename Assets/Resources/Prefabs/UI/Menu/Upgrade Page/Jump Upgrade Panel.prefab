@@ -67,7 +67,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 1270127476066774fb67b45490ba9095, type: 3}
+  m_Sprite: {fileID: 21300000, guid: dbbf2e8ddc07e9241abb00e20330ad2f, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -217,7 +217,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 7798faa2544de594a9daf52b73410ead, type: 3}
+  m_Sprite: {fileID: 21300000, guid: e79fc8fcf7f6243488200a4ed9301e5c, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -292,7 +292,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 7798faa2544de594a9daf52b73410ead, type: 3}
+  m_Sprite: {fileID: 21300000, guid: e79fc8fcf7f6243488200a4ed9301e5c, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -442,7 +442,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 1650bb1482fcfcc43974e87ef9baf007, type: 3}
+  m_Sprite: {fileID: 21300000, guid: f0a0b17e7a959bd438f1ebfd03a919c2, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -943,7 +943,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 1650bb1482fcfcc43974e87ef9baf007, type: 3}
+  m_Sprite: {fileID: 21300000, guid: f0a0b17e7a959bd438f1ebfd03a919c2, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -2297,7 +2297,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 1270127476066774fb67b45490ba9095, type: 3}
+  m_Sprite: {fileID: 21300000, guid: dbbf2e8ddc07e9241abb00e20330ad2f, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -2681,9 +2681,9 @@ GameObject:
   - component: {fileID: 7241103862463211201}
   - component: {fileID: 3446319472766839728}
   - component: {fileID: 2071306081668308624}
-  - component: {fileID: 277569660330656002}
+  - component: {fileID: 4117049438893427875}
   m_Layer: 5
-  m_Name: Upgrade Panel
+  m_Name: Jump Upgrade Panel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2750,7 +2750,7 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
---- !u!114 &277569660330656002
+--- !u!114 &4117049438893427875
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -2759,7 +2759,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 8190413570424172687}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 27d08db0ad0a76547bbc762a91044b4a, type: 3}
+  m_Script: {fileID: 11500000, guid: 2a42c0cb31ac05b4dba83b2d902beeb3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _currentLevelText: {fileID: 7050793364251078492}

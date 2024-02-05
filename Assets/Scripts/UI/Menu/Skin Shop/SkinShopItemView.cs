@@ -81,8 +81,7 @@ public class SkinShopItemViewService : IService
 	{
 		UpdateData(playerSkinData);
         Transform parent = _SkinShopItemView.transform;
-        _playerSkinModel = _fabric.Init<PlayerSkinView>(_playerSkinData.PlayerSkinSOData.SkinPrefab,new(0, 0, -200), parent);
-        
+        _playerSkinModel = _fabric.Init<PlayerSkinView>(_playerSkinData.PlayerSkinSOData.SkinPrefab,new(0, 0, -200), parent);        
     }
 
 	public void UpdateData(PlayerSkinData playerSkinData)

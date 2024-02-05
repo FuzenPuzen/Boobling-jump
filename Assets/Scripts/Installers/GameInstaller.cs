@@ -23,6 +23,7 @@ public class GameInstaller : MonoInstaller
             typeof(IGiftScoreStorageData)
             ).To(typeof(SessionStorageData)).AsSingle();
 
+        Container.Bind<ScoreRewardDataCombiner>().AsSingle();
         Container.Bind<PlayerBehaviourDataCombiner>().AsSingle().NonLazy();
         Container.Bind<CoinDataCombiner>().AsSingle().NonLazy();
         Container.Bind<RecordScoreDataCombiner>().AsSingle().NonLazy();

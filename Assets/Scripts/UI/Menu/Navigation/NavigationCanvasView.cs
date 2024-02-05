@@ -36,4 +36,14 @@ public class NavigationCanvasViewService : IService
         _menuCoinPanelViewService.ActivateService();
 		_backButtonViewService.ActivateService();
     }
+
+	public void HideBackButton()
+	{
+        _backButtonViewService.HideView();
+    }
+
+	public void ShowBackButton()
+	{
+		_backButtonViewService.ShowView();
+	}
 }

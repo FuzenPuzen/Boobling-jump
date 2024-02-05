@@ -11,12 +11,15 @@ public class MenuMainPageState : IBaseState
 
     private MenuStateMachine _menuStateMachine;
     private MenuMainPageCanvasViewService _menuMainPageViewService;
+    private NavigationCanvasViewService _navigationCanvasViewService;
 
 
     [Inject]
     public void Constructor(MenuMainPageCanvasViewService menuMainPageViewService,                          
-                            MenuStateMachine menuStateMachine)
+                            MenuStateMachine menuStateMachine,
+                            NavigationCanvasViewService navigationCanvasViewService)
     {
+        _navigationCanvasViewService = navigationCanvasViewService;
         _menuStateMachine = menuStateMachine;
         _menuMainPageViewService = menuMainPageViewService;
     }
@@ -27,6 +30,7 @@ public class MenuMainPageState : IBaseState
         _onClickUpgrade = new(OnUpgradeClickEvent);
         _onClickSkinShop = new(OnSkinShopClickEvent);
         _menuMainPageViewService.ShowView();
+        _navigationCanvasViewService.HideBackButton();
     }
 
     public void Exit()
@@ -35,6 +39,7 @@ public class MenuMainPageState : IBaseState
         _onClickUpgrade.Remove(OnUpgradeClickEvent);
         _onClickSkinShop.Remove(OnSkinShopClickEvent);
         _menuMainPageViewService.HideView();
+        _navigationCanvasViewService.ShowBackButton();
     }
 
     public void Update()

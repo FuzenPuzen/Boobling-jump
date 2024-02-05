@@ -36,17 +36,18 @@ public class EndGameState : IBaseState
         _rollBonusBlenderViewService = rollBonusBlenderViewService;
         _superJumpBonusBlenderViewService = superJumpBonusBlenderViewService;
         _endPageViewService = endPageViewService;
-        _onRestartBinding = new(RestartScene);
-        _onOpenMenuBinding = new(OpenMainMenu);
     }
 
     public void Enter()
     {
+        _onRestartBinding = new(RestartScene);
+        _onOpenMenuBinding = new(OpenMainMenu);
         _endPageViewService.ActivateService();
         _scoreService.DeactivateScoreChange();
         _giftCollectorViewService.DeactivateService();
         _superJumpBonusBlenderViewService.DeactivateService();
         _rollBonusBlenderViewService.DeactivateService();
+        _scoreDataManager.OnPlayerDie();
     }
 
     public void RestartScene()
@@ -54,11 +55,13 @@ public class EndGameState : IBaseState
         LoaderSceneService.Instance.SetBufScene(GameScenes.SessionScene);
         _statemachine.SetState<SessionLastState>();
     }
+
     public void OpenMainMenu()
     {
         LoaderSceneService.Instance.SetBufScene(GameScenes.MenuScene);
         _statemachine.SetState<SessionLastState>();
     }
+
     public void Exit()
     {
         _onRestartBinding.Remove(RestartScene);

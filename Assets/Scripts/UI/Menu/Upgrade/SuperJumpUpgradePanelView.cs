@@ -1,6 +1,10 @@
 using Zenject;
 using UnityEngine;
 
+public class SuperJumpUpgradePanelView : UpgradePanelView
+{
+    
+}
 
 public class SuperJumpUpgradePanelViewService : IService
 {
@@ -22,7 +26,7 @@ public class SuperJumpUpgradePanelViewService : IService
 	public void ActivateService()
 	{
         Transform parent = _markerService.GetTransformMarker<UpgradePageMarker>().transform;
-        _superJumpUpgradePanelView = _fabric.Init<UpgradePanelView>(parent);
+        _superJumpUpgradePanelView = _fabric.Init<SuperJumpUpgradePanelView>(parent);
         _superJumpUpgradePanelView.transform.SetAsFirstSibling();
         _superJumpUpgradePanelView.buyUpgradeAction = BuyUpgrade;
         _superJumpUpgradePanelView.SetName(skillName);

@@ -21,6 +21,7 @@ public class MenuInstaller : MonoInstaller
            typeof(IGiftScoreStorageData)
            ).To(typeof(SessionStorageData)).AsSingle();
 
+        Container.Bind<ScoreRewardDataCombiner>().AsSingle();
         Container.Bind<CoinDataCombiner>().AsSingle().NonLazy();
         Container.Bind<PlayerSkinDataCombiner>().AsSingle().NonLazy();
         Container.Bind<PlayerBehaviourDataCombiner>().AsSingle().NonLazy();
