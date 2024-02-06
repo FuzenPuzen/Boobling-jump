@@ -22,8 +22,10 @@ public class SessionStateMachine
                             RollingState rollingState,
                             EndGameState endGameState,
                             PreStartState preStartState,
+                            TutorialFinishState tutorialFinishState,
                             SessionLastState sessionLastState)
     {
+        _baseStates.Add(tutorialFinishState);
         _baseStates.Add(preStartState);
         _baseStates.Add(startState);
         _baseStates.Add(basicGameState);

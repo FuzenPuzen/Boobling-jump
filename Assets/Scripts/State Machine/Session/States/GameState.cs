@@ -30,6 +30,7 @@ public class GameState : IBaseState
         _onRollActivate = new (OnRollBehaviourStart);
         _onSupperJumpActivate = new (OnSuperJumpBehaviourStart);
         _onPlayerDie = new (OnPlayerDie);
+        _onTutorialFinish = new (OnTutorialFinish);
     }
 
     public void Exit()
@@ -37,6 +38,7 @@ public class GameState : IBaseState
         _onRollActivate.Remove(OnRollBehaviourStart);
         _onSupperJumpActivate.Remove(OnSuperJumpBehaviourStart);
         _onPlayerDie.Remove(OnPlayerDie);
+        _onTutorialFinish.Remove(OnTutorialFinish);
     }
 
     public void Update()
@@ -61,6 +63,6 @@ public class GameState : IBaseState
     
     public void OnTutorialFinish()
     {
-        _statemachine.SetState<EndGameState>();
+        _statemachine.SetState<TutorialFinishState>();
     }
 }

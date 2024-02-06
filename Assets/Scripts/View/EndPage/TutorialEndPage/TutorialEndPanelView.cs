@@ -56,9 +56,9 @@ public class TutorialEndPanelViewService : IService
 	}
 
 	public void ActivateService()
-	{       
-        _TutorialEndPanelView = _fabric.Init<TutorialEndPanelView>();
-		_TutorialEndPanelView.SetData(_coinDataManager.GetSesionCollectedCoins(), _scoreDataManager.GetScoreRewardDataPackage().RewardCount);
-
+	{
+		Transform parent = _markerService.GetTransformMarker<TutorialPageMarker>().transform;
+        _TutorialEndPanelView = _fabric.Init<TutorialEndPanelView>(parent);
+		_TutorialEndPanelView.SetData(_scoreDataManager.GetScoreRewardDataPackage().RewardCount, _coinDataManager.GetSesionCollectedCoins());
     }
 }

@@ -36,7 +36,7 @@ public class SectionView : MonoBehaviour
         for (int i = 0; i < transform.childCount; i++)
         {
             transform.GetChild(i).TryGetComponent(out IView view);
-            view.DeactivateView();
+            view?.DeactivateView();
         }
     }
 

@@ -86,7 +86,6 @@ public class PreStartState : IBaseState
         _rollBonusBlenderViewService.ActivateService();
         _superJumpBonusBlenderViewService.ActivateService();
 
-
         _playerBehaviourService.ActivateService();
         _playerBehaviourService.SetBehaviour<PlayerStartBehaviour>();
         _poolsViewService.ActivateService();
@@ -100,8 +99,6 @@ public class PreStartState : IBaseState
         _coinsPanelService.ActivateService();
         _coinPalleteViewService.ActivateService();
         _onStartBehaviourEnd = new (OnStartBehaviourEnd);
-        //EventBus<OnStartBehaviourEnd>.AddCallback(OnStartBehaviourEnd);
-
 
     }
 

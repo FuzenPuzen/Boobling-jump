@@ -62,7 +62,6 @@ public class PlayerBehaviourService : IPlayerBehaviourService
     private void SpawnPlayer()
     {
         GameObject PlayerModel = _playerSkinDataManager.GetCurrentSkin().PlayerSkinSOData.SkinPrefab.transform.GetChild(0).gameObject;
-        MonoBehaviour.print("Rotation " + PlayerModel.transform.localEulerAngles);
         _playerView = _fabric.Init<PlayerView>(new Vector3(4.83f, 1.24f, 0));
         Transform parent = _markerService.GetTransformMarker<PlayerMarker>().transform;
         GameObject model = _fabric.Init(PlayerModel, parent);

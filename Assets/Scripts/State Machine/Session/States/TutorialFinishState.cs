@@ -13,8 +13,8 @@ public class TutorialFinishState : IBaseState
     private EventBinding<OnRestart> _onRestartBinding;
     private EventBinding<OnOpenMenu> _onOpenMenuBinding;
     private SessionStateMachine _statemachine;
-    private ISessionTypeDataManager _sessionTypeDataManager;
-    private TutorialEndPanelViewService _tutorialEndPanelViewService;
+
+    private TutorialEndService _tutorialEndService;
 
     [Inject]
     public void Constructor(
@@ -22,13 +22,13 @@ public class TutorialFinishState : IBaseState
         GiftCollectorViewService giftCollectorViewService,
         RollBonusBlenderViewService rollBonusBlenderViewService,
         SuperJumpBonusBlenderViewService superJumpBonusBlenderViewService,
-        SessionStateMachine sessionStateMachine,
-        ISessionTypeDataManager sessionTypeDataManager,
-        TutorialEndPanelViewService tutorialEndPanelViewService
+        SessionStateMachine sessionStateMachine,       
+        TutorialEndService tutorialEndService
         )
     {
-        _tutorialEndPanelViewService = tutorialEndPanelViewService;
-        _sessionTypeDataManager = sessionTypeDataManager;
+        _tutorialEndService = tutorialEndService;
+        
+
         _statemachine = sessionStateMachine;
         _scoreService = scoreService;
         _giftCollectorViewService = giftCollectorViewService;
@@ -39,9 +39,9 @@ public class TutorialFinishState : IBaseState
     {
         _onRestartBinding = new(RestartScene);
         _onOpenMenuBinding = new(OpenMainMenu);
-        _sessionTypeDataManager.SaveGameType(false);
 
-        _tutorialEndPanelViewService.ActivateService();
+        _tutorialEndService.ActivateService();
+        
         _scoreService.DeactivateScoreChange();
         _giftCollectorViewService.DeactivateService();
         _superJumpBonusBlenderViewService.DeactivateService();

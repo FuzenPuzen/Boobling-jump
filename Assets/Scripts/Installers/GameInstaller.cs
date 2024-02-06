@@ -58,7 +58,9 @@ public class GameInstaller : MonoInstaller
         Container.Bind<GiftScorePanelService>().AsSingle();
         Container.Bind<TutorialPanelService>().AsSingle();
         Container.Bind<EndPageViewService>().AsSingle();
+        Container.Bind<TutorialEndPageViewService>().AsSingle();
         Container.Bind<TutorialEndPanelViewService>().AsSingle();
+        Container.Bind<TutorialEndService>().AsSingle();
 
         Container.Bind(typeof(IPlayerBehaviourService)).To(typeof(PlayerBehaviourService)).AsSingle();
         Container.Bind(typeof(ISessionTypeDataManager)).To(typeof(SessionTypeDataManager)).AsSingle();
@@ -77,6 +79,7 @@ public class GameInstaller : MonoInstaller
 
         Container.Bind<SessionStateMachine>().AsSingle();
         Container.Bind<EndGameState>().AsSingle();
+        Container.Bind<TutorialFinishState>().AsSingle();
         Container.Bind<PreStartState>().AsSingle();
         Container.Bind<SuperJumpState>().AsSingle();
         Container.Bind<GameState>().AsSingle();

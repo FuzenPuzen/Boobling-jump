@@ -22,7 +22,7 @@ public class SectionViewService
     {
         for (int i = 0; i < _sectionView.transform.childCount; i++)
         {
-            _sectionView.transform.GetChild(i).TryGetComponent(out IView view);
+            if (!_sectionView.transform.GetChild(i).TryGetComponent(out IView view)) continue;
             if (!view.GetCanSpawnCoin()) continue;
             StartValues startValues = new();
             startValues.StartPos = _sectionView.transform.GetChild(i).transform.position;

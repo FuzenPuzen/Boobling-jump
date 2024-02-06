@@ -31,6 +31,8 @@ public class MenuInstaller : MonoInstaller
         Container.Bind<IPlayerBehaviourDataManager>().To<PlayerBehaviourDataManager>().AsSingle();
         Container.Bind<ISessionTypeDataManager>().To<SessionTypeDataManager>().AsSingle();
 
+        Container.Bind<AlertPanelViewService>().AsSingle();
+
         Container.Bind<NavigationCanvasViewService>().AsSingle();
         Container.Bind<MenuMainPageCanvasViewService>().AsSingle();
 
