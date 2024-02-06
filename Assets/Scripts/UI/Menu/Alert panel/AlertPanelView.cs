@@ -42,7 +42,6 @@ public class AlertPanelViewService : IService
 
 	public void ActivateService()
 	{
-        Debug.Log("12");
         _alertPanelView = _fabric.Init<AlertPanelView>();
 		_alertPanelView.SubmitAction = SubmitAction;
         HideView();

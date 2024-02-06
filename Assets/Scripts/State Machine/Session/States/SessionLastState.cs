@@ -8,6 +8,7 @@ using Zenject;
 public class SessionLastState : IBaseState
 {
     private BlackBoardViewService _blackBoardViewService;
+    private IPlayerSkinDataManager _playerSkinDataManager;
     private SuperJumpWavesService _superJumpWavesService;
     private IMarkerService _markerService;
 
@@ -16,8 +17,10 @@ public class SessionLastState : IBaseState
     public void Constructor(
                     BlackBoardViewService blackBoardViewService,
                     SuperJumpWavesService superJumpWavesService,
-                    IMarkerService markerService)
+                    IMarkerService markerService,
+                    IPlayerSkinDataManager playerSkinDataManager)
     {
+        _playerSkinDataManager = playerSkinDataManager;
         _markerService = markerService;
         _superJumpWavesService = superJumpWavesService;
         _blackBoardViewService = blackBoardViewService;
@@ -28,6 +31,7 @@ public class SessionLastState : IBaseState
         DOTween.KillAll();
         Time.timeScale = 1;
 
+        _playerSkinDataManager.DeactivateService();
         _markerService.DeActivateService();
         _blackBoardViewService.DeactivateService();
         _superJumpWavesService.DeactivateService();
