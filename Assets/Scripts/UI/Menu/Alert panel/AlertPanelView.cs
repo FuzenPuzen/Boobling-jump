@@ -27,7 +27,7 @@ public class AlertPanelView : MonoBehaviour
 public class AlertPanelViewService : IService
 {
 	private IViewFabric _fabric;
-	private AlertPanelView _AlertPanelView;
+	private AlertPanelView _alertPanelView;
     private IMarkerService _markerService;
     private ICoinDataManager _coinDataManager;
 
@@ -41,9 +41,11 @@ public class AlertPanelViewService : IService
 	}
 
 	public void ActivateService()
-	{       
-        _AlertPanelView = _fabric.Init<AlertPanelView>();
-		_AlertPanelView.SubmitAction = SubmitAction;
+	{
+        Debug.Log("12");
+        _alertPanelView = _fabric.Init<AlertPanelView>();
+		_alertPanelView.SubmitAction = SubmitAction;
+        HideView();
     }
 
 	public void SubmitAction()
@@ -54,11 +56,11 @@ public class AlertPanelViewService : IService
 
     public void HideView()
     {
-        _AlertPanelView.HideView();
+        _alertPanelView.HideView();
     }
 
     public void ShowView()
     {
-        _AlertPanelView.ShowView();
+        _alertPanelView.ShowView();
     }
 }

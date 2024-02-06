@@ -91,7 +91,6 @@ public class ScoreDataManager : IScoreDataManager
         }
         _scoreRewardDataPackage.RemaindScore = _scoreRewardDataPackage.CurrentTotalScore;
         _scoreRewardDataCombiner.SetScoreRewardDataPackage(_scoreRewardDataPackage);
-        MonoBehaviour.print(_scoreRewardDataPackage.RemaindScore);
     }
 
     public ScoreRewardDataPackage GetScoreRewardDataPackage() => _scoreRewardDataPackage; 

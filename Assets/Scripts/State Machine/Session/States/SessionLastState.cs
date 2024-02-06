@@ -9,13 +9,16 @@ public class SessionLastState : IBaseState
 {
     private BlackBoardViewService _blackBoardViewService;
     private SuperJumpWavesService _superJumpWavesService;
+    private IMarkerService _markerService;
 
 
     [Inject]
     public void Constructor(
                     BlackBoardViewService blackBoardViewService,
-                    SuperJumpWavesService superJumpWavesService)
+                    SuperJumpWavesService superJumpWavesService,
+                    IMarkerService markerService)
     {
+        _markerService = markerService;
         _superJumpWavesService = superJumpWavesService;
         _blackBoardViewService = blackBoardViewService;
     }
@@ -25,6 +28,7 @@ public class SessionLastState : IBaseState
         DOTween.KillAll();
         Time.timeScale = 1;
 
+        _markerService.DeActivateService();
         _blackBoardViewService.DeactivateService();
         _superJumpWavesService.DeactivateService();
 

@@ -3,16 +3,31 @@ using System.Diagnostics;
 using UnityEngine;
 using Zenject;
 
+public interface ICoinDataManager
+{
+    public event Action<int> coinsChanged;
+    public int GetCoins();
+    public bool SpendCoins(int coins);
+    public void AddCoins(int coins);
+
+    public void CollectCoins(int coins = 1);
+    public int GetSesionCollectedCoins();
+
+}
+
 public class CoinDataManager : ICoinDataManager
 {
     private ICoinsStorageData _coinsStoradeData;
     private CoinsSLData _coinsSLData;
     public event Action<int> coinsChanged;
     private int _sessionCollectedCoins;
+    private AlertPanelViewService _alertPanelViewService;
 
     [Inject]
-    public void constructor(ICoinsStorageData coinsStoradeData)
+    public void constructor(ICoinsStorageData coinsStoradeData,
+                            AlertPanelViewService alertPanelViewService)
     {
+        _alertPanelViewService = alertPanelViewService;
         _sessionCollectedCoins = 0;
         _coinsStoradeData = coinsStoradeData;
         _coinsSLData = (CoinsSLData)_coinsStoradeData.GetCoinsSLData();
@@ -40,6 +55,7 @@ public class CoinDataManager : ICoinDataManager
             CoinsChanged();
             return true; 
         }
+        _alertPanelViewService.ShowView();
         return false;
     }
 

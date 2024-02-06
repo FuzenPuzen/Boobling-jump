@@ -67,7 +67,6 @@ public class MenuMainPageCanvasViewService : IService
             _menuInfinityPanelViewService.ActivateService();
         }
 
-
         _menuUpgradePanelViewService.ActivateService();
         _menuSkinShopPanelViewService.ActivateService();
         HideView();

@@ -36,7 +36,7 @@ public class MenuTutorialPanelView : MonoBehaviour
         _filledCircle.fillAmount = filledAmount;
 
         _rewardCount.text = _scoreRewardDataPackage.RewardCount.ToString();
-        _rewardScore.text = "\n из" + _scoreRewardDataPackage.RewardScore.ToString();
+        _rewardScore.text = "из\n" + _scoreRewardDataPackage.RewardScore.ToString();
         _remaidScore.text = _scoreRewardDataPackage.RemaindScore.ToString();
     }
 }

@@ -20,8 +20,10 @@ public class MenuStateMachine
     public void Constructor(MenuSkinShopPageState menuSkinShopPage,
                             MenuStartState menuStartState,
                             MenuUpgradePageState menuBonusPageState,
-                            MenuMainPageState menuMainPageState)
+                            MenuMainPageState menuMainPageState,
+                            MenuLastState menuLastState)
     {
+        _baseStates.Add(menuLastState);
         _baseStates.Add(menuStartState);
         _baseStates.Add(menuSkinShopPage);
         _baseStates.Add(menuBonusPageState);

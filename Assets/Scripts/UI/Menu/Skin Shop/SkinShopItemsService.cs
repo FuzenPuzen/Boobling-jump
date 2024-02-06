@@ -26,8 +26,8 @@ public class SkinShopItemsService : IService
 
 	public void ActivateService()
 	{
-        _onBuySkin = new EventBinding<OnBuySkin>(UpdateData);
-        _onChangeSkin = new EventBinding<OnChangeSkin>(UpdateData);
+        _onBuySkin = new (UpdateData);
+        //_onChangeSkin = new (UpdateData);
         _playerSkinDatas = _playerSkinDataManager.GetPlayerSkinDatas();
 		foreach (PlayerSkinData data in _playerSkinDatas)
 		{
@@ -36,6 +36,12 @@ public class SkinShopItemsService : IService
             skinShopItemViewService.SetData(data);
             _skinShopItemViewServices.Add(skinShopItemViewService);
         }
+    }
+
+    public void DeactivateService()
+    {
+        _onBuySkin.Remove(UpdateData);
+        //_onChangeSkin.Remove(UpdateData);
     }
 
 	public void UpdateData()

@@ -9,6 +9,7 @@ public class MenuStartState : IBaseState
     private MenuUpgradePageCanvasViewService _menuUpgradePageCanvasViewService;
 
     private NavigationCanvasViewService _navigationCanvasViewService;
+    private AlertPanelViewService _alertPanelViewService;
 
     private IService _playerBehaviourDataManager;
     private IPlayerSkinDataManager _playerSkinDataManager;
@@ -24,8 +25,10 @@ public class MenuStartState : IBaseState
                             IPlayerBehaviourDataManager playerBehaviourDataManager,
                             IMarkerService markerService,
                             IPlayerSkinDataManager playerSkinDataManager,
-                            NavigationCanvasViewService navigationCanvasViewService)
+                            NavigationCanvasViewService navigationCanvasViewService,
+                            AlertPanelViewService alertPanelViewService)
     {
+        _alertPanelViewService = alertPanelViewService;
         _navigationCanvasViewService = navigationCanvasViewService;
         _playerSkinDataManager = playerSkinDataManager;
         _playerBehaviourDataManager = playerBehaviourDataManager;
@@ -42,6 +45,7 @@ public class MenuStartState : IBaseState
         _playerBehaviourDataManager.ActivateService();
         _playerSkinDataManager.ActivateService();
 
+        _alertPanelViewService.ActivateService();
         _navigationCanvasViewService.ActivateService();
         _menuMainPageViewService.ActivateService();
         _menuSkinShopPageCanvasViewService.ActivateService();

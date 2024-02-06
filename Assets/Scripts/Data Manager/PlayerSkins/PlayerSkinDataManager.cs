@@ -7,6 +7,7 @@ public interface IPlayerSkinDataManager : IService
 {
     public List<PlayerSkinData> GetPlayerSkinDatas();
     public PlayerSkinData GetCurrentSkin();
+    public void DeactivateService();
 }
 
 
@@ -58,8 +59,8 @@ public class PlayerSkinDataManager : IPlayerSkinDataManager
 
     public void ActivateService()
     {
-        _onTryBuySkin = new EventBinding<OnTryBuySkin>(BuySkin);
-        _onChangeSkin = new EventBinding<OnChangeSkin>(ChangeSkin);
+        _onTryBuySkin = new(BuySkin);
+        _onChangeSkin = new(ChangeSkin);
         _playerSkinDatas = _playerSkinDataCombiner.GetPlayerSkinDatas();
         _playerSkinSLDatas = _playerSkinDataCombiner.GetPlayerSkinSLDatas();
         _currentSkinData = FindCurrentSkin();

@@ -1,6 +1,6 @@
 using EventBus;
 using Zenject;
-using UnityEngine.SceneManagement;
+
 using UnityEngine;
 
 public class MenuMainPageState : IBaseState
@@ -49,7 +49,7 @@ public class MenuMainPageState : IBaseState
 
     public void OnGameClickEvent()
     {
-        SceneManager.LoadScene("SessionSceneV1");
+        _menuStateMachine.SetState<MenuLastState>();
     }
 
     public void OnUpgradeClickEvent()

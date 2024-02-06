@@ -14,6 +14,11 @@ public class  MarkerService : IMarkerService
         _onMarkerAwake = new(SetMarker);
     }
 
+    public void DeActivateService()
+    {
+        _onMarkerAwake.Remove(SetMarker);
+    }
+
     public T GetTransformMarker<T>() where T : IMarker
     {
         return markers.OfType<T>().FirstOrDefault();
@@ -28,6 +33,7 @@ public class  MarkerService : IMarkerService
 public interface IMarkerService: IService
 {
     public T GetTransformMarker<T>() where T : IMarker;
+    public void DeActivateService();
 }
 
 public class Marker: MonoBehaviour, IMarker

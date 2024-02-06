@@ -47,6 +47,7 @@ public class MenuInstaller : MonoInstaller
         Container.Bind<IScoreDataManager>().To<ScoreDataManager>().AsSingle();
 
         Container.Bind<MenuStateMachine>().AsSingle();
+        Container.Bind<MenuLastState>().AsSingle();
         Container.Bind<MenuStartState>().AsSingle();
         Container.Bind<MenuMainPageState>().AsSingle();
         Container.Bind<MenuSkinShopPageState>().AsSingle();

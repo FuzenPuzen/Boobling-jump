@@ -9,12 +9,10 @@ public class MenuUpgradePageState : IBaseState
 
     
     [Inject]
-    public void Constructor(MenuUpgradePageCanvasViewService menuUpgradePageCanvasViewService,
-                            
+    public void Constructor(MenuUpgradePageCanvasViewService menuUpgradePageCanvasViewService,                            
                             MenuStateMachine menuStateMachine)
     {
-        _menuStateMachine = menuStateMachine;
-        
+        _menuStateMachine = menuStateMachine;        
         _menuUpgradePageCanvasViewService = menuUpgradePageCanvasViewService;       
     }
 
