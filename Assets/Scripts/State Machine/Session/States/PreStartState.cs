@@ -24,6 +24,7 @@ public class PreStartState : IBaseState
     private IService _playerBehaviourDataManager;
     private PlayerStoolDestroyerService _playerBonusDestroyerService;
     private SuperJumpWavesService _superJumpWavesService;
+    private IRepaintService _repaintService;
 
 
     [Inject]
@@ -47,7 +48,8 @@ public class PreStartState : IBaseState
                     IPlayerSkinDataManager playerSkinDataManager,
                     IPlayerBehaviourDataManager playerBehaviourDataManager,
                     PlayerStoolDestroyerService playerBonusDestroyerService,
-                    SuperJumpWavesService superJumpWavesService
+                    SuperJumpWavesService superJumpWavesService,
+                    IRepaintService repaintService
                  )
     {
         _superJumpWavesService = superJumpWavesService;
@@ -70,12 +72,15 @@ public class PreStartState : IBaseState
         _rollBonusBlenderViewService = rollBonusBlenderViewService;
         _superJumpBonusBlenderViewService = superJumpBonusBlenderViewService;
         _blackBoardViewService = blackBoardViewService;
+        _repaintService = repaintService;
 
-        
+
+
     }
     public void Enter()
     {
         _markerService.ActivateService();
+        _repaintService.ActivateService();
         _loaderSceneService.ActivateService();
         _playerBehaviourDataManager.ActivateService();
         _playerSkinDataManager.ActivateService();
@@ -99,6 +104,7 @@ public class PreStartState : IBaseState
         _coinsPanelService.ActivateService();
         _coinPalleteViewService.ActivateService();
         _onStartBehaviourEnd = new (OnStartBehaviourEnd);
+
 
     }
 

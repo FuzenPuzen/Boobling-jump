@@ -5,6 +5,8 @@ public class GameInstaller : MonoInstaller
     public override void InstallBindings()
     {
         Container.Bind<IMarkerService>().To<MarkerService>().AsSingle();
+        Container.Bind<IRepaintDataManager>().To<RepaintDataManager>().AsSingle();
+        Container.Bind<IRepaintService>().To<RepaintService>().AsSingle();
         Container.Bind<ILoaderSceneService>().To<LoaderSceneService>().AsSingle();
 
         Container.Bind(
