@@ -25,17 +25,19 @@ public class RepaintService : IRepaintService
 
     public void ActivateService()
     {
-        _painterAwake = new(RepaintAll);
+        _painterAwake = new(SetRepaint);
     }
 
     public void DeActivateService()
     {
-        _painterAwake.Remove(RepaintAll);
+        _painterAwake.Remove(SetRepaint);
     }
-
+    public void SetRepaint(OnRepaintAwake repaintAwake)
+    {
+        _repaints.Add(repaintAwake.marker);
+    }
     public void RepaintAll()
     {
-        MonoBehaviour.print("Count: "+ _repaints.Count);
         _currentRepaintSOData = _repaintDataManager.GetRandomRepaintSOData();
         foreach (IRepaint repaint in _repaints)
         {

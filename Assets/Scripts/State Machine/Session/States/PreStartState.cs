@@ -25,6 +25,7 @@ public class PreStartState : IBaseState
     private PlayerStoolDestroyerService _playerBonusDestroyerService;
     private SuperJumpWavesService _superJumpWavesService;
     private IRepaintService _repaintService;
+    private MainCameraViewService _mainCameraViewService;
 
 
     [Inject]
@@ -49,7 +50,8 @@ public class PreStartState : IBaseState
                     IPlayerBehaviourDataManager playerBehaviourDataManager,
                     PlayerStoolDestroyerService playerBonusDestroyerService,
                     SuperJumpWavesService superJumpWavesService,
-                    IRepaintService repaintService
+                    IRepaintService repaintService,
+                    MainCameraViewService mainCameraViewService
                  )
     {
         _superJumpWavesService = superJumpWavesService;
@@ -73,6 +75,7 @@ public class PreStartState : IBaseState
         _superJumpBonusBlenderViewService = superJumpBonusBlenderViewService;
         _blackBoardViewService = blackBoardViewService;
         _repaintService = repaintService;
+        _mainCameraViewService = mainCameraViewService;
 
 
 
@@ -85,6 +88,7 @@ public class PreStartState : IBaseState
         _playerBehaviourDataManager.ActivateService();
         _playerSkinDataManager.ActivateService();
 
+        _mainCameraViewService.ActivateService();
         _roomViewService.ActivateService();
         _blackBoardViewService.ActivateService();
         _sectionBehaviourService.ActivateService();

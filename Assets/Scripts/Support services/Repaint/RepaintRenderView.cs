@@ -5,7 +5,7 @@ public class RepaintRenderView : MonoBehaviour, IRepaint
 {
 	private MeshRenderer _meshRenderer;
 
-    public void Awake()
+    public void Start()
     {
         _meshRenderer = GetComponent<MeshRenderer>();
         EventBus<OnRepaintAwake>.Raise(new() { marker = this });

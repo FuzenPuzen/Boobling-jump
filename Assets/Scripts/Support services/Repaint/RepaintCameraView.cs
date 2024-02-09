@@ -4,10 +4,11 @@ using UnityEngine;
 public class RepaintCameraView : MonoBehaviour, IRepaint
 {
 	private Camera _camera;
-    public void Awake()
+    public void OnEnable()
     {
         _camera = GetComponent<Camera>();
-        EventBus<OnRepaintAwake>.Raise();
+        Debug.Log("Repaint work");
+        EventBus<OnRepaintAwake>.Raise(new() { marker = this });
     }
 
     public void Repaint(RepaintSOData repaintData)

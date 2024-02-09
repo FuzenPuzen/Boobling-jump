@@ -405,6 +405,7 @@ GameObject:
   - component: {fileID: 602901901413288180}
   - component: {fileID: 4798936640144418075}
   - component: {fileID: 2364592918881822333}
+  - component: {fileID: 7004458893681359662}
   m_Layer: 0
   m_Name: Monitor.002
   m_TagString: Untagged
@@ -477,6 +478,18 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!114 &7004458893681359662
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3987424647214044254}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 647f3543ef0220249bf2a100527d17a5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &4209464858767304456
 GameObject:
   m_ObjectHideFlags: 0
@@ -576,6 +589,7 @@ GameObject:
   - component: {fileID: 8095214063566558005}
   - component: {fileID: 3845319889216231389}
   - component: {fileID: 1382696916045484780}
+  - component: {fileID: 8971926106359867545}
   m_Layer: 0
   m_Name: SystenBlock.002
   m_TagString: Untagged
@@ -648,6 +662,18 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!114 &8971926106359867545
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4878280940639978811}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 647f3543ef0220249bf2a100527d17a5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &5328609323586393350
 GameObject:
   m_ObjectHideFlags: 0
@@ -659,6 +685,7 @@ GameObject:
   - component: {fileID: 2396603337669815311}
   - component: {fileID: 6944114404565598698}
   - component: {fileID: 6462283526480189646}
+  - component: {fileID: 3972408633107829546}
   m_Layer: 0
   m_Name: Table
   m_TagString: Untagged
@@ -735,6 +762,18 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!114 &3972408633107829546
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5328609323586393350}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 647f3543ef0220249bf2a100527d17a5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &5408246428967947649
 GameObject:
   m_ObjectHideFlags: 0
@@ -1002,6 +1041,7 @@ GameObject:
   - component: {fileID: 6277346205788888216}
   - component: {fileID: 8767392394352233448}
   - component: {fileID: 7790384555777213949}
+  - component: {fileID: 2008750425909120694}
   m_Layer: 0
   m_Name: Cube.006
   m_TagString: Untagged
@@ -1074,6 +1114,18 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!114 &2008750425909120694
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7125365147156790654}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 647f3543ef0220249bf2a100527d17a5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &7731346648190920786
 GameObject:
   m_ObjectHideFlags: 0
@@ -1129,6 +1181,7 @@ GameObject:
   - component: {fileID: 4065978960766573839}
   - component: {fileID: 3882141775993531144}
   - component: {fileID: 2837769355198588343}
+  - component: {fileID: 3138971004950631463}
   m_Layer: 0
   m_Name: Keyboard.002
   m_TagString: Untagged
@@ -1201,3 +1254,15 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!114 &3138971004950631463
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8626886644802224742}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 647f3543ef0220249bf2a100527d17a5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

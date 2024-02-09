@@ -32,7 +32,7 @@ public class GameInstaller : MonoInstaller
         Container.Bind<GiftScoreDataCombiner>().AsSingle().NonLazy();
         Container.Bind<PlayerSkinDataCombiner>().AsSingle().NonLazy();
 
-
+        Container.Bind<MainCameraViewService>().AsSingle();
         Container.Bind<IPoolsViewService>().To<PoolsViewService>().AsSingle();
         Container.Bind<IPlayerBehaviourDataManager>().To<PlayerBehaviourDataManager>().AsSingle();
         Container.Bind<IPlayerSkinDataManager>().To<PlayerSkinDataManager>().AsSingle();
