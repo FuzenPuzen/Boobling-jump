@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4be6d4dd4afd4d346904db7f4492ecd6, type: 3}
+  m_Name: RepaintDatas
+  m_EditorClassIdentifier: 
+  dictionary:
+    _serializedList:
+    - Key: 0
+      Value: {fileID: 11400000, guid: c73a9c07f5da2864b86938740bf0deaf, type: 2}
+    - Key: 1
+      Value: {fileID: 11400000, guid: c48ff0252c8f2eb4b97e43d28ead278d, type: 2}

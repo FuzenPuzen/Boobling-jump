@@ -16,4 +16,6 @@ public struct OnTutorialFinish : IEvent { }
 
 public struct OnTutorialMaxSection : IEvent { public int MaxSection; }
 
+public struct OnRepaintAwake : IEvent { public IRepaint marker; }
+
 

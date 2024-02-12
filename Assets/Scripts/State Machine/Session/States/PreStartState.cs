@@ -24,6 +24,8 @@ public class PreStartState : IBaseState
     private IService _playerBehaviourDataManager;
     private PlayerStoolDestroyerService _playerBonusDestroyerService;
     private SuperJumpWavesService _superJumpWavesService;
+    private IRepaintService _repaintService;
+    private MainCameraViewService _mainCameraViewService;
 
 
     [Inject]
@@ -47,7 +49,9 @@ public class PreStartState : IBaseState
                     IPlayerSkinDataManager playerSkinDataManager,
                     IPlayerBehaviourDataManager playerBehaviourDataManager,
                     PlayerStoolDestroyerService playerBonusDestroyerService,
-                    SuperJumpWavesService superJumpWavesService
+                    SuperJumpWavesService superJumpWavesService,
+                    IRepaintService repaintService,
+                    MainCameraViewService mainCameraViewService
                  )
     {
         _superJumpWavesService = superJumpWavesService;
@@ -70,16 +74,21 @@ public class PreStartState : IBaseState
         _rollBonusBlenderViewService = rollBonusBlenderViewService;
         _superJumpBonusBlenderViewService = superJumpBonusBlenderViewService;
         _blackBoardViewService = blackBoardViewService;
+        _repaintService = repaintService;
+        _mainCameraViewService = mainCameraViewService;
 
-        
+
+
     }
     public void Enter()
     {
         _markerService.ActivateService();
+        _repaintService.ActivateService();
         _loaderSceneService.ActivateService();
         _playerBehaviourDataManager.ActivateService();
         _playerSkinDataManager.ActivateService();
 
+        _mainCameraViewService.ActivateService();
         _roomViewService.ActivateService();
         _blackBoardViewService.ActivateService();
         _sectionBehaviourService.ActivateService();
@@ -99,6 +108,7 @@ public class PreStartState : IBaseState
         _coinsPanelService.ActivateService();
         _coinPalleteViewService.ActivateService();
         _onStartBehaviourEnd = new (OnStartBehaviourEnd);
+
 
     }
 

@@ -9,6 +9,7 @@ public class StartState : IBaseState
     private IService _recordScoreService;
     private IService _giftScoreService;
     private IService _giftService;
+    private IRepaintService _repaintService;
 
 
     [Inject]
@@ -18,7 +19,8 @@ public class StartState : IBaseState
                         CurrentScorePanelService scoreService,
                         RecordScorePanelService recordScoreService,
                         GiftScorePanelService giftScorePanelService,
-                        GiftService giftService
+                        GiftService giftService,
+                        IRepaintService repaintService
                      )
     {
         _currentScoreService = scoreService;
@@ -27,6 +29,7 @@ public class StartState : IBaseState
         _recordScoreService = recordScoreService;
         _giftScoreService = giftScorePanelService;
         _giftService = giftService;
+        _repaintService = repaintService;
     }
 
     public void Enter()
@@ -36,6 +39,7 @@ public class StartState : IBaseState
         _giftScoreService.ActivateService();
         _sectionsService.ActivateService();
         _giftService.ActivateService();
+        _repaintService.RepaintAll();
         _statemachine.SetState<GameState>();
     }
 
