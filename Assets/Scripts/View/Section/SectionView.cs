@@ -1,20 +1,22 @@
 using UnityEngine;
 using DG.Tweening;
 using System;
+using UnityEditor;
 
 public class SectionView : MonoBehaviour
 {
     private Action _sectionActivatorExitAction;
     private Action _sectionActivatorEnterAction;
     private Sequence _moveSequence;
-    private float _endPosX = -42f;
-    private float _movingTime = 5f;
+    private float _endPosX = -60f;
+    private float _movingTime = 7.2f;
     private Vector3 _startPosition;
 
     public void ActivateView(Vector3 startPos)
     {
         _startPosition = startPos;
         transform.position = _startPosition;
+        Debug.Log(transform.position, gameObject);
         StartMove();
     }
 
@@ -52,8 +54,10 @@ public class SectionView : MonoBehaviour
 
     private void OnTriggerExit(Collider other)
     {
-        if (other.CompareTag("SectionActivator"))
+        if (other.GetComponent<SectionActivator>())
         {
+            Debug.Log("OnTriggerExit", gameObject);
+            
             StopMove();
             _sectionActivatorExitAction?.Invoke();
         }
@@ -61,8 +65,9 @@ public class SectionView : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("SectionActivator"))
-        {
+        if (other.GetComponent<SectionActivator>())
+        {            
+            Debug.Log("OnTriggerEnter", other.gameObject);
             _sectionActivatorEnterAction?.Invoke();
         }
     }

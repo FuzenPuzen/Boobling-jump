@@ -37,6 +37,12 @@ public class NavigationCanvasViewService : IService
 		_backButtonViewService.ActivateService();
     }
 
+	public void SetPanelName(PanelName panelName)
+	{
+		_navigationPanelViewService.SetPanelName(panelName);
+
+    }
+
 	public void HideBackButton()
 	{
         _backButtonViewService.HideView();

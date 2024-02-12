@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 8569905486758110144}
   - component: {fileID: 9154121182049071881}
   - component: {fileID: 8791306170650778536}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Little Stool
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -47,6 +47,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2643a3a490768184d90deff8e99640eb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  CanSpawnCoin: 0
 --- !u!65 &9154121182049071881
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -108,7 +109,7 @@ GameObject:
   - component: {fileID: 2852932476822099521}
   - component: {fileID: 3822056191501719737}
   - component: {fileID: 3132924704702790470}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: LittleStool
   m_TagString: Untagged
   m_Icon: {fileID: 0}

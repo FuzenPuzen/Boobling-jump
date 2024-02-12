@@ -23,11 +23,9 @@ public class TutorialFinishState : IBaseState
         RollBonusBlenderViewService rollBonusBlenderViewService,
         SuperJumpBonusBlenderViewService superJumpBonusBlenderViewService,
         SessionStateMachine sessionStateMachine,       
-        TutorialEndService tutorialEndService
-        )
+        TutorialEndService tutorialEndService)
     {
         _tutorialEndService = tutorialEndService;
-        
 
         _statemachine = sessionStateMachine;
         _scoreService = scoreService;

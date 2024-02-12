@@ -11,6 +11,7 @@ public class RewardBonusTypeView : MonoBehaviour
 	private float _changeTypeDelay = 0.25f;
 	private IEnumerator _changeTypeDelayCor;
 	private RewardBonusType _currentRewardBonusType;
+
 	public void ActivateView()
 	{
         ChangeType();
@@ -20,6 +21,7 @@ public class RewardBonusTypeView : MonoBehaviour
 	{
 
 	}
+
 	public RewardBonusType StopChangeType()
 	{
 		StopCoroutine(_changeTypeDelayCor);
@@ -36,7 +38,6 @@ public class RewardBonusTypeView : MonoBehaviour
 	{
 		yield return new WaitForSeconds(_changeTypeDelay);
 		ChangeType();
-
     }
 }
 
@@ -67,43 +68,4 @@ public class RewardBonusTypeViewService : IService
     }
 }
 
-public enum RewardBonusType
-{
-    X2 = 2,
-    X3 = 3,
-    X5 = 5
-}
-
-public class RandomEnumElement<T> where T : Enum
-{
-    private static System.Random random = new System.Random();
-    private static List<T> usedElements = new List<T>();
-
-    public static T GetRandomEnumElement()
-    {
-        Array values = Enum.GetValues(typeof(T));
-
-        List<T> unusedElements = new List<T>();
-        foreach (T value in values)
-        {
-            if (!usedElements.Contains(value))
-            {
-                unusedElements.Add(value);
-            }
-        }
-
-        if (unusedElements.Count == 0)
-        {
-            // Если все элементы использованы, очистите список и начните заново
-            usedElements.Clear();
-            unusedElements.AddRange((T[])values);
-        }
-
-        int randomIndex = random.Next(unusedElements.Count);
-        T randomElement = unusedElements[randomIndex];
-        usedElements.Add(randomElement);
-
-        return randomElement;
-    }
-}
 

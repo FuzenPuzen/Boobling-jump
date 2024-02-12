@@ -12,10 +12,10 @@ public class JumpingStoolView : BasicStoolView
 
     public override void ActivateView()
     {
+        base.ActivateView();
         _canJump = true;
         _startScale = _child.transform.localScale;
-        StartCoroutine(JumpCD());
-        base.ActivateView();
+        StartCoroutine(JumpCD());      
     }
 
     public override void SetStartValues()

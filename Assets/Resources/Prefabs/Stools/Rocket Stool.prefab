@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 3349330434090857374}
   - component: {fileID: 1303976716113634000}
   - component: {fileID: 7699506669794904587}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Circle.004
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -110,7 +110,7 @@ GameObject:
   - component: {fileID: 3150631874197911582}
   - component: {fileID: 1727342700671481324}
   - component: {fileID: 3653992637374008418}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: StoolRocket.001
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -207,7 +207,7 @@ GameObject:
   - component: {fileID: 7773128271602947986}
   - component: {fileID: 5665575703955100192}
   - component: {fileID: 573312226863044464}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Plane.004
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -303,7 +303,7 @@ GameObject:
   - component: {fileID: 1241659431967112801}
   - component: {fileID: 1236294563120593724}
   - component: {fileID: 3016670818807888674}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Circle.009
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -401,7 +401,7 @@ GameObject:
   - component: {fileID: 7575755913603121105}
   - component: {fileID: 3604037300144523130}
   - component: {fileID: 3130709448037081152}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Cylinder.001
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -496,7 +496,8 @@ GameObject:
   - component: {fileID: 1466476579452344486}
   - component: {fileID: 5583792225398045521}
   - component: {fileID: 411846965731966554}
-  m_Layer: 0
+  - component: {fileID: 7055572801737231080}
+  m_Layer: 6
   m_Name: Rocket Stool
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -552,6 +553,34 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 536dc4055a7f4ac4b9c22b88a9e59529, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  CanSpawnCoin: 0
+--- !u!54 &7055572801737231080
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2963416113210442174}
+  serializedVersion: 4
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
+  m_UseGravity: 0
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!1 &3181446516583268310
 GameObject:
   m_ObjectHideFlags: 0
@@ -564,7 +593,7 @@ GameObject:
   - component: {fileID: 143914857236051670}
   - component: {fileID: 6429459101418759442}
   - component: {fileID: 848030221146864673}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: StoolRocket.002
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -662,7 +691,7 @@ GameObject:
   - component: {fileID: 5180382243663590212}
   - component: {fileID: 3595237951567794054}
   - component: {fileID: 1947660437137454046}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: StoolRocket
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1145,7 +1174,7 @@ GameObject:
   - component: {fileID: 5568061183337190531}
   - component: {fileID: 412667060455047941}
   - component: {fileID: 6057698021500386522}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Circle.010
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1243,7 +1272,7 @@ GameObject:
   - component: {fileID: 3431541186522518331}
   - component: {fileID: 4332729723806905147}
   - component: {fileID: 4564613087610798966}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Cylinder.002
   m_TagString: Untagged
   m_Icon: {fileID: 0}

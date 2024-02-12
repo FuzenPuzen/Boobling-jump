@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 5841719192540996852}
   - component: {fileID: 7575119470363482990}
   - component: {fileID: 7073059960143893740}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Cone.049
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -113,7 +113,7 @@ GameObject:
   - component: {fileID: 6331127174986736926}
   - component: {fileID: 705716234154599900}
   - component: {fileID: 8224773314613388380}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Cube.031
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -213,7 +213,7 @@ GameObject:
   - component: {fileID: 8907961324660652478}
   - component: {fileID: 4204658712272272831}
   - component: {fileID: 9162134995991681545}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Cube.032
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -312,7 +312,8 @@ GameObject:
   - component: {fileID: 831319680470409340}
   - component: {fileID: 6507373962860295185}
   - component: {fileID: 7652751986225344485}
-  m_Layer: 0
+  - component: {fileID: 1584308432141992056}
+  m_Layer: 6
   m_Name: Cactus Stool
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -368,6 +369,34 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b539ef9f506c02546926caf59caa286e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  CanSpawnCoin: 0
+--- !u!54 &1584308432141992056
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5532616925203204496}
+  serializedVersion: 4
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
+  m_UseGravity: 0
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!1 &5971766678610539723
 GameObject:
   m_ObjectHideFlags: 0
@@ -380,7 +409,7 @@ GameObject:
   - component: {fileID: 7631567936026396992}
   - component: {fileID: 5266735959199142805}
   - component: {fileID: 8486647106765775650}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Cube.034
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -480,7 +509,7 @@ GameObject:
   - component: {fileID: 8243035371584974188}
   - component: {fileID: 2131719803697371293}
   - component: {fileID: 912022913978530703}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Cube.030
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -581,7 +610,7 @@ GameObject:
   - component: {fileID: 4764849674548368151}
   - component: {fileID: 3624009725317391482}
   - component: {fileID: 8423591861955446728}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: StoolCactus
   m_TagString: Untagged
   m_Icon: {fileID: 0}

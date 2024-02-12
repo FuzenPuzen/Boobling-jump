@@ -42,12 +42,12 @@ public class EndGameState : IBaseState
     {
         _onRestartBinding = new(RestartScene);
         _onOpenMenuBinding = new(OpenMainMenu);
-        _endPageViewService.ActivateService();
         _scoreService.DeactivateScoreChange();
         _giftCollectorViewService.DeactivateService();
         _superJumpBonusBlenderViewService.DeactivateService();
         _rollBonusBlenderViewService.DeactivateService();
-        _scoreDataManager.OnPlayerDie();
+        _endPageViewService.ActivateService();
+        _scoreDataManager.OnPlayerDie();  
     }
 
     public void RestartScene()

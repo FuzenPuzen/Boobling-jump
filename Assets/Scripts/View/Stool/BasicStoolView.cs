@@ -13,6 +13,7 @@ public class BasicStoolView : MonoBehaviour, IStoolView, IView
     public void Start()
     {
         _startPos = transform.localPosition;
+        SetStartValues();
     }
 
     public virtual void ActivateView()
@@ -54,7 +55,7 @@ public class BasicStoolView : MonoBehaviour, IStoolView, IView
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("SectionActivator"))
+        if (other.GetComponent<SectionActivator>())
         {            
             ActivateView();
         }
@@ -62,7 +63,7 @@ public class BasicStoolView : MonoBehaviour, IStoolView, IView
 
     private void OnTriggerExit(Collider other)
     {
-        if (other.CompareTag("SectionActivator"))
+        if (other.GetComponent<SectionActivator>())
         {
             Fall();
         }

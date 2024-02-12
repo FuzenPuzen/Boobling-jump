@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1991730311817879234}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: StoolHelli
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -44,7 +44,7 @@ GameObject:
   - component: {fileID: 2159043572207387225}
   - component: {fileID: 1484354621272384680}
   - component: {fileID: 6956514456021989366}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Cube.035
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -141,7 +141,7 @@ GameObject:
   - component: {fileID: 5429214763966903484}
   - component: {fileID: 3417292590454779026}
   - component: {fileID: 1541149175399641517}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: StoolHelli
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -394,7 +394,7 @@ GameObject:
   - component: {fileID: 5988744925999851931}
   - component: {fileID: 1617216366656762623}
   - component: {fileID: 2911008261799806517}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Cylinder
   m_TagString: Untagged
   m_Icon: {fileID: 0}

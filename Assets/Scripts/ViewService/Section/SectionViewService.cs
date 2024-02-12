@@ -50,6 +50,7 @@ public class SectionViewService
     public void ActivateSection()
     {
         _sectionView.ActivateView(_markerService.GetTransformMarker<SectionStartPosMarker>().transform.position);
+        Debug.Log(_markerService.GetTransformMarker<SectionStartPosMarker>().transform.position);
     }
 
     //Enter Activator Collider

@@ -40,7 +40,7 @@ public class Marker: MonoBehaviour, IMarker
 {
     public void Awake()
     {
-        EventBus<OnMarkerAwake>.Raise(new() {marker = this}) ;
+        EventBus<OnMarkerAwake>.Raise(new() {marker = this});
     }
 }
 

@@ -4,15 +4,21 @@ using UnityEngine.UI;
 using EventBus;
 using EventBus.Example.MyGame.Events;
 using TMPro;
+using DG.Tweening;
 
 public class MenuTutorialPanelView : MonoBehaviour
 {
-    [SerializeField] private Button _gameButton;
-    [SerializeField] private Image _filledCircle;
-    [SerializeField] private TMP_Text _remaidScore;
-    [SerializeField] private TMP_Text _rewardScore;
-    [SerializeField] private TMP_Text _rewardCount;
-    private ScoreRewardDataPackage _scoreRewardDataPackage;
+    [SerializeField] internal Button _gameButton;
+    [SerializeField] internal CanvasGroup _scoreObj;
+    [SerializeField] internal Image _filledCircle;
+    [SerializeField] internal TMP_Text _remaidScore;
+    [SerializeField] internal TMP_Text _percentScoreText;
+    [SerializeField] internal TMP_Text _rewardCount;
+    internal ScoreRewardDataPackage _scoreRewardDataPackage;
+    private int _recordScore;
+    internal float _percentScore;
+    private float _fadeTime = 1f;
+    private Sequence _fadeSequence;
 
     private void Start()
     {
@@ -21,23 +27,38 @@ public class MenuTutorialPanelView : MonoBehaviour
 
     public void OnButtonClick()
     {
+        _fadeSequence.Kill();
         EventBus<OnClickGame>.Raise();
     }
 
-    public void SetData(ScoreRewardDataPackage scoreRewardDataPackage)
+    public void SetData(ScoreRewardDataPackage scoreRewardDataPackage, int recordScore)
     {
         _scoreRewardDataPackage = scoreRewardDataPackage;
+        _recordScore = recordScore;
         UpdateView();
     }
 
-    public void UpdateView()
+    public virtual void UpdateView()
     {
-        float filledAmount = (float)_scoreRewardDataPackage.RemaindScore / (float)_scoreRewardDataPackage.RewardScore;
+        float filledAmount = (float)_recordScore / (float)_scoreRewardDataPackage.RewardScore;
+        _percentScore = filledAmount * 100;
+        _percentScoreText.text = _percentScore + "%";
         _filledCircle.fillAmount = filledAmount;
+        _remaidScore.text = _recordScore.ToString();
+        StartFade();
+    }
 
-        _rewardCount.text = _scoreRewardDataPackage.RewardCount.ToString();
-        _rewardScore.text = "из\n" + _scoreRewardDataPackage.RewardScore.ToString();
-        _remaidScore.text = _scoreRewardDataPackage.RemaindScore.ToString();
+    public void StartFade()
+    {
+        _fadeSequence = DOTween.Sequence();
+        _fadeSequence.SetLoops(-1);
+        _fadeSequence.Append(_scoreObj.DOFade(0, _fadeTime));
+        _fadeSequence.Append(_percentScoreText.DOFade(1, _fadeTime));
+        _fadeSequence.AppendInterval(_fadeTime * 3);
+        _fadeSequence.Append(_percentScoreText.DOFade(0, _fadeTime));
+        _fadeSequence.Append(_scoreObj.DOFade(1, _fadeTime));
+        _fadeSequence.AppendInterval(_fadeTime * 3);
+
     }
 }
 
@@ -60,6 +81,6 @@ public class MenuTutorialPanelViewService : IService
     {
         Transform parent = _markerService.GetTransformMarker<MenuMainPageMarker>().transform;
         _menuTutorialShopPanelView = _fabric.Init<MenuTutorialPanelView>(parent);
-        _menuTutorialShopPanelView.SetData(_scoreDataManager.GetScoreRewardDataPackage());
+        _menuTutorialShopPanelView.SetData(_scoreDataManager.GetScoreRewardDataPackage(), _scoreDataManager.GetRecordScore());
     }
 }

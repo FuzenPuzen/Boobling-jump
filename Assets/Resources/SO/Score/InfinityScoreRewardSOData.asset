@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 127ef5275eaf9114ba0b841a4600de86, type: 3}
   m_Name: InfinityScoreRewardSOData
   m_EditorClassIdentifier: 
-  RewardScore: 2500
+  RewardScore: 1000
   RewardCount: 1000

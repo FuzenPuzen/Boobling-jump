@@ -5,7 +5,17 @@ using UnityEngine.UI;
 
 public class MenuInfinityPanelView : MenuTutorialPanelView
 {
-   
+
+    public override void UpdateView()
+    {
+        float filledAmount = (float)_scoreRewardDataPackage.RemaindScore / (float)_scoreRewardDataPackage.RewardScore;
+        _filledCircle.fillAmount = filledAmount;
+        _percentScore = filledAmount * 100;
+        _percentScoreText.text = _percentScore + "%";
+        _rewardCount.text = _scoreRewardDataPackage.RewardCount.ToString();
+        _remaidScore.text = (_scoreRewardDataPackage.RewardScore - _scoreRewardDataPackage.RemaindScore).ToString();
+        StartFade();
+    }
 }
 
 public class MenuInfinityPanelViewService : IService
@@ -27,6 +37,6 @@ public class MenuInfinityPanelViewService : IService
 	{
         Transform parent = _markerService.GetTransformMarker<MenuMainPageMarker>().transform;
         _MenuInfinityPanelView = _fabric.Init<MenuInfinityPanelView>(parent);
-        _MenuInfinityPanelView.SetData(_scoreDataManager.GetScoreRewardDataPackage());
+        _MenuInfinityPanelView.SetData(_scoreDataManager.GetScoreRewardDataPackage(), _scoreDataManager.GetRecordScore());
     }
 }

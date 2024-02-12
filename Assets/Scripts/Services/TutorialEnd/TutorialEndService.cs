@@ -31,5 +31,6 @@ public class TutorialEndService : ITutorialEndService
         _coinDataManager.AddCoins(rewardCount);
         _sessionTypeDataManager.SaveGameType(false);
         _tutorialEndPageViewService.ActivateService();
+        _scoreDataManager.OnTutorialEnd();
     }
 }

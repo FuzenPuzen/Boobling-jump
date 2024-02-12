@@ -9,9 +9,9 @@ public class CactusStoolView : BasicStoolView
 
     public override void ActivateView()
     {
-        _growInterval = 5f / (transform.GetChild(0).transform.childCount + 1);
-        StartCoroutine(GrowCD());
         base.ActivateView();
+        _growInterval = 5f / (transform.GetChild(0).transform.childCount + 1);
+        StartCoroutine(GrowCD());      
     }
 
     public void GrowPiece(Transform piece)

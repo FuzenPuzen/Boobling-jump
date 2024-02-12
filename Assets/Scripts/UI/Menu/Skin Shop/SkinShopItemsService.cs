@@ -27,7 +27,7 @@ public class SkinShopItemsService : IService
 	public void ActivateService()
 	{
         _onBuySkin = new (UpdateData);
-        //_onChangeSkin = new (UpdateData);
+        _onChangeSkin = new (UpdateData);
         _playerSkinDatas = _playerSkinDataManager.GetPlayerSkinDatas();
 		foreach (PlayerSkinData data in _playerSkinDatas)
 		{
@@ -41,7 +41,7 @@ public class SkinShopItemsService : IService
     public void DeactivateService()
     {
         _onBuySkin.Remove(UpdateData);
-        //_onChangeSkin.Remove(UpdateData);
+        _onChangeSkin.Remove(UpdateData);
     }
 
 	public void UpdateData()
