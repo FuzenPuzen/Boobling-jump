@@ -15,6 +15,7 @@ public class TutorialFinishState : IBaseState
     private SessionStateMachine _statemachine;
 
     private TutorialEndService _tutorialEndService;
+    private ISectionBehavioursService _sectionBehavioursService;
 
     [Inject]
     public void Constructor(
@@ -23,23 +24,26 @@ public class TutorialFinishState : IBaseState
         RollBonusBlenderViewService rollBonusBlenderViewService,
         SuperJumpBonusBlenderViewService superJumpBonusBlenderViewService,
         SessionStateMachine sessionStateMachine,       
-        TutorialEndService tutorialEndService)
+        TutorialEndService tutorialEndService,
+        ISectionBehavioursService sectionBehavioursService)
     {
         _tutorialEndService = tutorialEndService;
-
         _statemachine = sessionStateMachine;
         _scoreService = scoreService;
         _giftCollectorViewService = giftCollectorViewService;
         _rollBonusBlenderViewService = rollBonusBlenderViewService;
         _superJumpBonusBlenderViewService = superJumpBonusBlenderViewService;
+        _sectionBehavioursService = sectionBehavioursService;
     }
+
     public void Enter()
     {
         _onRestartBinding = new(RestartScene);
         _onOpenMenuBinding = new(OpenMainMenu);
 
         _tutorialEndService.ActivateService();
-        
+
+        _sectionBehavioursService.DeactivateService();
         _scoreService.DeactivateScoreChange();
         _giftCollectorViewService.DeactivateService();
         _superJumpBonusBlenderViewService.DeactivateService();

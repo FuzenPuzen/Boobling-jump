@@ -32,9 +32,14 @@ public class SectionBehavioursService : ISectionBehavioursService
 
     public void SetBehaviour<T>() where T : ISectionBehaviour
     {
-        if (_currentBehaviour != null)
-            _currentBehaviour.StopBehaviour();
+        _currentBehaviour?.StopBehaviour();
         _currentBehaviour = _sectionBehaviours.OfType<T>().FirstOrDefault();
         _currentBehaviour.StartBehaviour();
     }
+
+    public void DeactivateService()
+    {
+        _currentBehaviour?.StopBehaviour();
+    }
+
 }
