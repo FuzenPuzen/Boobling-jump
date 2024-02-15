@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::RepaintSOData
   main:
     serializedVersion: 2
-    rgba: 4294912768
+    rgba: 4287162231
   backgroundColor:
     serializedVersion: 2
-    rgba: 4294914048
+    rgba: 4284074587

@@ -27,15 +27,18 @@ public class CoinCollectorViewService : IService
     private IMarkerService _markerService;
     private IPoolsViewService _poolsViewService;
     private IPoolViewService _coinPoolViewService;
+    private IAudioService _audioService;
 
     [Inject]
     public void Constructor(IViewFabric viewFabric,
                             IMarkerService markerService,
-                            IPoolsViewService poolsViewService)
+                            IPoolsViewService poolsViewService,
+                            IAudioService audioService)
     {
         _poolsViewService = poolsViewService;
         _viewFabric = viewFabric;
         _markerService = markerService;
+        _audioService = audioService;
     }
 
     public void ActivateService()

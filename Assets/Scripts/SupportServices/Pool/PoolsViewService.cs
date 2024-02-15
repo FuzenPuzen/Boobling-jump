@@ -26,19 +26,18 @@ public class PoolsViewService : IPoolsViewService
 
 	private void InitPools()
 	{
-        //_bonusPoolViewService = _serviceFabric.Create<PoolViewService>();
-
 		InitPool<DropedCoinViewService>(10);
 		InitPool<DropedRollBonusViewService>(10);
 		InitPool<DropedSuperJumpBonusViewService>(10);
 		InitPool<SuperJumpWaveViewService>(10);
+		InitPool<AudioUnitViewService>(10);
     }
 
-	private void InitPool<T>(int count = 0) 
-		where T : IPoolingViewService
+	private void InitPool<T>(int count = 0) where T : IPoolingViewService
 	{
         PoolViewService newPool = _serviceFabric.Init<PoolViewService>();
-         newPool.SpawPool(typeof(T), 10);
+		newPool.ActivateService();
+        newPool.SpawPool(typeof(T), 10);
 		_pools.Add(typeof(T), newPool);
     }
 

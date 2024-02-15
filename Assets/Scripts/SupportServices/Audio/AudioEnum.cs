@@ -6,4 +6,5 @@ public enum AudioEnum
 	jumpFall,
 	jumpPower,
 	JumpStart,
+	roll,
 }

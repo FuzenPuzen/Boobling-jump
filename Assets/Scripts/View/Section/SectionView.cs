@@ -16,7 +16,6 @@ public class SectionView : MonoBehaviour
     {
         _startPosition = startPos;
         transform.position = _startPosition;
-        Debug.Log(transform.position, gameObject);
         StartMove();
     }
 

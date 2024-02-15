@@ -87,14 +87,12 @@ public class DropedCoinViewService : IPoolingViewService
         _dropedCoinView.ActivateView(_markerService.GetTransformMarker<CoinPalleteMarker>().transform, startValues);
     }
 
-    public void ActivateServiceFromPool()
+    public void ActivateServiceFromPool(Transform poolTarget)
     {
         if(_dropedCoinView == null)
         {
-            Transform parent = _markerService.GetTransformMarker<PlayerMarker>().transform;
-            Vector3 spawnPos = parent.position;
-            //_dropedCoinView = _dropedCoinView == null? _fabric.SpawnObject<DropedCoinView>(spawnPos,parent) : _dropedCoinView;
-            _dropedCoinView = _fabric.Init<DropedCoinView>(spawnPos, parent);
+            Vector3 spawnPos = poolTarget.position;
+            _dropedCoinView = _fabric.Init<DropedCoinView>(spawnPos, poolTarget);
             _dropedCoinView.DeactivateToPool = DeactivateServiceToPool;
         }     
     }

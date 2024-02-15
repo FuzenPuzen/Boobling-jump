@@ -26,6 +26,7 @@ public class PreStartState : IBaseState
     private SuperJumpWavesService _superJumpWavesService;
     private IRepaintService _repaintService;
     private MainCameraViewService _mainCameraViewService;
+    private IAudioService _audioService;
 
 
     [Inject]
@@ -51,7 +52,8 @@ public class PreStartState : IBaseState
                     PlayerStoolDestroyerService playerBonusDestroyerService,
                     SuperJumpWavesService superJumpWavesService,
                     IRepaintService repaintService,
-                    MainCameraViewService mainCameraViewService
+                    MainCameraViewService mainCameraViewService,
+                    IAudioService audioService
                  )
     {
         _superJumpWavesService = superJumpWavesService;
@@ -76,15 +78,16 @@ public class PreStartState : IBaseState
         _blackBoardViewService = blackBoardViewService;
         _repaintService = repaintService;
         _mainCameraViewService = mainCameraViewService;
-
-
-
+        _audioService = audioService;
     }
     public void Enter()
     {
-        _markerService.ActivateService();
+        _markerService.ActivateService(); 
+        _poolsViewService.ActivateService();
+
         _repaintService.ActivateService();
         _loaderSceneService.ActivateService();
+
         _playerBehaviourDataManager.ActivateService();
         _playerSkinDataManager.ActivateService();
 
@@ -97,7 +100,8 @@ public class PreStartState : IBaseState
 
         _playerBehaviourService.ActivateService();
         _playerBehaviourService.SetBehaviour<PlayerStartBehaviour>();
-        _poolsViewService.ActivateService();
+        
+        _audioService.ActivateService();
 
         _playerBonusDestroyerService.ActivateService();
         _superJumpWavesService.ActivateService();
