@@ -31,7 +31,7 @@ public class SkinShopItemsService : IService
         _playerSkinDatas = _playerSkinDataManager.GetPlayerSkinDatas();
 		foreach (PlayerSkinData data in _playerSkinDatas)
 		{
-            SkinShopItemViewService skinShopItemViewService = _serviceFabric.Init<SkinShopItemViewService>();
+            SkinShopItemViewService skinShopItemViewService = _serviceFabric.InitMultiple<SkinShopItemViewService>();
 			skinShopItemViewService.ActivateService();
             skinShopItemViewService.SetData(data);
             _skinShopItemViewServices.Add(skinShopItemViewService);

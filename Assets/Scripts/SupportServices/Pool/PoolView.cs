@@ -55,7 +55,6 @@ public class PoolViewService : IPoolViewService
 
     public void ReturnItem(IPoolingViewService item)  
     {
-
         _freeItems.Add(item);
     }
 
@@ -63,16 +62,16 @@ public class PoolViewService : IPoolViewService
     {
         _objType = objType;
         _objCount = objCount;
-        _poolView.name = $"PoolView ({_objType.Name})";
+        _poolView.name = $"PoolView ({objType.Name})";
         for (int i = 0; i < _objCount; i++)
         {
             SpawnAddedItem();
         }
     }
 
-    private void SpawnAddedItem()
+    private void SpawnAddedItem() 
     {
-        IPoolingViewService item = (IPoolingViewService)_serviceFabric.Init(_objType);
+        IPoolingViewService item = (IPoolingViewService)_serviceFabric.InitMultiple(_objType);
         item.ActivateServiceFromPool(_poolView.transform);
         item.SetDeactivateAction(ReturnItem);
         _viewServices.Add(item);

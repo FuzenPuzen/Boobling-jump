@@ -35,7 +35,7 @@ public class PoolsViewService : IPoolsViewService
 
 	private void InitPool<T>(int count = 0) where T : IPoolingViewService
 	{
-        PoolViewService newPool = _serviceFabric.Init<PoolViewService>();
+        PoolViewService newPool = _serviceFabric.InitSingle<PoolViewService>();
 		newPool.ActivateService();
         newPool.SpawPool(typeof(T), 10);
 		_pools.Add(typeof(T), newPool);

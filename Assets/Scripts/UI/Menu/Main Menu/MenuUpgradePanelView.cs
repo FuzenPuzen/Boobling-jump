@@ -51,7 +51,7 @@ public class MenuUpgradePanelView : MonoBehaviour
             return;
         }
 
-        if (mod == 1 && level / 10 >= 1)
+        if (mod >= 1 && level / 10 >= 1)
         {
             imageList[level / 10 - 1].fillAmount = 0;            
         }

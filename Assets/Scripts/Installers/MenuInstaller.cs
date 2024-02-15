@@ -12,6 +12,7 @@ public class MenuInstaller : MonoInstaller
 
         Container.Bind<IViewFabric>().To<ViewFabric>().AsSingle();
         Container.Bind<IServiceFabric>().To<ServiceFabric>().AsSingle();
+        Container.Bind<IAudioDataManager>().To<AudioDataManager>().AsSingle();
 
         Container.Bind(
            typeof(IPlayerBehaviourStorageData),
@@ -33,6 +34,9 @@ public class MenuInstaller : MonoInstaller
 
         Container.Bind<AlertPanelViewService>().AsSingle();
 
+        Container.Bind<SettingCanvasViewService>().AsSingle();
+        Container.Bind<SettingsPanelViewService>().AsSingle();
+
         Container.Bind<NavigationCanvasViewService>().AsSingle();
         Container.Bind<MenuMainPageCanvasViewService>().AsSingle();
 
@@ -40,8 +44,6 @@ public class MenuInstaller : MonoInstaller
         Container.Bind<SkinShopItemsService>().AsSingle();
 
         Container.Bind<MenuUpgradePageCanvasViewService>().AsSingle();
-
-
 
         Container.Bind<ICoinDataManager>().To<CoinDataManager>().AsSingle();
         Container.Bind<IScoreDataManager>().To<ScoreDataManager>().AsSingle();

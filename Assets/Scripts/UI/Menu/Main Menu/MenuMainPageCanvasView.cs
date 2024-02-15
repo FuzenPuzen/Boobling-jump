@@ -54,16 +54,16 @@ public class MenuMainPageCanvasViewService : IService
     public void ActivateService()
     {
         _menuMainPageView = _fabric.Init<MenuMainPageCanvasView>();
-        _menuSkinShopPanelViewService = _serviceFabric.Init<MenuSkinShopPanelViewService>();       
-        _menuUpgradePanelViewService = _serviceFabric.Init<MenuUpgradePanelViewService>();
+        _menuSkinShopPanelViewService = _serviceFabric.InitSingle<MenuSkinShopPanelViewService>();       
+        _menuUpgradePanelViewService = _serviceFabric.InitSingle<MenuUpgradePanelViewService>();
         if (_sessionTypeDataManager.GetTutorialGameType())
         {
-            _menuTutorialPanelViewService = _serviceFabric.Init<MenuTutorialPanelViewService>();
+            _menuTutorialPanelViewService = _serviceFabric.InitSingle<MenuTutorialPanelViewService>();
             _menuTutorialPanelViewService.ActivateService();
         }
         else
         {
-            _menuInfinityPanelViewService = _serviceFabric.Init<MenuInfinityPanelViewService>();
+            _menuInfinityPanelViewService = _serviceFabric.InitSingle<MenuInfinityPanelViewService>();
             _menuInfinityPanelViewService.ActivateService();
         }
 

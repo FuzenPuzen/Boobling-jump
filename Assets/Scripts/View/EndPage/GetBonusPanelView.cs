@@ -77,7 +77,7 @@ public class GetBonusPanelViewService : IService
 		_getBonusPanelView.ActivateView();
         _getBonusPanelView.onSelectBonusTypeAction = OnSelectBonusType;
         _getBonusPanelView.onGetRewardAction = OnGetReward;
-        _rewardBonusTypeViewService = _serviceFabric.Init<RewardBonusTypeViewService>();
+        _rewardBonusTypeViewService = _serviceFabric.InitSingle<RewardBonusTypeViewService>();
         HideView();
 
     }

@@ -34,8 +34,8 @@ public class MenuUpgradePageCanvasViewService : IService
 
     public void ActivateService()
     {
-        _superJumpUpgradePanelViewService = _serviceFabric.Init<SuperJumpUpgradePanelViewService>();
-        _rollUpgradePanelViewService = _serviceFabric.Init<RollUpgradePanelViewService>();
+        _superJumpUpgradePanelViewService = _serviceFabric.InitSingle<SuperJumpUpgradePanelViewService>();
+        _rollUpgradePanelViewService = _serviceFabric.InitSingle<RollUpgradePanelViewService>();
 
         _menuUpgradePageView = _fabric.Init<MenuUpgradePageCanvasView>();
         _superJumpUpgradePanelViewService.ActivateService();

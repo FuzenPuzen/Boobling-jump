@@ -32,7 +32,7 @@ public class GiftService: IService
     {
         //Заменить создание на взятие из пула
         GiftBoxView giftBoxView = _viewFabric.Init<GiftBoxView>(_markerService.GetTransformMarker<GiftBoxSpawnPosMarker>().transform.position);
-        _giftBoxViewService = _serviceFabric.Init<GiftBoxViewService>();
+        _giftBoxViewService = _serviceFabric.InitSingle<GiftBoxViewService>();
         _giftBoxViewService.ActivateService(giftBoxView);
     }
 }
