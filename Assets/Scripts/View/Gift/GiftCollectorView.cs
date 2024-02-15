@@ -22,6 +22,7 @@ public class GiftCollectorViewService : IService
 {
 	private GiftCollectorView _view;
 	private IViewFabric _viewFabric;
+	private IServiceFabric _serviceFabric;
 	private IMarkerService _markerService;
     private IPoolsViewService _poolsViewService;
     private IPoolViewService _coinPoolViewService;
@@ -35,8 +36,10 @@ public class GiftCollectorViewService : IService
     private EventBinding<OnSupperJumpActivate> _onSupperJumpActivate;
     private EventBinding<OnSupperJumpDeactivate> _onSupperJumpDeactivate;
 
+    private MainCameraViewService _mainCameraViewService;
+
     [Inject]
-	public void Constructor(IViewFabric viewFabric, IMarkerService markerService, IPoolsViewService poolsViewService, IAudioService audioService)
+	public void Constructor(IViewFabric viewFabric, IServiceFabric _serviceFabric, IMarkerService markerService, IPoolsViewService poolsViewService, IAudioService audioService)
 	{
 		_viewFabric = viewFabric;
 		_markerService = markerService;
@@ -46,6 +49,7 @@ public class GiftCollectorViewService : IService
 
 	public void ActivateService()
 	{
+        //_mainCameraViewService = InitSingle();
         _coinPoolViewService = _poolsViewService.GetPool<DropedCoinViewService>();
         _roolBonusPoolViewService = _poolsViewService.GetPool<DropedRollBonusViewService>();
         _superJumpBonusPoolViewService = _poolsViewService.GetPool<DropedSuperJumpBonusViewService>();
@@ -87,6 +91,7 @@ public class GiftCollectorViewService : IService
 
 	private void DropeCoinBonus()
 	{
+        //cameraShaker
         _audioService.PlayAudio(AudioEnum.Cash, false);
         _coinPoolViewService.GetItem().ActivateService();
 	}
