@@ -27,7 +27,7 @@ public class GiftCollectorViewService : IService
     private IPoolViewService _coinPoolViewService;
     private IPoolViewService _roolBonusPoolViewService;
     private IPoolViewService _superJumpBonusPoolViewService;
-
+    private IAudioService _audioService;
     private DropMode _currentDropMode = DropMode.Full;
 
     private EventBinding<OnRollActivate> _onRollActivate;
@@ -36,11 +36,12 @@ public class GiftCollectorViewService : IService
     private EventBinding<OnSupperJumpDeactivate> _onSupperJumpDeactivate;
 
     [Inject]
-	public void Constructor(IViewFabric viewFabric, IMarkerService markerService, IPoolsViewService poolsViewService)
+	public void Constructor(IViewFabric viewFabric, IMarkerService markerService, IPoolsViewService poolsViewService, IAudioService audioService)
 	{
 		_viewFabric = viewFabric;
 		_markerService = markerService;
         _poolsViewService = poolsViewService;
+        _audioService = audioService;
     }
 
 	public void ActivateService()
@@ -86,6 +87,7 @@ public class GiftCollectorViewService : IService
 
 	private void DropeCoinBonus()
 	{
+        _audioService.PlayAudio(AudioEnum.Cash, false);
         _coinPoolViewService.GetItem().ActivateService();
 	}
 

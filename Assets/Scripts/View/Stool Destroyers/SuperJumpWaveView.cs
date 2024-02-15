@@ -91,11 +91,11 @@ public class SuperJumpWaveViewService : IPoolingViewService
         _superJumpWaveView.ShowView();
     }
 
-    public void ActivateServiceFromPool()
+    public void ActivateServiceFromPool(Transform poolTarget)
     {
         _coinPoolViewService = _poolsViewService.GetPool<DropedCoinViewService>();
-        Transform parent = _markerService.GetTransformMarker<SuperJumpSpawnPosMarker>().transform;
-        _superJumpWaveView = _fabric.Init<SuperJumpWaveView>(parent);
+
+        _superJumpWaveView = _fabric.Init<SuperJumpWaveView>(poolTarget);
         _superJumpWaveView.StoolCollideAction = OnStoolCollide;
         _superJumpWaveView.DeactivateToPool = DeactivateServiceToPool;
         HideView();

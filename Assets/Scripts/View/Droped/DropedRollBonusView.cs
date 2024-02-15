@@ -57,10 +57,9 @@ public class DropedRollBonusViewService : IPoolingViewService
         _dropedRollBonusView.ActivateView(target);
     }
 
-    public void ActivateServiceFromPool()
+    public void ActivateServiceFromPool(Transform poolTarget)
     {
-        Transform parent = _markerService.GetTransformMarker<PlayerMarker>().transform;
-        _dropedRollBonusView = _fabric.Init<DropedRollBonusView>(parent);
+        _dropedRollBonusView = _fabric.Init<DropedRollBonusView>(poolTarget);
         _dropedRollBonusView._deactivateToPool = DeactivateServiceToPool;
     }
     public void DeactivateServiceToPool()
