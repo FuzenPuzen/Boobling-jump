@@ -43,6 +43,7 @@ public class AudioService : IAudioService
 
     public void StopAudio(AudioUnitViewService audio)
     {
-
+        _activeAudioUnit.Remove(audio);
+		audio.DeactivateServiceToPool();
     }
 }

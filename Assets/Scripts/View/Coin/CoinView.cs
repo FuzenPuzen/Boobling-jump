@@ -23,7 +23,7 @@ public class CoinView : MonoBehaviour, IView
             OnCollect();
 
         }
-        if (other.CompareTag("SectionActivator"))
+        if (other.GetComponent<SectionActivator>())
         {
             ActivateView();
         }
@@ -31,7 +31,7 @@ public class CoinView : MonoBehaviour, IView
 
     private void OnTriggerExit(Collider other)
     {
-        if (other.CompareTag("SectionActivator"))
+        if (other.GetComponent<SectionActivator>())
         {
             Fall();
         }
