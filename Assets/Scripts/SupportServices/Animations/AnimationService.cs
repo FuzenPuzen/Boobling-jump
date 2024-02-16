@@ -10,7 +10,7 @@ public interface IAnimationService : IService
 public class AnimationService : IAnimationService
 {
 	private MainCameraViewService _mainCameraViewService;
-	private EventBinding<OnPlayergriped> _onPlayergriped;
+	private EventBinding<OnPlayer—rashed> _onPlayer—rashed;
 
     [Inject]
 	public void Constructor(MainCameraViewService mainCameraViewService)
@@ -20,12 +20,12 @@ public class AnimationService : IAnimationService
 	
 	public void ActivateService()
 	{
-		_onPlayergriped = new(CameraShake);
+		_onPlayer—rashed = new(CameraShake);
     }
 
 	public void DeactivateService()
 	{
-		_onPlayergriped.Remove(CameraShake);
+		_onPlayer—rashed.Remove(CameraShake);
     }
 
 	public void CameraShake()

@@ -175,7 +175,7 @@ public class PlayerJumpBehaviour : IPlayerBehaviour
 
     private void DieAction()
     {
-        EventBus<OnPlayergriped>.Raise();
+        EventBus<OnPlayerÑrashed>.Raise();
         _transform.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeAll;
     }
 

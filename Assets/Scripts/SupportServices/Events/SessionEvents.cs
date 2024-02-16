@@ -9,7 +9,7 @@ public struct OnSupperJumpDeactivate : IEvent { }
 
 public struct OnStartBehaviourEnd : IEvent { }
 public struct OnPlayerDie : IEvent { }
-public struct OnPlayergriped : IEvent { }
+public struct OnPlayerСrashed : IEvent { }
 
 public struct OnRestart: IEvent { }
 public struct OnOpenMenu : IEvent { }
