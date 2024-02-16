@@ -1,5 +1,6 @@
 using EventBus;
 
+public struct OnSettingOpen : IEvent { }
 public struct OnClickGame : IEvent{ }
 public struct OnClickSkinShop : IEvent{ }
 public struct OnClickUpgrade : IEvent{ }

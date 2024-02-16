@@ -5,8 +5,9 @@ using UnityEngine;
 using Zenject;
 public interface IServiceFabric
 {
-    T Init<T>();
-    public object Init(Type Type);
+    T InitSingle<T>() where T : class;
+    public T InitMultiple<T>() where T : class;
+    public object InitMultiple(Type Type);
 }
 
 public class ServiceFabric: IServiceFabric
@@ -19,19 +20,23 @@ public class ServiceFabric: IServiceFabric
         _container = container;
     }
 
-    public T Init<T>()
+    public T InitSingle<T>() where T : class
     {
-        // Используем контейнер для создания экземпляра ConcreteFabricable
-        T fabricableObject = _container.Instantiate<T>();
+        T instance = _container.TryResolve<T>();
+        // Если экземпляр не найден, то биндим и создаем новый
+        if (instance == null)
+        {
+            _container.Bind<T>().AsSingle(); // Можно использовать другие типы биндинга в зависимости от вашего случая
+            instance = _container.Resolve<T>();
+        }
 
-        // Возвращаем созданный объект
-        return fabricableObject;
+        return instance;
     }
 
-    public object Init(Type Type)
-    {
-        return _container.Instantiate(Type);
-    }
+    public T InitMultiple<T>() where T : class => _container.Instantiate<T>();
+
+    public object InitMultiple(Type type) => _container.Instantiate(type);
+
 
 }
 

@@ -1,22 +1,21 @@
 using Zenject;
 using UnityEngine;
-using UnityEngine.UI;
-using System;
 using EventBus;
+using UnityEngine.UI;
 
-public class BackButtonView : MonoBehaviour
+public class SettingButtonView : MonoBehaviour
 {
-	private Button _menuButton;
+    private Button _menuButton;
 
     private void Start()
     {
         _menuButton = GetComponent<Button>();
-        _menuButton.onClick.AddListener(GetBack);
+        _menuButton.onClick.AddListener(SettingsOpen);
     }
 
-    public void GetBack()
-	{
-        EventBus<OnClickMenu>.Raise();
+    public void SettingsOpen()
+    {
+        EventBus<OnSettingOpen>.Raise();
     }
 
     internal void HideView()
@@ -30,10 +29,10 @@ public class BackButtonView : MonoBehaviour
     }
 }
 
-public class BackButtonViewService : IService
+public class SettingButtonViewService : IService
 {
 	private IViewFabric _fabric;
-	private BackButtonView _BackButtonView;
+	private SettingButtonView _SettingButtonView;
     private IMarkerService _markerService;
 	
 	[Inject]
@@ -45,17 +44,17 @@ public class BackButtonViewService : IService
 
 	public void ActivateService()
 	{
-		Transform parent = _markerService.GetTransformMarker<NavigationCanvasMarker>().transform;
-        _BackButtonView = _fabric.Init<BackButtonView>(parent);
+        Transform parent = _markerService.GetTransformMarker<NavigationCanvasMarker>().transform;
+        _SettingButtonView = _fabric.Init<SettingButtonView>(parent);
 	}
 
     public void HideView()
     {
-        _BackButtonView.HideView();
+        _SettingButtonView.HideView();
     }
 
     public void ShowView()
     {
-        _BackButtonView.ShowView();
+        _SettingButtonView.ShowView();
     }
 }

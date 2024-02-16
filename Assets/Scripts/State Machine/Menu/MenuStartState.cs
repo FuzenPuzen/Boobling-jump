@@ -7,6 +7,7 @@ public class MenuStartState : IBaseState
     private MenuMainPageCanvasViewService _menuMainPageViewService;
     private MenuSkinShopPageCanvasViewService _menuSkinShopPageCanvasViewService;
     private MenuUpgradePageCanvasViewService _menuUpgradePageCanvasViewService;
+    private SettingCanvasViewService _settingCanvasViewService;
 
     private NavigationCanvasViewService _navigationCanvasViewService;
     private AlertPanelViewService _alertPanelViewService;
@@ -18,7 +19,7 @@ public class MenuStartState : IBaseState
             
     [Inject]
     public void Constructor(MenuStateMachine stateMachine,
-
+                            SettingCanvasViewService settingCanvasViewService,
                             MenuMainPageCanvasViewService menuMainPageViewService,
                             MenuSkinShopPageCanvasViewService menuSkinShopPageCanvasViewService,
                             MenuUpgradePageCanvasViewService menuUpgradePageCanvasViewService,
@@ -28,6 +29,7 @@ public class MenuStartState : IBaseState
                             NavigationCanvasViewService navigationCanvasViewService,
                             AlertPanelViewService alertPanelViewService)
     {
+        _settingCanvasViewService = settingCanvasViewService;
         _alertPanelViewService = alertPanelViewService;
         _navigationCanvasViewService = navigationCanvasViewService;
         _playerSkinDataManager = playerSkinDataManager;
@@ -45,6 +47,7 @@ public class MenuStartState : IBaseState
         _playerBehaviourDataManager.ActivateService();
         _playerSkinDataManager.ActivateService();
 
+        _settingCanvasViewService.ActivateService();
         _alertPanelViewService.ActivateService();
         _navigationCanvasViewService.ActivateService();
         _menuMainPageViewService.ActivateService();

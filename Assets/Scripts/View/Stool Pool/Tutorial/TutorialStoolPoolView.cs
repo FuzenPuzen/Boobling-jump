@@ -11,7 +11,6 @@ public class TutorialStoolPoolView : StoolPoolView
         if (_currectSection >= transform.childCount) _currectSection = 0;
         _section = transform.GetChild(_currectSection).GetComponent<SectionView>();
         _section.gameObject.SetActive(true);
-        MonoBehaviour.print(_currectSection);
         //EventBus<OnTutorialMaxSection>.Raise(new() { MaxSection = _currectSection });
         _currectSection++;
         return _section;

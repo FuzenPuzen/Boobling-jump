@@ -47,6 +47,8 @@ public class PoolViewService : IPoolViewService
 
     public IPoolingViewService GetItem()
     {
+        MonoBehaviour.print(_freeItems.Count);
+        MonoBehaviour.print(_freeItems[0].GetType());
         if (_freeItems.Count == 1) SpawnAddedItem();
         IPoolingViewService Item = _freeItems.FirstOrDefault();
         _freeItems.Remove(Item);
@@ -55,7 +57,6 @@ public class PoolViewService : IPoolViewService
 
     public void ReturnItem(IPoolingViewService item)  
     {
-
         _freeItems.Add(item);
     }
 
@@ -70,9 +71,9 @@ public class PoolViewService : IPoolViewService
         }
     }
 
-    private void SpawnAddedItem()
+    private void SpawnAddedItem() 
     {
-        IPoolingViewService item = (IPoolingViewService)_serviceFabric.Init(_objType);
+        IPoolingViewService item = (IPoolingViewService)_serviceFabric.InitMultiple(_objType);
         item.ActivateServiceFromPool(_poolView.transform);
         item.SetDeactivateAction(ReturnItem);
         _viewServices.Add(item);

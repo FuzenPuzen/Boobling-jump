@@ -25,7 +25,7 @@ public class TutorialEndPageViewService : IService
 	public void ActivateService()
 	{       
         _TutorialEndPageView = _fabric.Init<TutorialEndPageView>();
-        _TutorialEndPanelViewService = _serviceFabric.Init<TutorialEndPanelViewService>();
+        _TutorialEndPanelViewService = _serviceFabric.InitSingle<TutorialEndPanelViewService>();
         _TutorialEndPanelViewService.ActivateService();
 
     }

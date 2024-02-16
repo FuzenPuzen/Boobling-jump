@@ -9,21 +9,24 @@ public class MenuLastState : IBaseState
     private IPlayerSkinDataManager _playerSkinDataManager;
     private SkinShopItemsService _skinShopItemsService;
     private IMarkerService _markerService;
+    private SettingsPanelViewService _settingsPanelViewService;
 
 
     [Inject]
     public void Constructor(IPlayerSkinDataManager playerSkinDataManager, SkinShopItemsService skinShopItemsService,
-                            IMarkerService markerService)
+                            IMarkerService markerService, SettingsPanelViewService settingsPanelViewService)
     {
         _playerSkinDataManager = playerSkinDataManager;
         _skinShopItemsService = skinShopItemsService;
         _markerService = markerService;
+        _settingsPanelViewService = settingsPanelViewService;
     }
 
     public void Enter()
     {
+        _settingsPanelViewService.DeactivateService();
         _playerSkinDataManager.DeactivateService();
-        _skinShopItemsService.DeactivateService();
+        _skinShopItemsService.DeactivateService();        
         _markerService.DeActivateService();
         SceneManager.LoadScene(1);
     }

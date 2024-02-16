@@ -32,10 +32,10 @@ public class EndPageViewService : IService
         _EndPageView = _fabric.Init<EndPageView>();
         bool isTutorial = _sessionTypeDataManager.GetTutorialGameType();
         if (isTutorial)
-            _serviceFabric.Init<TutorialCirclePanelViewService>().ActivateService();
+            _serviceFabric.InitSingle<TutorialCirclePanelViewService>().ActivateService();
         else
-            _serviceFabric.Init<FilledCirclePanelViewService>().ActivateService();
-        _serviceFabric.Init<ButtonsPanelViewService>().ActivateService();
+            _serviceFabric.InitSingle<FilledCirclePanelViewService>().ActivateService();
+        _serviceFabric.InitSingle<ButtonsPanelViewService>().ActivateService();
     }
 
 }

@@ -12,7 +12,6 @@ public class MenuMainPageState : IBaseState
     private MenuStateMachine _menuStateMachine;
     private MenuMainPageCanvasViewService _menuMainPageViewService;
     private NavigationCanvasViewService _navigationCanvasViewService;
-    private NavigationPanelViewService _navigationPanelViewService;
 
 
     [Inject]
@@ -32,6 +31,7 @@ public class MenuMainPageState : IBaseState
         _onClickSkinShop = new(OnSkinShopClickEvent);
         _menuMainPageViewService.ShowView();
         _navigationCanvasViewService.HideBackButton();
+        _navigationCanvasViewService.ShowSettingButton();
         _navigationCanvasViewService.SetPanelName(PanelName.Menu);
     }
 
@@ -42,6 +42,7 @@ public class MenuMainPageState : IBaseState
         _onClickSkinShop.Remove(OnSkinShopClickEvent);
         _menuMainPageViewService.HideView();
         _navigationCanvasViewService.ShowBackButton();
+        _navigationCanvasViewService.HideSettingButton();
     }
 
     public void Update()
