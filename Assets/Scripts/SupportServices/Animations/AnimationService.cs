@@ -11,6 +11,7 @@ public class AnimationService : IAnimationService
 {
 	private MainCameraViewService _mainCameraViewService;
 	private EventBinding<OnPlayer—rashed> _onPlayer—rashed;
+	private EventBinding<OnSupperJumpFall> _onSupperJumpFall;
 
     [Inject]
 	public void Constructor(MainCameraViewService mainCameraViewService)
@@ -21,11 +22,13 @@ public class AnimationService : IAnimationService
 	public void ActivateService()
 	{
 		_onPlayer—rashed = new(CameraShake);
+        _onSupperJumpFall = new(CameraShake);
     }
 
 	public void DeactivateService()
 	{
 		_onPlayer—rashed.Remove(CameraShake);
+        _onSupperJumpFall.Remove(CameraShake);
     }
 
 	public void CameraShake()
