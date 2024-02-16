@@ -11,6 +11,7 @@ public class SessionLastState : IBaseState
     private IPlayerSkinDataManager _playerSkinDataManager;
     private SuperJumpWavesService _superJumpWavesService;
     private IMarkerService _markerService;
+    private IAnimationService _animationService;
 
 
     [Inject]
@@ -18,12 +19,14 @@ public class SessionLastState : IBaseState
                     BlackBoardViewService blackBoardViewService,
                     SuperJumpWavesService superJumpWavesService,
                     IMarkerService markerService,
-                    IPlayerSkinDataManager playerSkinDataManager)
+                    IPlayerSkinDataManager playerSkinDataManager,
+                    IAnimationService animationService)
     {
         _playerSkinDataManager = playerSkinDataManager;
         _markerService = markerService;
         _superJumpWavesService = superJumpWavesService;
         _blackBoardViewService = blackBoardViewService;
+        _animationService = animationService;
     }
 
     public void Enter()
@@ -31,6 +34,7 @@ public class SessionLastState : IBaseState
         DOTween.KillAll();
         Time.timeScale = 1;
 
+        _animationService.DeactivateService();
         _playerSkinDataManager.DeactivateService();
         _markerService.DeActivateService();
         _blackBoardViewService.DeactivateService();

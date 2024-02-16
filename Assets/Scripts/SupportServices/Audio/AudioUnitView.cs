@@ -18,7 +18,7 @@ public class AudioUnitView : MonoBehaviour
     public void ActivateView(StartValues startValues)
     {
         gameObject.SetActive(true);
-        print($"Play Sound: { startValues.Clip.name} lenght: {startValues.Clip.length}");
+        //print($"Play Sound: { startValues.Clip.name} lenght: {startValues.Clip.length}");
         _audioSource.loop = startValues.isLoopClip;
         _audioSource.clip = startValues.Clip;
        

@@ -5,6 +5,8 @@ using UnityEngine.UI;
 using System.Collections.Generic;
 using System;
 using System.Collections;
+using DG.Tweening;
+using EventBus;
 
 public class ButtonsPanelView : MonoBehaviour
 {
@@ -13,24 +15,59 @@ public class ButtonsPanelView : MonoBehaviour
     [SerializeField] private Button _takeBonusButton;
     [SerializeField] private Button _takeMoneyButton;
     [SerializeField] private TMP_Text _collectedCoinsText;
-
+    [SerializeField] private HorizontalLayoutGroup _layoutGroup;
     [SerializeField] private TMP_Text _rewardBonusText;
+
+    [SerializeField] private GameObject _adButtons;
+    [SerializeField] private GameObject _navigationButtons;
+
+
     private float _changeTypeDelay = 0.25f;
     private IEnumerator _changeTypeDelayCor;
     private RewardBonusType _currentRewardBonusType;
+    public Action OnSelectBonusType;
+    public Action OnTakeMoney;
 
     private int _collectedCoinsCount;
 
     public void SetData(int collectedCoinsCount)
     {
         _collectedCoinsCount = collectedCoinsCount;
+        _takeBonusButton.onClick.AddListener(SelectBonusType);
+        _takeMoneyButton.onClick.AddListener(TakeMoney);
+
+        _menuButton.onClick.AddListener(() => EventBus<OnOpenMenu>.Raise());
+        _restartButton.onClick.AddListener(() => EventBus<OnRestart>.Raise());
+
+        _takeMoneyButton.onClick.AddListener(TakeMoney);
         FillPanel();
         ActivateView();
+    }
+
+    private void SelectBonusType()
+    {
+        OnSelectBonusType?.Invoke();
+        ShowNavigationButtons();
+        _collectedCoinsText.text = (_collectedCoinsCount * (int)RewardBonusType.X5).ToString();
+    }
+
+    private void TakeMoney()
+    {
+        OnTakeMoney?.Invoke();
+        ShowNavigationButtons();
+    }
+
+    private void ShowNavigationButtons()
+    {
+        _adButtons.SetActive(false);
+        _navigationButtons.SetActive(true);
     }
 
     public void FillPanel()
     {
         _collectedCoinsText.text = _collectedCoinsCount.ToString();
+        DOTween.To(() => _layoutGroup.padding.left, x => _layoutGroup.padding.left = x, 40, 3);
+        DOTween.To(() => _layoutGroup.spacing, x => _layoutGroup.spacing = x, 40, 3);
     }
 
     public void ActivateView()
@@ -38,10 +75,6 @@ public class ButtonsPanelView : MonoBehaviour
         ChangeType();
     }
 
-    public void ShowView()
-    {
-
-    }
 
     public RewardBonusType StopChangeType()
     {
@@ -59,7 +92,7 @@ public class ButtonsPanelView : MonoBehaviour
 
     private IEnumerator ChangeTypeDelayCor()
     {
-        yield return new WaitForSeconds(_changeTypeDelay);
+        yield return new WaitForSecondsRealtime(_changeTypeDelay);
         ChangeType();
     }
 
@@ -85,6 +118,8 @@ public class ButtonsPanelViewService : IService
 	{
         Transform parent = _markerService.GetTransformMarker<EndPageMarker>().transform;
         _ButtonsPanelView = _fabric.Init<ButtonsPanelView>(parent);
+        _ButtonsPanelView.OnSelectBonusType = OnSelectBonusType;
+        _ButtonsPanelView.OnTakeMoney = OnTakeMoney;
         _ButtonsPanelView.SetData(_coinDataManager.GetSesionCollectedCoins());
     }
 
@@ -93,6 +128,11 @@ public class ButtonsPanelViewService : IService
         _rewardBonusType = _ButtonsPanelView.StopChangeType();
         //Добавить рекламу
         _coinDataManager.AddCoins(_coinDataManager.GetSesionCollectedCoins() * ((int)_rewardBonusType - 1));
+    }
+
+    private void OnTakeMoney()
+    {
+        _coinDataManager.AddCoins(_coinDataManager.GetSesionCollectedCoins());
     }
 
 }

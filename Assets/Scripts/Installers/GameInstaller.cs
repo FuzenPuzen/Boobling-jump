@@ -37,6 +37,7 @@ public class GameInstaller : MonoInstaller
 
         Container.Bind<MainCameraViewService>().AsSingle();
         Container.Bind<IPoolsViewService>().To<PoolsViewService>().AsSingle();
+        Container.Bind<IAnimationService>().To<AnimationService>().AsSingle();
         Container.Bind<IPlayerBehaviourDataManager>().To<PlayerBehaviourDataManager>().AsSingle();
         Container.Bind<IPlayerSkinDataManager>().To<PlayerSkinDataManager>().AsSingle();
 

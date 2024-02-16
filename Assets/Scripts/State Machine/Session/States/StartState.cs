@@ -30,6 +30,7 @@ public class StartState : IBaseState
         _giftScoreService = giftScorePanelService;
         _giftService = giftService;
         _repaintService = repaintService;
+
     }
 
     public void Enter()

@@ -16,6 +16,7 @@ public class EndGameState : IBaseState
     private EventBinding<OnOpenMenu> _onOpenMenuBinding;
     private SessionStateMachine _statemachine;
 
+
     [Inject]
     public void Constructor(
         CurrentScorePanelService scoreService,
@@ -36,6 +37,7 @@ public class EndGameState : IBaseState
         _rollBonusBlenderViewService = rollBonusBlenderViewService;
         _superJumpBonusBlenderViewService = superJumpBonusBlenderViewService;
         _endPageViewService = endPageViewService;
+
     }
 
     public void Enter()

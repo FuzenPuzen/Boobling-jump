@@ -34,7 +34,6 @@ public class AudioService : IAudioService
 	public AudioUnitViewService PlayAudio(AudioEnum name, bool isLoop)
 	{
 		AudioUnitViewService audio = (AudioUnitViewService)_audioUnitPoolViewService.GetItem();
-		MonoBehaviour.print(audio);
 		audio.ActivateService(new StartValues() {Clip = _audioDataManager.GetAudioSOData(name), isLoopClip = isLoop });
 		_activeAudioUnit.Add(audio);
 		return audio;

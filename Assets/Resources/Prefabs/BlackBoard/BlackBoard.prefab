@@ -56,8 +56,9 @@ GameObject:
   - component: {fileID: 1365592074553257766}
   - component: {fileID: 2363979864750979448}
   - component: {fileID: 3639237846274128382}
+  - component: {fileID: 7577035482682578332}
   m_Layer: 0
-  m_Name: Cube.012
+  m_Name: wing R
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -140,6 +141,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 034bc47afcbf5e141a58d5c20b7808e4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &7577035482682578332
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1117451651341587343}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6e4e47bec76b00b4eb13b7cc7acdf6f4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _rotateVector: {x: 0, y: 1, z: 0}
+  _rotateSpeed: 5
 --- !u!1 &1703990713246050401
 GameObject:
   m_ObjectHideFlags: 0
@@ -316,7 +331,7 @@ GameObject:
   - component: {fileID: 5623142672625985651}
   - component: {fileID: 8327135353940728077}
   m_Layer: 0
-  m_Name: Cylinder.002
+  m_Name: Stage L
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -411,8 +426,9 @@ GameObject:
   - component: {fileID: 2776972539116515787}
   - component: {fileID: 2347105838052917275}
   - component: {fileID: 6156130321051754747}
+  - component: {fileID: 9066532675463314326}
   m_Layer: 0
-  m_Name: Cube.013
+  m_Name: wing L
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -495,6 +511,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 034bc47afcbf5e141a58d5c20b7808e4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &9066532675463314326
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4481845231889845412}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6e4e47bec76b00b4eb13b7cc7acdf6f4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _rotateVector: {x: 0, y: 1, z: 0}
+  _rotateSpeed: 5
 --- !u!1 &5003676543700317391
 GameObject:
   m_ObjectHideFlags: 0
@@ -10166,7 +10196,7 @@ GameObject:
   - component: {fileID: 6026741005759730298}
   - component: {fileID: 8582452226725545861}
   m_Layer: 0
-  m_Name: Cylinder.001
+  m_Name: Stage R
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

@@ -29,7 +29,6 @@ public class ServiceFabric: IServiceFabric
             _container.Bind<T>().AsSingle(); // Можно использовать другие типы биндинга в зависимости от вашего случая
             instance = _container.Resolve<T>();
         }
-
         return instance;
     }
 

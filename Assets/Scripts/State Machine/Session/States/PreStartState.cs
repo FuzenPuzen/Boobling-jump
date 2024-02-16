@@ -27,7 +27,7 @@ public class PreStartState : IBaseState
     private IRepaintService _repaintService;
     private MainCameraViewService _mainCameraViewService;
     private IAudioService _audioService;
-
+    private IAnimationService _animationService;
 
     [Inject]
     public void Constructor(
@@ -53,8 +53,8 @@ public class PreStartState : IBaseState
                     SuperJumpWavesService superJumpWavesService,
                     IRepaintService repaintService,
                     MainCameraViewService mainCameraViewService,
-                    IAudioService audioService
-                 )
+                    IAudioService audioService,
+                    IAnimationService animationService)
     {
         _superJumpWavesService = superJumpWavesService;
         _playerBonusDestroyerService = playerBonusDestroyerService;
@@ -79,7 +79,9 @@ public class PreStartState : IBaseState
         _repaintService = repaintService;
         _mainCameraViewService = mainCameraViewService;
         _audioService = audioService;
+        _animationService = animationService;
     }
+
     public void Enter()
     {
         _markerService.ActivateService(); 
@@ -102,6 +104,7 @@ public class PreStartState : IBaseState
         _playerBehaviourService.SetBehaviour<PlayerStartBehaviour>();
         
         _audioService.ActivateService();
+        _animationService.ActivateService();
 
         _playerBonusDestroyerService.ActivateService();
         _superJumpWavesService.ActivateService();
@@ -112,8 +115,6 @@ public class PreStartState : IBaseState
         _coinsPanelService.ActivateService();
         _coinPalleteViewService.ActivateService();
         _onStartBehaviourEnd = new (OnStartBehaviourEnd);
-
-
     }
 
     public void Exit()
