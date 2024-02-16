@@ -54,9 +54,7 @@ public class SectionView : MonoBehaviour
     private void OnTriggerExit(Collider other)
     {
         if (other.GetComponent<SectionActivator>())
-        {
-            Debug.Log("OnTriggerExit", gameObject);
-            
+        {          
             StopMove();
             _sectionActivatorExitAction?.Invoke();
         }
@@ -66,7 +64,6 @@ public class SectionView : MonoBehaviour
     {
         if (other.GetComponent<SectionActivator>())
         {            
-            Debug.Log("OnTriggerEnter", other.gameObject);
             _sectionActivatorEnterAction?.Invoke();
         }
     }

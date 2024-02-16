@@ -47,6 +47,8 @@ public class PoolViewService : IPoolViewService
 
     public IPoolingViewService GetItem()
     {
+        MonoBehaviour.print(_freeItems.Count);
+        MonoBehaviour.print(_freeItems[0].GetType());
         if (_freeItems.Count == 1) SpawnAddedItem();
         IPoolingViewService Item = _freeItems.FirstOrDefault();
         _freeItems.Remove(Item);
@@ -62,7 +64,7 @@ public class PoolViewService : IPoolViewService
     {
         _objType = objType;
         _objCount = objCount;
-        _poolView.name = $"PoolView ({objType.Name})";
+        _poolView.name = $"PoolView ({_objType.Name})";
         for (int i = 0; i < _objCount; i++)
         {
             SpawnAddedItem();
