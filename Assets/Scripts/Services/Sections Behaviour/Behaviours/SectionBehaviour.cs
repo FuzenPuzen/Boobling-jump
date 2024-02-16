@@ -30,7 +30,7 @@ public class SectionBehaviour : ISectionBehaviour
 
     private protected virtual void GetAndStartNewSection()
     {
-        _currentSectionViewService = _serviceFabric.InitSingle<SectionViewService>();
+        _currentSectionViewService = _serviceFabric.InitMultiple<SectionViewService>();
         _sectionViewServices.Add(_currentSectionViewService);
         _currentSectionViewService.SetSectionView(_poolViewService.GetSection());
         SetSectionActivatorEnterAction(_currentSectionViewService);

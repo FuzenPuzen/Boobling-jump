@@ -56,7 +56,7 @@ public class SectionView : MonoBehaviour
         if (other.GetComponent<SectionActivator>())
         {          
             StopMove();
-            _sectionActivatorExitAction?.Invoke();
+            _sectionActivatorExitAction.Invoke();
         }
     }
 

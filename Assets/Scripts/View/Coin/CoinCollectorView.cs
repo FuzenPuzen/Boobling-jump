@@ -50,6 +50,7 @@ public class CoinCollectorViewService : IService
 
     private void DropeCoinBonus()
     {
+        _audioService.PlayAudio(AudioEnum.Cash, false);
         _coinPoolViewService.GetItem().ActivateService();
     }
 }

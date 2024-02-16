@@ -2,10 +2,18 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 
+public interface IPoolView
+{
+    public SectionView GetSection();
+    public void ReturnSection(SectionView section);
+}
+
+
 public class StoolPoolView : MonoBehaviour, IPoolView
 {
     private List<GameObject> _busySections = new();
     private List<GameObject> _freeSections = new();
+
     public virtual SectionView GetSection()
     {
         SetFreeSections();
