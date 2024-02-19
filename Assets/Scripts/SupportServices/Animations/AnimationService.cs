@@ -1,10 +1,8 @@
-using Zenject;
 using EventBus;
 using System.Collections.Generic;
 using UnityEngine;
 using Unity.VisualScripting;
 using System.Linq;
-using System;
 
 public interface IAnimationService : IService
 {
@@ -13,7 +11,8 @@ public interface IAnimationService : IService
         where Animation : Anim
         where Object : MonoBehaviour;
 
-    public void Shake(GameObject obj, ShakeAnimData shakeAnimData = null);
+    public void PlayAnimation<Animation>(GameObject obj, AnimData animData = null)
+        where Animation : Anim;
 }
 
 public class AnimationService : IAnimationService
@@ -22,27 +21,27 @@ public class AnimationService : IAnimationService
 	private EventBinding<OnAnimViewEnable> _onAnimViewEnable;
 	private EventBinding<OnAnimViewDisable> _onAnimViewDisable;
 
-    public void PlayAnimation<Animation, Object>(AnimData animData = null)
+    public void PlayAnimation<Animation, ObjectType>(AnimData animData = null)
         where Animation : Anim
-        where Object : MonoBehaviour
+        where ObjectType : MonoBehaviour
     {
-        var items = _animatedObjects.OfType<Object>();
+        var items = _animatedObjects.OfType<ObjectType>();
         if (items.Count() >= 0)
             foreach (var item in items)
             {
-                Animation anim = item.transform.GetOrAddComponent<Animation>();               
+                Animation anim = item.transform.GetOrAddComponent<Animation>();
                 anim.SetValues(animData ?? new());
                 anim.Play();
             }
     }
 
-    public void Shake(GameObject obj, ShakeAnimData shakeAnimData = null)
+    public void PlayAnimation<Animation>(GameObject obj, AnimData animData = null)
+        where Animation : Anim
     {
-        ShakeAnim shakeAnim = obj.transform.GetOrAddComponent<ShakeAnim>();
-        shakeAnim.SetValues(shakeAnimData);
-        shakeAnim.Play();
+        Animation anim = obj.transform.GetOrAddComponent<Animation>();
+        anim.SetValues(animData ?? new());
+        anim.Play();
     }
-
 
     public void ActivateService()
 	{
@@ -70,5 +69,16 @@ public class AnimationService : IAnimationService
 
 public class AnimData
 {
+    public AnimType AnimType = AnimType.Default;
+    public bool IsLoop;
+    public float Duration = 0.2f;
+}
 
+public enum AnimType
+{
+    Default = Replace,
+    Replace = 0,
+    Add,
+    Ignore,
+    Stack
 }

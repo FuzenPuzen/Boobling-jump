@@ -24,7 +24,7 @@ public class PlayerSuperJumpBehaviour : PlayerJumpBehaviour
     public override void FallCallback()
     {
         ShakeAnimData shakeAnimData = SetAnimValues();
-        _animationService.PlayAnimation<ShakeAnim, MainCameraView>(shakeAnimData);
+        _animationService.PlayAnimation<ShakeAnim, MainCameraView>();
         EventBus<OnSupperJumpFall>.Raise();
         base.FallCallback();
     }
@@ -32,7 +32,7 @@ public class PlayerSuperJumpBehaviour : PlayerJumpBehaviour
     private static ShakeAnimData SetAnimValues()
     {
         ShakeAnimData shakeAnimData = new();
-        shakeAnimData.ShakeDuration = 0.1f;
+        shakeAnimData.Duration = 0.1f;
         shakeAnimData.ShakeVibrato = 100;
         shakeAnimData.ShakeForce = 1.1f;
         return shakeAnimData;

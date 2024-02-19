@@ -11,14 +11,16 @@ public class ShakeAnim : Anim
 
     public override void Play()
     {
-        transform.DOShakePosition(_shakeDuration, _shakeForce, _shakeVibrato);
+        _animSequence.Kill();
+        _animSequence = DOTween.Sequence();
+        _animSequence.Append(transform.DOShakePosition(_shakeDuration, _shakeForce, _shakeVibrato));
     }
 
     public override void SetValues(AnimData AnimData)
     {
-        if (AnimData == null) return;
+        // Ошибка если не передавать AnimData 
         var shakeAnimData = AnimData as ShakeAnimData;
-        _shakeDuration = shakeAnimData.ShakeDuration;
+        _shakeDuration = shakeAnimData.Duration;
         _shakeForce = shakeAnimData.ShakeForce;
         _shakeVibrato = shakeAnimData.ShakeVibrato;
     }
@@ -27,7 +29,6 @@ public class ShakeAnim : Anim
 
 public class ShakeAnimData : AnimData
 {
-   public float ShakeDuration = 0.2f;
    public float ShakeForce = 1.2f;
    public int ShakeVibrato = 10;
 }
@@ -35,7 +36,13 @@ public class ShakeAnimData : AnimData
 
 public abstract class Anim : MonoBehaviour
 {
+    public Sequence _animSequence;
     public abstract void Play();
 
     public abstract void SetValues(AnimData shakeAnimData);
+
+    public void OnDestroy()
+    {
+        _animSequence.Kill();
+    }
 }
