@@ -8,7 +8,7 @@ public class RepaintCameraView : MonoBehaviour, IRepaint
     {
         _camera = GetComponent<Camera>();
         Debug.Log("Repaint work");
-        EventBus<OnRepaintAwake>.Raise(new() { marker = this });
+        EventBus<OnRepaintAwake>.Raise(new() { Marker = this });
     }
 
     public void Repaint(RepaintSOData repaintData)

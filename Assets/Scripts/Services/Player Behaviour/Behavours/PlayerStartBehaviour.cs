@@ -6,10 +6,6 @@ public class PlayerStartBehaviour : PlayerJumpBehaviour
     private PlayerStartBehaviourSOData _PlayerBehaviourData;
     private Action _startAction;
 
-    public PlayerStartBehaviour(PlayerView playerView) : base(playerView)
-    {
-
-    }
 
     public override Type GetBehaviourDataType()
     {

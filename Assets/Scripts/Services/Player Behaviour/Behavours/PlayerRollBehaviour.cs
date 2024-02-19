@@ -12,7 +12,8 @@ public class PlayerRollBehaviour : IPlayerBehaviour
 
     private PlayerRollBehaviourSOData _playerRollBehaviourSOData;
 
-    public PlayerRollBehaviour(PlayerView playerView)
+
+    public void SetPlayerView(PlayerView playerView)
     {
         _transform = playerView.GetComponent<Transform>();
         _playerModel = playerView.GetPlayerModel();

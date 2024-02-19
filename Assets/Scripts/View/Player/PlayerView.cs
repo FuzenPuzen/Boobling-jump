@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class PlayerView : MonoBehaviour
+public class PlayerView : MonoBehaviour, IAnimView
 {
     [SerializeField] private Transform _playerModel;
 

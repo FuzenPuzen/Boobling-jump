@@ -11,6 +11,7 @@ public class PlayerBehaviourService : IPlayerBehaviourService
     private IPlayerBehaviour _currentBehaviour;
     private PlayerView _playerView;
     private IViewFabric _fabric;
+    private IServiceFabric _serviceFabric;
 
     private IPlayerBehaviourData _playerBehaviourData;
     private List<IPlayerBehaviour> _playerBehaviours = new();
@@ -42,21 +43,24 @@ public class PlayerBehaviourService : IPlayerBehaviourService
     [Inject]
     public void Constructor(IViewFabric fabric, IPlayerBehaviourStorageData playerBehaviourStorageData,
                             IPlayerSkinDataManager playerSkinDataManager,
-                            IMarkerService markerService)
+                            IMarkerService markerService, IServiceFabric serviceFabric)
     {
         _markerService = markerService;
         _playerSkinDataManager = playerSkinDataManager;
         _playerBehaviourStorageData = playerBehaviourStorageData;
         _fabric = fabric;
+        _serviceFabric = serviceFabric;
     }
 
     public void ActivateService()
     {
         SpawnPlayer();
-        _playerBehaviours.Add(new PlayerRollBehaviour(_playerView));
-        _playerBehaviours.Add(new PlayerStartBehaviour(_playerView));
-        _playerBehaviours.Add(new PlayerSuperJumpBehaviour(_playerView));
-        _playerBehaviours.Add(new PlayerSimpleJumpBehaviour(_playerView));
+        _playerBehaviours.Add(_serviceFabric.InitSingle<PlayerRollBehaviour>());
+        _playerBehaviours.Add(_serviceFabric.InitSingle<PlayerStartBehaviour>());
+        _playerBehaviours.Add(_serviceFabric.InitSingle<PlayerSuperJumpBehaviour>());
+        _playerBehaviours.Add(_serviceFabric.InitSingle<PlayerSimpleJumpBehaviour>());
+        foreach (var playerBehaviour in _playerBehaviours)
+            playerBehaviour.SetPlayerView(_playerView);
     }
 
     private void SpawnPlayer()
@@ -64,7 +68,7 @@ public class PlayerBehaviourService : IPlayerBehaviourService
         GameObject PlayerModel = _playerSkinDataManager.GetCurrentSkin().PlayerSkinSOData.SkinPrefab.transform.GetChild(0).gameObject;
         _playerView = _fabric.Init<PlayerView>(new Vector3(4.83f, 1.24f, 0));
         Transform parent = _markerService.GetTransformMarker<PlayerMarker>().transform;
-        GameObject model = _fabric.Init(PlayerModel, parent);
+        GameObject model = _fabric.Init<Transform>(PlayerModel, parent).gameObject;
         _playerView.SetPlayerModel(model.transform);
     }
 

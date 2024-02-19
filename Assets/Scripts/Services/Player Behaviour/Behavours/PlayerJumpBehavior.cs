@@ -33,7 +33,7 @@ public class PlayerJumpBehaviour : IPlayerBehaviour
     private Sequence _timerSequence;
     private Sequence _fallTimerSequence;
 
-    public PlayerJumpBehaviour(PlayerView playerView)
+    public void SetPlayerView(PlayerView playerView)
     {
         _isFall = false;
         _canFall = true;

@@ -34,7 +34,7 @@ public class RepaintService : IRepaintService
     }
     public void SetRepaint(OnRepaintAwake repaintAwake)
     {
-        _repaints.Add(repaintAwake.marker);
+        _repaints.Add(repaintAwake.Marker);
     }
     public void RepaintAll()
     {

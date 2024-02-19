@@ -3,22 +3,15 @@ using UnityEngine;
 using Unity.VisualScripting;
 using DG.Tweening;
 
-public class MainCameraView : MonoBehaviour
+public class MainCameraView : MonoBehaviour, IAnimView
 {
-	private ShakeAnim _shakeAnim;
 
 	private void Awake()
     {
 		transform.position = new Vector3(-16,15,-16);
 		transform.eulerAngles = new Vector3(30,45,0);
-        _shakeAnim = transform.GetComponent<ShakeAnim>();
-		_shakeAnim.SetValues(0.2f, 1.5f, 40);
     }
 
-	public void Shake()
-	{
-        _shakeAnim.Play();
-    }
 }
 
 public class MainCameraViewService : IService
@@ -37,11 +30,6 @@ public class MainCameraViewService : IService
 	public void ActivateService()
 	{       
         _MainCameraView = _fabric.Init<MainCameraView>();
-    }
-
-	public void CameraShake()
-	{
-        _MainCameraView.Shake();
     }
 
 }

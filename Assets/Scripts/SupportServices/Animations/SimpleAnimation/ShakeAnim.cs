@@ -3,22 +3,39 @@ using System.Collections.Generic;
 using UnityEngine;
 using DG.Tweening;
 
-public class ShakeAnim : MonoBehaviour
+public class ShakeAnim : Anim
 {
-    [SerializeField] private float _shakeDuration = 1;
-    [SerializeField] private float _shakeForce = 2;
-    [SerializeField] private int _shakeVibrato = 100;
+    private float _shakeDuration;
+    private float _shakeForce;
+    private int _shakeVibrato;
 
-    public void Play()
+    public override void Play()
     {
         transform.DOShakePosition(_shakeDuration, _shakeForce, _shakeVibrato);
     }
 
-    public void SetValues(float shakeDuration, float shakeForce, int shakeVibrato)
+    public override void SetValues(AnimData AnimData)
     {
-        _shakeDuration = shakeDuration;
-        _shakeForce = shakeForce;
-        _shakeVibrato = shakeVibrato;
+        if (AnimData == null) return;
+        var shakeAnimData = AnimData as ShakeAnimData;
+        _shakeDuration = shakeAnimData.ShakeDuration;
+        _shakeForce = shakeAnimData.ShakeForce;
+        _shakeVibrato = shakeAnimData.ShakeVibrato;
     }
+}
 
+
+public class ShakeAnimData : AnimData
+{
+   public float ShakeDuration = 0.2f;
+   public float ShakeForce = 1.2f;
+   public int ShakeVibrato = 10;
+}
+
+
+public abstract class Anim : MonoBehaviour
+{
+    public abstract void Play();
+
+    public abstract void SetValues(AnimData shakeAnimData);
 }

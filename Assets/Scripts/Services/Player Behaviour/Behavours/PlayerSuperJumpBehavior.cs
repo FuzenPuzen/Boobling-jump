@@ -2,16 +2,19 @@ using DG.Tweening;
 using System;
 using UnityEngine;
 using EventBus;
+using Zenject;
 
 public class PlayerSuperJumpBehaviour : PlayerJumpBehaviour
 {
     private PlayerSuperJumpBehaviourSOData _PlayerBehaviourData;
+    private IAnimationService _animationService;
 
-    public PlayerSuperJumpBehaviour(PlayerView playerView) : base(playerView)
+
+    [Inject]
+    public void Constructor(IAnimationService animationService)
     {
-
+        _animationService = animationService;
     }
-
 
     public override void Fall(TweenCallback tweenCallback)
     {
@@ -20,9 +23,21 @@ public class PlayerSuperJumpBehaviour : PlayerJumpBehaviour
 
     public override void FallCallback()
     {
+        ShakeAnimData shakeAnimData = SetAnimValues();
+        _animationService.PlayAnimation<ShakeAnim, MainCameraView>(shakeAnimData);
         EventBus<OnSupperJumpFall>.Raise();
-        base.FallCallback();       
+        base.FallCallback();
     }
+
+    private static ShakeAnimData SetAnimValues()
+    {
+        ShakeAnimData shakeAnimData = new();
+        shakeAnimData.ShakeDuration = 0.1f;
+        shakeAnimData.ShakeVibrato = 100;
+        shakeAnimData.ShakeForce = 1.1f;
+        return shakeAnimData;
+    }
+
     public override void ColliderBehaviour(Collider other) { }
 
     public override Type GetBehaviourDataType()

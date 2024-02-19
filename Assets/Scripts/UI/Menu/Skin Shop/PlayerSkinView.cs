@@ -7,6 +7,7 @@ public class PlayerSkinView : MonoBehaviour
     private void FixedUpdate()
     {
         transform.Rotate(new(0, _speed, 0));
+							
     }
 }
 

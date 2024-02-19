@@ -84,7 +84,8 @@ public class PreStartState : IBaseState
 
     public void Enter()
     {
-        _markerService.ActivateService(); 
+        _markerService.ActivateService();
+        _animationService.ActivateService();
         _poolsViewService.ActivateService();
 
         _repaintService.ActivateService();
@@ -104,7 +105,7 @@ public class PreStartState : IBaseState
         _playerBehaviourService.SetBehaviour<PlayerStartBehaviour>();
         
         _audioService.ActivateService();
-        _animationService.ActivateService();
+
 
         _playerBonusDestroyerService.ActivateService();
         _superJumpWavesService.ActivateService();

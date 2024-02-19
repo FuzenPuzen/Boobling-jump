@@ -46,10 +46,8 @@ public class SkinShopItemView : MonoBehaviour
 		if (_playerSkinData.PlayerSkinSLData.IsSelected)
 			_currentSkinButton.gameObject.SetActive(true);
 
-
         if (_playerSkinData.PlayerSkinSLData.IsOpen && !_playerSkinData.PlayerSkinSLData.IsSelected)
 			_ChangeSkinButton.gameObject.SetActive(true);
-
     }
 }
 
