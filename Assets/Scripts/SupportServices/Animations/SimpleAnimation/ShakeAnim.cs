@@ -24,6 +24,11 @@ public class ShakeAnim : Anim
         _shakeForce = shakeAnimData.ShakeForce;
         _shakeVibrato = shakeAnimData.ShakeVibrato;
     }
+
+    public override void Stop()
+    {
+        
+    }
 }
 
 
@@ -38,6 +43,7 @@ public abstract class Anim : MonoBehaviour
 {
     public Sequence _animSequence;
     public abstract void Play();
+    public abstract void Stop();
 
     public abstract void SetValues(AnimData shakeAnimData);
 

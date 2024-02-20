@@ -7,7 +7,7 @@ using System.Linq;
 public interface IAnimationService : IService
 {
 	public void DeactivateService();
-    public void PlayAnimation<Animation, Object>(AnimData AnimData = null)
+    public Animation PlayAnimation<Animation, Object>(AnimData AnimData = null)
         where Animation : Anim
         where Object : MonoBehaviour;
 
@@ -21,18 +21,41 @@ public class AnimationService : IAnimationService
 	private EventBinding<OnAnimViewEnable> _onAnimViewEnable;
 	private EventBinding<OnAnimViewDisable> _onAnimViewDisable;
 
-    public void PlayAnimation<Animation, ObjectType>(AnimData animData = null)
+    private Dictionary<Anim, MonoBehaviour> _objectAnims = new();
+
+    public Animation PlayAnimation<Animation, ObjectType>(AnimData animData = null)
         where Animation : Anim
         where ObjectType : MonoBehaviour
     {
         var items = _animatedObjects.OfType<ObjectType>();
+        Animation resultAnim = null;
         if (items.Count() >= 0)
             foreach (var item in items)
             {
-                Animation anim = item.transform.GetOrAddComponent<Animation>();
+                Animation anim = item.transform.GetOrAddComponent<Animation>();         
                 anim.SetValues(animData ?? new());
                 anim.Play();
+                resultAnim = anim;
+                _objectAnims.Add(resultAnim, item);
             }
+        return resultAnim;
+    }
+
+    public void StopAnimation(Anim anim)
+    {
+        anim.Stop();
+        _objectAnims.Remove(anim);
+    }
+
+    public void StopObjectAnimations(GameObject _object)
+    {
+        List<Anim> foundElements = _objectAnims.Where(pair => pair.Value == _object)
+                                                .Select(pair => pair.Key)
+                                                .ToList();
+        foreach (var foundElement in foundElements)
+        {
+            StopAnimation(foundElement);
+        }
     }
 
     public void PlayAnimation<Animation>(GameObject obj, AnimData animData = null)
