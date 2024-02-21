@@ -85,18 +85,3 @@ public class ShakeAnimData : AnimData
    public float ShakeForce = 1.2f;
    public int ShakeVibrato = 10;
 }
-
-
-public abstract class Anim : MonoBehaviour
-{
-    public Sequence _animSequence;
-    public abstract void Play();
-    public abstract void Stop();
-
-    public abstract void SetValues(AnimData shakeAnimData);
-
-    public void OnDestroy()
-    {
-        _animSequence.Kill();
-    }
-}
