@@ -2,12 +2,18 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using DG.Tweening;
+using Sirenix.OdinInspector;
 
+[ShowOdinSerializedPropertiesInInspector]
 public class ShakeAnim : Anim
 {
-    private float _shakeDuration;
-    private float _shakeForce;
-    private int _shakeVibrato;
+    [SerializeField] private float _shakeDuration;
+    [SerializeField] private float _shakeForce;
+    [SerializeField] private int _shakeVibrato;
+    [SerializeField] private bool _loop;
+    [SerializeField] private bool _autoPlay;
+    [ShowIf("_autoPlay")]
+    [SerializeField] private float _startDelay;
 
     public override void Play()
     {
@@ -27,7 +33,7 @@ public class ShakeAnim : Anim
 
     public override void Stop()
     {
-        
+        _animSequence.Kill();
     }
 }
 

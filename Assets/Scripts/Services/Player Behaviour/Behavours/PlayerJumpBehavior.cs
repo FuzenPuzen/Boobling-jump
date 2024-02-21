@@ -141,7 +141,7 @@ public class PlayerJumpBehaviour : IPlayerBehaviour
         if (other.gameObject.CompareTag("Enemy"))
         {
             _transform.GetComponent<BoxCollider>().enabled = false;
-            EventBus<OnPlayerDie>.Raise();
+            EventBus<OnPlayerDie>.Raise(); // добавить анимацию
             Time.timeScale = 0.1f;
             SeqTimer();          
         }
