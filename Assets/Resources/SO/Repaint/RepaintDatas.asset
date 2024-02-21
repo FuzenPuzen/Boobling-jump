@@ -15,6 +15,4 @@ MonoBehaviour:
   dictionary:
     _serializedList:
     - Key: 0
-      Value: {fileID: 11400000, guid: c73a9c07f5da2864b86938740bf0deaf, type: 2}
-    - Key: 1
-      Value: {fileID: 11400000, guid: c48ff0252c8f2eb4b97e43d28ead278d, type: 2}
+      Value: {fileID: 11400000, guid: 9e17f0b7a121729478037bfe2ed6c975, type: 2}

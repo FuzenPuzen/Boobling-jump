@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 1857006864917339878}
   - component: {fileID: 6343426006018537801}
   - component: {fileID: -5929350057050559906}
+  - component: {fileID: 6189242525948073357}
   m_Layer: 0
   m_Name: BonusBlenderSuperJump
   m_TagString: Untagged
@@ -160,3 +161,16 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &6189242525948073357
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1473275790646636594}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 647f3543ef0220249bf2a100527d17a5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _repainType: 2

@@ -3,6 +3,7 @@ using UnityEngine;
 
 public class RepaintRenderView : MonoBehaviour, IRepaint
 {
+    [SerializeField] private RepainType _repainType;
 	private MeshRenderer _meshRenderer;
 
     public void Start()
@@ -13,6 +14,24 @@ public class RepaintRenderView : MonoBehaviour, IRepaint
 
 	public void Repaint(RepaintSOData repaintData)
 	{
-        _meshRenderer.material.color = repaintData.main;
+        switch(_repainType)
+        {
+            case RepainType.Main:
+                _meshRenderer.material.color = repaintData.main;
+                break;
+            case RepainType.Second:
+                _meshRenderer.material.color = repaintData.second;
+                break;
+            case RepainType.Accent:
+                _meshRenderer.material.color = repaintData.accent;
+                break;
+        }
 	}
+
+    public enum RepainType
+    {
+        Main,
+        Second,
+        Accent
+    }
 }

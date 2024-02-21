@@ -12,9 +12,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 58acd0dc907da6d4bb11047f552eb8f5, type: 3}
   m_Name: RepaintData
   m_EditorClassIdentifier: Assembly-CSharp::RepaintSOData
-  main:
-    serializedVersion: 2
-    rgba: 4286282722
   backgroundColor:
     serializedVersion: 2
-    rgba: 4289046015
+    rgba: 4288236910
+  main:
+    serializedVersion: 2
+    rgba: 4291585683
+  second:
+    serializedVersion: 2
+    rgba: 4293292966
+  accent:
+    serializedVersion: 2
+    rgba: 4286631935
