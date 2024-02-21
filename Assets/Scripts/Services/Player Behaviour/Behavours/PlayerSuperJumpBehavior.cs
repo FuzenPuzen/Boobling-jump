@@ -3,17 +3,20 @@ using System;
 using UnityEngine;
 using EventBus;
 using Zenject;
+using Random = UnityEngine.Random;
 
 public class PlayerSuperJumpBehaviour : PlayerJumpBehaviour
 {
     private PlayerSuperJumpBehaviourSOData _PlayerBehaviourData;
     private IAnimationService _animationService;
+    private IAudioService _audioService;
 
 
     [Inject]
-    public void Constructor(IAnimationService animationService)
+    public void Constructor(IAnimationService animationService, IAudioService audioService)
     {
         _animationService = animationService;
+        _audioService = audioService;
     }
 
     public override void Fall(TweenCallback tweenCallback)
@@ -25,6 +28,7 @@ public class PlayerSuperJumpBehaviour : PlayerJumpBehaviour
     {
         ShakeAnimData shakeAnimData = SetAnimValues();
         _animationService.PlayAnimation<ShakeAnim, MainCameraView>();
+        _audioService.PlayAudio(Random.Range(0, 2) == 0 ? AudioEnum.Bum : AudioEnum.Bam, false);
         EventBus<OnSupperJumpFall>.Raise();
         base.FallCallback();
     }

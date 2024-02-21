@@ -28,7 +28,6 @@ public class GiftCollectorViewService : IService
     private IPoolViewService _coinPoolViewService;
     private IPoolViewService _roolBonusPoolViewService;
     private IPoolViewService _superJumpBonusPoolViewService;
-    private IAudioService _audioService;
     private DropMode _currentDropMode = DropMode.Full;
 
     private EventBinding<OnRollActivate> _onRollActivate;
@@ -39,12 +38,11 @@ public class GiftCollectorViewService : IService
     private MainCameraViewService _mainCameraViewService;
 
     [Inject]
-	public void Constructor(IViewFabric viewFabric, IServiceFabric _serviceFabric, IMarkerService markerService, IPoolsViewService poolsViewService, IAudioService audioService)
+	public void Constructor(IViewFabric viewFabric, IServiceFabric _serviceFabric, IMarkerService markerService, IPoolsViewService poolsViewService)
 	{
 		_viewFabric = viewFabric;
 		_markerService = markerService;
         _poolsViewService = poolsViewService;
-        _audioService = audioService;
     }
 
 	public void ActivateService()
@@ -70,8 +68,8 @@ public class GiftCollectorViewService : IService
             case DropMode.Full:
                 MethodCaller methodCaller = new MethodCaller();
                 methodCaller.AddMethod(DropeCoinBonus, 3);  // 30% вероятность вызова Method1
-                methodCaller.AddMethod(DropeSuperJumpBonus, 100);  // 40% вероятность вызова Method2
-                methodCaller.AddMethod(DropeRollBonus, 1);  // 30% вероятность вызова Method3
+                methodCaller.AddMethod(DropeSuperJumpBonus, 3);  // 40% вероятность вызова Method2
+                methodCaller.AddMethod(DropeRollBonus, 100);  // 30% вероятность вызова Method3
                 methodCaller.CallRandomMethod();
                 break;
 
@@ -91,7 +89,6 @@ public class GiftCollectorViewService : IService
 
 	private void DropeCoinBonus()
 	{
-        _audioService.PlayAudio(AudioEnum.Money, false);
         _coinPoolViewService.GetItem().ActivateService();
 	}
 

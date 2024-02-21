@@ -7,6 +7,7 @@ public class CoinPalleteViewService : IService
 	private IViewFabric _fabric;
 	private IMarkerService _markerService;
 	private ICoinDataManager _coinDataManager;
+	private IAudioService _audioService;
 
 	private int _coinCountTotal;
 	private int _coinCountCollected;
@@ -16,11 +17,13 @@ public class CoinPalleteViewService : IService
 	public void Constructor(
 		IViewFabric fabric,
 		IMarkerService markerService,
-		ICoinDataManager coinDataManager)
+		ICoinDataManager coinDataManager,
+		IAudioService audioService)
 	{
 		_fabric = fabric;
 		_markerService = markerService;
 		_coinDataManager = coinDataManager;
+		_audioService = audioService;
 	}
 
 	public void ActivateService()
@@ -36,7 +39,8 @@ public class CoinPalleteViewService : IService
 
 	private void OnCoinCollected()
 	{
-		_coinDataManager.CollectCoins();
+        _audioService.PlayAudio(AudioEnum.Money, false);
+        _coinDataManager.CollectCoins();
 		_coinCountCollected++;
 		if(_coinCountCollected >= _cleanCoinCount)
 		{

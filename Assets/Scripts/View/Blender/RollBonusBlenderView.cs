@@ -59,13 +59,18 @@ public class RollBonusBlenderViewService : IService
 	private RollBonusBlenderView _rollBonusBlenderView;
     private IMarkerService _markerService;
     private IPlayerBehaviourDataManager _playerBehaviourDataManager;
-
+    private IAudioService _audioService;
     [Inject]
-	public void Constructor(IViewFabric fabric, IMarkerService markerService, IPlayerBehaviourDataManager playerBehaviourDataManager)
+	public void Constructor(
+        IViewFabric fabric,
+        IMarkerService markerService,
+        IPlayerBehaviourDataManager playerBehaviourDataManager,
+        IAudioService audioService)
 	{
         _playerBehaviourDataManager = playerBehaviourDataManager;
         _markerService = markerService;
 		_fabric = fabric;
+        _audioService = audioService;
 	}
 
 	public void ActivateService()
@@ -81,6 +86,7 @@ public class RollBonusBlenderViewService : IService
     }
     private void OnRollActivate() 
 	{
+        _audioService.PlayAudio(AudioEnum.SuperRotate, false);
 		EventBus<OnRollActivate>.Raise();
 		_rollBonusBlenderView.BlenderStart(OnRollDeactivate);
 	}

@@ -5,6 +5,7 @@ using Zenject;
 public interface IAudioService : IService
 {
 	public AudioUnitViewService PlayAudio(AudioEnum name, bool isLoop);
+	public void StopAudio(AudioUnitViewService audio);
 }
 
 public class AudioService : IAudioService

@@ -3,6 +3,7 @@ using DG.Tweening;
 using System.Collections.Generic;
 using EventBus;
 using static UnityEngine.Rendering.SplashScreen;
+using Zenject;
 
 public class PlayerJumpBehaviour : IPlayerBehaviour
 {
@@ -32,6 +33,14 @@ public class PlayerJumpBehaviour : IPlayerBehaviour
     private Sequence _landSequence;
     private Sequence _timerSequence;
     private Sequence _fallTimerSequence;
+
+    private IAudioService _audioService;
+
+    [Inject]
+    public void Constructor(IAudioService audioService)
+    {
+        _audioService = audioService;
+    }
 
     public void SetPlayerView(PlayerView playerView)
     {
@@ -68,6 +77,8 @@ public class PlayerJumpBehaviour : IPlayerBehaviour
     {
         if (_canJump)
         {
+            _audioService.PlayAudio(AudioEnum.DefaultJump, false);
+
             _jumpSequence = DOTween.Sequence();
             _jumpSequence.Append(_transform.DOLocalMoveY(_targetPos.y, period).SetEase(Ease.OutCirc));
             _jumpSequence.Join(_transform.DOLocalRotate(GetRandomJumpVector(), period * 3, RotateMode.LocalAxisAdd).SetEase(Ease.Linear));
@@ -141,6 +152,7 @@ public class PlayerJumpBehaviour : IPlayerBehaviour
         if (other.gameObject.CompareTag("Enemy"))
         {
             _transform.GetComponent<BoxCollider>().enabled = false;
+            _audioService.PlayAudio(AudioEnum.Smash, false);
             EventBus<OnPlayerDie>.Raise();
             Time.timeScale = 0.1f;
             SeqTimer();          

@@ -9,6 +9,7 @@ public enum AudioEnum
 	Money,
 	NeedMoney,
 	Sell,
+	Smash,
 	SuperJump,
 	SuperRotate,
 	Vert,

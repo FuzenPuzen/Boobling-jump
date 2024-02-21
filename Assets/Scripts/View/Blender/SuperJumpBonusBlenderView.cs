@@ -55,16 +55,22 @@ public class SuperJumpBonusBlenderViewService : IService
 	private SuperJumpBonusBlenderView _superJumpBonusBlenderView;
     private IMarkerService _markerService;
     private IPlayerBehaviourDataManager _playerBehaviourDataManager;
+    private IAudioService _audioService;
 
     [Inject]
-	public void Constructor(IViewFabric fabric, IMarkerService markerService, IPlayerBehaviourDataManager playerBehaviourDataManager)
-	{
+    public void Constructor(
+        IViewFabric fabric,
+        IMarkerService markerService,
+        IPlayerBehaviourDataManager playerBehaviourDataManager,
+        IAudioService audioService)
+    {
         _playerBehaviourDataManager = playerBehaviourDataManager;
         _markerService = markerService;
-		_fabric = fabric;
-	}
+        _fabric = fabric;
+        _audioService = audioService;
+    }
 
-	public void ActivateService()
+    public void ActivateService()
 	{       
         _superJumpBonusBlenderView = _fabric.Init<SuperJumpBonusBlenderView>(_markerService.GetTransformMarker<SuperJumpBonusBlenderPosMarker>().transform);
         _superJumpBonusBlenderView.collectAction = OnSuperJumpActivate;
@@ -78,6 +84,7 @@ public class SuperJumpBonusBlenderViewService : IService
 
     private void OnSuperJumpActivate()
     {
+        _audioService.PlayAudio(AudioEnum.SuperJump, false);
         EventBus<OnSupperJumpActivate>.Raise();
         _superJumpBonusBlenderView.BlenderStart(OnSuperJumpDeactivate);
     }
