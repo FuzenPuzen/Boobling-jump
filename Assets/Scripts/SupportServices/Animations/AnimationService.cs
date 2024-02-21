@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using Unity.VisualScripting;
 using System.Linq;
+using DG.Tweening;
+using Sequence = DG.Tweening.Sequence;
 
 public interface IAnimationService : IService
 {
@@ -35,7 +37,7 @@ public class AnimationService : IAnimationService
                 Animation anim = item.transform.GetOrAddComponent<Animation>();         
                 anim.SetValues(animData ?? new());
                 anim.Play();
-                _objectAnims.Add(anim, item);
+                _objectAnims.TryAdd(anim, item);
                 anims.Add(anim);
             }
         return anims;
@@ -88,6 +90,19 @@ public class AnimationService : IAnimationService
 	{
 		foreach(MonoBehaviour mono in onAnimViewDisable.Components)
 			_animatedObjects.Remove(mono);
+    }
+}
+public abstract class Anim : MonoBehaviour
+{
+    public Sequence _animSequence;
+    public abstract void Play();
+    public abstract void Stop();
+
+    public abstract void SetValues(AnimData shakeAnimData);
+
+    public void OnDestroy()
+    {
+        _animSequence.Kill();
     }
 }
 

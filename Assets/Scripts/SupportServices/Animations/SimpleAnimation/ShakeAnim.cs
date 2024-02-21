@@ -18,8 +18,8 @@ public class ShakeAnim : Anim
 
     public override void SetValues(AnimData AnimData)
     {
-        // Ошибка если не передавать AnimData 
-        var shakeAnimData = AnimData as ShakeAnimData;
+        ShakeAnimData shakeAnimData = AnimData as ShakeAnimData;
+        shakeAnimData = shakeAnimData ?? new();
         _shakeDuration = shakeAnimData.Duration;
         _shakeForce = shakeAnimData.ShakeForce;
         _shakeVibrato = shakeAnimData.ShakeVibrato;
@@ -36,19 +36,4 @@ public class ShakeAnimData : AnimData
 {
    public float ShakeForce = 1.2f;
    public int ShakeVibrato = 10;
-}
-
-
-public abstract class Anim : MonoBehaviour
-{
-    public Sequence _animSequence;
-    public abstract void Play();
-    public abstract void Stop();
-
-    public abstract void SetValues(AnimData shakeAnimData);
-
-    public void OnDestroy()
-    {
-        _animSequence.Kill();
-    }
 }
