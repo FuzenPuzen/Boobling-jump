@@ -66,8 +66,20 @@ public class ButtonsPanelView : MonoBehaviour
     public void FillPanel()
     {
         _collectedCoinsText.text = _collectedCoinsCount.ToString();
-        DOTween.To(() => _layoutGroup.padding.left, x => _layoutGroup.padding.left = x, 40, 3);
-        DOTween.To(() => _layoutGroup.spacing, x => _layoutGroup.spacing = x, 40, 3);
+        StartCoroutine(ShowDelay(3));
+    }
+
+    private IEnumerator ShowDelay(float time)
+    {
+        yield return new  WaitForSecondsRealtime(time);
+        ShowTakeButton();
+    }
+
+    public void ShowTakeButton()
+    {
+        float time = 0.5f;
+        DOTween.To(() => _layoutGroup.padding.left, x => _layoutGroup.padding.left = x, 50, time);
+        DOTween.To(() => _layoutGroup.spacing, x => _layoutGroup.spacing = x, 40, time);
     }
 
     public void ActivateView()

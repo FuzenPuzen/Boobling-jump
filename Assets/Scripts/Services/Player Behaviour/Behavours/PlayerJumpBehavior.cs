@@ -152,8 +152,8 @@ public class PlayerJumpBehaviour : IPlayerBehaviour
         if (other.gameObject.CompareTag("Enemy"))
         {
             _transform.GetComponent<BoxCollider>().enabled = false;
+            EventBus<OnPlayerDie>.Raise(); // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
             _audioService.PlayAudio(AudioEnum.Smash, false);
-            EventBus<OnPlayerDie>.Raise();
             Time.timeScale = 0.1f;
             SeqTimer();          
         }
@@ -187,7 +187,7 @@ public class PlayerJumpBehaviour : IPlayerBehaviour
 
     private void DieAction()
     {
-        EventBus<OnPlayerÑrashed>.Raise();
+        EventBus<OnPlayerï¿½rashed>.Raise();
         _transform.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeAll;
     }
 

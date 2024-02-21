@@ -8,6 +8,46 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 161734525004019958, guid: 6e588827fff44da47bafd2d6f15eaf1b,
+        type: 3}
+      propertyPath: _loop
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 161734525004019958, guid: 6e588827fff44da47bafd2d6f15eaf1b,
+        type: 3}
+      propertyPath: _autoPlay
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 161734525004019958, guid: 6e588827fff44da47bafd2d6f15eaf1b,
+        type: 3}
+      propertyPath: _loopDelay
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 161734525004019958, guid: 6e588827fff44da47bafd2d6f15eaf1b,
+        type: 3}
+      propertyPath: _shakeForce
+      value: 1.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 161734525004019958, guid: 6e588827fff44da47bafd2d6f15eaf1b,
+        type: 3}
+      propertyPath: _startDelay
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 161734525004019958, guid: 6e588827fff44da47bafd2d6f15eaf1b,
+        type: 3}
+      propertyPath: _shakeVibrato
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 161734525004019958, guid: 6e588827fff44da47bafd2d6f15eaf1b,
+        type: 3}
+      propertyPath: _shakeDuration
+      value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 387311371075277433, guid: 6e588827fff44da47bafd2d6f15eaf1b,
+        type: 3}
+      propertyPath: _startDelay
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3446542077166921607, guid: 6e588827fff44da47bafd2d6f15eaf1b,
         type: 3}
       propertyPath: m_Name
