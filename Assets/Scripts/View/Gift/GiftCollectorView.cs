@@ -91,8 +91,7 @@ public class GiftCollectorViewService : IService
 
 	private void DropeCoinBonus()
 	{
-        //cameraShaker
-        _audioService.PlayAudio(AudioEnum.Cash, false);
+        _audioService.PlayAudio(AudioEnum.Money, false);
         _coinPoolViewService.GetItem().ActivateService();
 	}
 
