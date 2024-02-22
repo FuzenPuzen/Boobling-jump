@@ -42,8 +42,13 @@ public class UpgradePanelView : MonoBehaviour
         _nextLevelNameText.text = name;
     }
 
-    public void CalculateFilledProgress(List<Image> imageList, List<Image> iconsList, int level)
+    public void CalculateFilledProgress(List<Image> imageList, List<Image> iconsList, UpgradeDataPackage upgradeDataPackage)
     {
+        int level = upgradeDataPackage.currentLevel;
+
+        if(upgradeDataPackage.isLastLevel)
+            iconsList[level / 10 - 1].gameObject.SetActive(true);
+
         if (level == 0)
         {
             iconsList[level / 10].gameObject.SetActive(true);
@@ -53,7 +58,7 @@ public class UpgradePanelView : MonoBehaviour
 
         if (mod == 0)
         {
-            imageList[level / 10 - 1].fillAmount = 1;
+            imageList[level / 10 - 1].fillAmount = 1;            
             return;
         }
 
@@ -62,6 +67,7 @@ public class UpgradePanelView : MonoBehaviour
             imageList[level / 10 - 1].fillAmount = 0;
             iconsList[level / 10 - 1].gameObject.SetActive(false);
         }
+
         iconsList[level / 10].gameObject.SetActive(true);
         int filledColorId = level / 10;
         float filledAmount = (float)mod / 10;
@@ -70,7 +76,7 @@ public class UpgradePanelView : MonoBehaviour
 
     public void UpdateView(UpgradeDataPackage upgradeDataPackage)
     {
-        CalculateFilledProgress(_currentLevelProgresses, _currentLevelIcons, upgradeDataPackage.currentLevel);
+        CalculateFilledProgress(_currentLevelProgresses, _currentLevelIcons, upgradeDataPackage);
 
         _currentLevelText.text = upgradeDataPackage.currentLevel.ToString() + "\n ”р";
         _currentDurationText.text = upgradeDataPackage.currentDuration.ToString() + "\n сек";
@@ -83,9 +89,10 @@ public class UpgradePanelView : MonoBehaviour
             _nextLevelZone.SetActive(false);
             return;
         }
-        CalculateFilledProgress(_nextLevelProgresses, _nextLevelIcons, upgradeDataPackage.currentLevel + 1);
+        ++upgradeDataPackage.currentLevel;
+        CalculateFilledProgress(_nextLevelProgresses, _nextLevelIcons, upgradeDataPackage);
         _updateCostText.text = upgradeDataPackage.nextLevelCost.ToString();
-        _nextLevelText.text = ++upgradeDataPackage.currentLevel + "\n ”р";
+        _nextLevelText.text = upgradeDataPackage.currentLevel + "\n ”р";
         _nextDurationText.text = upgradeDataPackage.nextDuration.ToString() + "\n сек";
     }
 }
