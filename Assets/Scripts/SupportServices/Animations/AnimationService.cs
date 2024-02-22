@@ -90,12 +90,7 @@ public class AnimationService : IAnimationService
     }
 }
 
-public class AnimData
-{
-    public AnimType AnimType = AnimType.Default;
-    public bool IsLoop;
-    public float Duration = 0.2f;
-}
+
 
 public enum AnimType
 {

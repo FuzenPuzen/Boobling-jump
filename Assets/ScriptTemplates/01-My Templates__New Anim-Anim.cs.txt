@@ -1,0 +1,36 @@
+using UnityEngine;
+using DG.Tweening;
+using Sirenix.OdinInspector;
+using System;
+#NOTRIM#
+[ShowOdinSerializedPropertiesInInspector]
+public class #SCRIPTNAME# : Anim
+{
+	[SerializeField] private #SCRIPTNAME#Data _#SCRIPTNAME#Data;
+	public override void OnEnable()
+	{
+    		_animData = (AnimData)_#SCRIPTNAME#Data;
+    		SetValues(_#SCRIPTNAME#Data);
+    		base.OnEnable();
+	}
+	#NOTRIM#
+ 	public override void Play()
+ 	{
+     		_animSequence?.Complete();
+     		_animSequence.Kill();
+     		_animSequence = DOTween.Sequence();
+		//Анимация
+	}
+	#NOTRIM#
+	 public override void SetValues(AnimData AnimData)
+ 	{
+		//var #SCRIPTNAME#Data = AnimData as #SCRIPTNAME#Data;
+		//Парсинг данных для анимации(Если необходимо)
+	}
+}
+#NOTRIM#
+[Serializable]
+public class #SCRIPTNAME#Data : AnimData
+{
+   //Класс данных для анимации
+}

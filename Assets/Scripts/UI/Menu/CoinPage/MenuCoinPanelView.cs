@@ -2,13 +2,21 @@ using Zenject;
 using UnityEngine;
 using TMPro;
 
+[RequireComponent(typeof(ScaleShakeAnim))]
 public class MenuCoinPanelView : MonoBehaviour
 {
     [SerializeField] private TMP_Text _coinsText;
+    private ScaleShakeAnim _shakeAnim;
+
+    public void Awake()
+    {
+        _shakeAnim = GetComponent<ScaleShakeAnim>();
+    }
 
     public void UpdateView(int coins)
     {
         _coinsText.text = coins.ToString();
+        _shakeAnim.Play();
     }
 }
 

@@ -221,6 +221,7 @@ GameObject:
   - component: {fileID: 1278556238867198224}
   - component: {fileID: 5229621806911237281}
   - component: {fileID: 286531014862337303}
+  - component: {fileID: 8393475961795412000}
   m_Layer: 5
   m_Name: Coins Panel
   m_TagString: Untagged
@@ -270,3 +271,24 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _coinsText: {fileID: 1643615349709785099}
+--- !u!114 &8393475961795412000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4062071846021731741}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 51bd14b0a7b8b3d4ebcbaecab8685281, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _currentAnimData:
+    AnimType: 0
+    _loop: 0
+    _loopDelay: 0
+    _autoPlay: 0
+    _startDelay: 0
+    Duration: 0.2
+    ShakeForce: 1.1
+    ShakeVibrato: 20

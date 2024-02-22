@@ -95,6 +95,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3742051210719521265}
   - component: {fileID: 430246246838683668}
+  - component: {fileID: 674199636948807424}
   m_Layer: 0
   m_Name: Dovakin
   m_TagString: Untagged
@@ -130,6 +131,26 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9e2e05c54e4f9f3429b0465a471a909a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &674199636948807424
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 723925158951371625}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6e4e47bec76b00b4eb13b7cc7acdf6f4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _RotateAnimData:
+    AnimType: 0
+    IsLoop: 1
+    LoopDelay: 0
+    IsAutoPlay: 1
+    StartDelay: 0
+    Duration: 1
+    RotationVector: {x: 0, y: 360, z: 0}
 --- !u!1 &1586473397108836297
 GameObject:
   m_ObjectHideFlags: 0
