@@ -1,6 +1,7 @@
 using UnityEngine;
 using DG.Tweening;
 using System;
+using Zenject;
 
 public class PlayerRollBehaviour : IPlayerBehaviour
 {
@@ -9,9 +10,15 @@ public class PlayerRollBehaviour : IPlayerBehaviour
     private Sequence _rollSequence;
     private Vector3 _startPos;
     private float _rotateSpeed;
-
+    private IAudioService _audioService;
+    private AudioUnitViewService _audioUnit;
     private PlayerRollBehaviourSOData _playerRollBehaviourSOData;
 
+    [Inject]
+    public void Constructor(IAudioService audioService)
+    {
+        _audioService = audioService;
+    }
 
     public void SetPlayerView(PlayerView playerView)
     {
@@ -23,6 +30,7 @@ public class PlayerRollBehaviour : IPlayerBehaviour
 
     public void StartBehaviour()
     {
+        _audioUnit = _audioService.PlayAudio(AudioEnum.Krut, true);
         GoToLand();
     }
 
@@ -35,6 +43,7 @@ public class PlayerRollBehaviour : IPlayerBehaviour
 
     public void StopBehaviour()
     {
+        _audioService.StopAudio(_audioUnit);
         _rollSequence.Kill();
         _playerModel.transform.localRotation = new Quaternion(180, 0, 0, 0);
         _transform.localRotation = new Quaternion(0, 0, 0, 0);

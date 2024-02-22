@@ -57,6 +57,7 @@ GameObject:
   - component: {fileID: 2363979864750979448}
   - component: {fileID: 3639237846274128382}
   - component: {fileID: 7577035482682578332}
+  - component: {fileID: 4803026356695420416}
   m_Layer: 0
   m_Name: wing R
   m_TagString: Untagged
@@ -155,6 +156,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _rotateVector: {x: 0, y: 1, z: 0}
   _rotateSpeed: 5
+--- !u!114 &4803026356695420416
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1117451651341587343}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 647f3543ef0220249bf2a100527d17a5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _repainType: 2
 --- !u!1 &1703990713246050401
 GameObject:
   m_ObjectHideFlags: 0
@@ -212,6 +226,7 @@ GameObject:
   - component: {fileID: 7530979224875399082}
   - component: {fileID: 6518959577434751532}
   - component: {fileID: 3234811385175464394}
+  - component: {fileID: 8954110013220832173}
   m_Layer: 0
   m_Name: BlackBoard
   m_TagString: Untagged
@@ -318,6 +333,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 78df7b8be62bccc44abc734a0f9cc8ef, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &8954110013220832173
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1721945874252270783}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 647f3543ef0220249bf2a100527d17a5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _repainType: 2
 --- !u!1 &1782407030698443378
 GameObject:
   m_ObjectHideFlags: 0
@@ -330,6 +358,7 @@ GameObject:
   - component: {fileID: 287158013696947827}
   - component: {fileID: 5623142672625985651}
   - component: {fileID: 8327135353940728077}
+  - component: {fileID: 6361553342708580952}
   m_Layer: 0
   m_Name: Stage L
   m_TagString: Untagged
@@ -414,6 +443,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 034bc47afcbf5e141a58d5c20b7808e4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &6361553342708580952
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1782407030698443378}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 647f3543ef0220249bf2a100527d17a5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _repainType: 2
 --- !u!1 &4481845231889845412
 GameObject:
   m_ObjectHideFlags: 0
@@ -427,6 +469,7 @@ GameObject:
   - component: {fileID: 2347105838052917275}
   - component: {fileID: 6156130321051754747}
   - component: {fileID: 9066532675463314326}
+  - component: {fileID: 4436979877535475107}
   m_Layer: 0
   m_Name: wing L
   m_TagString: Untagged
@@ -525,6 +568,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _rotateVector: {x: 0, y: 1, z: 0}
   _rotateSpeed: 5
+--- !u!114 &4436979877535475107
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4481845231889845412}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 647f3543ef0220249bf2a100527d17a5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _repainType: 2
 --- !u!1 &5003676543700317391
 GameObject:
   m_ObjectHideFlags: 0
@@ -10195,6 +10251,7 @@ GameObject:
   - component: {fileID: 7087214478958591577}
   - component: {fileID: 6026741005759730298}
   - component: {fileID: 8582452226725545861}
+  - component: {fileID: 4102099573360629632}
   m_Layer: 0
   m_Name: Stage R
   m_TagString: Untagged
@@ -10279,6 +10336,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 034bc47afcbf5e141a58d5c20b7808e4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &4102099573360629632
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7425068989987398871}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 647f3543ef0220249bf2a100527d17a5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _repainType: 2
 --- !u!1 &7716009648793291028
 GameObject:
   m_ObjectHideFlags: 0

@@ -3,15 +3,17 @@ using System.Collections.Generic;
 using UnityEngine;
 using Unity.VisualScripting;
 using System.Linq;
+using DG.Tweening;
+using Sequence = DG.Tweening.Sequence;
 
 public interface IAnimationService : IService
 {
 	public void DeactivateService();
-    public Animation PlayAnimation<Animation, Object>(AnimData AnimData = null)
+    public List<Anim> PlayAnimation<Animation, Object>(AnimData AnimData = null)
         where Animation : Anim
         where Object : MonoBehaviour;
 
-    public void PlayAnimation<Animation>(GameObject obj, AnimData animData = null)
+    public Anim PlayAnimation<Animation>(GameObject obj, AnimData animData = null)
         where Animation : Anim;
 }
 
@@ -23,22 +25,22 @@ public class AnimationService : IAnimationService
 
     private Dictionary<Anim, MonoBehaviour> _objectAnims = new();
 
-    public Animation PlayAnimation<Animation, ObjectType>(AnimData animData = null)
+    public List<Anim> PlayAnimation<Animation, ObjectType>(AnimData animData = null)
         where Animation : Anim
         where ObjectType : MonoBehaviour
     {
+        List<Anim> anims = new List<Anim>();
         var items = _animatedObjects.OfType<ObjectType>();
-        Animation resultAnim = null;
         if (items.Count() >= 0)
             foreach (var item in items)
             {
                 Animation anim = item.transform.GetOrAddComponent<Animation>();         
                 anim.SetValues(animData ?? new());
                 anim.Play();
-                resultAnim = anim;
-                _objectAnims.Add(resultAnim, item);
+                _objectAnims.TryAdd(anim, item);
+                anims.Add(anim);
             }
-        return resultAnim;
+        return anims;
     }
 
     public void StopAnimation(Anim anim)
@@ -58,12 +60,13 @@ public class AnimationService : IAnimationService
         }
     }
 
-    public void PlayAnimation<Animation>(GameObject obj, AnimData animData = null)
+    public Anim PlayAnimation<Animation>(GameObject obj, AnimData animData = null)
         where Animation : Anim
     {
         Animation anim = obj.transform.GetOrAddComponent<Animation>();
         anim.SetValues(animData ?? new());
         anim.Play();
+        return anim;
     }
 
     public void ActivateService()
@@ -87,6 +90,19 @@ public class AnimationService : IAnimationService
 	{
 		foreach(MonoBehaviour mono in onAnimViewDisable.Components)
 			_animatedObjects.Remove(mono);
+    }
+}
+public abstract class Anim : MonoBehaviour
+{
+    public Sequence _animSequence;
+    public abstract void Play();
+    public abstract void Stop();
+
+    public abstract void SetValues(AnimData shakeAnimData);
+
+    public void OnDestroy()
+    {
+        _animSequence.Kill();
     }
 }
 

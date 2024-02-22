@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0b2db86121404754db890f4c8dfe81b2, type: 3}
   m_Name: Bloom
   m_EditorClassIdentifier: 
-  active: 1
+  active: 0
   skipIterations:
     m_OverrideState: 0
     m_Value: 1
@@ -90,13 +90,13 @@ MonoBehaviour:
   active: 1
   shadows:
     m_OverrideState: 1
-    m_Value: {x: 1, y: 1, z: 1, w: -0.080862544}
+    m_Value: {x: 1, y: 1, z: 1, w: -0.033489514}
   midtones:
     m_OverrideState: 1
-    m_Value: {x: 1, y: 1, z: 1, w: 0.013476995}
+    m_Value: {x: 1, y: 1, z: 1, w: 0.15405226}
   highlights:
     m_OverrideState: 1
-    m_Value: {x: 1, y: 1, z: 1, w: 0.053908348}
+    m_Value: {x: 1, y: 1, z: 1, w: 0.013720811}
   shadowsStart:
     m_OverrideState: 0
     m_Value: 0
@@ -179,13 +179,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5485954d14dfb9a4c8ead8edb0ded5b1, type: 3}
   m_Name: LiftGammaGain
   m_EditorClassIdentifier: 
-  active: 1
+  active: 0
   lift:
     m_OverrideState: 1
-    m_Value: {x: 1, y: 1, z: 1, w: -0.04043127}
+    m_Value: {x: 1, y: 1, z: 1, w: -0.014270378}
   gamma:
     m_OverrideState: 1
-    m_Value: {x: 1, y: 1, z: 1, w: 0.07313228}
+    m_Value: {x: 1, y: 1, z: 1, w: -0.031511273}
   gain:
     m_OverrideState: 1
-    m_Value: {x: 1, y: 1, z: 1, w: 0.20790324}
+    m_Value: {x: 1, y: 1, z: 1, w: 0.020361397}

@@ -15,16 +15,28 @@ MonoBehaviour:
   audioDictionary:
     _serializedList:
     - Key: 0
-      Value: {fileID: 8300000, guid: d34afb19f96205c46b9c6688a64f4ec9, type: 3}
+      Value: {fileID: 8300000, guid: 7a43e655470f62b41ae0b5742e45f521, type: 3}
     - Key: 1
-      Value: {fileID: 8300000, guid: e9d2d93911d98f04b9c22d06500c7b6c, type: 3}
+      Value: {fileID: 8300000, guid: d34afb19f96205c46b9c6688a64f4ec9, type: 3}
     - Key: 2
-      Value: {fileID: 8300000, guid: 5462e31970d21324b8f16f5daf9c5be2, type: 3}
+      Value: {fileID: 8300000, guid: 82348874d945a10488f785dbf9dc8e10, type: 3}
     - Key: 3
-      Value: {fileID: 8300000, guid: aa69a120cec68e04b83c6f4833dc3530, type: 3}
+      Value: {fileID: 8300000, guid: 3ed6f30bf3051e34791e3dbf37414092, type: 3}
     - Key: 4
-      Value: {fileID: 8300000, guid: b749d8b43369d2848997e07d7259115e, type: 3}
+      Value: {fileID: 8300000, guid: d800a666b7c41634199ebda0ed996ba3, type: 3}
     - Key: 5
-      Value: {fileID: 8300000, guid: 0559ccb5fa536e44fa8228d80d64e796, type: 3}
+      Value: {fileID: 8300000, guid: 5ba53ec163929e84dab99d400f3ff4b7, type: 3}
     - Key: 6
-      Value: {fileID: 8300000, guid: 5b46ff9d540b44444a582b18d6a1f832, type: 3}
+      Value: {fileID: 8300000, guid: 0a6d8517ecbf81a409f70d8d4ccbc73e, type: 3}
+    - Key: 7
+      Value: {fileID: 8300000, guid: e1136dc37fd8b92469eb3b90df34bd22, type: 3}
+    - Key: 8
+      Value: {fileID: 8300000, guid: 09c996d5072a74b4a949554c20c6da11, type: 3}
+    - Key: 9
+      Value: {fileID: 8300000, guid: ebd064c44f5858246a634a32d7a4474e, type: 3}
+    - Key: 10
+      Value: {fileID: 8300000, guid: 18dfd3256ff686347804bb54482f5a97, type: 3}
+    - Key: 11
+      Value: {fileID: 8300000, guid: 7f356546baa02914fbcb79028473fec5, type: 3}
+    - Key: 12
+      Value: {fileID: 8300000, guid: 283dbfcffbd422c43b5364e8c70ea2c2, type: 3}

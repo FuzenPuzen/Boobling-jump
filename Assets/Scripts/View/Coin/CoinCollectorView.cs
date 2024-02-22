@@ -27,7 +27,6 @@ public class CoinCollectorViewService : IService
     private IMarkerService _markerService;
     private IPoolsViewService _poolsViewService;
     private IPoolViewService _coinPoolViewService;
-    private IAudioService _audioService;
 
     [Inject]
     public void Constructor(IViewFabric viewFabric,
@@ -38,7 +37,6 @@ public class CoinCollectorViewService : IService
         _poolsViewService = poolsViewService;
         _viewFabric = viewFabric;
         _markerService = markerService;
-        _audioService = audioService;
     }
 
     public void ActivateService()
@@ -50,7 +48,6 @@ public class CoinCollectorViewService : IService
 
     private void DropeCoinBonus()
     {
-        _audioService.PlayAudio(AudioEnum.Cash, false);
         _coinPoolViewService.GetItem().ActivateService();
     }
 }

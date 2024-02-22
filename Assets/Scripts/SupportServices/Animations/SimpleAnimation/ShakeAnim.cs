@@ -32,8 +32,8 @@ public class ShakeAnim : Anim
 
     public override void SetValues(AnimData AnimData)
     {
-        // Ошибка если не передавать AnimData 
-        var shakeAnimData = AnimData as ShakeAnimData;
+        ShakeAnimData shakeAnimData = AnimData as ShakeAnimData;
+        shakeAnimData = shakeAnimData ?? new();
         _shakeDuration = shakeAnimData.Duration;
         _shakeForce = shakeAnimData.ShakeForce;
         _shakeVibrato = shakeAnimData.ShakeVibrato;

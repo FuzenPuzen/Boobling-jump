@@ -34,7 +34,9 @@ public class RepaintService : IRepaintService
     }
     public void SetRepaint(OnRepaintAwake repaintAwake)
     {
+        _currentRepaintSOData = _repaintDataManager.GetRandomRepaintSOData();
         _repaints.Add(repaintAwake.Marker);
+        repaintAwake.Marker.Repaint(_currentRepaintSOData);
     }
     public void RepaintAll()
     {

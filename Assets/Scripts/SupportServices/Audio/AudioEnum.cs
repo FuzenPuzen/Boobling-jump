@@ -1,10 +1,16 @@
 public enum AudioEnum
 {
+	Bam,
 	Bonus,
-	Cash,
-	Click,
-	jumpFall,
-	jumpPower,
-	JumpStart,
-	roll,
+	Bum,
+	DefaultJump,
+	Gift,
+	Krut,
+	Money,
+	NeedMoney,
+	Sell,
+	Smash,
+	SuperJump,
+	SuperRotate,
+	Vert,
 }
