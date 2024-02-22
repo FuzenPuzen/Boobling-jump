@@ -20,6 +20,7 @@ public class ScaleShakeAnim  : Anim
 
     public override void Play()
     {
+        _animSequence.Complete();
         _animSequence.Kill();
         _animSequence = DOTween.Sequence();
         _animSequence.Append(transform.DOShakeScale(_shakeDuration,

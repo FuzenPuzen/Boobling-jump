@@ -19,8 +19,11 @@ public class RotateAnim : Anim
      		_animSequence.Kill();
      		_animSequence = DOTween.Sequence();
             _animSequence.Append(transform.DOLocalRotate(_RotateAnimData.RotationVector,
-                                                        _RotateAnimData.Duration, RotateMode.LocalAxisAdd)
-                                                        .SetEase(Ease.Linear).SetRelative(true));                                               
+                                                        _RotateAnimData.Duration, _RotateAnimData.RotateMod)
+                                                        .SetEase(Ease.Linear));
+        if (_RotateAnimData.IsReverse)
+            _RotateAnimData.RotationVector = -_RotateAnimData.RotationVector;
+
     }
 	
 	 public override void SetValues(AnimData AnimData)
@@ -33,5 +36,7 @@ public class RotateAnim : Anim
 public class RotateAnimData : AnimData
 {
 	[SerializeField] public Vector3 RotationVector;
+	[SerializeField] public bool IsReverse;
+	[SerializeField] public RotateMode RotateMod = RotateMode.LocalAxisAdd;
    //Класс данных для анимации
 }

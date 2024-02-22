@@ -3,12 +3,15 @@ using EventBus;
 using UnityEngine;
 using UnityEngine.UI;
 using System;
+using TMPro;
 
 public class SettingsPanelView : MonoBehaviour
 {
     [SerializeField] private Button _hideButton;
     [SerializeField] private Slider _musicSlider;
     [SerializeField] private Slider _soundSlider;
+    [SerializeField] private TMP_Text _musicValue;
+    [SerializeField] private TMP_Text _soundValue;
     private AudioSLData _audioSLData;
     public Action<AudioSLData> AudioSLDataChanged;
 
@@ -29,18 +32,23 @@ public class SettingsPanelView : MonoBehaviour
     public void UpdateView()
     {
         _musicSlider.value = _audioSLData.MusicValue;
+        _musicValue.text = Math.Round(_audioSLData.MusicValue, 2) * 100 + "%";
+
         _soundSlider.value = _audioSLData.SoundValue;
+        _soundValue.text = Math.Round(_audioSLData.SoundValue, 2) * 100 + "%";
     }
 
     private void MusicChanged(float value)
     {
         _audioSLData.MusicValue = value;
+        _musicValue.text = Math.Round(value,2) * 100 + "%";
         AudioSLDataChanged?.Invoke(_audioSLData);
     }
 
     private void SoundChanged(float value)
     {
         _audioSLData.SoundValue = value;
+        _soundValue.text = Math.Round(value, 2) * 100 + "%";
         AudioSLDataChanged?.Invoke(_audioSLData);
     }
 

@@ -64,8 +64,10 @@ MonoBehaviour:
     LoopDelay: 0
     IsAutoPlay: 1
     StartDelay: 0
-    Duration: 1
+    Duration: 2
     RotationVector: {x: 0, y: 360, z: 0}
+    IsReverse: 0
+    RotateMod: 3
 --- !u!1 &4773077323571740513
 GameObject:
   m_ObjectHideFlags: 0
