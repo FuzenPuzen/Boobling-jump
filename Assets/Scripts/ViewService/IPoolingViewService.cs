@@ -10,7 +10,6 @@ public interface IPoolingViewService
 
 public class StartValues
 {
-
     public Vector3 StartPos;
     public Transform Transform;
     public AudioClip Clip;
