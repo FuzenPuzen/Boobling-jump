@@ -5,9 +5,11 @@ using EventBus;
 using System.Collections;
 using DG.Tweening;
 using UnityEngine.UIElements;
+using TMPro;
 
 public class RollBonusBlenderView : MonoBehaviour
 {
+    [SerializeField] private TMP_Text _durationText;
     public Action collectAction;
 	private float _duration;
 	private Action _bonusBlenderEndAction;
@@ -39,9 +41,11 @@ public class RollBonusBlenderView : MonoBehaviour
 
 	private IEnumerator BonusBlenderDuration()
 	{
-		yield return new WaitForSeconds(_duration);
+        _durationText.gameObject.SetActive(true);
+        DOTween.To(() => _duration, x => _durationText.text = Math.Round(x, 0).ToString(), 0, _duration);
+        yield return new WaitForSecondsRealtime(_duration);
+        _durationText.gameObject.SetActive(false);
         BlenderEnd();
-
     }
 
     public void BlenderEnd()

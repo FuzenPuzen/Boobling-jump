@@ -27,7 +27,7 @@ public class PlayerSuperJumpBehaviour : PlayerJumpBehaviour
     public override void FallCallback()
     {
         ShakeAnimData shakeAnimData = SetAnimValues();
-        _animationService.PlayAnimation<ShakeAnim, MainCameraView>();
+        _animationService.PlayAnimation<ShakeAnim, MainCameraView>(shakeAnimData);
         _audioService.PlayAudio(Random.Range(0, 2) == 0 ? AudioEnum.Bum : AudioEnum.Bam, false);
         EventBus<OnSupperJumpFall>.Raise();
         base.FallCallback();

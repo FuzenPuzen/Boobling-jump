@@ -5,13 +5,16 @@ using System.Collections;
 using EventBus;
 using DG.Tweening;
 using UnityEngine.UIElements;
+using TMPro;
 
 public class SuperJumpBonusBlenderView : MonoBehaviour
 {
+    [SerializeField] private TMP_Text _durationText;
     public Action collectAction;
-    private float _duration = 5f;
+    private float _duration;
     private Action _bonusBlenderEndAction;
     private Sequence _scale;
+
     private void OnTriggerEnter(Collider other)
     {
         if (other.TryGetComponent<DropedSuperJumpBonusView>(out DropedSuperJumpBonusView component))
@@ -19,6 +22,7 @@ public class SuperJumpBonusBlenderView : MonoBehaviour
             collectAction?.Invoke();
         }
     }
+
     public void SetDuration(float duration)
     {
         _duration = duration;
@@ -30,13 +34,15 @@ public class SuperJumpBonusBlenderView : MonoBehaviour
         _scale = DOTween.Sequence();
         _scale.Append(transform.DOScale(new Vector3(1.25f, 1.25f, 1.25f), 0.25f));
         _bonusBlenderEndAction = action;
-
         StartCoroutine(BonusBlenderDuration());
     }
 
     private IEnumerator BonusBlenderDuration()
     {
-        yield return new WaitForSeconds(_duration);
+        _durationText.gameObject.SetActive(true);
+        DOTween.To(() => _duration, x => _durationText.text = Math.Round(x, 0).ToString(), 0, _duration);
+        yield return new WaitForSecondsRealtime(_duration);
+        _durationText.gameObject.SetActive(false);
         BlenderEnd();
     }
 
