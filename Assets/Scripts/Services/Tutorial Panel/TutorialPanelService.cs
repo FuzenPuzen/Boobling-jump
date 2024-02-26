@@ -6,17 +6,19 @@ public class TutorialPanelService : IService
 
     private TutorialPanelView _tutorialView;
     private IViewFabric _fabric;
+    private IMarkerService _markerService;
 
     [Inject]
-    public void constructor(IViewFabric fabric)
+    public void constructor(IViewFabric fabric, IMarkerService markerService)
     {
         _fabric = fabric;
+        _markerService = markerService;
     }
 
     public void ActivateService()
     {
-        _tutorialView = _fabric.Init<TutorialPanelView>(new Vector3(0.9f, 1.54f, 3.96f));
-        _tutorialView.transform.rotation = Quaternion.Euler(-76, 0, 0);
+        Transform parent = _markerService.GetTransformMarker<TutorialTextMarker>().transform;
+        _tutorialView = _fabric.Init<TutorialPanelView>(parent);
     }
 
     public void DeActivateService()

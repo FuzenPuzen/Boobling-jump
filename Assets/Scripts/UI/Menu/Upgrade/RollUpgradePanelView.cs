@@ -27,7 +27,7 @@ public class RollUpgradePanelViewService : IService
 	{
         Transform parent = _markerService.GetTransformMarker<UpgradePageMarker>().transform;
         _rollUpgradePanelView = _fabric.Init<RollUpgradePanelView>(parent);
-		_rollUpgradePanelView.buyUpgradeAction = BuyUpgrade;
+		_rollUpgradePanelView.BuyUpgradeAction = BuyUpgrade;
         _rollUpgradePanelView.SetName(skillName);
         UpdateView();
     }
@@ -43,6 +43,7 @@ public class RollUpgradePanelViewService : IService
         if (_playerBehaviourDataManager.BuyRollLevel(_upgradeDataPackage.nextLevelCost))
         {
             UpdateView();
+            _rollUpgradePanelView.UpgradeAnim();
         }
     }
 }

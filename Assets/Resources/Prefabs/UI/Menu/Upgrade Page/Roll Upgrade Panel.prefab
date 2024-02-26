@@ -774,7 +774,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: 50, y: -250}
+  m_AnchoredPosition: {x: 50, y: -229}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &7884248924383020337
@@ -798,7 +798,7 @@ MonoBehaviour:
   m_StartCorner: 0
   m_StartAxis: 1
   m_CellSize: {x: 550, y: 200}
-  m_Spacing: {x: 0, y: 125}
+  m_Spacing: {x: 0, y: 120}
   m_Constraint: 1
   m_ConstraintCount: 1
 --- !u!1 &3005143362267083981
@@ -1697,7 +1697,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 70}
+  m_AnchoredPosition: {x: 0, y: 90}
   m_SizeDelta: {x: 326, y: 3}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &5553196829974015778
@@ -2909,6 +2909,7 @@ MonoBehaviour:
   - {fileID: 8584955111846132700}
   - {fileID: 3113139935180683445}
   - {fileID: 7747104896754615051}
+  _levelsGreed: {fileID: 7884248924383020337}
   _nextLevelZone: {fileID: 4258962136821912988}
 --- !u!1 &8726553967198921984
 GameObject:

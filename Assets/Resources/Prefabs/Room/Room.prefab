@@ -379,6 +379,7 @@ Transform:
   - {fileID: 8547709101138411152}
   - {fileID: 82078604186880950}
   - {fileID: 1689278130635659558}
+  - {fileID: 6647376330319962420}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &5758690820365395229
@@ -1011,6 +1012,50 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _repainType: 0
+--- !u!1 &5577758887894165930
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6647376330319962420}
+  - component: {fileID: 2040428818091515998}
+  m_Layer: 0
+  m_Name: TutorialTextPos
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6647376330319962420
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5577758887894165930}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -2.7, y: 0.92, z: -1.77}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 3887582960655909441}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2040428818091515998
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5577758887894165930}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0b5aabe00f8c79748bd19555ca820dac, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &6631944588395068991
 GameObject:
   m_ObjectHideFlags: 0

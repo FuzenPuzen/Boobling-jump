@@ -3,6 +3,7 @@ using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
 using DG.Tweening;
+using System;
 
 public class FilledCirclePanelView : MonoBehaviour
 {
@@ -26,7 +27,7 @@ public class FilledCirclePanelView : MonoBehaviour
     [SerializeField] private TMP_Text _rewardMultiplayerText;
 
     [SerializeField] private TMP_Text _rewardCoinsText;
-
+    public Action<int> AddCoins;
 
     private ScoreRewardDataPackage _rewardDataPackage;
 
@@ -108,7 +109,9 @@ public class FilledCirclePanelView : MonoBehaviour
     private void FillBonusPanel()
     {
         _bonusPanel.GetComponent<CanvasGroup>().DOFade(1, 0.5f);
-        _rewardCoinsText.text = (_rewardDataPackage.RewardCount * _rewardMultiplayer).ToString();
+        int rewardCoins = _rewardDataPackage.RewardCount * _rewardMultiplayer;
+        _rewardCoinsText.text = (rewardCoins).ToString();
+        AddCoins.Invoke(rewardCoins);
     }
 
     private void fillRemaindPanel()
@@ -121,22 +124,19 @@ public class FilledCirclePanelView : MonoBehaviour
 public class FilledCirclePanelViewService : IService
 {
 	private IViewFabric _fabric;
-    private IServiceFabric _serviceFabric;
     private FilledCirclePanelView _FilledCirclePanel;
     private IMarkerService _markerService;
-
     private IScoreDataManager _scoreDataManager;
-
+    private ICoinDataManager _coinDataManager;
 
     [Inject]
     public void Constructor(IViewFabric viewFabric, IMarkerService markerService,
-                            IServiceFabric serviceFabric,
-                            IScoreDataManager scoreDataManager)
+                            IScoreDataManager scoreDataManager, ICoinDataManager coinDataManager)
     {
         _markerService = markerService;
         _fabric = viewFabric;
-        _serviceFabric = serviceFabric;
         _scoreDataManager = scoreDataManager;
+        _coinDataManager = coinDataManager;
     }
 
     public void ActivateService()
@@ -144,5 +144,11 @@ public class FilledCirclePanelViewService : IService
         Transform parent = _markerService.GetTransformMarker<EndPageMarker>().transform;
         _FilledCirclePanel = _fabric.Init<FilledCirclePanelView>(parent);
         _FilledCirclePanel.SetData(_scoreDataManager.GetScoreRewardDataPackage());
+        _FilledCirclePanel.AddCoins = AddRewardedCoins;
+    }
+
+    public void AddRewardedCoins(int coins)
+    {
+        _coinDataManager.AddCoins(coins);
     }
 }

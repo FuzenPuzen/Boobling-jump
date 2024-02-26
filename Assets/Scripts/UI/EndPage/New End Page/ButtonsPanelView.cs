@@ -20,6 +20,7 @@ public class ButtonsPanelView : MonoBehaviour
 
     [SerializeField] private GameObject _adButtons;
     [SerializeField] private GameObject _navigationButtons;
+    private ScaleShakeAnim _scaleShakeAnim;
 
 
     private float _changeTypeDelay = 0.25f;
@@ -29,6 +30,11 @@ public class ButtonsPanelView : MonoBehaviour
     public Action OnTakeMoney;
 
     private int _collectedCoinsCount;
+
+    private void Awake()
+    {
+        _collectedCoinsText.transform.TryGetComponent<ScaleShakeAnim>(out _scaleShakeAnim);
+    }
 
     public void SetData(int collectedCoinsCount)
     {
@@ -48,7 +54,7 @@ public class ButtonsPanelView : MonoBehaviour
     {
         OnSelectBonusType?.Invoke();
         ShowNavigationButtons();
-        _collectedCoinsText.text = (_collectedCoinsCount * (int)RewardBonusType.X5).ToString();
+        FillCollectedCoinsText(_collectedCoinsCount * (int)RewardBonusType.X5);
     }
 
     private void TakeMoney()
@@ -63,9 +69,15 @@ public class ButtonsPanelView : MonoBehaviour
         _navigationButtons.SetActive(true);
     }
 
-    public void FillPanel()
+    private void FillCollectedCoinsText(int coins)
     {
-        _collectedCoinsText.text = _collectedCoinsCount.ToString();
+        _scaleShakeAnim?.Play();
+        _collectedCoinsText.text = coins.ToString();
+    }
+
+    private void FillPanel()
+    {
+        FillCollectedCoinsText(_collectedCoinsCount);
         StartCoroutine(ShowDelay(3));
     }
 

@@ -28,7 +28,7 @@ public class SuperJumpUpgradePanelViewService : IService
         Transform parent = _markerService.GetTransformMarker<UpgradePageMarker>().transform;
         _superJumpUpgradePanelView = _fabric.Init<SuperJumpUpgradePanelView>(parent);
         _superJumpUpgradePanelView.transform.SetAsFirstSibling();
-        _superJumpUpgradePanelView.buyUpgradeAction = BuyUpgrade;
+        _superJumpUpgradePanelView.BuyUpgradeAction = BuyUpgrade;
         _superJumpUpgradePanelView.SetName(skillName);
         UpdateView();
     }
@@ -44,6 +44,7 @@ public class SuperJumpUpgradePanelViewService : IService
         if (_playerBehaviourDataManager.BuySuperJumpLevel(_upgradeDataPackage.nextLevelCost))
         {
             UpdateView();
+            _superJumpUpgradePanelView.UpgradeAnim();
         }
     }
 }
