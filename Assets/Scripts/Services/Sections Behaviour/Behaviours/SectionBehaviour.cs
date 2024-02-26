@@ -36,7 +36,6 @@ public class SectionBehaviour : ISectionBehaviour
         SetSectionActivatorEnterAction(_currentSectionViewService);
         SetSectionActivatorExitAction(_currentSectionViewService);
         _currentSectionViewService.ActivateSection();
-
     }
 
     private protected virtual void ReturnSectionToPool(SectionViewService sectionViewService)

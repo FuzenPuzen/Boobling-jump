@@ -25,7 +25,6 @@ public class RollBonusBlenderView : MonoBehaviour
     {
         if (other.TryGetComponent<DropedRollBonusView>(out DropedRollBonusView component))
         {
-            print("Blender Check Bonus Roll");
             collectAction?.Invoke();
         }
     }

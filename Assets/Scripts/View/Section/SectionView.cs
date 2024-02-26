@@ -9,7 +9,7 @@ public class SectionView : MonoBehaviour
     private Action _sectionActivatorEnterAction;
     private Sequence _moveSequence;
     private float _endPosX = -60f;
-    private float _movingTime = 7.2f;
+    private float _movingTime = 10.5f;
     private Vector3 _startPosition;
 
     public void ActivateView(Vector3 startPos)
