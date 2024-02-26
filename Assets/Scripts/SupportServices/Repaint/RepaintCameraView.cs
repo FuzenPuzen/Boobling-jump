@@ -7,7 +7,6 @@ public class RepaintCameraView : MonoBehaviour, IRepaint
     public void OnEnable()
     {
         _camera = GetComponent<Camera>();
-        Debug.Log("Repaint work");
         EventBus<OnRepaintAwake>.Raise(new() { Marker = this });
     }
 

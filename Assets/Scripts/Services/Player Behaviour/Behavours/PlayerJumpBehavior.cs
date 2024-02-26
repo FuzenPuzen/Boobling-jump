@@ -15,8 +15,9 @@ public class PlayerJumpBehaviour : IPlayerBehaviour
     private bool _canFall;
     private Vector3 _startPos;
 
-    private float period = 0.5f;
-    private Vector3 _targetPos = new(0, 9, 0);  
+    private float _period = 0.5f;
+    private Vector3 _targetPos = new(0, 9, 0);
+    private float _dieAnimTime = 0.2f;
 
     private List<Vector3> JumpVectors = new()
     {
@@ -35,11 +36,14 @@ public class PlayerJumpBehaviour : IPlayerBehaviour
     private Sequence _fallTimerSequence;
 
     private IAudioService _audioService;
+    private IAnimationService _animationService;
+
 
     [Inject]
-    public void Constructor(IAudioService audioService)
+    public void Constructor(IAudioService audioService, IAnimationService animationService)
     {
         _audioService = audioService;
+        _animationService = animationService;
     }
 
     public void SetPlayerView(PlayerView playerView)
@@ -61,15 +65,15 @@ public class PlayerJumpBehaviour : IPlayerBehaviour
         _jumpSequence.Kill();
         _fallSequence = DOTween.Sequence();
         _isFall = true;
-        _fallSequence.Append(_transform.DOMoveY(_startPos.y, period / 2f));
-        _fallSequence.Join(_transform.DORotate(new Vector3(0, 0, 0), period / 2f));
+        _fallSequence.Append(_transform.DOMoveY(_startPos.y, _period / 2f));
+        _fallSequence.Join(_transform.DORotate(new Vector3(0, 0, 0), _period / 2f));
         _fallSequence.OnComplete(tweenCallback);
     }
 
     public virtual void FallCallback()
     {
         _isFall = false;
-        _playerModel.DOPunchScale(new Vector3(1.25f, 1.25f, 1.25f), period / 3f);
+        _playerModel.DOPunchScale(new Vector3(1.25f, 1.25f, 1.25f), _period / 3f);
         Jump();
     }
 
@@ -80,10 +84,10 @@ public class PlayerJumpBehaviour : IPlayerBehaviour
             _audioService.PlayAudio(AudioEnum.DefaultJump, false);
 
             _jumpSequence = DOTween.Sequence();
-            _jumpSequence.Append(_transform.DOLocalMoveY(_targetPos.y, period).SetEase(Ease.OutCirc));
-            _jumpSequence.Join(_transform.DOLocalRotate(GetRandomJumpVector(), period * 3, RotateMode.LocalAxisAdd).SetEase(Ease.Linear));
-            _jumpSequence.Insert(period * 2, _transform.DOLocalMoveY(_startPos.y, period * 2.5f).SetEase(Ease.InSine));
-            _jumpSequence.Insert(period * 3, _transform.DORotate(new Vector3(0, 0, 0), period));
+            _jumpSequence.Append(_transform.DOLocalMoveY(_targetPos.y, _period).SetEase(Ease.OutCirc));
+            _jumpSequence.Join(_transform.DOLocalRotate(GetRandomJumpVector(), _period * 3, RotateMode.LocalAxisAdd).SetEase(Ease.Linear));
+            _jumpSequence.Insert(_period * 2, _transform.DOLocalMoveY(_startPos.y, _period * 2.5f).SetEase(Ease.InSine));
+            _jumpSequence.Insert(_period * 3, _transform.DORotate(new Vector3(0, 0, 0), _period));
             _jumpSequence.OnComplete(Jump);
         }
     }
@@ -123,8 +127,8 @@ public class PlayerJumpBehaviour : IPlayerBehaviour
     private void GoToLand()
     {
         _landSequence = DOTween.Sequence();
-        _landSequence.Append(_transform.DOMove(_startPos, period/2));
-        _landSequence.Join(_transform.DORotate(new Vector3(0, 0, 0), period/2));
+        _landSequence.Append(_transform.DOMove(_startPos, _period/2));
+        _landSequence.Join(_transform.DORotate(new Vector3(0, 0, 0), _period/2));
         _landSequence.OnComplete(LandComplete);
     }
 
@@ -168,8 +172,7 @@ public class PlayerJumpBehaviour : IPlayerBehaviour
 
     private void NormalizeTime()
     {
-        Time.timeScale = 1f;
-       
+        Time.timeScale = 1f;       
         DieSequence();
     }
 
@@ -178,15 +181,17 @@ public class PlayerJumpBehaviour : IPlayerBehaviour
         StopBehaviour();
         _looseSequence = DOTween.Sequence();
         _transform.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeRotation;
-        _looseSequence.Append(_transform.DOMove(new(-11f, 3.3f, 0.2f), 0.2f).SetEase(Ease.Linear));
-        _looseSequence.Join(_transform.DOLocalRotate(new(-8f, 130f, 30f), 0.2f).SetEase(Ease.Linear));
-        _looseSequence.Join(_playerModel.DOLocalRotate(new (180,0,0), 0.2f).SetEase(Ease.Linear));
-        _looseSequence.Join(_transform.DOScale(Vector3.one * 7, 0.2f).SetEase(Ease.Linear));
+        _looseSequence.Append(_transform.DOMove(new(-10.7f, 3.3f, 0.2f), _dieAnimTime).SetEase(Ease.InExpo));
+        _looseSequence.Join(_transform.DOLocalRotate(new(-190, 130, -21), _dieAnimTime).SetEase(Ease.Linear));
+        _looseSequence.Join(_playerModel.DOLocalRotate(new (-180,0,0), _dieAnimTime).SetEase(Ease.Linear));
+        _looseSequence.Join(_transform.DOScale(Vector3.one * 14, _dieAnimTime).SetEase(Ease.Linear));
         _looseSequence.OnComplete(DieAction);
     }
 
     private void DieAction()
     {
+
+        _animationService.PlayAnimation<ShakeAnim, MainCameraView>(new ShakeAnimData());
         EventBus<OnPlayerDie>.Raise(); // �������� ��������
         _transform.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeAll;
     }
