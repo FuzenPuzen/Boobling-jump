@@ -7,6 +7,7 @@ using EventBus;
 public class SkinShopItemView : MonoBehaviour
 {
 	[SerializeField] private TMP_Text _cost;
+	[SerializeField] private TMP_Text _skinName;
 	[SerializeField] private Button _buyButton;
 	[SerializeField] private Button _currentSkinButton;
 	[SerializeField] private Button _ChangeSkinButton;
@@ -35,6 +36,7 @@ public class SkinShopItemView : MonoBehaviour
 
 	public void UpdateView()
 	{
+		_skinName.text = _playerSkinData.PlayerSkinSOData.Name;
         _buyButton.gameObject.SetActive(false);
 		_ChangeSkinButton.gameObject.SetActive(false);
 		_currentSkinButton.gameObject.SetActive(false);

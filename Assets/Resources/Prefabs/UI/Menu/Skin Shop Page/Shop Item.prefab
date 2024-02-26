@@ -228,6 +228,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _cost: {fileID: 2330025483423578847}
+  _skinName: {fileID: 54189967095204427}
   _buyButton: {fileID: 1980715908719714672}
   _currentSkinButton: {fileID: 3094519678741968857}
   _ChangeSkinButton: {fileID: 9106105963992972179}
