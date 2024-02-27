@@ -3,6 +3,7 @@ using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
 using EventBus;
+using DG.Tweening;
 
 public class TutorialEndPanelView : MonoBehaviour
 {
@@ -29,7 +30,7 @@ public class TutorialEndPanelView : MonoBehaviour
 
 	public void SetData(int collectedCoins, int receivedCoins)
 	{
-        _collectedCoins.text = collectedCoins.ToString();
+        DOTween.To(() => 0, x => _collectedCoins.text = x.ToString(), collectedCoins, 1f);
 		_receivedCoins.text = receivedCoins.ToString();
     }
 

@@ -72,7 +72,7 @@ public class ButtonsPanelView : MonoBehaviour
     private void FillCollectedCoinsText(int coins)
     {
         _scaleShakeAnim?.Play();
-        _collectedCoinsText.text = coins.ToString();
+        DOTween.To(() => 0, x => _collectedCoinsText.text = x.ToString(), coins, 1f);
     }
 
     private void FillPanel()

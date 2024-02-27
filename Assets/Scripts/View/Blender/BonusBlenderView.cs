@@ -14,7 +14,7 @@ public class BonusBlenderView : MonoBehaviour
     private Sequence _blenderAnim;
 
     public void SetDuration(float duration)
-    {
+    {       
         _duration = duration;
     }
 
@@ -32,7 +32,7 @@ public class BonusBlenderView : MonoBehaviour
     private IEnumerator BonusBlenderDuration()
     {
         _durationText.gameObject.SetActive(true);
-        DOTween.To(() => _duration, x => _durationText.text = Math.Round(x, 0).ToString(), 0, _duration);
+        DOTween.To(() => _duration, x => _durationText.text = Math.Round(x, 2).ToString(), 0, _duration);
         yield return new WaitForSecondsRealtime(_duration);
         _durationText.gameObject.SetActive(false);
         BlenderEnd();

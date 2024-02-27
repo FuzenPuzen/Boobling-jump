@@ -1299,7 +1299,7 @@ MonoBehaviour:
     IsAutoPlay: 0
     StartDelay: 0
     Duration: 0.2
-    ShakeForce: 1.1
+    ShakeForce: 1.05
     ShakeVibrato: 20
 --- !u!1 &7145722658340043204
 GameObject:
