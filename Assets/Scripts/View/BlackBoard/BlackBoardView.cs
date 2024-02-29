@@ -4,13 +4,17 @@ using EventBus;
 using DG.Tweening;
 using Unity.VisualScripting;
 
+[RequireComponent(typeof(MoveAnim))]
 public class BlackBoardView : MonoBehaviour
 {
 	private DG.Tweening.Sequence _blackBoardMove;
+	private MoveAnim _moveAnim;
 
 	public void PlayerDieMove()
 	{
-		_blackBoardMove?.Kill();
+        _moveAnim = transform.GetComponent<MoveAnim>();
+        _moveAnim.Stop();
+        _blackBoardMove?.Kill();
         _blackBoardMove = DOTween.Sequence();
         _blackBoardMove.Append(transform.DOLocalMove(transform.position + Vector3.up * 5f, 0.1f));
         _blackBoardMove.Append(transform.DOLocalMove(new(-9.36f, 3.94f, -6.7f), 0.1f));

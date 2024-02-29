@@ -12,4 +12,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b29dcf2fb6251bb4d824159cb8e93d8e, type: 3}
   m_Name: GiftScoreSOData
   m_EditorClassIdentifier: 
-  GiftScoreSize: 250
+  GiftScoreSize: 500
