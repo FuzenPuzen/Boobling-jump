@@ -10,7 +10,6 @@ public class PlayerSkinSOData : ScriptableObject
     public string Name;
     private string[] GetDropdownValues()
     {
-        // Возвращает массив строк, которые будут использоваться в выпадающем меню
         return new string[] { "Полицца", "Пиратник", "Ведьма", "Шарки", "Бэмби", "Даваскинчик", "Сантанинский"};
     }
 }

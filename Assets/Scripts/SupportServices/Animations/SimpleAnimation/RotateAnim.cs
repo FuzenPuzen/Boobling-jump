@@ -26,7 +26,7 @@ public class RotateAnim : Anim
 
     }
 	
-	 public override void SetValues(AnimData AnimData)
+	public override void SetValues(AnimData AnimData)
  	{
 		//Парсинг данных для анимации(Если необходимо)
 	}

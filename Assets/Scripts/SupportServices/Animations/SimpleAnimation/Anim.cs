@@ -44,7 +44,6 @@ public class Anim : MonoBehaviour
     public virtual void PlayLooped()
     {
         Play();
-        //_animSequence.AppendCallback(() => _coroutine = StartCoroutine(AnimDelay(_animData.LoopDelay, PlayLooped)));
         _animSequence.AppendInterval(_animData.LoopDelay).OnComplete(PlayLooped);
     }
 
